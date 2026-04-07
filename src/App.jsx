@@ -82,6 +82,7 @@ function App() {
             {/* --- 파트너(Vendor) 전용 라우트 --- */}
             <Route path="/shinilsangjae" element={<PartnerLayout />}>
               <Route index element={<PartnerLogin />} />
+              <Route path="login" element={<PartnerLogin />} />
               <Route path="dashboard" element={<PartnerDashboard />} />
             </Route>
 

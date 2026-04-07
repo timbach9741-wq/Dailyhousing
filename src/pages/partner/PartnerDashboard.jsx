@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LXZIN_PRODUCTS } from '../../data/lxzin-products';
 import { useProductStore } from '../../store/useProductStore';
 import * as XLSX from 'xlsx-js-style';
 import PartnerUserManageModal from '../../components/partner/PartnerUserManageModal';
+import { auth, db } from '../../lib/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
 
 const CATEGORY_COLORS = [
   { hex: 'FFFFF1F2', hexHeader: 'FFFFE4E6', bg: 'bg-red-50', headerBg: 'bg-red-100', border: 'border-red-200', text: 'text-red-800' },
@@ -19,13 +22,22 @@ const CATEGORY_COLORS = [
 const PartnerDashboard = () => {
   const navigate = useNavigate();
   const updateProduct = useProductStore(state => state.updateProduct);
-  const [userName] = useState(() => localStorage.getItem('partnerUser') || '파트너님');
-  const [partnerRole] = useState(() => localStorage.getItem('partnerRole') || 'staff');
+  const addInventoryLogs = useProductStore(state => state.addInventoryLogs);
+  const resetAllInventoryData = useProductStore(state => state.resetAllInventoryData);
+  const inventoryLogs = useProductStore(state => state.inventoryLogs || []);
+  const storeProducts = useProductStore(state => state.products);
+  const initProducts = useProductStore(state => state.initProducts);
+  const isLoaded = useProductStore(state => state.isLoaded);
+  
+  const [userName, setUserName] = useState(() => localStorage.getItem('partnerUser') || '파트너님');
+  const [partnerRole, setPartnerRole] = useState(() => localStorage.getItem('partnerRole') || 'staff');
   const [isManageModalOpen, setIsManageModalOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [lastSaved, setLastSaved] = useState(() => new Date().toLocaleTimeString());
   const [searchTerm, setSearchTerm] = useState('');
-  const [statPeriod, setStatPeriod] = useState('none'); // 'none' | 'weekly' | 'monthly' | 'yearly'
+  const [statPeriod, setStatPeriod] = useState('none'); // 'none' | 'weekly' | 'monthly' | 'yearly' | 'custom'
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
   
   // 전체 제품 리스트 로드 (프로젝트 실제 데이터 매핑 및 글로벌 스토어 동기화 반영)
   const [inventoryList, setInventoryList] = useState(() => {
@@ -34,7 +46,7 @@ const PartnerDashboard = () => {
     return LXZIN_PRODUCTS.map((p, index) => {
       const storeState = storeProducts.find(sp => sp.id === p.id);
       
-      const initialStock = storeState?.stock !== undefined ? storeState.stock : Math.floor(Math.random() * 200); // 시뮬레이션을 위해 랜덤 재고 활용 (스토어에 없으면)
+      const initialStock = storeState?.stock !== undefined ? storeState.stock : 0; // 초기 재고 0으로 설정
       const salesStatus = storeState?.salesStatus || (initialStock <= 0 ? '일시 품절' : '판매중');
       const expectedDate = storeState?.expectedDate || '';
       const remarks = storeState?.remarks || '';
@@ -51,31 +63,181 @@ const PartnerDashboard = () => {
         salesStatus: salesStatus, // 동기화된 상태 사용
         expectedDate: expectedDate, // 동기화된 입고예정일
         remarks: remarks, // 동기화된 비고
-        weeklyIn: Math.floor(Math.random() * 100),
-        weeklyOut: Math.floor(Math.random() * 80),
-        monthlyIn: Math.floor(Math.random() * 500),
-        monthlyOut: Math.floor(Math.random() * 400),
-        yearlyIn: Math.floor(Math.random() * 5000),
-        yearlyOut: Math.floor(Math.random() * 4000),
+        weeklyIn: 0,
+        weeklyOut: 0,
+        monthlyIn: 0,
+        monthlyOut: 0,
+        yearlyIn: 0,
+        yearlyOut: 0,
+        customIn: 0,
+        customOut: 0,
       };
     });
   });
 
-  useEffect(() => {
-    // 로그인 체크
-    const isAuth = localStorage.getItem('partnerAuth');
-    if (!isAuth) {
-      navigate('/shinilsangjae');
-      return;
-    }
-  }, [navigate]);
+  // --- 통계 연산 로직 (useMemo) ---
+  const statsMap = useMemo(() => {
+    const map = {};
+    if (statPeriod === 'none' && inventoryLogs.length === 0) return map;
 
-  const handleLogout = () => {
+    const now = new Date();
+    
+    // 기간별 시작 시간 계산
+    const weeklyStart = new Date(now);
+    weeklyStart.setDate(now.getDate() - 6);
+    weeklyStart.setHours(0, 0, 0, 0);
+
+    const monthlyStart = new Date(now.getFullYear(), now.getMonth(), 1);
+    const yearlyStart = new Date(now.getFullYear(), 0, 1);
+    
+    let customStart = new Date(0);
+    let customEnd = new Date();
+    customEnd.setHours(23, 59, 59, 999);
+    
+    if (startDate) {
+      customStart = new Date(startDate);
+      customStart.setHours(0, 0, 0, 0);
+    }
+    if (endDate) {
+      customEnd = new Date(endDate);
+      customEnd.setHours(23, 59, 59, 999);
+    }
+
+    inventoryLogs.forEach(log => {
+        if (!map[log.productId]) {
+            map[log.productId] = {
+                weeklyIn: 0, weeklyOut: 0,
+                monthlyIn: 0, monthlyOut: 0,
+                yearlyIn: 0, yearlyOut: 0,
+                customIn: 0, customOut: 0
+            };
+        }
+        const logDate = new Date(log.date);
+        
+        // 주간 통계
+        if (logDate >= weeklyStart) {
+            map[log.productId].weeklyIn += (log.incoming || 0);
+            map[log.productId].weeklyOut += (log.outgoing || 0);
+        }
+        // 월간 통계
+        if (logDate >= monthlyStart) {
+            map[log.productId].monthlyIn += (log.incoming || 0);
+            map[log.productId].monthlyOut += (log.outgoing || 0);
+        }
+        // 연간 통계
+        if (logDate >= yearlyStart) {
+            map[log.productId].yearlyIn += (log.incoming || 0);
+            map[log.productId].yearlyOut += (log.outgoing || 0);
+        }
+        // 커스텀 통계
+        if (logDate >= customStart && logDate <= customEnd) {
+            map[log.productId].customIn += (log.incoming || 0);
+            map[log.productId].customOut += (log.outgoing || 0);
+        }
+    });
+
+    return map;
+  }, [inventoryLogs, statPeriod, startDate, endDate]);
+
+  useEffect(() => {
+    // Firebase Auth 상태 구독으로 안전한 라우트 보호
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (!user || !user.email?.endsWith('@partner.dailyhousing.com')) {
+        // 비정상 접근 시 세션 초기화 후 튕겨내기
+        localStorage.removeItem('partnerUser');
+        localStorage.removeItem('partnerRole');
+        localStorage.removeItem('partnerId');
+        navigate('/shinilsangjae/login', { replace: true });
+      } else {
+        try {
+          // 인증이 성공했다면 DB에서 확실하게 권한 동기화 (경쟁상태 / 캐시 무효화 목적)
+          const vendorId = user.email.split('@')[0];
+          const userDoc = await getDoc(doc(db, 'partner_users', vendorId));
+          
+          if (userDoc.exists()) {
+             const data = userDoc.data();
+             localStorage.setItem('partnerUser', data.name);
+             localStorage.setItem('partnerRole', data.role);
+             localStorage.setItem('partnerId', vendorId);
+             
+             setUserName(data.name);
+             setPartnerRole(data.role);
+          } else {
+             // 혹시 DB에 없으면 기존 로컬스토리지 값 사용
+             setUserName(localStorage.getItem('partnerUser') || '파트너님');
+             setPartnerRole(localStorage.getItem('partnerRole') || 'staff');
+          }
+        } catch (error) {
+           console.error("Partner sync error: ", error);
+           setUserName(localStorage.getItem('partnerUser') || '파트너님');
+           setPartnerRole(localStorage.getItem('partnerRole') || 'staff');
+        }
+
+        // 정상 로그인 확인 시 상품 초기화
+        initProducts();
+      }
+    });
+
+    return () => unsubscribe();
+  }, [navigate, initProducts]);
+
+  // 실시간 동기화: storeProducts가 (Firestore 등에 의해) 변경되면 inventoryList에 반영하되,
+  // 사용자가 현재 입력 중인 입고/출고 수량은 보존합니다.
+  useEffect(() => {
+    if (!isLoaded || storeProducts.length === 0) return;
+
+    setInventoryList(prev => {
+      let isChanged = false;
+      const newList = prev.map(item => {
+        const storeState = storeProducts.find(sp => sp.id === item.id);
+        if (!storeState) return item;
+
+        const newStock = storeState.stock !== undefined ? storeState.stock : 0;
+        const salesStatus = storeState.salesStatus || (newStock <= 0 ? '일시 품절' : '판매중');
+        const expectedDate = storeState.expectedDate || '';
+        const remarks = storeState.remarks || '';
+
+        if (
+          item.previousStock === newStock &&
+          item.salesStatus === salesStatus &&
+          item.expectedDate === expectedDate &&
+          item.remarks === remarks
+        ) {
+          return item;
+        }
+
+        isChanged = true;
+        const inc = item.incoming === '' ? 0 : Number(item.incoming);
+        const out = item.outgoing === '' ? 0 : Number(item.outgoing);
+
+        return {
+          ...item,
+          previousStock: newStock,
+          currentStock: newStock + inc - out,
+          salesStatus,
+          expectedDate,
+          remarks
+        };
+      });
+      return isChanged ? newList : prev;
+    });
+  }, [storeProducts, isLoaded]);
+
+  const handleLogout = async () => {
+    await auth.signOut();
     localStorage.removeItem('partnerAuth');
     localStorage.removeItem('partnerUser');
     localStorage.removeItem('partnerRole');
     localStorage.removeItem('partnerId');
-    navigate('/shinilsangjae');
+    navigate('/shinilsangjae/login', { replace: true });
+  };
+
+  const handleReset = () => {
+    if (window.confirm("정말 모든 재고와 입출고 통계를 0으로 초기화하시겠습니까?\n이 작업은 되돌릴 수 없습니다.")) {
+        resetAllInventoryData();
+        alert("모든 데이터가 초기화되었습니다. 페이지를 새로고침합니다.");
+        window.location.reload();
+    }
   };
 
   const handleStockChange = (id, field, value) => {
@@ -132,34 +294,81 @@ const PartnerDashboard = () => {
     );
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
+    if (isSaving) return;
     setIsSaving(true);
-    // 임시 저장 시뮬레이션 (네트워크 딜레이)
-    setTimeout(() => {
-      setInventoryList(prev => {
-        const newList = prev.map(item => ({
-          ...item,
-          previousStock: item.currentStock, // 저장 후 현재고가 전일재고로 바뀜
-          incoming: '', // 입력 필드 초기화
-          outgoing: '',
-        }));
+    
+    try {
+      const newLogs = [];
+      const timestamp = new Date().toISOString();
+      const userId = localStorage.getItem('partnerId') || 'unknown';
+      const storeProducts = useProductStore.getState().products;
 
-        // 글로벌 스토어(useProductStore)에 업데이트 동기화
-        newList.forEach(item => {
-          updateProduct(item.id, {
-            stock: item.currentStock,
-            salesStatus: item.salesStatus,
-            expectedDate: item.expectedDate,
-            remarks: item.remarks
+      // 1. 계산 완료된 새로운 리스트 로컬 상태 반영
+      const newList = inventoryList.map(item => {
+        const inc = item.incoming === '' ? 0 : Number(item.incoming);
+        const out = item.outgoing === '' ? 0 : Number(item.outgoing);
+
+        if (inc > 0 || out > 0) {
+          newLogs.push({
+            id: Date.now() + '-' + Math.random().toString(36).substr(2, 9),
+            productId: item.id,
+            date: timestamp,
+            incoming: inc,
+            outgoing: out,
+            previousStock: item.previousStock,
+            currentStock: item.currentStock,
+            userId: userId
           });
-        });
+        }
 
-        return newList;
+        return {
+          ...item,
+          previousStock: item.currentStock,
+          incoming: '',
+          outgoing: '',
+        };
       });
+
+      setInventoryList(newList);
+
+      // 2. 변경된 사항만 필터링하여 Firestore 및 스토어 업데이트
+      const updatePromises = newList.reduce((promises, item) => {
+        const originalProduct = storeProducts.find(p => p.id === item.id);
+        const isChanged = !originalProduct ||
+            originalProduct.stock !== item.currentStock ||
+            originalProduct.salesStatus !== item.salesStatus ||
+            originalProduct.expectedDate !== item.expectedDate ||
+            originalProduct.remarks !== item.remarks;
+
+        if (isChanged) {
+          promises.push(
+            updateProduct(item.id, {
+              stock: item.currentStock,
+              salesStatus: item.salesStatus,
+              expectedDate: item.expectedDate,
+              remarks: item.remarks
+            })
+          );
+        }
+        return promises;
+      }, []);
+
+      await Promise.all(updatePromises);
+
+      // 3. 로그 일괄 추가
+      if (newLogs.length > 0) {
+        await addInventoryLogs(newLogs);
+      }
+
       setLastSaved(new Date().toLocaleTimeString());
+      alert('입출고 내역이 안전하게 저장되었으며, 통계가 즉시 갱신되었습니다.');
+    } catch (error) {
+      console.error('저장 중 오류 발생:', error);
+      alert('저장 중 오류가 발생했습니다. 다시 시도해주세요.');
+    } finally {
       setIsSaving(false);
-      alert('입출고 내역이 안전하게 저장되었으며, 홈페이지에 동기화되었습니다.');
-    }, 800);
+    }
   };
 
   // 검색 필터 적용
@@ -198,6 +407,9 @@ const PartnerDashboard = () => {
     } 
     if (statPeriod === 'yearly' || statPeriod === 'all') {
       headers.push('연간 입고', '연간 출고');
+    }
+    if (statPeriod === 'custom') {
+      headers.push('지정기간 입고', '지정기간 출고');
     }
     headers.push('비고');
 
@@ -255,6 +467,9 @@ const PartnerDashboard = () => {
         }
         if (statPeriod === 'yearly' || statPeriod === 'all') {
            rowData.push(item.yearlyIn, item.yearlyOut);
+        }
+        if (statPeriod === 'custom') {
+           rowData.push(item.customIn, item.customOut);
         }
         rowData.push(item.remarks || '');
         
@@ -359,26 +574,36 @@ const PartnerDashboard = () => {
           </p>
         </div>
         
-        <div className="flex gap-2 w-full md:w-auto">
+        <div className="flex flex-wrap gap-2 w-full md:w-auto">
           {partnerRole === 'admin' && (
-            <button 
-              onClick={() => setIsManageModalOpen(true)}
-              className="flex-1 md:flex-none flex items-center justify-center gap-1.5 bg-purple-50 text-purple-700 font-bold px-4 py-2.5 rounded-lg border border-purple-200 hover:bg-purple-100 transition-colors"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5c-2 2 3 4 3 6v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
-              직원 계정 관리
-            </button>
+            <>
+              <button 
+                onClick={() => setIsManageModalOpen(true)}
+                className="flex-auto min-w-[140px] md:flex-none flex items-center justify-center gap-1.5 bg-purple-50 text-purple-700 font-bold px-4 py-2.5 rounded-lg border border-purple-200 hover:bg-purple-100 transition-colors whitespace-nowrap"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5c-2 2 3 4 3 6v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+                직원 계정 관리
+              </button>
+              <button 
+                onClick={handleReset}
+                className="flex-auto min-w-[140px] md:flex-none flex items-center justify-center gap-1.5 bg-red-50 text-red-700 font-bold px-4 py-2.5 rounded-lg border border-red-200 hover:bg-red-100 transition-colors whitespace-nowrap"
+                title="모든 재고 및 통계 0으로 초기화"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                데이터 초기화
+              </button>
+            </>
           )}
           <button 
             onClick={handleExportExcel}
-            className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-green-50 text-green-700 font-bold px-4 py-2.5 rounded-lg border border-green-200 hover:bg-green-100 transition-colors"
+            className="flex-auto min-w-[140px] md:flex-none flex items-center justify-center gap-1.5 bg-green-50 text-green-700 font-bold px-4 py-2.5 rounded-lg border border-green-200 hover:bg-green-100 transition-colors whitespace-nowrap"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
             엑셀 다운로드
           </button>
           <button 
             onClick={handleLogout}
-            className="flex-1 md:flex-none bg-gray-100 text-gray-700 font-bold px-4 py-2.5 rounded-lg hover:bg-gray-200 transition-colors"
+            className="flex-auto min-w-[140px] md:flex-none bg-gray-100 text-gray-700 font-bold px-4 py-2.5 rounded-lg hover:bg-gray-200 transition-colors whitespace-nowrap"
           >
             로그아웃
           </button>
@@ -387,8 +612,9 @@ const PartnerDashboard = () => {
 
       {/* 액션바 (검색 및 카테고리 네비게이션) */}
       <div className="bg-white rounded-t-xl border border-gray-200 flex flex-col sticky top-0 z-20 shadow-sm">
-        <div className="p-4 flex flex-col sm:flex-row justify-between gap-4 border-b border-gray-100">
-          <div className="relative w-full sm:w-96">
+        <div className="p-4 flex flex-col xl:flex-row justify-start items-start xl:items-center gap-4 border-b border-gray-100">
+          {/* 검색창 */}
+          <div className="relative w-full sm:w-80 shrink-0">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -397,27 +623,53 @@ const PartnerDashboard = () => {
             <input
               type="text"
               className="block w-full pl-10 pr-3 py-2.5 border border-gray-300 rounded-lg leading-5 bg-gray-50 placeholder-gray-400 focus:outline-none focus:bg-white focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              placeholder="제품 코드 또는 제품명으로 검색..."
+              placeholder="제품 코드 또는 제품명 검색..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
-          <div className="flex items-center">
-            <select
-               value={statPeriod}
-               onChange={(e) => setStatPeriod(e.target.value)}
-               className={`appearance-none bg-none text-center text-sm px-4 py-2 font-bold cursor-pointer rounded-lg border shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors ${
-                 statPeriod !== 'none'
-                  ? 'bg-indigo-50 text-indigo-700 border-indigo-200' 
-                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
-               }`}
-            >
-              <option value="none">📊 기간별 통계 보기</option>
-              <option value="all">📊 통합 통계 (주·월·연)</option>
-              <option value="weekly">📊 주간 통계 (입/출)</option>
-              <option value="monthly">📊 월간 통계 (입/출)</option>
-              <option value="yearly">📊 연간 통계 (입/출)</option>
-            </select>
+
+          {/* 기간별 통계 버튼 나열 (왼쪽 빈 칸 영역) */}
+          <div className="flex flex-wrap items-center gap-2 flex-1">
+            {[
+              { value: 'all', label: '통합 통계' },
+              { value: 'weekly', label: '주간 통계' },
+              { value: 'monthly', label: '월간 통계' },
+              { value: 'yearly', label: '연간 통계' },
+              { value: 'custom', label: '날짜 지정' }
+            ].map((opt) => (
+              <button
+                key={opt.value}
+                onClick={() => setStatPeriod(prev => prev === opt.value ? 'none' : opt.value)}
+                className={`px-3 py-2 rounded-lg text-sm font-bold transition-all shadow-sm flex items-center gap-1 ${
+                  statPeriod === opt.value
+                    ? 'bg-indigo-600 text-white shadow-md ring-2 ring-indigo-500 ring-offset-1'
+                    : 'bg-white text-gray-600 hover:bg-gray-50 border border-gray-200'
+                }`}
+              >
+                {opt.value !== 'custom' && <span>📊</span>}
+                {opt.value === 'custom' && <span>📅</span>}
+                {opt.label}
+              </button>
+            ))}
+
+            {statPeriod === 'custom' && (
+              <div className="flex items-center gap-1.5 ml-2 bg-gray-50 p-1 rounded-lg border border-gray-200 shadow-sm">
+                <input 
+                  type="date" 
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  className="px-2 py-1 bg-transparent border-none focus:ring-0 text-sm font-semibold text-gray-700 outline-none cursor-pointer"
+                />
+                <span className="text-gray-400 font-bold">~</span>
+                <input 
+                  type="date" 
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                  className="px-2 py-1 bg-transparent border-none focus:ring-0 text-sm font-semibold text-gray-700 outline-none cursor-pointer"
+                />
+              </div>
+            )}
           </div>
         </div>
         
@@ -502,7 +754,7 @@ const PartnerDashboard = () => {
                        <div className="grid grid-cols-2 gap-3 mb-3">
                           <div>
                              <label className="text-[11px] font-bold text-gray-500 mb-1.5 block ml-1">판매 상태</label>
-                             <select value={item.salesStatus} onChange={e => handleStockChange(item.id, 'salesStatus', e.target.value)} className="w-full p-2 text-sm font-bold border border-gray-200 bg-gray-50 rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none focus:bg-white text-gray-700">
+                             <select value={item.salesStatus} onChange={e => handleStockChange(item.id, 'salesStatus', e.target.value)} className="w-full p-2 text-sm text-center font-bold border border-gray-200 bg-gray-50 rounded-lg focus:ring-1 focus:ring-blue-500 focus:outline-none focus:bg-white text-gray-700 appearance-none cursor-pointer" style={{ backgroundImage: 'none' }}>
                                <option value="판매중">판매중</option>
                                <option value="일시 품절">일시 품절</option>
                                <option value="단종">단종</option>
@@ -537,6 +789,12 @@ const PartnerDashboard = () => {
                                <div className="bg-blue-50 p-3 rounded-lg flex flex-col items-center justify-center border border-blue-100">
                                   <span className="text-[11px] text-blue-600 font-bold mb-1">연간(입고/출고)</span>
                                   <span className="text-sm font-black text-blue-700">{item.yearlyIn} / {item.yearlyOut}</span>
+                               </div>
+                             )}
+                             {statPeriod === 'custom' && (
+                               <div className="bg-orange-50 p-3 rounded-lg flex flex-col items-center justify-center border border-orange-100">
+                                  <span className="text-[11px] text-orange-600 font-bold mb-1">지정기간(입/출)</span>
+                                  <span className="text-sm font-black text-orange-700">{item.customIn} / {item.customOut}</span>
                                </div>
                              )}
                           </div>
@@ -578,6 +836,12 @@ const PartnerDashboard = () => {
                   <>
                     <th className="px-1 py-3 font-bold text-center whitespace-nowrap min-w-[60px] bg-blue-50 text-blue-700">연간 입고</th>
                     <th className="px-1 py-3 font-bold text-center whitespace-nowrap min-w-[60px] bg-blue-50 text-blue-700 border-r border-gray-200">연간 출고</th>
+                  </>
+                )}
+                {statPeriod === 'custom' && (
+                  <>
+                    <th className="px-1 py-3 font-bold text-center whitespace-nowrap min-w-[60px] bg-orange-50 text-orange-700">지정 입고</th>
+                    <th className="px-1 py-3 font-bold text-center whitespace-nowrap min-w-[60px] bg-orange-50 text-orange-700 border-r border-gray-200">지정 출고</th>
                   </>
                 )}
                 <th className="px-2 py-3 font-bold text-center whitespace-nowrap min-w-[150px] w-40 border-r border-gray-200">비고</th>
@@ -651,7 +915,8 @@ const PartnerDashboard = () => {
                           <select 
                             value={item.salesStatus}
                             onChange={(e) => handleStockChange(item.id, 'salesStatus', e.target.value)}
-                            className={`w-full text-center px-1 py-1 border border-transparent rounded bg-transparent focus:bg-white focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 text-xs font-bold transition-all hover:border-gray-200 group-hover:bg-white ${item.salesStatus === '일시 품절' ? 'text-red-500' : item.salesStatus === '단종' ? 'text-gray-400 line-through' : 'text-blue-600'}`}
+                            className={`w-full text-center px-1 py-1 border border-transparent rounded bg-transparent focus:bg-white focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 text-xs font-bold transition-all hover:border-gray-200 group-hover:bg-white appearance-none cursor-pointer ${item.salesStatus === '일시 품절' ? 'text-red-500' : item.salesStatus === '단종' ? 'text-gray-400 line-through' : 'text-blue-600'}`}
+                            style={{ backgroundImage: 'none', WebkitAppearance: 'none', MozAppearance: 'none' }}
                           >
                             <option value="판매중">판매중</option>
                             <option value="일시 품절">일시 품절</option>
@@ -668,20 +933,26 @@ const PartnerDashboard = () => {
                         </td>
                         {(statPeriod === 'weekly' || statPeriod === 'all') && (
                           <>
-                            <td className="px-1 py-2 text-center border-r border-purple-100 bg-purple-50/20 text-purple-700 font-medium">{item.weeklyIn?.toLocaleString()}</td>
-                            <td className="px-1 py-2 text-center border-r border-purple-100 bg-purple-50/20 text-purple-700 font-medium">{item.weeklyOut?.toLocaleString()}</td>
+                            <td className="px-1 py-2 text-center border-r border-purple-100 bg-purple-50/20 text-purple-700 font-medium">{(statsMap[item.id]?.weeklyIn || 0).toLocaleString()}</td>
+                            <td className="px-1 py-2 text-center border-r border-purple-100 bg-purple-50/20 text-purple-700 font-medium">{(statsMap[item.id]?.weeklyOut || 0).toLocaleString()}</td>
                           </>
                         )}
                         {(statPeriod === 'monthly' || statPeriod === 'all') && (
                           <>
-                            <td className="px-1 py-2 text-center border-r border-indigo-100 bg-indigo-50/20 text-indigo-700 font-medium">{item.monthlyIn?.toLocaleString()}</td>
-                            <td className="px-1 py-2 text-center border-r border-indigo-100 bg-indigo-50/20 text-indigo-700 font-medium">{item.monthlyOut?.toLocaleString()}</td>
+                            <td className="px-1 py-2 text-center border-r border-indigo-100 bg-indigo-50/20 text-indigo-700 font-medium">{(statsMap[item.id]?.monthlyIn || 0).toLocaleString()}</td>
+                            <td className="px-1 py-2 text-center border-r border-indigo-100 bg-indigo-50/20 text-indigo-700 font-medium">{(statsMap[item.id]?.monthlyOut || 0).toLocaleString()}</td>
                           </>
                         )}
                         {(statPeriod === 'yearly' || statPeriod === 'all') && (
                           <>
-                            <td className="px-1 py-2 text-center border-r border-blue-100 bg-blue-50/20 text-blue-700 font-medium">{item.yearlyIn?.toLocaleString()}</td>
-                            <td className="px-1 py-2 text-center border-r border-gray-100 bg-blue-50/20 text-blue-700 font-medium">{item.yearlyOut?.toLocaleString()}</td>
+                            <td className="px-1 py-2 text-center border-r border-blue-100 bg-blue-50/20 text-blue-700 font-medium">{(statsMap[item.id]?.yearlyIn || 0).toLocaleString()}</td>
+                            <td className="px-1 py-2 text-center border-r border-gray-100 bg-blue-50/20 text-blue-700 font-medium">{(statsMap[item.id]?.yearlyOut || 0).toLocaleString()}</td>
+                          </>
+                        )}
+                        {statPeriod === 'custom' && (
+                          <>
+                            <td className="px-1 py-2 text-center border-r border-orange-100 bg-orange-50/20 text-orange-700 font-medium">{(statsMap[item.id]?.customIn || 0).toLocaleString()}</td>
+                            <td className="px-1 py-2 text-center border-r border-gray-100 bg-orange-50/20 text-orange-700 font-medium">{(statsMap[item.id]?.customOut || 0).toLocaleString()}</td>
                           </>
                         )}
                         <td className="px-1 py-1 text-center border-r border-gray-100">

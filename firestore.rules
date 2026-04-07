@@ -12,6 +12,11 @@ service cloud.firestore {
       );
     }
 
+    // 파트너 판별 함수 (이메일 도메인으로 확인)
+    function isPartner() {
+      return request.auth != null && request.auth.token.email.matches('.*@partner[.]dailyhousing[.]com');
+    }
+
     // 로그인한 본인 판별
     function isOwner(uid) {
       return request.auth != null && request.auth.uid == uid;
@@ -61,6 +66,24 @@ service cloud.firestore {
       allow read: if true;
       allow write: if isAdmin();
     }
+
+    // ── 파트너 재고 관리 (Inventory) ────────────────────────
+    // 상품의 실제 재고 데이터 (누구나 읽기 가능, 쓰기는 파트너/어드민)
+    match /inventory/{productId} {
+      allow read: if true;
+      allow write: if isAdmin() || isPartner();
+    }
+
+    // 파트너 재고 입출고 기록 (파트너/어드민 전용)
+    match /inventory_logs/{logId} {
+      allow read, write: if isAdmin() || isPartner();
+    }
+
+    // 파트너 계정 정보 및 권한 부여
+    match /partner_users/{userId} {
+      allow read, write: if isAdmin() || isPartner();
+    }
+
 
     // ── 사이트 설정 (CMS) ─────────────────────────────────
     // 누구나 읽기 가능 (홈페이지 콘텐츠 공개)

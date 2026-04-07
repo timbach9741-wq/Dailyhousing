@@ -1,66 +1,85 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { db } from '../lib/firebase';
+import { collection, doc, setDoc, deleteDoc, updateDoc, onSnapshot } from 'firebase/firestore';
 
-export const usePartnerUserStore = create(
-    persist(
-        (set, get) => ({
-            // 초기 마스터(관리자) 계정 및 샘플 직원 계정
-            users: [
-                { 
-                    id: '이광연', 
-                    password: '123456', 
-                    name: '이광연 (대표)', 
-                    role: 'admin',
-                    createdAt: new Date().toISOString()
-                }
-            ],
+export const usePartnerUserStore = create((set, get) => ({
+    users: [],
+    error: null,
+    isLoaded: false,
 
-            // 로그인 검증 함수
-            verifyUser: (userId, password) => {
-                const { users } = get();
-                const matchedUser = users.find(u => u.id === userId && u.password === password);
-                if (matchedUser) {
-                    return { success: true, user: { id: matchedUser.id, name: matchedUser.name, role: matchedUser.role } };
-                }
-                return { success: false, message: '아이디 또는 비밀번호가 올바르지 않습니다.' };
-            },
+    // Firestore에서 실시간으로 파트너 유저 불러오기
+    initPartnerUsers: () => {
+        const usersRef = collection(db, 'partner_users');
+        
+        // 구독 시작
+        const unsubscribe = onSnapshot(usersRef, (snapshot) => {
+            const users = [];
+            snapshot.forEach(doc => {
+                users.push({ ...doc.data(), id: doc.id });
+            });
+            set({ users, isLoaded: true, error: null });
+        }, (error) => {
+            console.error("Partner Users Snapshot Error:", error);
+            // 권한이 없어서 실패하는 경우(비동기) 에러 처리
+        });
 
-            // 직원 추가 (관리자 전용 기능)
-            addUser: (newUser) => set((state) => {
-                // 중복 아이디 체크
-                if (state.users.some(u => u.id === newUser.id)) {
-                    return { error: '이미 존재하는 아이디입니다.' };
-                }
-                return { 
-                    users: [...state.users, { ...newUser, role: 'staff', createdAt: new Date().toISOString() }],
-                    error: null
-                };
-            }),
+        // 클린업 함수를 스토어에 보관
+        set({ _unsubscribe: unsubscribe });
+        return unsubscribe;
+    },
 
-            // 직원 (또는 특정 계정) 삭제
-            removeUser: (userId) => set((state) => ({
-                users: state.users.filter(u => u.id !== userId)
-            })),
+    // 파트너 추가 - Firestore 문서 추가 (실제 Auth 생성은 앱 로직에서 별도로 처리하거나 관리해야 함)
+    addUser: async (newUser) => { // { id, name, role }
+        try {
+            const { users } = get();
+            if (users.some(u => u.id === newUser.id)) {
+                set({ error: '이미 존재하는 아이디입니다.' });
+                return false;
+            }
 
-            // 비밀번호 변경 (본인 비밀번호 및 직원 비밀번호 수정용)
-            updatePassword: (userId, newPassword) => set((state) => ({
-                users: state.users.map(u => 
-                    u.id === userId ? { ...u, password: newPassword } : u
-                )
-            })),
-            
-            // 이름 등 기타 정보 수정
-            updateUser: (userId, updates) => set((state) => ({
-                users: state.users.map(u => 
-                    u.id === userId ? { ...u, ...updates } : u
-                )
-            })),
+            const userDoc = doc(db, 'partner_users', newUser.id);
+            await setDoc(userDoc, {
+                name: newUser.name,
+                role: newUser.role || 'staff',
+                createdAt: new Date().toISOString()
+            });
 
-            // 초기화(에러)
-            clearError: () => set({ error: null })
-        }),
-        {
-            name: 'partner-user-storage' // 로컬 스토리지 키
+            set({ error: null });
+            return true;
+        } catch (error) {
+            console.error('Error adding user:', error);
+            set({ error: '사용자 정보 기록에 실패했습니다.' });
+            return false;
         }
-    )
-);
+    },
+
+    // 유저 삭제 (문서 삭제)
+    removeUser: async (userId) => {
+        try {
+            const userDoc = doc(db, 'partner_users', userId);
+            await deleteDoc(userDoc);
+        } catch (error) {
+            console.error('Error removing user:', error);
+            set({ error: '사용자 정보 삭제에 실패했습니다.' });
+        }
+    },
+
+    // 정보 수정
+    updateUser: async (userId, updates) => {
+        try {
+            const userDoc = doc(db, 'partner_users', userId);
+            await updateDoc(userDoc, updates);
+        } catch (error) {
+            console.error('Error updating user:', error);
+            set({ error: '사용자 정보 수정에 실패했습니다.' });
+        }
+    },
+
+    // Auth 비밀번호 수정은 클라이언트에서 불가능하므로 안내 처리
+    // eslint-disable-next-line no-unused-vars
+    updatePassword: async (userId, newPassword) => {
+        alert("보안 정책상 현재 세션에서 다른 사용자의 Auth 비밀번호를 변경할 수 없습니다. 시스템 관리자에게 문의하세요.");
+    },
+
+    clearError: () => set({ error: null })
+}));

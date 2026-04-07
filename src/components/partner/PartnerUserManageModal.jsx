@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { usePartnerUserStore } from '../../store/usePartnerUserStore';
 
 const PartnerUserManageModal = ({ isOpen, onClose }) => {
     const store = usePartnerUserStore();
-    const { users, removeUser, updatePassword } = store;
+    const { users, removeUser, updatePassword, initPartnerUsers } = store;
+    
+    // 모달이 열릴 때 Firestore에서 사용자 목록을 실시간 구독합니다.
+    useEffect(() => {
+        if (isOpen) {
+            const unsubscribe = initPartnerUsers();
+            return () => {
+                if (unsubscribe) unsubscribe();
+            };
+        }
+    }, [isOpen, initPartnerUsers]);
     
     const [newId, setNewId] = useState('');
     const [newName, setNewName] = useState('');
@@ -16,7 +26,7 @@ const PartnerUserManageModal = ({ isOpen, onClose }) => {
 
     if (!isOpen) return null;
 
-    const handleAddUser = (e) => {
+    const handleAddUser = async (e) => {
         e.preventDefault();
         if (!newId || !newName || !newPassword) {
             setLocalError('모든 필드를 입력해주세요.');
@@ -24,21 +34,21 @@ const PartnerUserManageModal = ({ isOpen, onClose }) => {
         }
 
         store.clearError();
-        store.addUser({
+        const success = await store.addUser({
             id: newId,
             name: newName,
             password: newPassword
         });
 
-        // setTimeout 없이 동기적으로 Zustand store가 갱신됨 (하지만 error 체크를 위해 getState 사용)
         const currentError = usePartnerUserStore.getState().error;
-        if (currentError) {
-            setLocalError(currentError);
+        if (!success || currentError) {
+            setLocalError(currentError || '사용자 추가에 실패했습니다.');
         } else {
             setNewId('');
             setNewName('');
             setNewPassword('');
             setLocalError('');
+            alert('참고: Firebase 환경에서는 직원의 시스템 상 아이디만 생성됩니다. Auth 연동 확장은 관리자에게 문의하세요.');
         }
     };
 
@@ -75,29 +85,29 @@ const PartnerUserManageModal = ({ isOpen, onClose }) => {
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5c-2 2 3 4 3 6v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
                             신규 계정 추가
                         </h3>
-                        <form onSubmit={handleAddUser} className="flex flex-col md:flex-row gap-3">
+                        <form onSubmit={handleAddUser} className="grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr_auto] gap-3">
                             <input
                                 type="text"
                                 placeholder="아이디"
                                 value={newId}
                                 onChange={(e) => setNewId(e.target.value)}
-                                className="flex-1 px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                                className="w-full min-w-0 px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none"
                             />
                             <input
                                 type="text"
                                 placeholder="이름 (예: 홍길동 대리)"
                                 value={newName}
                                 onChange={(e) => setNewName(e.target.value)}
-                                className="flex-1 px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                                className="w-full min-w-0 px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none"
                             />
                             <input
                                 type="text"
                                 placeholder="초기 비밀번호"
                                 value={newPassword}
                                 onChange={(e) => setNewPassword(e.target.value)}
-                                className="flex-1 px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none"
+                                className="w-full min-w-0 px-3 py-2.5 border border-gray-200 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none"
                             />
-                            <button type="submit" className="bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors whitespace-nowrap">
+                            <button type="submit" className="w-full md:w-auto bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors whitespace-nowrap shadow-sm">
                                 추가하기
                             </button>
                         </form>
@@ -111,23 +121,23 @@ const PartnerUserManageModal = ({ isOpen, onClose }) => {
                             <table className="w-full text-left text-sm">
                                 <thead className="bg-gray-50 border-b border-gray-200">
                                     <tr>
-                                        <th className="px-4 py-3 font-semibold text-gray-600 w-24">권한</th>
-                                        <th className="px-4 py-3 font-semibold text-gray-600">이름</th>
-                                        <th className="px-4 py-3 font-semibold text-gray-600">아이디</th>
-                                        <th className="px-4 py-3 font-semibold text-gray-600">비밀번호 관리</th>
-                                        <th className="px-4 py-3 font-semibold text-gray-600 text-center w-20">삭제</th>
+                                        <th className="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap w-24">권한</th>
+                                        <th className="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap">이름</th>
+                                        <th className="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap">아이디</th>
+                                        <th className="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap">비밀번호 관리</th>
+                                        <th className="px-4 py-3 font-semibold text-gray-600 text-center whitespace-nowrap w-20">삭제</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-100">
                                     {users.map((user) => (
                                         <tr key={user.id} className="hover:bg-gray-50/50 transition-colors">
-                                            <td className="px-4 py-3">
-                                                <span className={`px-2 py-1 rounded text-xs font-bold ${user.role === 'admin' ? 'bg-purple-100 text-purple-700' : 'bg-gray-100 text-gray-600'}`}>
+                                            <td className="px-4 py-3 whitespace-nowrap">
+                                                <span className={`inline-block px-2.5 py-1 rounded-md text-xs font-bold whitespace-nowrap ${user.role === 'admin' ? 'bg-purple-100 text-purple-700' : 'bg-gray-100 text-gray-600'}`}>
                                                     {user.role === 'admin' ? '최고관리자' : '직원'}
                                                 </span>
                                             </td>
-                                            <td className="px-4 py-3 font-medium text-gray-800">{user.name}</td>
-                                            <td className="px-4 py-3 font-mono text-gray-500">{user.id}</td>
+                                            <td className="px-4 py-3 font-medium text-gray-800 whitespace-nowrap">{user.name}</td>
+                                            <td className="px-4 py-3 font-mono text-gray-500 whitespace-nowrap">{user.id}</td>
                                             <td className="px-4 py-3">
                                                 {editingUserId === user.id ? (
                                                     <div className="flex items-center gap-2">
