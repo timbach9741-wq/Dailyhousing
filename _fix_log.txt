@@ -1,0 +1,51 @@
+﻿node : file:///C:/Users/Ti
+m/Desktop/Dailyhousing/_fi
+x_encoding.js:9
+위치 줄:1 문자:1
++ node _fix_encoding.js 2>
+&1 | Out-File -FilePath _f
+ix_log.txt -Encodin ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo        
+      : NotSpecified: (f  
+  ile:///C:/User...x_en   
+ coding.js:9:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+const fs = require('fs');
+           ^
+
+ReferenceError: require is
+ not defined in ES module 
+scope, you can use import 
+instead
+This file is being treated
+ as an ES module because i
+t has a '.js' file extensi
+on and 'C:\Users\Tim\Deskt
+op\Dailyhousing\package.js
+on' contains "type": "modu
+le". To treat it as a Comm
+onJS script, rename it to 
+use the '.cjs' file extens
+ion.
+    at file:///C:/Users/Ti
+m/Desktop/Dailyhousing/_fi
+x_encoding.js:9:12
+    at ModuleJob.run (node
+:internal/modules/esm/modu
+le_job:430:25)
+    at async onImport.trac
+ePromise.__proto__ (node:i
+nternal/modules/esm/loader
+:661:26)
+    at async asyncRunEntry
+PointWithESMLoader (node:i
+nternal/modules/run_main:1
+01:5)
+
+Node.js v24.13.1

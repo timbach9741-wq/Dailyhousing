@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Hexagon 1 - Navy (back-left) -->
+  <path d="M60 55 L90 38 L120 55 L120 89 L90 106 L60 89 Z" fill="none" stroke="#002D5A" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Hexagon 2 - Gold (front-right) -->
+  <path d="M80 72 L110 55 L140 72 L140 106 L110 123 L80 106 Z" fill="none" stroke="#BFA169" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Hexagon 3 - Navy (bottom) -->
+  <path d="M70 98 L100 81 L130 98 L130 132 L100 149 L70 132 Z" fill="none" stroke="#002D5A" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Text DAILY -->
+  <text x="100" y="175" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="22" fill="#002D5A" letter-spacing="3">DAILY</text>
+  <!-- Text HOUSING -->
+  <text x="100" y="196" text-anchor="middle" font-family="Montserrat, sans-serif" font-weight="700" font-size="22" fill="#002D5A" letter-spacing="3">HOUSING</text>
+</svg>

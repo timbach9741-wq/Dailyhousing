@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- 메인 -->
+  <url>
+    <loc>https://dailyhousing.co.kr/</loc>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- 제품 카테고리 -->
+  <url>
+    <loc>https://dailyhousing.co.kr/category/residential</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://dailyhousing.co.kr/category/commercial</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <!-- 서비스 -->
+  <url>
+    <loc>https://dailyhousing.co.kr/consultations/new</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dailyhousing.co.kr/inquiry</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dailyhousing.co.kr/case-studies</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dailyhousing.co.kr/shopping-guide</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- 고객 지원 -->
+  <url>
+    <loc>https://dailyhousing.co.kr/faq</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dailyhousing.co.kr/quality-assurance</loc>
+    <priority>0.5</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- 법적 페이지 -->
+  <url>
+    <loc>https://dailyhousing.co.kr/terms</loc>
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+  <url>
+    <loc>https://dailyhousing.co.kr/privacy</loc>
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <!-- 로그인 -->
+  <url>
+    <loc>https://dailyhousing.co.kr/login</loc>
+    <priority>0.4</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+</urlset>

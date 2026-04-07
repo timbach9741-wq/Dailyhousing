@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+    <!-- Hexagon 1 - Navy (back-left) -->
+    <path d="M30 30 L55 16 L80 30 L80 58 L55 72 L30 58 Z" fill="none" stroke="#002D5A" stroke-width="4.5" stroke-linejoin="round"/>
+    <!-- Hexagon 2 - Gold (front-right) -->
+    <path d="M45 44 L70 30 L95 44 L95 72 L70 86 L45 72 Z" fill="none" stroke="#BFA169" stroke-width="4.5" stroke-linejoin="round"/>
+    <!-- Hexagon 3 - Navy (bottom) -->
+    <path d="M38 62 L63 48 L88 62 L88 90 L63 104 L38 90 Z" fill="none" stroke="#002D5A" stroke-width="4.5" stroke-linejoin="round"/>
+</svg>

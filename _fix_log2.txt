@@ -1,0 +1,19 @@
+﻿Replacement characters (U+FFFD): 794
+
+=== CP949 decode sample ===
+import { useState, useEffect, useMemo } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { useProductStore } from '../store/useProductStore';
+import { useCartStore } from '../store/useCartStore';
+import { useToastStore } from '../store/useToastStore';
+import { useAuthStore } from '../store/useAuthStore';
+import { useSimilarProducts } from '../hooks/useSimilarProducts';
+import EditonStoneFeature from '../components/product/EditonStoneFeature';
+import E
+
+臾닿킅 found at: -1
+
+?먮뵒??found at: -1
+
+??CP949 ?붿퐫???ㅽ뙣. ?ㅻⅨ 諛⑸쾿???쒕룄?⑸땲??..
+EUC-KR 臾닿킅 found at: -1

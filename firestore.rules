@@ -1,0 +1,73 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 어드민 판별 함수 (Custom Claims + 이메일 + 어드민 컬렉션)
+    function isAdmin() {
+      return request.auth != null && (
+        request.auth.token.admin == true ||
+        request.auth.token.email == 'timbach@naver.com' ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    // 로그인한 본인 판별
+    function isOwner(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    // ── 사용자 정보 ──────────────────────────────────────
+    // 본인 문서: 읽기/쓰기 가능
+    // 어드민: 전체 읽기/쓰기 가능 및 데이터 변조 차단(자신의 uid 검증)
+    match /users/{uid} {
+      allow read: if isOwner(uid) || isAdmin();
+      // 비회원은 guest_ 로 시작하는 uid로 자신을 등록 가능
+      allow create: if (isOwner(uid) && request.resource.data.uid == uid) || uid.matches('^guest_.*');
+      allow update: if isAdmin() || (isOwner(uid) && request.resource.data.uid == resource.data.uid);
+      allow delete: if isAdmin();
+    }
+
+    // ── 주문 ─────────────────────────────────────────────
+    // 본인 주문: 생성 및 읽기 가능 (취소는 update로 처리)
+    // 어드민: 전체 읽기/업데이트 가능
+    match /orders/{orderId} {
+      // 비회원은 생성된 orderId(주문번호)를 알고 있으면 개별 조회가 가능함
+      allow get: if isAdmin() || (request.auth != null && resource.data.uid == request.auth.uid) || resource.data.isGuest == true;
+      // 전체 리스트 조회는 권한 있는 사용자만
+      allow list: if isAdmin() || (request.auth != null && resource.data.uid == request.auth.uid);
+      
+      // 비회원 주문도 허용 (guest_ prefix uid), 회원은 auth.uid 일치 필요
+      allow create: if (request.auth != null && request.resource.data.uid == request.auth.uid)
+                    || (request.resource.data.uid is string && request.resource.data.uid.matches('^guest_.*'));
+      allow update: if isAdmin() || (request.auth != null && resource.data.uid == request.auth.uid && request.resource.data.uid == request.auth.uid);
+      allow delete: if isAdmin();
+    }
+
+    // ── 상담 신청 ─────────────────────────────────────────
+    // 누구나 생성 가능하지만, 스팸 봇을 막기 위해 필수 필드와 길이 제한 강제
+    // 읽기/수정은 어드민만 가능
+    match /consultations/{id} {
+      allow create: if request.resource.data.keys().hasAll(['name', 'phone'])
+                    && request.resource.data.name is string && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 50
+                    && request.resource.data.phone is string && request.resource.data.phone.size() > 0 && request.resource.data.phone.size() <= 20;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── 제품 ─────────────────────────────────────────────
+    // 누구나 읽기 가능 (카탈로그 공개)
+    // 쓰기는 어드민만 가능
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ── 사이트 설정 (CMS) ─────────────────────────────────
+    // 누구나 읽기 가능 (홈페이지 콘텐츠 공개)
+    // 쓰기는 어드민만 가능
+    match /site_config/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

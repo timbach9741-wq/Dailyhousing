@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node:*)",
+      "Bash(curl:*)",
+      "Bash(grep -r \"deleteObject\\\\|uploadBytes\\\\|ref\\\\|getBytes\" \"/c/Users/Tim/Desktop/New 장판 1/src\" --include=\"*.js\" --include=\"*.jsx\" 2>/dev/null | head -20)",
+      "WebFetch(domain:www.lxzin.com)"
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko" class="light">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="데일리 하우징(Daily Housing) - 주거용 장판부터 상업용 LVT, 전문가 인테리어 상담까지. 최고의 바닥재 솔루션을 만나보세요." />
+  <meta name="keywords" content="장판, 바닥재, LVT, 데코타일, 원목마루, 인테리어상담, 바닥시공, 데일리하우징" />
+  <meta property="og:title" content="Daily Housing - 프리미엄 바닥재 솔루션" />
+  <meta property="og:description" content="데일리 하우징에서 주거용, 상업용 프리미엄 바닥재를 만나보세요." />
+  <meta property="og:type" content="website" />
+  <title>Daily Housing - Premium Flooring Solution</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#2c3e50",
+            "accent": "#30e87a",
+            "background-light": "#f8fafc",
+            "background-dark": "#0f172a",
+          },
+          fontFamily: {
+            "sans": ["Noto Sans KR", "Inter", "sans-serif"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+        },
+      },
+    }
+  </script>
+  <style type="text/tailwindcss">
+    body { font-family: 'Noto Sans KR', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100">
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

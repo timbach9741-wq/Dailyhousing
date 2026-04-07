@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /admin
+Disallow: /order-lookup
+Disallow: /register
+Allow: /
+
+Sitemap: https://dailyhousing.co.kr/sitemap.xml

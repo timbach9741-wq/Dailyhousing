@@ -1,0 +1,98 @@
+﻿[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32m??[39m 37 modules transformed.
+node.exe : [31m??[39m Bui
+ld failed in 339ms
+위치 줄:1 문자:1
++ & "C:\Program Files\node
+js/node.exe" "C:\Program F
+iles\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (  
+  [31m??[39m Build fail   
+ ed in 339ms:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+[31merror during build:
+[31m[vite:esbuild] Transf
+orm failed with 1 error:
+C:/Users/Tim/Desktop/Daily
+housing/src/pages/Flooring
+ProductDetailView.jsx:22:7
+5: ERROR: Expected "}" but
+ found "臾닿킅"[31m
+file: [36mC:/Users/Tim/De
+sktop/Dailyhousing/src/pag
+es/FlooringProductDetailVi
+ew.jsx:22:75[31m
+[33m
+[33mExpected "}" but foun
+d "臾닿킅"[33m
+20 |  // ?占쎈뵒??留덈（ ?占쎌꽭 ?占
+쏙옙?吏 紐⑸줉 (?占쎌꽌?占쏙옙? - ?占쎌
+젣 ?占쎌슫濡쒕뱶 ?占쎄났 ?占쎌씪占??占쏀븿
+21 |  const MARU_LAYERS = 
+[
+22 |  ...ace', num: '01', 
+title: '臾닿킅 ?占쎄낵 ?占쎈㈃占?, d
+esc: '臾닿킅 UV 肄뷀똿?占쎈줈 諛섏궗愿묒
+쓣 以꾩뿬 ?占쎌쓽 ?占쎈줈?占쏙옙? ??占쏙옙
+占?怨좉툒?占쎈윭??吏덇컧???占쎄났?占쎈땲??
+', color: '...
+   |                      
+                          
+                 ^
+23 |      { id: 'transpare
+nt', num: '02', title: '怨좊
+궡占??占쎈챸占?, desc: '怨좉컯???占쎈
+챸 ?占쎌씠?占쏙옙? ?占쎌옄?占쎌링??蹂댄샇?
+占쎈ŉ ?占쏀겕?占쎌튂?占?李랁옒??諛⑼옙??占
+쎈땲??', c...
+24 |      { id: 'design', 
+num: '03', title: '怨좏빐???占
+쎌옄?占쎌링', desc: 'TrueView ?
+占쏙옙????占쎌뇙 湲곗닠占?泥쒖뿰 ?占쎌옱??
+?占쎌꽭???占쏀꽩??援ы쁽?占쎈땲??', co
+lor: ...
+[31m
+    at failureErrorWithLog
+ (C:\Users\Tim\Desktop\Dai
+lyhousing\node_modules\esb
+uild\lib\main.js:1467:15)
+    at C:\Users\Tim\Deskto
+p\Dailyhousing\node_module
+s\esbuild\lib\main.js:736:
+50
+    at responseCallbacks.<
+computed> (C:\Users\Tim\De
+sktop\Dailyhousing\node_mo
+dules\esbuild\lib\main.js:
+603:9)
+    at handleIncomingPacke
+t (C:\Users\Tim\Desktop\Da
+ilyhousing\node_modules\es
+build\lib\main.js:658:12)
+    at Socket.readFromStdo
+ut (C:\Users\Tim\Desktop\D
+ailyhousing\node_modules\e
+sbuild\lib\main.js:581:7)
+    at Socket.emit (node:e
+vents:508:28)
+    at addChunk (node:inte
+rnal/streams/readable:559:
+12)
+    at readableAddChunkPus
+hByteMode (node:internal/s
+treams/readable:510:3)
+    at Readable.push (node
+:internal/streams/readable
+:390:5)
+    at Pipe.onStreamRead (
+node:internal/stream_base_
+commons:189:23)[39m
