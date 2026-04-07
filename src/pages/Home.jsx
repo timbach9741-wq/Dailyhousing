@@ -282,6 +282,25 @@ export default function Home() {
                                     <p className="text-[11px] md:text-[12px] font-semibold text-[#d4a853] tracking-wide mb-1 md:mb-1.5">{product.subCategory}</p>
                                     <h3 className="text-[15px] md:text-[17px] font-bold text-slate-900 group-hover:text-[#d4a853] transition-colors mb-1 md:mb-1.5 line-clamp-1">{product.title}</h3>
 
+                                    {/* 재고 상태 뱃지 */}
+                                    <div className="flex flex-wrap gap-1 mt-1 mb-2">
+                                        {product.salesStatus === '일시 품절' ? (
+                                            <span className="px-2 py-0.5 bg-red-50 text-red-600 rounded text-[11px] font-bold border border-red-100 flex items-center gap-1">
+                                                <span className="material-symbols-outlined text-[12px]">schedule</span>
+                                                일시품절 {product.expectedDate ? `(입고예정: ${product.expectedDate})` : ''}
+                                            </span>
+                                        ) : product.salesStatus === '단종' ? (
+                                            <span className="px-2 py-0.5 bg-gray-100 text-gray-500 rounded text-[11px] font-bold border border-gray-200">
+                                                단종
+                                            </span>
+                                        ) : product.stock !== undefined ? (
+                                            <span className="px-2 py-0.5 bg-green-50 text-green-600 rounded text-[11px] font-bold border border-green-100 flex items-center gap-1">
+                                                <span className="material-symbols-outlined text-[12px]">inventory_2</span>
+                                                재고: {product.stock.toLocaleString()}개
+                                            </span>
+                                        ) : null}
+                                    </div>
+
                                     {/* 가격 표시 추가 */}
                                     <div className="mt-3">
                                         <div className="flex flex-col gap-1.5 bg-slate-50 p-2.5 md:p-3 rounded-xl border border-slate-100 group-hover:border-red-100 transition-colors">

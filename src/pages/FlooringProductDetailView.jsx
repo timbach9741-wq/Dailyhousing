@@ -349,10 +349,28 @@ export default function FlooringProductDetailView() {
                         <h1 className="text-[28px] md:text-[34px] font-black text-[#222222] tracking-tight leading-tight mb-1">
                             {product.model_id || product.id}
                         </h1>
-                        <p className="text-[16px] md:text-[18px] font-semibold text-[#555555] mb-6">
+                        <p className="text-[16px] md:text-[18px] font-semibold text-[#555555] mb-4">
                             {product.title}
                         </p>
 
+                        {/* 재고 상태 현황 표시 추가 */}
+                        <div className="flex flex-wrap gap-2 mb-6">
+                            {product.salesStatus === '일시 품절' ? (
+                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 border border-red-200 text-red-600 text-sm font-bold">
+                                    <span className="material-symbols-outlined text-[16px]">schedule</span>
+                                    일시품절 {product.expectedDate ? `(입고예정: ${product.expectedDate})` : ''}
+                                </span>
+                            ) : product.salesStatus === '단종' ? (
+                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 border border-gray-200 text-gray-500 text-sm font-bold">
+                                    단종된 상품입니다
+                                </span>
+                            ) : product.stock !== undefined ? (
+                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-50 border border-green-200 text-green-700 text-sm font-bold">
+                                    <span className="material-symbols-outlined text-[16px]">inventory_2</span>
+                                    현재고: {product.stock.toLocaleString()}개
+                                </span>
+                            ) : null}
+                        </div>
                         {/* 가격 정보 */}
                         <div className="flex flex-col gap-1.5 mb-6 pb-6 border-b border-slate-100">
                             <div className="flex items-baseline gap-2 w-full">

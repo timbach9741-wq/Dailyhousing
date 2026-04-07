@@ -1,0 +1,30 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   package-lock.json
+	modified:   package.json
+	modified:   src/App.jsx
+	modified:   src/pages/CommercialLVTCategory.jsx
+	modified:   src/pages/FlooringProductDetailView.jsx
+	modified:   src/pages/Home.jsx
+	modified:   src/pages/ResidentialSheetCategory.jsx
+	modified:   src/pages/ShoppingCartCheckout.jsx
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	build_output.txt
+	build_output_cmd.txt
+	diff.patch
+	error.txt
+	fix.js
+	fix.mjs
+	git_status.txt
+	out.js
+	src/layouts/
+	src/lib/partnerService.js
+	src/pages/partner/
+
+no changes added to commit (use "git add" and/or "git commit -a")

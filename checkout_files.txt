@@ -1,0 +1,3 @@
+C:\Users\Tim\Desktop\Dailyhousing\.claude\worktrees\trusting-lalande\src\pages\ShoppingCartCheckout.jsx
+C:\Users\Tim\Desktop\Dailyhousing\dist\assets\ShoppingCartCheckout-BuKKYlqQ.js
+C:\Users\Tim\Desktop\Dailyhousing\src\pages\ShoppingCartCheckout.jsx

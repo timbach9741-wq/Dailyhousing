@@ -1,0 +1,22 @@
+diff --git a/src/pages/ShoppingCartCheckout.jsx b/src/pages/ShoppingCartCheckout.jsx
+index 3a8a23f..173f8d3 100644
+--- a/src/pages/ShoppingCartCheckout.jsx
++++ b/src/pages/ShoppingCartCheckout.jsx
+@@ -141,7 +141,7 @@ export default function ShoppingCartCheckout() {
+             )}
+ 
+             <nav className="flex items-center gap-2 mb-4 sm:mb-6 text-sm">
+-                <Link className="text-slate-500 hover:text-primary" to="/">??/Link>
++                <Link className="text-slate-500 hover:text-primary" to="/">홈</Link>
+                 <span className="material-symbols-outlined text-sm text-slate-400">chevron_right</span>
+                 <span className="text-slate-900 dark:text-slate-100 font-medium">?�바구니</span>
+             </nav>
+@@ -178,7 +178,7 @@ export default function ShoppingCartCheckout() {
+                                                         <p className="text-xs text-slate-500">{item.product.model_id || `SKU: ${item.product.id}`}</p>
+                                                         {(() => {
+                                                             const sub = item.product?.subCategory || item.product?.category || '';
+-                                                            const isTileOrBox = sub.toLowerCase().includes('?�??) || sub.toLowerCase().includes('lvt') || sub.toLowerCase().includes('?�디??) || sub.toLowerCase().includes('pst') || sub.toLowerCase().includes('?�코??);
++                                                            const isTileOrBox = sub.toLowerCase().includes('타일') || sub.toLowerCase().includes('lvt') || sub.toLowerCase().includes('에디톤') || sub.toLowerCase().includes('pst') || sub.toLowerCase().includes('에코');
+                                                             const isPrestige = sub.includes('?�레?�티지');
+                                                             
+                                                             let packagingText = item.product.specifications?.packaging || '';

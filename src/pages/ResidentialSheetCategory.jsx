@@ -214,34 +214,24 @@ export default function ResidentialSheetCategory() {
                                     loading="lazy"
                                 />
 
-                                {/* 재고 상태 뱃지 - inventory가 설정된 상품만 표시 */}
-                                {product.inventory != null && (
-                                    product.inventory === 0 ? (
-                                        /* 품절 */
-                                        <div className="absolute top-3 left-3 z-20">
-                                            <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-red-600 text-white text-[11px] sm:text-[12px] font-black shadow-lg shadow-red-600/30">
-                                                <span className="material-symbols-outlined text-[14px]">block</span>
-                                                품절
-                                            </span>
-                                        </div>
-                                    ) : product.inventory <= 5 ? (
-                                        /* 재고 부족 (1~5개) */
-                                        <div className="absolute top-3 left-3 z-20">
-                                            <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-amber-500 text-white text-[11px] sm:text-[12px] font-black shadow-lg shadow-amber-500/30">
-                                                <span className="material-symbols-outlined text-[14px]">warning</span>
-                                                {product.inventory}개 남음
-                                            </span>
-                                        </div>
-                                    ) : (
-                                        /* 재고 있음 */
-                                        <div className="absolute top-3 left-3 z-20">
-                                            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-600/90 text-white text-[10px] sm:text-[11px] font-bold shadow-md">
-                                                <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse"></span>
-                                                재고 {product.inventory}개
-                                            </span>
-                                        </div>
-                                    )
-                                )}
+                                {/* 재고 상태 뱃지 */}
+                                <div className="absolute top-3 left-3 z-20 flex flex-col gap-1">
+                                    {product.salesStatus === '일시 품절' ? (
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 text-white text-[11px] sm:text-[12px] font-black shadow-lg shadow-red-600/30">
+                                            <span className="material-symbols-outlined text-[14px]">schedule</span>
+                                            일시품절 {product.expectedDate ? `(입고예정: ${product.expectedDate})` : ''}
+                                        </span>
+                                    ) : product.salesStatus === '단종' ? (
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-600 text-white text-[11px] sm:text-[12px] font-black shadow-lg shadow-gray-600/30">
+                                            단종
+                                        </span>
+                                    ) : product.stock !== undefined ? (
+                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-600/90 text-white text-[10px] sm:text-[11px] font-bold shadow-md">
+                                            <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse"></span>
+                                            재고 {product.stock.toLocaleString()}개
+                                        </span>
+                                    ) : null}
+                                </div>
 
                                 {/* 품절 오버레이 */}
                                 {product.inventory === 0 && (

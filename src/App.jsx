@@ -1,5 +1,5 @@
 import { Suspense, lazy, useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Toast from './components/Toast'
@@ -32,6 +32,11 @@ const QualityAssurance = lazy(() => import('./pages/QualityAssurance'))
 const FAQ = lazy(() => import('./pages/FAQ'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
+// --- 파트너(Vendor) 앱 컴포넌트 ---
+const PartnerLayout = lazy(() => import('./layouts/PartnerLayout'))
+const PartnerLogin = lazy(() => import('./pages/partner/PartnerLogin'))
+const PartnerDashboard = lazy(() => import('./pages/partner/PartnerDashboard'))
+
 // Loading component
 const PageLoader = () => (
   <div className="flex h-[60vh] w-full items-center justify-center">
@@ -41,6 +46,10 @@ const PageLoader = () => (
 
 function App() {
   const [isFirebaseConnected, setIsFirebaseConnected] = useState(true)
+  const location = useLocation()
+  
+  // 파트너(벤더) 전용 라우트인지 확인
+  const isPartnerRoute = location.pathname.startsWith('/shinilsangjae')
 
   useEffect(() => {
     const check = async () => {
@@ -59,14 +68,24 @@ function App() {
           ⚠️ 서버 연결에 문제가 있습니다. 잠시 후 다시 시도해주세요.
         </div>
       )}
-      <ScrollToTop />
-      <ScrollToTopButton />
-      <KakaoChatButton />
-      <Header />
+      
+      {/* 벤더 앱에서는 Dailyhousing 공통 컴포넌트들을 숨김 */}
+      {!isPartnerRoute && <ScrollToTop />}
+      {!isPartnerRoute && <ScrollToTopButton />}
+      {!isPartnerRoute && <KakaoChatButton />}
+      {!isPartnerRoute && <Header />}
+      
       <Toast />
       <ErrorBoundary>
         <Suspense fallback={<PageLoader />}>
           <Routes>
+            {/* --- 파트너(Vendor) 전용 라우트 --- */}
+            <Route path="/shinilsangjae" element={<PartnerLayout />}>
+              <Route index element={<PartnerLogin />} />
+              <Route path="dashboard" element={<PartnerDashboard />} />
+            </Route>
+
+            {/* --- Dailyhousing 기본 라우트 --- */}
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
@@ -107,7 +126,9 @@ function App() {
           </Routes>
         </Suspense>
       </ErrorBoundary>
-      <Footer />
+      
+      {/* 벤더 앱에서는 Dailyhousing 푸터 숨김 */}
+      {!isPartnerRoute && <Footer />}
     </div>
   )
 }

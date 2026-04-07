@@ -198,12 +198,39 @@ export default function CommercialLVTCategory() {
                                 <img
                                     src={product.imageUrl}
                                     alt={product.title}
-                                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${product.salesStatus === '일시 품절' || product.salesStatus === '단종' ? 'grayscale opacity-60' : ''}`}
                                     loading="lazy"
                                 />
-                                <div className="absolute top-5 left-5 flex flex-wrap gap-2">
+
+                                {/* 재고 상태 뱃지 */}
+                                <div className="absolute top-3 left-3 z-20 flex flex-col gap-1">
+                                    {product.salesStatus === '일시 품절' ? (
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 text-white text-[11px] sm:text-[12px] font-black shadow-lg shadow-red-600/30">
+                                            <span className="material-symbols-outlined text-[14px]">schedule</span>
+                                            일시품절 {product.expectedDate ? `(입고예정: ${product.expectedDate})` : ''}
+                                        </span>
+                                    ) : product.salesStatus === '단종' ? (
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-600 text-white text-[11px] sm:text-[12px] font-black shadow-lg shadow-gray-600/30">
+                                            단종
+                                        </span>
+                                    ) : product.stock !== undefined ? (
+                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-600/90 text-white text-[10px] sm:text-[11px] font-bold shadow-md">
+                                            <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse"></span>
+                                            재고 {product.stock.toLocaleString()}개
+                                        </span>
+                                    ) : null}
+                                </div>
+
+                                {/* 품절 오버레이 */}
+                                {(product.salesStatus === '일시 품절' || product.salesStatus === '단종') && (
+                                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center z-[5]">
+                                        <span className="text-white/80 text-lg sm:text-2xl font-black tracking-widest">{product.salesStatus === '단종' ? 'DISCONTINUED' : 'SOLD OUT'}</span>
+                                    </div>
+                                )}
+
+                                <div className="absolute top-3 right-3 flex flex-col gap-1 z-20 items-end">
                                     {product.tags?.map(tag => (
-                                        <span key={tag} className="px-3.5 py-1.5 bg-white shadow-md rounded-full text-[11px] font-black text-slate-800 uppercase border border-slate-100">
+                                        <span key={tag} className="px-2.5 py-1 bg-white/90 backdrop-blur-sm shadow shadow-black/5 rounded-lg text-[10px] font-bold text-slate-700 uppercase border border-slate-100/50">
                                             {tag}
                                         </span>
                                     ))}

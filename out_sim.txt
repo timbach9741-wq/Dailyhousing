@@ -1,0 +1,25 @@
+31:         // ?�고 ?�태 ?�별
+32:         const inventory = currentProduct.inventory;
+33:         const isOutOfStock = inventory != null && inventory <= 0;
+34:         const isLowStock = inventory != null && inventory > 0 && inventory <= 5;
+35: 
+36:         // ?�절???�니�??�고 부족도 ?�니�?추천 불필??       
+37:         if (!isOutOfStock && !isLowStock) {
+38:             return { similarProducts: [], isOutOfStock, isLowStock };
+39:         }
+40: 
+41:         // ?�?� ?�상 계열 분류 ?�수 ?�?�
+42:         // ?? colorText가 ?�확???�치?��? ?�더?�도 같�? "계열"?�면 ?�사?�다�??�단?�기 ?�함
+43:         const getColorFamily = (product) => {
+44:             const text = (product.colorText || product.specifications?.color || product.title || '').toLowerCase();
+45: 
+46:             if (text.includes('?�이??) || text.includes('?�림') || text.includes('?�이보리') || text.includes('?�닉??)) return 'white';
+47:             if (text.includes('그레??) || text.includes('?�쉬') || text.includes('콘크리트') || text.includes('?�모??)) return 'gray';
+48:             if (text.includes('브라??) || text.includes('?�크') || text.includes('?�넛') || text.includes('?�드') || text.includes('메이??)) return 'brown';
+49:             if (text.includes('베이지') || text.includes('?�드') || text.includes('?�추??)) return 'beige';
+50:             if (text.includes('?�크') || text.includes('블랙') || text.includes('차콜')) return 'dark';
+51:             return 'other';
+52:         };
+53: 
+54:         const currentColorFamily = getColorFamily(currentProduct);
+55:         const currentPatterns = currentProduct.patterns || [];

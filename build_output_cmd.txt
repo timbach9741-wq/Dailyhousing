@@ -1,0 +1,40 @@
+
+> jangpan-interior-app@0.0.0 build
+> vite build
+
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32m✓[39m 25 modules transformed.
+[31m✗[39m Build failed in 285ms
+[31merror during build:
+[31m[vite:esbuild] Transform failed with 2 errors:
+C:/Users/Tim/Desktop/Dailyhousing/src/pages/ShoppingCartCheckout.jsx:147:14: ERROR: Unexpected closing "nav" tag does not match opening "Link" tag
+C:/Users/Tim/Desktop/Dailyhousing/src/pages/ShoppingCartCheckout.jsx:181:147: ERROR: Expected ")" but found "lvt"[31m
+file: [36mC:/Users/Tim/Desktop/Dailyhousing/src/pages/ShoppingCartCheckout.jsx:147:14[31m
+[33m
+[33mUnexpected closing "nav" tag does not match opening "Link" tag[33m
+145 |                  <span className="material-symbols-outlined text-sm text-slate-400">chevron_right</span>
+146 |                  <span className="text-slate-900 dark:text-slate-100 font-medium">?�바구니</span>
+147 |              </nav>
+    |                ^
+148 |              <h1 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-8 tracking-tight">?�바구니 �??�전 결제</h1>
+149 |              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
+
+[33mExpected ")" but found "lvt"[33m
+179 |                                                          {(() => {
+180 |                                                              const sub = item.product?.subCategory || item.product?.ca...
+181 |  ...owerCase().includes('?�??) || sub.toLowerCase().includes('lvt') || sub.toLowerCase().includes('?�디??) || sub.toLow...
+    |                                                                 ^
+182 |                                                              const isPrestige = sub.includes('?�레?�티지');
+183 |                                                              
+[31m
+    at failureErrorWithLog (C:\Users\Tim\Desktop\Dailyhousing\node_modules\esbuild\lib\main.js:1467:15)
+    at C:\Users\Tim\Desktop\Dailyhousing\node_modules\esbuild\lib\main.js:736:50
+    at responseCallbacks.<computed> (C:\Users\Tim\Desktop\Dailyhousing\node_modules\esbuild\lib\main.js:603:9)
+    at handleIncomingPacket (C:\Users\Tim\Desktop\Dailyhousing\node_modules\esbuild\lib\main.js:658:12)
+    at Socket.readFromStdout (C:\Users\Tim\Desktop\Dailyhousing\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:559:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:510:3)
+    at Readable.push (node:internal/streams/readable:390:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)[39m
