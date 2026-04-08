@@ -549,11 +549,19 @@ const PartnerDashboard = () => {
     XLSX.writeFile(wb, fileName);
   };
 
-  // 스크롤 함수
+  // 스크롤 함수 — 데스크톱(테이블)과 모바일(카드) 뷰 모두 지원
   const scrollToCategory = (category) => {
-    const element = document.getElementById(`category-${category}`);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // 두 뷰 모두의 앵커 요소를 후보로 잡고, 실제 화면에 보이는(visible) 요소로 스크롤
+    const desktopEl = document.getElementById(`category-${category}`);
+    const mobileEl = document.getElementById(`m-category-${category}`);
+    
+    // offsetParent가 null이면 display:none (숨겨진 상태)이므로 건너뜀
+    const target = (desktopEl && desktopEl.offsetParent !== null) ? desktopEl
+                 : (mobileEl && mobileEl.offsetParent !== null) ? mobileEl
+                 : desktopEl || mobileEl; // fallback
+    
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 

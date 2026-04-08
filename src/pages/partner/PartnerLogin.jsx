@@ -115,7 +115,7 @@ const PartnerLogin = () => {
           <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-key text-blue-600"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/><path d="m21 2-9.6 9.6"/><circle cx="7.5" cy="15.5" r="5.5"/></svg>
           </div>
-          <h2 className="text-2xl font-bold text-gray-800 tracking-tight">파트너 전용 로그인</h2>
+          <h2 className="text-2xl font-bold text-gray-800 tracking-tight">신일상재 스마트 재고관리</h2>
           <p className="text-sm text-gray-500 mt-2 font-medium">부여받으신 계정 정보를 입력해주세요.</p>
         </div>
         
