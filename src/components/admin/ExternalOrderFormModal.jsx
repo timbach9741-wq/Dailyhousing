@@ -21,13 +21,36 @@ const getDefaultDeliveryDate = () => {
     return d.toISOString().split('T')[0];
 };
 const getPackagingLabel = (p) => {
+    // 롤(시트, 엑스컴포트 등) 제품일 경우 단가를 m당으로 표기
+    const isRollType = 
+        (p?.subtitle && p.subtitle.includes('시트')) ||
+        (p?.subCategory && (p.subCategory.includes('시트') || p.subCategory.includes('엑스컴포트') || p.subCategory.includes('뉴청맥') || p.subCategory.includes('은행목'))) ||
+        (p?.specifications?.material && p.specifications.material.includes('시트'));
+
+    if (isRollType) {
+        return 'm';
+    }
+
     if (p?.specifications?.packaging) {
         return p.specifications.packaging;
     }
-    if (p?.subCategory && (p.subCategory.includes('시트') || p.subCategory.includes('엑스컴포트'))) {
-        return '롤';
-    }
     return '박스';
+};
+
+const getRollMultiplier = (p) => {
+    const isRollType = 
+        (p?.subtitle && p.subtitle.includes('시트')) ||
+        (p?.subCategory && (p.subCategory.includes('시트') || p.subCategory.includes('엑스컴포트') || p.subCategory.includes('뉴청맥') || p.subCategory.includes('은행목'))) ||
+        (p?.specifications?.material && p.specifications.material.includes('시트'));
+
+    if (isRollType) {
+        const pkg = p?.specifications?.packaging || p?.packaging || '';
+        const rollMatch = pkg.match(/(\d+)M/i);
+        if (rollMatch) {
+            return parseInt(rollMatch[1]);
+        }
+    }
+    return 1;
 };
 
 const INITIAL_FORM = {
@@ -38,8 +61,8 @@ const INITIAL_FORM = {
     unitPrice: '',
     totalPrice: '',
     deliveryDate: getDefaultDeliveryDate(),
-    channel: 'phone',
     address: '',
+    detailAddress: '',
     memo: '',
     // 제품 DB 연동 필드
     selectedProductId: null, // DB 제품 선택 시 ID 저장
@@ -93,6 +116,7 @@ export default function ExternalOrderFormModal({ isOpen, onClose, onSubmit, edit
                 deliveryDate: editData.deliveryDate || getDefaultDeliveryDate(),
                 channel: editData.channel || 'phone',
                 address: editData.address || '',
+                detailAddress: editData.detailAddress || '',
                 memo: editData.memo || '',
                 selectedProductId: editData.selectedProductId || null,
                 isCustomProduct: editData.isCustomProduct || false,
@@ -127,14 +151,29 @@ export default function ExternalOrderFormModal({ isOpen, onClose, onSubmit, edit
         setForm(prev => ({ ...prev, [key]: value }));
     };
 
+    // 숫자 파싱 유틸리티 (콤마 제거)
+    const parseNum = (val) => {
+        if (typeof val === 'number') return val;
+        if (!val) return NaN;
+        return parseFloat(String(val).replace(/,/g, ''));
+    };
+
     // 수량 변경 시 자동 총액 계산 (단가가 있을 경우)
     const handleQuantityChange = (value) => {
         const newForm = { ...form, quantity: value };
-        // 수량이 숫자이고 단가가 있으면 총액 자동 계산
-        const numQty = parseFloat(value);
-        const numPrice = parseFloat(form.unitPrice);
+        const numQty = parseNum(value);
+        const numPrice = parseNum(form.unitPrice);
         if (!isNaN(numQty) && !isNaN(numPrice) && numQty > 0 && numPrice > 0) {
-            newForm.totalPrice = Math.round(numQty * numPrice);
+            let multiplier = 1;
+            if (form.selectedProductId) {
+                 const selected = products.find(p => p.id === form.selectedProductId);
+                 multiplier = getRollMultiplier(selected);
+            }
+            const baseTotalPrice = numQty * numPrice * multiplier;
+            const tax = Math.floor(baseTotalPrice * 0.1);
+            newForm.totalPrice = baseTotalPrice + tax;
+        } else if (value === '' || form.unitPrice === '') {
+            newForm.totalPrice = '';
         }
         setForm(newForm);
     };
@@ -142,30 +181,42 @@ export default function ExternalOrderFormModal({ isOpen, onClose, onSubmit, edit
     // 단가 변경 시 자동 총액 계산
     const handleUnitPriceChange = (value) => {
         const newForm = { ...form, unitPrice: value };
-        const numQty = parseFloat(form.quantity);
-        const numPrice = parseFloat(value);
+        const numQty = parseNum(form.quantity);
+        const numPrice = parseNum(value);
         if (!isNaN(numQty) && !isNaN(numPrice) && numQty > 0 && numPrice > 0) {
-            newForm.totalPrice = Math.round(numQty * numPrice);
+            let multiplier = 1;
+            if (form.selectedProductId) {
+                 const selected = products.find(p => p.id === form.selectedProductId);
+                 multiplier = getRollMultiplier(selected);
+            }
+            const baseTotalPrice = numQty * numPrice * multiplier;
+            const tax = Math.floor(baseTotalPrice * 0.1);
+            newForm.totalPrice = baseTotalPrice + tax;
+        } else if (value === '' || form.quantity === '') {
+            newForm.totalPrice = '';
         }
         setForm(newForm);
     };
 
     // DB 제품 선택 시 폼에 자동 반영
     const handleSelectProduct = (product) => {
+        const multiplier = getRollMultiplier(product);
         setForm(prev => ({
             ...prev,
             productName: product.title || '',
-            unitPrice: product.price ? Math.round(product.price * 1.1) : '',
+            unitPrice: product.price ? product.price : '',
             selectedProductId: product.id,
             isCustomProduct: false,
             // 수량이 이미 있으면 총액 자동 계산
             totalPrice: (() => {
-                const numQty = parseFloat(prev.quantity);
-                const numPrice = product.price ? Math.round(product.price * 1.1) : 0;
+                const numQty = parseNum(prev.quantity);
+                const numPrice = product.price ? product.price : 0;
                 if (!isNaN(numQty) && !isNaN(numPrice) && numQty > 0 && numPrice > 0) {
-                    return Math.round(numQty * numPrice);
+                    const baseTotalPrice = numQty * numPrice * multiplier;
+                    const tax = Math.floor(baseTotalPrice * 0.1);
+                    return baseTotalPrice + tax;
                 }
-                return prev.totalPrice;
+                return '';
             })(),
         }));
         setProductSearchText(product.title || '');
@@ -240,7 +291,7 @@ export default function ExternalOrderFormModal({ isOpen, onClose, onSubmit, edit
 
     return (
         <div className="fixed inset-0 z-[150] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4" onClick={onClose}>
-            <div className="bg-[#0f172a] border border-white/10 rounded-3xl w-full max-w-lg shadow-2xl max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+            <div className="bg-[#0f172a] border border-white/10 rounded-3xl w-full max-w-lg shadow-2xl max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()} data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false">
                 {/* 헤더 */}
                 <div className="sticky top-0 bg-[#0f172a] border-b border-white/10 rounded-t-3xl px-6 py-4 flex items-center justify-between z-10">
                     <h3 className="text-lg font-bold text-white flex items-center gap-2">
@@ -358,8 +409,8 @@ export default function ExternalOrderFormModal({ isOpen, onClose, onSubmit, edit
                                                     </p>
                                                 </div>
                                                 <div className="text-right shrink-0">
-                                                    <p className="text-teal-400 text-xs font-bold">₩{Math.round((p.price || 0) * 1.1).toLocaleString()}</p>
-                                                    <p className="text-slate-500 text-[10px]">/ {getPackagingLabel(p)} (VAT포함)</p>
+                                                    <p className="text-teal-400 text-xs font-bold">₩{(p.price || 0).toLocaleString()}</p>
+                                                    <p className="text-slate-500 text-[10px]">/ {getPackagingLabel(p)} (VAT별도)</p>
                                                 </div>
                                             </button>
                                         ))}
@@ -406,8 +457,8 @@ export default function ExternalOrderFormModal({ isOpen, onClose, onSubmit, edit
                                     <p className="text-slate-400 text-[11px]">{selected.model_id || ''} · {selected.subCategory || ''}</p>
                                 </div>
                                 <div className="text-right">
-                                    <p className="text-teal-400 text-sm font-bold">₩{Math.round((selected.price || 0) * 1.1).toLocaleString()}</p>
-                                    <p className="text-slate-500 text-[10px]">/ {getPackagingLabel(selected)} (VAT포함)</p>
+                                    <p className="text-teal-400 text-sm font-bold">₩{(selected.price || 0).toLocaleString()}</p>
+                                    <p className="text-slate-500 text-[10px]">/ {getPackagingLabel(selected)} (VAT별도)</p>
                                 </div>
                             </div>
                         );
@@ -438,7 +489,7 @@ export default function ExternalOrderFormModal({ isOpen, onClose, onSubmit, edit
                                 }`}
                                 value={form.unitPrice}
                                 onChange={e => handleUnitPriceChange(e.target.value)}
-                                placeholder="45,000"
+                                placeholder=""
                             />
                         </div>
                         <div>
@@ -455,20 +506,24 @@ export default function ExternalOrderFormModal({ isOpen, onClose, onSubmit, edit
                                 }`}
                                 value={form.totalPrice}
                                 onChange={e => handleChange('totalPrice', e.target.value)}
-                                placeholder="1,350,000"
+                                placeholder=""
                             />
                         </div>
                     </div>
 
                     {/* 자동 계산 안내 */}
-                    {form.unitPrice && form.quantity && form.totalPrice && (
-                        <div className="flex items-center gap-2 px-1">
-                            <span className="material-symbols-outlined text-teal-400 text-[14px]">calculate</span>
-                            <p className="text-[11px] text-slate-500">
-                                {Number(form.quantity).toLocaleString()} × ₩{Number(form.unitPrice).toLocaleString()} = <span className="text-teal-400 font-bold">₩{Number(form.totalPrice).toLocaleString()}</span>
-                            </p>
-                        </div>
-                    )}
+                    {form.unitPrice && form.quantity && form.totalPrice && (() => {
+                        const multiplier = form.selectedProductId ? getRollMultiplier(products.find(p => p.id === form.selectedProductId)) : 1;
+                        return (
+                            <div className="flex items-center gap-2 px-1">
+                                <span className="material-symbols-outlined text-teal-400 text-[14px]">calculate</span>
+                                <p className="text-[11px] text-slate-500">
+                                    {multiplier > 1 ? `${Number(form.quantity).toLocaleString()}롤 × ${multiplier}m × ` : `${Number(form.quantity).toLocaleString()} × `}
+                                    <span className="font-semibold text-slate-300">₩{Number(form.unitPrice).toLocaleString()}</span> (VAT별도) = <span className="text-teal-400 font-bold">₩{Number(form.totalPrice).toLocaleString()}</span> (VAT포함)
+                                </p>
+                            </div>
+                        );
+                    })()}
 
                     {/* 배송 희망일 */}
                     <div>
@@ -506,6 +561,15 @@ export default function ExternalOrderFormModal({ isOpen, onClose, onSubmit, edit
                                 <DaumPostcode onComplete={handlePostcodeComplete} style={{ height: '300px' }} />
                             </div>
                         )}
+                        <div className="mt-3">
+                            <label className="block text-xs font-medium text-slate-400 mb-1.5">세부 주소</label>
+                            <input
+                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/50"
+                                value={form.detailAddress}
+                                onChange={e => handleChange('detailAddress', e.target.value)}
+                                placeholder="동, 호수, 층수 등 상세 주소 입력"
+                            />
+                        </div>
                     </div>
 
                     {/* 메모 */}

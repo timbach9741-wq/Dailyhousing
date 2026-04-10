@@ -84,6 +84,12 @@ service cloud.firestore {
       allow read, write: if isAdmin() || isPartner();
     }
 
+    // ── 외부 주문 (전화/카카오/현장 주문) ────────────────────
+    // 어드민만 읽기/쓰기 가능
+    match /external_orders/{orderId} {
+      allow read, write: if isAdmin();
+    }
+
 
     // ── 사이트 설정 (CMS) ─────────────────────────────────
     // 누구나 읽기 가능 (홈페이지 콘텐츠 공개)

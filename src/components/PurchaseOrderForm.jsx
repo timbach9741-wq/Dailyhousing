@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+﻿import React, { useState, useRef } from 'react';
 import ExcelJS from 'exceljs';
 import { useProductStore } from '../store/useProductStore';
+import { useExternalOrderStore } from '../store/useExternalOrderStore';
 
 /* ── 기본 데이터 ── */
 const defaultSupplier = {
@@ -16,6 +17,11 @@ const emptyReceiver = {
     company: '', manager: '', contact: '',
     address: '', recipient: '', recipientPhone: '', siteManagerPhone: '',
     desiredDate: '', unloadCondition: ''
+};
+
+/* ── 채널 라벨 ── */
+const CHANNEL_LABEL = {
+    phone: '📞 전화', kakao: '💬 카카오', visit: '🏢 방문', email: '📧 이메일', other: '📋 기타',
 };
 
 /* ── 헬퍼 ── */
@@ -35,6 +41,11 @@ const todayShort = () => {
 const PurchaseOrderForm = ({ order, onClose, onComplete }) => {
     const printRef = useRef(null);
     const allProducts = useProductStore((state) => state.products);
+
+    // 외부 주문 일정 데이터
+    const { orders: externalOrders, fetchAll: fetchExternalOrders, loading: extLoading } = useExternalOrderStore();
+    const [showSchedulePicker, setShowSchedulePicker] = useState(false);
+    const [scheduleFetched, setScheduleFetched] = useState(false);
 
     /* ── 발주번호 자동 생성 ── */
     const [poNumber] = useState(() => {
@@ -124,6 +135,51 @@ const PurchaseOrderForm = ({ order, onClose, onComplete }) => {
     );
 
     /* ── (단가/합계 제거됨) ── */
+
+    /* ── 일정에서 불러오기 ── */
+    const handleOpenSchedulePicker = async () => {
+        if (!scheduleFetched) {
+            await fetchExternalOrders();
+            setScheduleFetched(true);
+        }
+        setShowSchedulePicker(true);
+    };
+
+    // 외부 주문 일정 선택 시 → 수신처/품목에 반영
+    const handleSelectSchedule = (extOrder) => {
+        // 수신처 정보 채우기
+        setReceiver(prev => ({
+            ...prev,
+            recipient: extOrder.customerName || prev.recipient,
+            recipientPhone: extOrder.phone || prev.recipientPhone,
+            contact: extOrder.phone || prev.contact,
+            address: [extOrder.address, extOrder.detailAddress].filter(Boolean).join(' ') || prev.address,
+            desiredDate: extOrder.deliveryDate || prev.desiredDate,
+        }));
+
+        // 품목에 추가 (기존 빈 품목이면 교체, 아니면 추가)
+        const newItem = {
+            name: extOrder.productName || '',
+            model: '',
+            qty: extOrder.quantity || '',
+            unit: 'Box',
+            memo: extOrder.memo || '',
+            detail: `${CHANNEL_LABEL[extOrder.channel] || ''} / ${extOrder.customerName || ''}`.trim(),
+        };
+
+        setItems(prev => {
+            // 첫 품목이 비어있으면 교체
+            if (prev.length === 1 && !prev[0].name && !prev[0].qty) {
+                return [newItem];
+            }
+            // 이미 같은 고객+상품이 있으면 중복 방지
+            const exists = prev.some(it => it.name === newItem.name && it.detail === newItem.detail);
+            if (exists) return prev;
+            return [...prev, newItem];
+        });
+
+        setShowSchedulePicker(false);
+    };
 
     /* ── 품목 추가/삭제 ── */
     const addItem = () => setItems(prev => [...prev, { ...emptyItem }]);
@@ -443,6 +499,79 @@ ${printContents}
                 {/*         아래: 편집 가능 영역 (no-print)     */}
                 {/* ══════════════════════════════════════════ */}
                 <div className="mt-6 mb-12 space-y-6">
+
+                    {/* ── 일정에서 불러오기 패널 ── */}
+                    <div className="rounded-2xl border border-teal-500/20 bg-teal-500/[0.03] backdrop-blur-xl p-6">
+                        <div className="flex items-center justify-between mb-4">
+                            <h3 className="text-white font-bold text-sm flex items-center gap-2">
+                                <span className="material-symbols-outlined text-teal-400 text-[18px]">calendar_month</span>
+                                외부 주문 일정에서 불러오기
+                            </h3>
+                            <button onClick={handleOpenSchedulePicker}
+                                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-teal-600/20 border border-teal-500/30 text-teal-400 text-xs font-semibold hover:bg-teal-600/30 transition-all">
+                                <span className="material-symbols-outlined text-[14px]">event_note</span>
+                                {showSchedulePicker ? '닫기' : '일정 불러오기'}
+                            </button>
+                        </div>
+
+                        {showSchedulePicker && (
+                            <div className="space-y-2 max-h-[300px] overflow-y-auto pr-1">
+                                {extLoading ? (
+                                    <p className="text-slate-500 text-sm text-center py-6">불러오는 중...</p>
+                                ) : externalOrders.filter(o => o.status !== 'delivered').length === 0 ? (
+                                    <p className="text-slate-500 text-sm text-center py-6">미완료 외부 주문이 없습니다.</p>
+                                ) : (
+                                    externalOrders.filter(o => o.status !== 'delivered').map(ext => {
+                                        // D-Day 계산
+                                        let ddayText = '';
+                                        if (ext.deliveryDate) {
+                                            const today = new Date(); today.setHours(0,0,0,0);
+                                            const target = new Date(ext.deliveryDate); target.setHours(0,0,0,0);
+                                            const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+                                            if (diff < 0) ddayText = `D+${Math.abs(diff)}`;
+                                            else if (diff === 0) ddayText = 'D-Day';
+                                            else ddayText = `D-${diff}`;
+                                        }
+                                        return (
+                                            <button
+                                                key={ext.id}
+                                                onClick={() => handleSelectSchedule(ext)}
+                                                className="w-full text-left p-3 rounded-xl bg-white/[0.03] border border-white/10 hover:bg-teal-500/10 hover:border-teal-500/30 transition-all group"
+                                            >
+                                                <div className="flex items-center justify-between">
+                                                    <div className="flex items-center gap-2 min-w-0">
+                                                        <span className="text-lg">{CHANNEL_LABEL[ext.channel]?.charAt(0) || '📋'}</span>
+                                                        <div className="min-w-0">
+                                                            <p className="text-white text-sm font-semibold truncate">
+                                                                {ext.customerName}
+                                                                <span className="text-slate-500 text-xs font-normal ml-2">{ext.phone}</span>
+                                                            </p>
+                                                            <p className="text-slate-400 text-xs truncate">
+                                                                {ext.productName}{ext.quantity ? ` · ${ext.quantity}` : ''}
+                                                                {ext.address ? ` · ${ext.address}` : ''}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div className="flex items-center gap-2 shrink-0">
+                                                        {ddayText && (
+                                                            <span className={`text-xs font-bold px-2 py-0.5 rounded-lg ${
+                                                                ddayText.startsWith('D+') ? 'bg-red-500/20 text-red-400'
+                                                                : ddayText === 'D-Day' ? 'bg-amber-500/20 text-amber-400'
+                                                                : 'bg-teal-500/20 text-teal-400'
+                                                            }`}>{ddayText}</span>
+                                                        )}
+                                                        <span className="text-slate-500 text-xs">{ext.deliveryDate}</span>
+                                                        <span className="material-symbols-outlined text-teal-400 text-[16px] opacity-0 group-hover:opacity-100 transition-opacity">arrow_forward</span>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                        );
+                                    })
+                                )}
+                            </div>
+                        )}
+                    </div>
+
                     {/* 공급자 정보 편집 */}
                     <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-6">
                         <h3 className="text-white font-bold text-sm mb-4 flex items-center gap-2">

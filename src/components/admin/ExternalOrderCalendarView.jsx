@@ -125,7 +125,7 @@ export default function ExternalOrderCalendarView({ orders, onEdit, onStatusChan
                 <div className="grid grid-cols-7">
                     {calendarDays.map((cell, idx) => {
                         if (!cell.date) {
-                            return <div key={`empty-${idx}`} className="h-20 border-t border-r border-white/5 bg-white/[0.01]" />;
+                            return <div key={`empty-${idx}`} className="h-28 sm:h-32 border-t border-r border-white/5 bg-white/[0.01]" />;
                         }
 
                         const dateOrders = ordersByDate[cell.date] || [];
@@ -149,47 +149,68 @@ export default function ExternalOrderCalendarView({ orders, onEdit, onStatusChan
                             else urgencyColor = 'bg-teal-400';
                         }
 
+                        // 셀 배경 색상 (주문이 있을 때 긴급도에 따라 은은하게)
+                        let cellBg = '';
+                        if (activeOrders.length > 0 && urgencyColor) {
+                            if (urgencyColor === 'bg-red-500') cellBg = 'bg-red-500/[0.06]';
+                            else if (urgencyColor === 'bg-orange-500') cellBg = 'bg-orange-500/[0.05]';
+                            else if (urgencyColor === 'bg-amber-400') cellBg = 'bg-amber-400/[0.04]';
+                            else cellBg = 'bg-teal-400/[0.04]';
+                        }
+
                         return (
                             <div
                                 key={cell.date}
                                 onClick={() => setSelectedDate(isSelected ? null : cell.date)}
-                                className={`h-20 border-t border-r border-white/5 p-1.5 cursor-pointer transition-all relative ${
+                                className={`h-28 sm:h-32 border-t border-r border-white/5 p-1.5 sm:p-2 cursor-pointer transition-all relative ${
                                     isSelected
-                                        ? 'bg-teal-500/10 ring-1 ring-teal-500/40'
+                                        ? 'bg-teal-500/10 ring-2 ring-teal-500/40'
                                         : isToday
-                                            ? 'bg-white/[0.04]'
-                                            : 'hover:bg-white/[0.03]'
+                                            ? 'bg-white/[0.06] ring-1 ring-teal-500/30'
+                                            : hasOrders
+                                                ? cellBg + ' hover:bg-white/[0.06]'
+                                                : 'hover:bg-white/[0.03]'
                                 }`}
                             >
                                 {/* 날짜 숫자 */}
-                                <span className={`text-xs font-bold ${
+                                <span className={`text-sm font-bold ${
                                     isToday
-                                        ? 'bg-teal-500 text-black w-6 h-6 rounded-full flex items-center justify-center'
+                                        ? 'bg-teal-500 text-black w-7 h-7 rounded-full flex items-center justify-center text-sm'
                                         : weekday === 0 ? 'text-red-400' : weekday === 6 ? 'text-blue-400' : 'text-slate-300'
                                 }`}>
                                     {cell.day}
                                 </span>
 
-                                {/* 주문 건수 표시 */}
+                                {/* 주문 건수 표시 - 배지 스타일 */}
                                 {hasOrders && (
-                                    <div className="mt-1">
-                                        <div className="flex items-center gap-1">
+                                    <div className="mt-1 space-y-1">
+                                        {/* 건수 배지 */}
+                                        <div className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md ${
+                                            urgencyColor === 'bg-red-500' ? 'bg-red-500/20 text-red-300'
+                                            : urgencyColor === 'bg-orange-500' ? 'bg-orange-500/20 text-orange-300'
+                                            : urgencyColor === 'bg-amber-400' ? 'bg-amber-400/20 text-amber-300'
+                                            : 'bg-teal-400/20 text-teal-300'
+                                        }`}>
                                             {urgencyColor && activeOrders.length > 0 && (
-                                                <span className={`w-2 h-2 rounded-full ${urgencyColor}`} />
+                                                <span className={`w-2 h-2 rounded-full ${urgencyColor} animate-pulse`} />
                                             )}
-                                            <span className="text-[10px] text-slate-300 font-semibold">
+                                            <span className="text-xs font-bold">
                                                 {dateOrders.length}건
                                             </span>
                                         </div>
-                                        {/* 작은 채널 아이콘 표시 (최대 3개) */}
-                                        <div className="flex gap-0.5 mt-0.5">
-                                            {dateOrders.slice(0, 3).map((o, i) => (
-                                                <span key={i} className="text-[10px]">
-                                                    {CHANNEL_ICON[o.channel] || '📋'}
-                                                </span>
+
+                                        {/* 고객명 목록 (최대 2명) */}
+                                        <div className="space-y-0.5">
+                                            {dateOrders.slice(0, 2).map((o, i) => (
+                                                <div key={i} className="flex items-center gap-1 truncate">
+                                                    <span className="text-[11px] leading-none">{CHANNEL_ICON[o.channel] || '📋'}</span>
+                                                    <span className="text-[11px] text-slate-300 font-medium truncate">
+                                                        {o.customerName}
+                                                    </span>
+                                                </div>
                                             ))}
-                                            {dateOrders.length > 3 && (
-                                                <span className="text-[9px] text-slate-500">+{dateOrders.length - 3}</span>
+                                            {dateOrders.length > 2 && (
+                                                <span className="text-[10px] text-slate-500 font-medium">+{dateOrders.length - 2}건 더</span>
                                             )}
                                         </div>
                                     </div>

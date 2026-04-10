@@ -151,7 +151,7 @@ export default function ExternalOrderListView({ orders, onEdit, onDelete, onStat
                                             <p className="text-teal-400 text-xs font-bold mb-1">₩{Number(order.totalPrice).toLocaleString()}</p>
                                         )}
                                         {order.address && (
-                                            <p className="text-slate-500 text-[11px] truncate">📍 {order.address}</p>
+                                            <p className="text-slate-500 text-[11px] truncate">📍 {order.address} {order.detailAddress || ''}</p>
                                         )}
                                         {order.memo && (
                                             <p className="text-slate-500 text-[11px] mt-1 truncate">💬 {order.memo}</p>

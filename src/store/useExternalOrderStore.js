@@ -52,6 +52,7 @@ export const useExternalOrderStore = create((set, get) => ({
             deliveryDate: data.deliveryDate || '',
             channel: data.channel || 'phone',
             address: data.address || '',
+            detailAddress: data.detailAddress || '',
             memo: data.memo || '',
             status: 'received', // received, preparing, shipped, delivered
             createdAt: now,

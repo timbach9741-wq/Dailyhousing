@@ -36,11 +36,20 @@ export default function ExternalOrderSchedule() {
             const d = getDday(o.deliveryDate);
             return d !== null && d >= 0 && d <= 7;
         }).length;
+        // 이번 달: 현재 월에 해당하는 배송 예정 건수
+        const now = new Date();
+        const currentYear = now.getFullYear();
+        const currentMonth = now.getMonth();
+        const thisMonth = activeOrders.filter(o => {
+            if (!o.deliveryDate) return false;
+            const d = new Date(o.deliveryDate);
+            return d.getFullYear() === currentYear && d.getMonth() === currentMonth;
+        }).length;
         const overdue = activeOrders.filter(o => {
             const d = getDday(o.deliveryDate);
             return d !== null && d < 0;
         }).length;
-        return { today, tomorrow, thisWeek, overdue, total: orders.length };
+        return { today, tomorrow, thisWeek, thisMonth, overdue, total: orders.length };
     }, [orders]);
 
     // 등록/수정 핸들러
@@ -117,7 +126,7 @@ export default function ExternalOrderSchedule() {
             </div>
 
             {/* 요약 카드 */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
                 {/* 기한 초과 */}
                 {stats.overdue > 0 && (
                     <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 col-span-2 sm:col-span-1">
@@ -154,6 +163,15 @@ export default function ExternalOrderSchedule() {
                         <span className="text-teal-400 text-xs font-bold">이번 주</span>
                     </div>
                     <p className="text-2xl font-black text-teal-400">{stats.thisWeek}건</p>
+                </div>
+
+                {/* 이번 달 */}
+                <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-500/20">
+                    <div className="flex items-center gap-2 mb-1">
+                        <span className="material-symbols-outlined text-blue-400 text-[20px]">calendar_month</span>
+                        <span className="text-blue-400 text-xs font-bold">이번 달</span>
+                    </div>
+                    <p className="text-2xl font-black text-blue-400">{stats.thisMonth}건</p>
                 </div>
             </div>
 
