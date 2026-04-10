@@ -10,6 +10,9 @@
       "anonymous": true
     }
   },
+  "functions": {
+    "source": "functions"
+  },
   "hosting": {
     "public": "dist",
     "ignore": [
@@ -38,6 +41,10 @@
       }
     ],
     "rewrites": [
+      {
+        "source": "/api/confirmTossPayment",
+        "function": "confirmTossPayment"
+      },
       {
         "source": "**",
         "destination": "/index.html"
