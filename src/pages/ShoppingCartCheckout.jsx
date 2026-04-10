@@ -1,10 +1,11 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCartStore, getEffectivePrice } from '../store/useCartStore';
 import { useOrderStore } from '../store/useOrderStore';
 import { useAuthStore } from '../store/useAuthStore';
 import { formatOrderUnit } from '../services/adminService';
 import DaumPostcode from 'react-daum-postcode';
+import { loadPaymentWidget } from '@tosspayments/payment-widget-sdk';
 
 // 에디톤 제품 박스 배송 정보
 const EDITON_BOX_INFO = {
@@ -63,6 +64,11 @@ export default function ShoppingCartCheckout() {
 
     const [deliveryInfo, setDeliveryInfo] = useState(initialDeliveryInfo);
 
+    // --- Toss Payments 결제 위젯 참조 ---
+    const paymentWidgetRef = useRef(null);
+    const paymentMethodsWidgetRef = useRef(null);
+    const customerKey = useMemo(() => user?.uid || `guest_${Math.random().toString(36).slice(2)}`, [user]);
+
     const handlePostcodeComplete = (data) => {
         let fullAddress = data.address;
         let extraAddress = '';
@@ -87,6 +93,41 @@ export default function ShoppingCartCheckout() {
     const tax = Math.floor(totalPrice * 0.1);
     const finalPrice = totalPrice + tax;
 
+    // --- 토스페이먼츠 위젯 마운트 ---
+    useEffect(() => {
+        if (items.length === 0 || finalPrice <= 0) return;
+
+        (async () => {
+            try {
+                // 테스트 클라이언트 키 (토스 문서 공식 샘플)
+                const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
+                const paymentWidget = await loadPaymentWidget(clientKey, customerKey);
+                paymentWidgetRef.current = paymentWidget;
+
+                const paymentMethodsWidget = paymentWidget.renderPaymentMethods(
+                    "#payment-widget", 
+                    { value: finalPrice },
+                    { variantKey: "DEFAULT" }
+                );
+                paymentMethodsWidgetRef.current = paymentMethodsWidget;
+
+                paymentWidget.renderAgreement(
+                    '#agreement', 
+                    { variantKey: 'AGREEMENT' }
+                );
+            } catch (error) {
+                console.error('결제 위젯 로딩 실패:', error);
+            }
+        })();
+    }, [customerKey]); // 위젯 최초 로드시에만 동작
+
+    // 가격 변경 시 위젯 금액 업데이트
+    useEffect(() => {
+        if (paymentMethodsWidgetRef.current && finalPrice > 0) {
+            paymentMethodsWidgetRef.current.updateAmount(finalPrice);
+        }
+    }, [finalPrice]);
+
     const handleCheckout = async () => {
         if (items.length === 0) return;
         if (!agreed) {
@@ -110,14 +151,28 @@ export default function ShoppingCartCheckout() {
             deliveryDate: deliveryInfo.deliveryDate
         };
 
-        await addOrder(items, finalPrice, user?.uid || 'guest', checkoutUser, isBusiness);
-        clearCart();
-        if (user) {
-            alert('결제가 완료되었습니다. 주문 확인 페이지로 이동합니다.');
-            navigate('/mypage');
-        } else {
-            alert('결제가 완료되었습니다. 비회원 주문 조회 페이지로 이동합니다.');
-            navigate('/order-lookup');
+        // 승인 후 성공 처리 페이지(Success)로 데이터를 넘기기 위해 세션에 저장
+        sessionStorage.setItem('pendingOrderDeliveryInfo', JSON.stringify(checkoutUser));
+        sessionStorage.setItem('pendingOrderIsBusiness', isBusiness.toString());
+
+        const generatedOrderId = `order_${new Date().getTime()}_${Math.random().toString(36).slice(2, 8)}`;
+        const orderName = items.length > 1 
+            ? `${items[0].product.title} 외 ${items.length - 1}건` 
+            : items[0].product.title;
+
+        try {
+            await paymentWidgetRef.current?.requestPayment({
+                orderId: generatedOrderId,
+                orderName: orderName,
+                successUrl: `${window.location.origin}/payment/success`,
+                failUrl: `${window.location.origin}/payment/fail`,
+                customerEmail: checkoutUser.email,
+                customerName: checkoutUser.name,
+                customerMobilePhone: checkoutUser.phone.replace(/[^0-9]/g, '')
+            });
+        } catch (error) {
+            console.error('결제 요청 중단/에러:', error);
+            // 에러 시 콜백으로 안 갈 수도 있음(유저가 결제창을 닫은 경우 등)
         }
     };
 
@@ -445,35 +500,15 @@ export default function ShoppingCartCheckout() {
                     </div>
 
                     <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-                        <h3 className="text-lg font-bold mb-4">결제 수단 선택</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <label className="relative flex flex-col p-4 border-2 border-primary rounded-xl bg-primary/5 cursor-pointer transition-all">
-                                <input defaultChecked className="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4" name="payment" type="radio" />
-                                <span className="material-symbols-outlined text-2xl mb-2 text-primary">credit_card</span>
-                                <span className="font-bold text-sm">신용카드</span>
-                                <span className="text-xs text-slate-500">일시불/할부 결제</span>
-                            </label>
-                            <label className="relative flex flex-col p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary/50 cursor-pointer transition-all">
-                                <input className="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4" name="payment" type="radio" />
-                                <div className="w-6 h-6 mb-2 rounded bg-[#FEE500] flex items-center justify-center overflow-hidden">
-                                    <span className="material-symbols-outlined text-lg text-slate-900">chat_bubble</span>
-                                </div>
-                                <span className="font-bold text-sm">카카오페이</span>
-                                <span className="text-xs text-slate-500">간편하고 빠른 결제</span>
-                            </label>
-                            <label className="relative flex flex-col p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary/50 cursor-pointer transition-all">
-                                <input className="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4" name="payment" type="radio" />
-                                <span className="material-symbols-outlined text-2xl mb-2 text-slate-400">account_balance</span>
-                                <span className="font-bold text-sm">실시간 계좌이체</span>
-                                <span className="text-xs text-slate-500">에스크로 안전결제 지원</span>
-                            </label>
-                        </div>
+                        <h3 className="text-lg font-bold border-b border-slate-100 pb-2">결제 수단</h3>
+                        <div id="payment-widget" className="w-full min-h-[300px]" />
                     </div>
 
                     {/* Terms Agreement Section */}
                     <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-                        <h3 className="text-lg font-bold mb-4">약관 동의</h3>
-                        <div className="space-y-4">
+                        <h3 className="text-lg font-bold">약관 동의</h3>
+                        <div id="agreement" className="w-full my-2" />
+                        <div className="space-y-4 pt-4 border-t border-slate-100">
                             <label className="flex items-start gap-3 cursor-pointer group">
                                 <input
                                     type="checkbox"

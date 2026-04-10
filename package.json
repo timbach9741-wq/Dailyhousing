@@ -13,6 +13,7 @@
     "deploy:all": "npm run build && firebase deploy"
   },
   "dependencies": {
+    "@tosspayments/payment-widget-sdk": "^0.12.1",
     "exceljs": "^4.4.0",
     "firebase": "^12.10.0",
     "lucide-react": "^0.577.0",

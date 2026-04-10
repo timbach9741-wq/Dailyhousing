@@ -26,6 +26,8 @@ const AdminDashboard = lazy(() => import('./pages/AdminDashboard'))
 const CaseStudies = lazy(() => import('./pages/CaseStudies'))
 const ShoppingGuide = lazy(() => import('./pages/ShoppingGuide'))
 const GuestOrderLookup = lazy(() => import('./pages/GuestOrderLookup'))
+const PaymentSuccess = lazy(() => import('./pages/PaymentSuccess'))
+const PaymentFail = lazy(() => import('./pages/PaymentFail'))
 const TermsOfService = lazy(() => import('./pages/TermsOfService'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
 const QualityAssurance = lazy(() => import('./pages/QualityAssurance'))
@@ -131,6 +133,8 @@ function App() {
               }
             />
             <Route path="/order-lookup" element={<GuestOrderLookup />} />
+            <Route path="/payment/success" element={<PaymentSuccess />} />
+            <Route path="/payment/fail" element={<PaymentFail />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/quality-assurance" element={<QualityAssurance />} />
