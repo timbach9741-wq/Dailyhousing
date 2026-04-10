@@ -421,7 +421,7 @@ export default function ExternalOrderFormModal({ isOpen, onClose, onSubmit, edit
                                 className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:ring-2 focus:ring-teal-500/50"
                                 value={form.quantity}
                                 onChange={e => handleQuantityChange(e.target.value)}
-                                placeholder="30"
+                                placeholder="0"
                             />
                         </div>
                         <div>
