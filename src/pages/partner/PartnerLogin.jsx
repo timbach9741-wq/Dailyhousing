@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '../../lib/firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { usePartnerLogStore } from '../../store/usePartnerLogStore';
 
 const PartnerLogin = () => {
   const [vendorId, setVendorId] = useState('');
@@ -12,6 +13,9 @@ const PartnerLogin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // 페이지 진입 시 브라우저 탭 타이틀 변경
+    document.title = "신일상재 - 스마트 재고관리 로그인";
+
     // onAuthStateChanged를 활용해 이미 로그인된 파트너 계정인지 확인
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
         if (user && user.email?.endsWith('@partner.dailyhousing.com')) {
@@ -47,7 +51,16 @@ const PartnerLogin = () => {
             localStorage.setItem('partnerUser', userData.name);
             localStorage.setItem('partnerRole', userData.role);
             localStorage.setItem('partnerId', vendorId);
+            localStorage.setItem('partnerCanEdit', userData.role === 'admin' ? 'true' : String(!!userData.canEditInventory));
             
+            // 로그인 완료 활동 로그 추가
+            usePartnerLogStore.getState().addLog({
+                actionType: 'LOGIN',
+                userId: vendorId,
+                userName: userData.name,
+                details: '시스템에 로그인했습니다.'
+            });
+
             setIsLoading(false);
             navigate('/shinilsangjae/dashboard');
         } else {
@@ -61,6 +74,7 @@ const PartnerLogin = () => {
                 localStorage.setItem('partnerUser', vendorId === 'admin1' ? '관리자 1' : '관리자 2');
                 localStorage.setItem('partnerRole', 'admin');
                 localStorage.setItem('partnerId', vendorId);
+                localStorage.setItem('partnerCanEdit', 'true');
                 
                 setIsLoading(false);
                 navigate('/shinilsangjae/dashboard');
@@ -88,6 +102,7 @@ const PartnerLogin = () => {
                     localStorage.setItem('partnerUser', vendorId === 'admin1' ? '관리자 1' : '관리자 2');
                     localStorage.setItem('partnerRole', 'admin');
                     localStorage.setItem('partnerId', vendorId);
+                    localStorage.setItem('partnerCanEdit', 'true');
                     
                     setIsLoading(false);
                     navigate('/shinilsangjae/dashboard');

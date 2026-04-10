@@ -37,6 +37,9 @@ const PartnerLayout = lazy(() => import('./layouts/PartnerLayout'))
 const PartnerLogin = lazy(() => import('./pages/partner/PartnerLogin'))
 const PartnerDashboard = lazy(() => import('./pages/partner/PartnerDashboard'))
 
+// --- 모바일 명함 ---
+const MobileBusinessCard = lazy(() => import('./pages/MobileBusinessCard'))
+
 // Loading component
 const PageLoader = () => (
   <div className="flex h-[60vh] w-full items-center justify-center">
@@ -50,6 +53,12 @@ function App() {
   
   // 파트너(벤더) 전용 라우트인지 확인
   const isPartnerRoute = location.pathname.startsWith('/shinilsangjae')
+  
+  // 모바일 명함 라우트인지 확인
+  const isCardRoute = location.pathname.startsWith('/card')
+
+  // 공통 UI(헤더,푸터 등)를 숨겨야 하는 경로
+  const isHideLayoutRoute = isPartnerRoute || isCardRoute;
 
   useEffect(() => {
     const check = async () => {
@@ -69,11 +78,11 @@ function App() {
         </div>
       )}
       
-      {/* 벤더 앱에서는 Dailyhousing 공통 컴포넌트들을 숨김 */}
-      {!isPartnerRoute && <ScrollToTop />}
-      {!isPartnerRoute && <ScrollToTopButton />}
-      {!isPartnerRoute && <KakaoChatButton />}
-      {!isPartnerRoute && <Header />}
+      {/* 벤더 앱이나 모바일 명함에서는 Dailyhousing 공통 컴포넌트들을 숨김 */}
+      {!isHideLayoutRoute && <ScrollToTop />}
+      {!isHideLayoutRoute && <ScrollToTopButton />}
+      {!isHideLayoutRoute && <KakaoChatButton />}
+      {!isHideLayoutRoute && <Header />}
       
       <Toast />
       <ErrorBoundary>
@@ -86,6 +95,9 @@ function App() {
               <Route path="dashboard" element={<PartnerDashboard />} />
             </Route>
 
+            {/* --- 데일리하우징 모바일 명함 라우트 --- */}
+            <Route path="/card" element={<MobileBusinessCard />} />
+            <Route path="/card/:userId" element={<MobileBusinessCard />} />
             {/* --- Dailyhousing 기본 라우트 --- */}
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -128,8 +140,8 @@ function App() {
         </Suspense>
       </ErrorBoundary>
       
-      {/* 벤더 앱에서는 Dailyhousing 푸터 숨김 */}
-      {!isPartnerRoute && <Footer />}
+      {/* 벤더 앱이나 명함 라우트에서는 Dailyhousing 푸터 숨김 */}
+      {!isHideLayoutRoute && <Footer />}
     </div>
   )
 }

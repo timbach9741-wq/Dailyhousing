@@ -18,6 +18,7 @@ const PartnerUserManageModal = ({ isOpen, onClose }) => {
     const [newId, setNewId] = useState('');
     const [newName, setNewName] = useState('');
     const [newPassword, setNewPassword] = useState('');
+    const [newCanEditInventory, setNewCanEditInventory] = useState(false);
     const [localError, setLocalError] = useState('');
     
     // 비밀번호 수정용 상태
@@ -37,7 +38,8 @@ const PartnerUserManageModal = ({ isOpen, onClose }) => {
         const success = await store.addUser({
             id: newId,
             name: newName,
-            password: newPassword
+            password: newPassword,
+            canEditInventory: newCanEditInventory
         });
 
         const currentError = usePartnerUserStore.getState().error;
@@ -47,8 +49,9 @@ const PartnerUserManageModal = ({ isOpen, onClose }) => {
             setNewId('');
             setNewName('');
             setNewPassword('');
+            setNewCanEditInventory(false);
             setLocalError('');
-            alert('참고: Firebase 환경에서는 직원의 시스템 상 아이디만 생성됩니다. Auth 연동 확장은 관리자에게 문의하세요.');
+            alert('직원 계정이 성공적으로 생성되었습니다. 이제 해당 계정으로 로그인할 수 있습니다.');
         }
     };
 
@@ -111,21 +114,34 @@ const PartnerUserManageModal = ({ isOpen, onClose }) => {
                                 추가하기
                             </button>
                         </form>
-                        {localError && <p className="text-red-500 text-xs mt-2 font-medium ml-1">{localError}</p>}
+                        <div className="mt-4 flex items-center gap-2 px-1">
+                            <label className="inline-flex items-center cursor-pointer">
+                                <input 
+                                    type="checkbox" 
+                                    className="sr-only peer" 
+                                    checked={newCanEditInventory}
+                                    onChange={(e) => setNewCanEditInventory(e.target.checked)}
+                                />
+                                <div className="relative w-9 h-5 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
+                            </label>
+                            <span className="text-sm font-medium text-gray-700">이 직원에게 <b>재고 수량 변경 및 상태 수정 권한</b>을 부여합니다. (기본값: 조회 전용)</span>
+                        </div>
+                        {localError && <p className="text-red-500 text-xs mt-3 font-medium ml-1">{localError}</p>}
                     </div>
 
                     {/* 계정 목록 테이블 */}
                     <div>
                         <h3 className="text-sm font-bold text-gray-700 mb-3 ml-1">등록된 계정 목록 ({users.length}개)</h3>
-                        <div className="border border-gray-200 rounded-xl overflow-hidden">
-                            <table className="w-full text-left text-sm">
+                        <div className="border border-gray-200 rounded-xl overflow-x-auto">
+                            <table className="w-full text-left text-sm min-w-[700px]">
                                 <thead className="bg-gray-50 border-b border-gray-200">
                                     <tr>
-                                        <th className="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap w-24">권한</th>
+                                        <th className="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap w-20">역할</th>
+                                        <th className="px-4 py-3 font-semibold text-gray-600 text-center whitespace-nowrap w-28">재고 수정 권한</th>
                                         <th className="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap">이름</th>
                                         <th className="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap">아이디</th>
                                         <th className="px-4 py-3 font-semibold text-gray-600 whitespace-nowrap">비밀번호 관리</th>
-                                        <th className="px-4 py-3 font-semibold text-gray-600 text-center whitespace-nowrap w-20">삭제</th>
+                                        <th className="px-4 py-3 font-semibold text-gray-600 text-center whitespace-nowrap w-16">삭제</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-100">
@@ -135,6 +151,23 @@ const PartnerUserManageModal = ({ isOpen, onClose }) => {
                                                 <span className={`inline-block px-2.5 py-1 rounded-md text-xs font-bold whitespace-nowrap ${user.role === 'admin' ? 'bg-purple-100 text-purple-700' : 'bg-gray-100 text-gray-600'}`}>
                                                     {user.role === 'admin' ? '최고관리자' : '직원'}
                                                 </span>
+                                            </td>
+                                            <td className="px-4 py-3 text-center whitespace-nowrap">
+                                                {user.role === 'admin' ? (
+                                                    <span className="text-xs text-gray-400 font-bold">허용 (기본)</span>
+                                                ) : (
+                                                    <div className="flex justify-center" title="권한을 변경하려면 토글하세요">
+                                                        <label className="inline-flex items-center cursor-pointer">
+                                                            <input 
+                                                                type="checkbox" 
+                                                                className="sr-only peer" 
+                                                                checked={user.canEditInventory || false} 
+                                                                onChange={(e) => store.updateUser(user.id, { canEditInventory: e.target.checked })}
+                                                            />
+                                                            <div className="relative w-8 h-4 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-blue-600"></div>
+                                                        </label>
+                                                    </div>
+                                                )}
                                             </td>
                                             <td className="px-4 py-3 font-medium text-gray-800 whitespace-nowrap">{user.name}</td>
                                             <td className="px-4 py-3 font-mono text-gray-500 whitespace-nowrap">{user.id}</td>

@@ -12,6 +12,7 @@ import { collection, getDocs, doc, setDoc, query, orderBy, deleteDoc, updateDoc,
 import { updateApprovalToSheets } from '../services/googleSheetsService';
 import DaumPostcode from 'react-daum-postcode';
 import PurchaseOrderForm from '../components/PurchaseOrderForm';
+import ExternalOrderSchedule from '../components/admin/ExternalOrderSchedule';
 import * as XLSX from 'xlsx';
 
 /* ── 날짜 헬퍼 ── */
@@ -939,6 +940,7 @@ const AdminDashboard = () => {
 
     const tabs = [
         { id: 'orders', label: '📦 주문 관리' },
+        { id: 'schedule', label: '📅 일정 관리' },
         { id: 'purchaseOrder', label: '📝 발주 관리' },
         { id: 'revenue', label: '📊 매출 통계' },
         { id: 'products', label: '🏷️ 제품 관리' },
@@ -1322,6 +1324,11 @@ const AdminDashboard = () => {
                         </div>
                     </div>
                 </div>
+            )}
+
+            {/* ===================== 일정 관리 탭 ===================== */}
+            {activeTab === 'schedule' && (
+                <ExternalOrderSchedule />
             )}
 
             {/* ===================== 발주 관리 탭 ===================== */}

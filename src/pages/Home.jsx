@@ -269,10 +269,18 @@ export default function Home() {
                                     <img
                                         src={product.imageUrl}
                                         alt={product.title}
-                                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                        className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 ${product.salesStatus === '일시 품절' || product.salesStatus === '단종' ? 'grayscale opacity-60' : ''}`}
                                         loading="lazy"
                                     />
-                                    <div className="absolute top-4 left-4 flex gap-1.5 text-[10px] md:text-[12px]">
+                                    
+                                    {/* 품절 오버레이 */}
+                                    {(product.salesStatus === '일시 품절' || product.salesStatus === '단종') && (
+                                        <div className="absolute inset-0 bg-black/20 flex items-center justify-center z-[5]">
+                                            <span className="text-white/80 text-lg sm:text-xl font-black tracking-widest">{product.salesStatus === '단종' ? 'DISCONTINUED' : 'SOLD OUT'}</span>
+                                        </div>
+                                    )}
+
+                                    <div className="absolute top-4 left-4 z-10 flex gap-1.5 text-[10px] md:text-[12px]">
                                         {product.tags?.slice(0, 2).map((tag, idx) => (
                                             <span key={idx} className="px-2 md:px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full font-semibold text-slate-700 shadow-sm border border-slate-200">{tag}</span>
                                         ))}

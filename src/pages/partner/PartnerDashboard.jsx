@@ -4,6 +4,8 @@ import { LXZIN_PRODUCTS } from '../../data/lxzin-products';
 import { useProductStore } from '../../store/useProductStore';
 import * as XLSX from 'xlsx-js-style';
 import PartnerUserManageModal from '../../components/partner/PartnerUserManageModal';
+import PartnerActivityLogModal from '../../components/partner/PartnerActivityLogModal';
+import { usePartnerLogStore } from '../../store/usePartnerLogStore';
 import { auth, db } from '../../lib/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
@@ -23,7 +25,6 @@ const PartnerDashboard = () => {
   const navigate = useNavigate();
   const updateProduct = useProductStore(state => state.updateProduct);
   const addInventoryLogs = useProductStore(state => state.addInventoryLogs);
-  const resetAllInventoryData = useProductStore(state => state.resetAllInventoryData);
   const inventoryLogs = useProductStore(state => state.inventoryLogs || []);
   const storeProducts = useProductStore(state => state.products);
   const initProducts = useProductStore(state => state.initProducts);
@@ -31,7 +32,9 @@ const PartnerDashboard = () => {
   
   const [userName, setUserName] = useState(() => localStorage.getItem('partnerUser') || '파트너님');
   const [partnerRole, setPartnerRole] = useState(() => localStorage.getItem('partnerRole') || 'staff');
+  const [partnerCanEdit, setPartnerCanEdit] = useState(() => localStorage.getItem('partnerCanEdit') === 'true');
   const [isManageModalOpen, setIsManageModalOpen] = useState(false);
+  const [isActivityLogModalOpen, setIsActivityLogModalOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [lastSaved, setLastSaved] = useState(() => new Date().toLocaleTimeString());
   const [searchTerm, setSearchTerm] = useState('');
@@ -140,6 +143,9 @@ const PartnerDashboard = () => {
   }, [inventoryLogs, statPeriod, startDate, endDate]);
 
   useEffect(() => {
+    // 페이지 진입 시 브라우저 탭 타이틀 변경
+    document.title = "신일상재 - 스마트 재고관리";
+
     // Firebase Auth 상태 구독으로 안전한 라우트 보호
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (!user || !user.email?.endsWith('@partner.dailyhousing.com')) {
@@ -159,18 +165,22 @@ const PartnerDashboard = () => {
              localStorage.setItem('partnerUser', data.name);
              localStorage.setItem('partnerRole', data.role);
              localStorage.setItem('partnerId', vendorId);
+             localStorage.setItem('partnerCanEdit', data.role === 'admin' ? 'true' : String(!!data.canEditInventory));
              
              setUserName(data.name);
              setPartnerRole(data.role);
+             setPartnerCanEdit(data.role === 'admin' ? true : !!data.canEditInventory);
           } else {
              // 혹시 DB에 없으면 기존 로컬스토리지 값 사용
              setUserName(localStorage.getItem('partnerUser') || '파트너님');
              setPartnerRole(localStorage.getItem('partnerRole') || 'staff');
+             setPartnerCanEdit(localStorage.getItem('partnerCanEdit') === 'true');
           }
         } catch (error) {
            console.error("Partner sync error: ", error);
            setUserName(localStorage.getItem('partnerUser') || '파트너님');
            setPartnerRole(localStorage.getItem('partnerRole') || 'staff');
+           setPartnerCanEdit(localStorage.getItem('partnerCanEdit') === 'true');
         }
 
         // 정상 로그인 확인 시 상품 초기화
@@ -232,15 +242,9 @@ const PartnerDashboard = () => {
     navigate('/shinilsangjae/login', { replace: true });
   };
 
-  const handleReset = () => {
-    if (window.confirm("정말 모든 재고와 입출고 통계를 0으로 초기화하시겠습니까?\n이 작업은 되돌릴 수 없습니다.")) {
-        resetAllInventoryData();
-        alert("모든 데이터가 초기화되었습니다. 페이지를 새로고침합니다.");
-        window.location.reload();
-    }
-  };
-
   const handleStockChange = (id, field, value) => {
+    if (!partnerCanEdit) return;
+
     // 문자열 필드 처리 (판매 상태, 입고예정일, 비고)
     if (['salesStatus', 'expectedDate', 'remarks'].includes(field)) {
       setInventoryList(prev => prev.map(item => 
@@ -295,7 +299,7 @@ const PartnerDashboard = () => {
   };
 
   const handleSave = async () => {
-    if (isSaving) return;
+    if (isSaving || !partnerCanEdit) return;
     setIsSaving(true);
     
     try {
@@ -359,6 +363,20 @@ const PartnerDashboard = () => {
       // 3. 로그 일괄 추가
       if (newLogs.length > 0) {
         await addInventoryLogs(newLogs);
+        // 활동 로그 기록 추가
+        usePartnerLogStore.getState().addLog({
+            actionType: 'UPDATE_INVENTORY',
+            userId: userId,
+            userName: userName,
+            details: `${newLogs.length}품목의 입출고 수량이 기록되었습니다.`
+        });
+      } else if (updatePromises.length > 0) {
+        usePartnerLogStore.getState().addLog({
+            actionType: 'UPDATE_INVENTORY',
+            userId: userId,
+            userName: userName,
+            details: `${updatePromises.length}품목의 상태(판매상태, 비고 등)가 수정되었습니다.`
+        });
       }
 
       setLastSaved(new Date().toLocaleTimeString());
@@ -593,12 +611,11 @@ const PartnerDashboard = () => {
                 직원 계정 관리
               </button>
               <button 
-                onClick={handleReset}
-                className="flex-auto min-w-[140px] md:flex-none flex items-center justify-center gap-1.5 bg-red-50 text-red-700 font-bold px-4 py-2.5 rounded-lg border border-red-200 hover:bg-red-100 transition-colors whitespace-nowrap"
-                title="모든 재고 및 통계 0으로 초기화"
+                onClick={() => setIsActivityLogModalOpen(true)}
+                className="flex-auto min-w-[140px] md:flex-none flex items-center justify-center gap-1.5 bg-blue-50 text-blue-700 font-bold px-4 py-2.5 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors whitespace-nowrap"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                데이터 초기화
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                활동 로그
               </button>
             </>
           )}
@@ -721,8 +738,8 @@ const PartnerDashboard = () => {
             Object.entries(groupedProducts).map(([category, items], catIndex) => {
               const theme = CATEGORY_COLORS[catIndex % CATEGORY_COLORS.length];
               return (
-              <div key={category} id={`m-category-${category}`} style={{ scrollMarginTop: '180px' }} className="mb-6">
-                <div className={`p-3 ${theme.headerBg} border-l-4 ${theme.border} font-extrabold ${theme.text} rounded-lg shadow-sm mb-3 sticky top-[120px] z-10 flex items-center justify-between`}>
+              <div key={category} id={`m-category-${category}`} style={{ scrollMarginTop: '220px' }} className="mb-6">
+                <div className={`p-3 ${theme.headerBg} border-l-4 ${theme.border} font-extrabold ${theme.text} rounded-lg shadow-sm mb-3 flex items-center justify-between`}>
                   <span>📁 {category}</span>
                   <span className={`bg-white/90 shadow-sm ${theme.text} text-xs px-2.5 py-1 rounded-full font-bold`}>{items.length}개</span>
                 </div>
@@ -746,11 +763,11 @@ const PartnerDashboard = () => {
                           </div>
                           <div className="flex flex-col items-center justify-center border-r border-gray-200 px-1">
                             <span className="text-[11px] font-bold text-blue-600 mb-1">입고(+)</span>
-                            <input type="text" inputMode="numeric" value={item.incoming} onChange={e => handleStockChange(item.id, 'incoming', e.target.value)} placeholder="0" className="w-full text-center p-1 text-sm font-bold border border-blue-200 rounded text-blue-700 bg-white focus:ring-1 focus:ring-blue-500 focus:outline-none" />
+                            <input disabled={!partnerCanEdit} type="text" inputMode="numeric" value={item.incoming} onChange={e => handleStockChange(item.id, 'incoming', e.target.value)} placeholder="0" className="w-full text-center p-1 text-sm font-bold border border-blue-200 rounded text-blue-700 bg-white focus:ring-1 focus:ring-blue-500 focus:outline-none disabled:bg-gray-100 disabled:cursor-not-allowed" />
                           </div>
                           <div className="flex flex-col items-center justify-center border-r border-gray-200 px-1">
                             <span className="text-[11px] font-bold text-red-600 mb-1">출고(-)</span>
-                            <input type="text" inputMode="numeric" value={item.outgoing} onChange={e => handleStockChange(item.id, 'outgoing', e.target.value)} placeholder="0" className="w-full text-center p-1 text-sm font-bold border border-red-200 rounded text-red-700 bg-white focus:ring-1 focus:ring-red-500 focus:outline-none" />
+                            <input disabled={!partnerCanEdit} type="text" inputMode="numeric" value={item.outgoing} onChange={e => handleStockChange(item.id, 'outgoing', e.target.value)} placeholder="0" className="w-full text-center p-1 text-sm font-bold border border-red-200 rounded text-red-700 bg-white focus:ring-1 focus:ring-red-500 focus:outline-none disabled:bg-gray-100 disabled:cursor-not-allowed" />
                           </div>
                           <div className="flex flex-col items-center justify-center relative">
                             <span className="text-[11px] font-bold text-green-600 mb-1">현재고(=)</span>
@@ -896,22 +913,24 @@ const PartnerDashboard = () => {
                         </td>
                         <td className="px-1 py-1 text-center border-r border-gray-100 bg-blue-50/20">
                           <input 
+                            disabled={!partnerCanEdit}
                             type="text"
                             inputMode="numeric"
                             value={item.incoming}
                             onChange={(e) => handleStockChange(item.id, 'incoming', e.target.value)}
                             placeholder="입고량"
-                            className="w-full text-center px-1 py-1 border border-transparent rounded bg-transparent focus:bg-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 font-semibold text-blue-600 placeholder-gray-300 transition-all hover:border-gray-200 group-hover:bg-white text-xs"
+                            className="w-full text-center px-1 py-1 border border-transparent rounded bg-transparent focus:bg-white focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 font-semibold text-blue-600 placeholder-gray-300 transition-all hover:border-gray-200 group-hover:bg-white text-xs disabled:opacity-50 disabled:cursor-not-allowed"
                           />
                         </td>
                         <td className="px-1 py-1 text-center border-r border-gray-100 bg-red-50/20">
                           <input 
+                            disabled={!partnerCanEdit}
                             type="text"
                             inputMode="numeric"
                             value={item.outgoing}
                             onChange={(e) => handleStockChange(item.id, 'outgoing', e.target.value)}
                             placeholder="출고량"
-                            className="w-full text-center px-1 py-1 border border-transparent rounded bg-transparent focus:bg-white focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 font-semibold text-red-600 placeholder-gray-300 transition-all hover:border-gray-200 group-hover:bg-white text-xs"
+                            className="w-full text-center px-1 py-1 border border-transparent rounded bg-transparent focus:bg-white focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 font-semibold text-red-600 placeholder-gray-300 transition-all hover:border-gray-200 group-hover:bg-white text-xs disabled:opacity-50 disabled:cursor-not-allowed"
                           />
                         </td>
                         <td className="px-2 py-2 text-center bg-green-50/40 border-r border-green-100">
@@ -921,9 +940,10 @@ const PartnerDashboard = () => {
                         </td>
                         <td className="px-1 py-1 text-center border-r border-gray-100">
                           <select 
+                            disabled={!partnerCanEdit}
                             value={item.salesStatus}
                             onChange={(e) => handleStockChange(item.id, 'salesStatus', e.target.value)}
-                            className={`w-full text-center px-1 py-1 border border-transparent rounded bg-transparent focus:bg-white focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 text-xs font-bold transition-all hover:border-gray-200 group-hover:bg-white appearance-none cursor-pointer ${item.salesStatus === '일시 품절' ? 'text-red-500' : item.salesStatus === '단종' ? 'text-gray-400 line-through' : 'text-blue-600'}`}
+                            className={`w-full text-center px-1 py-1 border border-transparent rounded bg-transparent focus:bg-white focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 text-xs font-bold transition-all hover:border-gray-200 group-hover:bg-white appearance-none disabled:opacity-75 disabled:cursor-not-allowed ${item.salesStatus === '일시 품절' ? 'text-red-500' : item.salesStatus === '단종' ? 'text-gray-400 line-through' : 'text-blue-600'}`}
                             style={{ backgroundImage: 'none', WebkitAppearance: 'none', MozAppearance: 'none' }}
                           >
                             <option value="판매중">판매중</option>
@@ -933,10 +953,11 @@ const PartnerDashboard = () => {
                         </td>
                         <td className="px-1 py-1 text-center border-r border-gray-100">
                           <input 
+                            disabled={!partnerCanEdit}
                             type="date"
                             value={item.expectedDate}
                             onChange={(e) => handleStockChange(item.id, 'expectedDate', e.target.value)}
-                            className="w-full text-center px-1 py-1 border border-transparent rounded bg-transparent focus:bg-white focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 text-xs text-gray-600 transition-all hover:border-gray-200 group-hover:bg-white"
+                            className="w-full text-center px-1 py-1 border border-transparent rounded bg-transparent focus:bg-white focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 text-xs text-gray-600 transition-all hover:border-gray-200 group-hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
                           />
                         </td>
                         {(statPeriod === 'weekly' || statPeriod === 'all') && (
@@ -965,11 +986,12 @@ const PartnerDashboard = () => {
                         )}
                         <td className="px-1 py-1 text-center border-r border-gray-100">
                           <input 
+                            disabled={!partnerCanEdit}
                             type="text"
                             value={item.remarks}
                             onChange={(e) => handleStockChange(item.id, 'remarks', e.target.value)}
                             placeholder="비고 입력"
-                            className="w-full text-left px-2 py-1 border border-transparent rounded bg-transparent focus:bg-white focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 text-xs text-gray-600 transition-all hover:border-gray-200 group-hover:bg-white"
+                            className="w-full text-left px-2 py-1 border border-transparent rounded bg-transparent focus:bg-white focus:border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 text-xs text-gray-600 transition-all hover:border-gray-200 group-hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
                           />
                         </td>
                       </tr>
@@ -989,14 +1011,22 @@ const PartnerDashboard = () => {
           </div>
           <button 
             onClick={handleSave}
-            disabled={isSaving}
-            className={`w-full sm:w-auto min-w-[200px] flex items-center justify-center gap-2 font-bold py-3.5 px-6 rounded-xl shadow-md hover:shadow-lg transition-all ${
-              isSaving 
-                ? 'bg-blue-400 text-white cursor-not-allowed' 
-                : 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 hover:-translate-y-0.5'
+            disabled={isSaving || !partnerCanEdit}
+            title={!partnerCanEdit ? "조회 전용 계정입니다. 수정을 원하시면 권한을 요청해주세요." : ""}
+            className={`w-full sm:w-auto min-w-[200px] flex items-center justify-center gap-2 font-bold py-3.5 px-6 rounded-xl shadow-md transition-all ${
+              !partnerCanEdit 
+                ? 'bg-gray-300 text-gray-500 cursor-not-allowed shadow-none'
+                : isSaving 
+                  ? 'bg-blue-400 text-white cursor-not-allowed' 
+                  : 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 hover:-translate-y-0.5 hover:shadow-lg'
             }`}
           >
-            {isSaving ? (
+            {!partnerCanEdit ? (
+                <>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  조회 전용 계정 (수정 불가)
+                </>
+            ) : isSaving ? (
               <>
                 <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                 저장 중...
@@ -1037,6 +1067,13 @@ const PartnerDashboard = () => {
         <PartnerUserManageModal 
           isOpen={isManageModalOpen} 
           onClose={() => setIsManageModalOpen(false)} 
+        />
+      )}
+
+      {isActivityLogModalOpen && (
+        <PartnerActivityLogModal 
+          isOpen={isActivityLogModalOpen} 
+          onClose={() => setIsActivityLogModalOpen(false)} 
         />
       )}
     </div>

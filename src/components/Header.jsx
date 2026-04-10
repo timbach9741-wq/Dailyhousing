@@ -201,7 +201,7 @@ function Header() {
                                             어드민
                                         </Link>
                                     )}
-                                    <Link to="/mypage" className="text-[16px] font-bold text-slate-600 hover:text-[#d4a853] transition-colors">{user?.name}님</Link>
+                                    <Link to="/mypage" className="text-[14px] font-bold text-slate-600 hover:text-[#d4a853] transition-colors">{user?.name}님</Link>
                                     <button
                                         onClick={async () => {
                                             await logout();

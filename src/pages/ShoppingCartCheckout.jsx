@@ -6,11 +6,11 @@ import { useAuthStore } from '../store/useAuthStore';
 import { formatOrderUnit } from '../services/adminService';
 import DaumPostcode from 'react-daum-postcode';
 
-// ?�디???�품 박스 배송 ?�보
+// 에디톤 제품 박스 배송 정보
 const EDITON_BOX_INFO = {
-    '?�디???�톤': { pcsPerBox: 4, label: '4??/ 1박스' },
-    '?�디???�퀘어': { pcsPerBox: 4, label: '4??/ 1박스' },
-    '?�디???�드': { pcsPerBox: 7, label: '7??/ 1박스' },
+    '에디톤 스톤': { pcsPerBox: 4, label: '4장 / 1박스' },
+    '에디톤 스퀘어': { pcsPerBox: 4, label: '4장 / 1박스' },
+    '에디톤 우드': { pcsPerBox: 7, label: '7장 / 1박스' },
 };
 
 function getEditonBoxInfo(item) {
@@ -21,8 +21,6 @@ function getEditonBoxInfo(item) {
     return { ...info, boxes, sub };
 }
 
-
-
 export default function ShoppingCartCheckout() {
     const { items, removeFromCart, updateQuantity, clearCart } = useCartStore();
     const { addOrder } = useOrderStore();
@@ -32,7 +30,7 @@ export default function ShoppingCartCheckout() {
     const [agreed, setAgreed] = useState(false);
     const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
 
-    // 최소 배송??기본 3?�후 (?�바구니 ??�� �??�고 부족이�??�고 ?�정???�는 경우, 가????? ?�짜 ?�용)
+    // 최소 배송일 기본 3일 후 (장바구니 상품 중 재고 부족이거나 입고 예정일이 있는 경우, 가장 늦은 날짜 적용)
     const minDeliveryDate = useMemo(() => {
         const d = new Date();
         d.setDate(d.getDate() + 3);
@@ -41,7 +39,7 @@ export default function ShoppingCartCheckout() {
         items.forEach(item => {
             const prod = item.product;
             if (prod && prod.inventory != null && prod.restockDate) {
-                // ?�량???�재 ?�고보다 많�? 경우 (?�절 ?�는 ?�량 부�? ?�고?�정??체크
+                // 주문 수량이 현재 재고보다 많은 경우 (품절 또는 수량 부족) 입고예정일 체크
                 if (item.qty > prod.inventory) {
                     if (prod.restockDate > minDateStr) {
                         minDateStr = prod.restockDate;
@@ -56,7 +54,7 @@ export default function ShoppingCartCheckout() {
     const initialDeliveryInfo = useMemo(() => ({
         name: user?.displayName || user?.name || '',
         phone: user?.phoneNumber || user?.phone || '',
-        address: '', // ?�장?� 매번 ?��? ???�으므�?주소???�동?�로 불러?��? ?�음
+        address: '', // 현장은 매번 다를 수 있으므로 주소는 자동으로 불러오지 않음
         addressDetail: '',
         deliveryDate: minDeliveryDate,
         unloadCondition: '',
@@ -92,12 +90,12 @@ export default function ShoppingCartCheckout() {
     const handleCheckout = async () => {
         if (items.length === 0) return;
         if (!agreed) {
-            alert('주문 ?�역 ?�인 �??�의???�의?�주?�요.');
+            alert('주문 내역 확인 및 약관에 동의해주세요.');
             return;
         }
 
         if (!deliveryInfo.name || !deliveryInfo.phone || !deliveryInfo.address) {
-            alert('배송 ?�보�?모두 ?�력?�주?�요.');
+            alert('배송 정보를 모두 입력해주세요.');
             return;
         }
 
@@ -115,24 +113,25 @@ export default function ShoppingCartCheckout() {
         await addOrder(items, finalPrice, user?.uid || 'guest', checkoutUser, isBusiness);
         clearCart();
         if (user) {
-            alert('결제가 ?�료?�었?�니?? 주문 ?�인 ?�이지�??�동?�니??');
+            alert('결제가 완료되었습니다. 주문 확인 페이지로 이동합니다.');
             navigate('/mypage');
         } else {
-            alert('결제가 ?�료?�었?�니?? 비회??주문 조회 ?�이지�??�동?�니??');
+            alert('결제가 완료되었습니다. 비회원 주문 조회 페이지로 이동합니다.');
             navigate('/order-lookup');
         }
     };
 
     return (
         <main className="flex-1 px-3 sm:px-4 md:px-20 py-6 sm:py-8 max-w-[1280px] mx-auto w-full mb-12 sm:mb-20">
-            {/* ?�편번호 검??모달 */}
+            {/* 우편번호 검색 모달 */}
             {isPostcodeOpen && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm" onClick={() => setIsPostcodeOpen(false)}>
                     <div className="bg-white w-full max-w-lg rounded-2xl overflow-hidden shadow-2xl relative" onClick={e => e.stopPropagation()}>
                         <div className="flex items-center justify-between p-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
                             <h3 className="font-bold text-lg flex items-center gap-2">
                                 <span className="material-symbols-outlined text-primary">location_on</span>
-                                주소 검??                            </h3>
+                                주소 검색
+                            </h3>
                             <button type="button" onClick={() => setIsPostcodeOpen(false)} className="material-symbols-outlined text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors">close</button>
                         </div>
                         <DaumPostcode onComplete={handlePostcodeComplete} style={{ height: '450px' }} />
@@ -143,28 +142,28 @@ export default function ShoppingCartCheckout() {
             <nav className="flex items-center gap-2 mb-4 sm:mb-6 text-sm">
                 <Link className="text-slate-500 hover:text-primary" to="/">홈</Link>
                 <span className="material-symbols-outlined text-sm text-slate-400">chevron_right</span>
-                <span className="text-slate-900 dark:text-slate-100 font-medium">?�바구니</span>
+                <span className="text-slate-900 dark:text-slate-100 font-medium">장바구니</span>
             </nav>
-            <h1 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-8 tracking-tight">?�바구니 �??�전 결제</h1>
+            <h1 className="text-2xl sm:text-3xl font-black mb-6 sm:mb-8 tracking-tight">장바구니 및 안전 결제</h1>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8">
                 <div className="lg:col-span-2 space-y-6">
-                    {/* ?�스?�탑: ?�이�??�이?�웃 */}
+                    {/* 데스크탑: 테이블 레이아웃 */}
                     <div className="hidden md:block overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
                         <table className="w-full text-left border-collapse">
                             <thead>
                                 <tr className="bg-slate-50 dark:bg-slate-800/50">
-                                    <th className="px-4 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">?�품?�보</th>
-                                    <th className="px-3 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">?�션</th>
-                                    <th className="px-3 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-center">?�량</th>
+                                    <th className="px-4 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">상품정보</th>
+                                    <th className="px-3 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">옵션</th>
+                                    <th className="px-3 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-center">수량</th>
                                     <th className="px-3 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-right">금액</th>
-                                    <th className="px-3 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-center whitespace-nowrap">??��</th>
+                                    <th className="px-3 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 text-center whitespace-nowrap">삭제</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
                                 {items.length === 0 ? (
                                     <tr>
                                         <td colSpan="5" className="px-6 py-12 text-center text-slate-500 font-medium">
-                                            ?�바구니???�긴 ?�품???�습?�다.
+                                            장바구니에 담긴 상품이 없습니다.
                                         </td>
                                     </tr>
                                 ) : (
@@ -178,7 +177,7 @@ export default function ShoppingCartCheckout() {
                                                         <p className="text-xs text-slate-500">{item.product.model_id || `SKU: ${item.product.id}`}</p>
                                                         {(() => {
                                                             const sub = item.product?.subCategory || item.product?.category || '';
-                                                            const isTileOrBox = sub.toLowerCase().includes('타일') || sub.toLowerCase().includes('lvt') || sub.toLowerCase().includes('에디톤') || sub.toLowerCase().includes('pst') || sub.toLowerCase().includes('에코');
+                                                            const isTileOrBox = sub.toLowerCase().includes('타일') || sub.toLowerCase().includes('lvt') || sub.toLowerCase().includes('에디톤') || sub.toLowerCase().includes('pst') || sub.toLowerCase().includes('에코노');
                                                             const isPrestige = sub.includes('프레스티지');
                                                             
                                                             let packagingText = item.product.specifications?.packaging || '';
@@ -188,16 +187,16 @@ export default function ShoppingCartCheckout() {
                                                                 packagingText = boxInfo.label;
                                                             } else {
                                                                 if (!packagingText) return null;
-                                                                if ((packagingText.includes('평') || packagingText.includes('㎡')) && packagingText.includes('박스') && !packagingText.includes('/')) {
+                                                                if (packagingText.includes('장') && packagingText.includes('박스') && !packagingText.includes('/')) {
                                                                     packagingText = packagingText.replace(' ', ' / ');
                                                                 }
-                                                                if (!isTileOrBox && !isPrestige && !packagingText.includes('롤')) {
-                                                                    packagingText = `${packagingText} / 1롤`;
+                                                                if (!isTileOrBox && !isPrestige && !packagingText.includes('장')) {
+                                                                    packagingText = `${packagingText} / 1장`;
                                                                 }
                                                             }
 
                                                             const prefix = isTileOrBox ? '박스배송' : '롤배송';
-                                                            const iconEmoji = isTileOrBox ? '📦' : '🧻';
+                                                            const iconEmoji = isTileOrBox ? '📦' : '📏';
                                                             const iconName = isTileOrBox ? 'inventory_2' : 'straighten';
 
                                                             return (
@@ -238,9 +237,11 @@ export default function ShoppingCartCheckout() {
                                                 {isBusiness && item.product.businessPrice ? (
                                                     <div className="flex flex-col items-end">
                                                         <span className="text-[11px] text-slate-400 line-through">
-                                                            {(item.product.price * item.qty).toLocaleString()}원</span>
+                                                            {(item.product.price * item.qty).toLocaleString()}원
+                                                        </span>
                                                         <span className="text-[#c8221f]">
-                                                            {(item.product.businessPrice * item.qty).toLocaleString()}원</span>
+                                                            {(item.product.businessPrice * item.qty).toLocaleString()}원
+                                                        </span>
                                                     </div>
                                                 ) : (
                                                     <span>{(item.product.price * item.qty).toLocaleString()}원</span>
@@ -258,11 +259,11 @@ export default function ShoppingCartCheckout() {
                         </table>
                     </div>
 
-                    {/* 모바??카드 ?�이?�웃 */}
+                    {/* 모바일 카드 레이아웃 */}
                     <div className="block md:hidden space-y-3">
                         {items.length === 0 ? (
                             <div className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-12 text-center text-slate-500 font-medium shadow-sm">
-                                ?�바구니???�긴 ?�품???�습?�다.
+                                장바구니에 담긴 상품이 없습니다.
                             </div>
                         ) : (
                             items.map((item, index) => {
@@ -277,9 +278,9 @@ export default function ShoppingCartCheckout() {
                                 return (
                                     <div key={`mobile-${item.product.id}-${index}`} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm">
                                         <div className="flex gap-3">
-                                            {/* ?�품 ?��?지 */}
+                                            {/* 상품 이미지 */}
                                             <div className="w-20 h-20 rounded-lg bg-cover bg-center border border-slate-100 dark:border-slate-800 shrink-0" style={{ backgroundImage: `url('${item.product.imageUrl}')` }}></div>
-                                            {/* ?�품 ?�보 */}
+                                            {/* 상품 정보 */}
                                             <div className="flex-1 min-w-0">
                                                 <div className="flex items-start justify-between gap-2">
                                                     <div className="min-w-0">
@@ -290,28 +291,28 @@ export default function ShoppingCartCheckout() {
                                                         <span className="material-symbols-outlined text-[18px]">close</span>
                                                     </button>
                                                 </div>
-                                                {item.option !== '기본 ?�션' && (
-                                                    <p className="text-[11px] text-slate-500 mt-0.5">?�션: {item.option}</p>
+                                                {item.option !== '기본 옵션' && (
+                                                    <p className="text-[11px] text-slate-500 mt-0.5">옵션: {item.option}</p>
                                                 )}
-                                                {/* 배송 ?�보 뱃�? */}
+                                                {/* 배송 정보 뱃지 */}
                                                 {(() => {
                                                     const sub = item.product?.subCategory || item.product?.category || '';
-                                                    const isTileOrBox = sub.toLowerCase().includes('타일') || sub.toLowerCase().includes('lvt') || sub.toLowerCase().includes('에디톤') || sub.toLowerCase().includes('pst') || sub.toLowerCase().includes('에코');
+                                                    const isTileOrBox = sub.toLowerCase().includes('타일') || sub.toLowerCase().includes('lvt') || sub.toLowerCase().includes('에디톤') || sub.toLowerCase().includes('pst') || sub.toLowerCase().includes('에코노');
                                                     const isPrestige = sub.includes('프레스티지');
                                                     let packagingText = item.product.specifications?.packaging || '';
                                                     const boxInfo = getEditonBoxInfo(item);
                                                     if (boxInfo) {
-                                                    packagingText = boxInfo.label;
+                                                        packagingText = boxInfo.label;
                                                     } else {
-                                                    if (!packagingText) return null;
-                                                    if ((packagingText.includes('평') || packagingText.includes('㎡')) && packagingText.includes('박스') && !packagingText.includes('/')) {
-                                                    packagingText = packagingText.replace(' ', ' / ');
+                                                        if (!packagingText) return null;
+                                                        if (packagingText.includes('장') && packagingText.includes('박스') && !packagingText.includes('/')) {
+                                                            packagingText = packagingText.replace(' ', ' / ');
+                                                        }
+                                                        if (!isTileOrBox && !isPrestige && !packagingText.includes('장')) {
+                                                            packagingText = `${packagingText} / 1장`;
+                                                        }
                                                     }
-                                                    if (!isTileOrBox && !isPrestige && !packagingText.includes('롤')) {
-                                                    packagingText = `${packagingText} / 1롤`;
-                                                    }
-                                                    }
-                                                    const prefix = isTileOrBox ? '📦' : '🧻';
+                                                    const prefix = isTileOrBox ? '📦' : '📏';
                                                     return (
                                                         <span className="mt-1 inline-flex items-center gap-1 text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200 rounded px-1.5 py-0.5">
                                                             {prefix} {packagingText}
@@ -320,7 +321,7 @@ export default function ShoppingCartCheckout() {
                                                 })()}
                                             </div>
                                         </div>
-                                        {/* ?�량 & 금액 */}
+                                        {/* 수량 & 금액 */}
                                         <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-100 dark:border-slate-800">
                                             <div className="flex items-center gap-2">
                                                 <button onClick={() => updateQuantity(item.product.id, item.option, Math.max(minQty, item.qty - step))} className="w-8 h-8 rounded-lg border border-slate-200 dark:border-slate-700 flex items-center justify-center hover:bg-slate-50 active:scale-95">
@@ -349,17 +350,17 @@ export default function ShoppingCartCheckout() {
                     </div>
 
                     <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-                        <h3 className="text-lg font-bold mb-4">배송 ?�보 ?�력</h3>
+                        <h3 className="text-lg font-bold mb-4">배송 정보 입력</h3>
                         <div className="space-y-4">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">?�름</label>
+                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">이름</label>
                                     <input
                                         type="text"
                                         value={deliveryInfo.name}
                                         onChange={(e) => setDeliveryInfo({ ...deliveryInfo, name: e.target.value })}
                                         className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                        placeholder="?�름???�력?�주?�요"
+                                        placeholder="이름을 입력해주세요"
                                     />
                                 </div>
                                 <div>
@@ -382,7 +383,7 @@ export default function ShoppingCartCheckout() {
                                         readOnly
                                         onClick={() => setIsPostcodeOpen(true)}
                                         className="flex-1 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 outline-none cursor-pointer"
-                                        placeholder="주소 검?�을 ?�용?�주?�요"
+                                        placeholder="주소 검색을 이용해주세요"
                                     />
                                     <button
                                         type="button"
@@ -397,26 +398,26 @@ export default function ShoppingCartCheckout() {
                                     value={deliveryInfo.addressDetail}
                                     onChange={(e) => setDeliveryInfo({ ...deliveryInfo, addressDetail: e.target.value })}
                                     className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                    placeholder="?�세 주소�??�력?�주?�요 (?? ?�수 ?�력)"
+                                    placeholder="상세 주소를 입력해주세요 (동/호/층수 입력)"
                                 />
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="md:col-span-2">
-                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">?�장 관리인 ?�락�?<span className="text-slate-400 font-normal ml-1">(?�택)</span></label>
+                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">현장 관리인 연락처 <span className="text-slate-400 font-normal ml-1">(선택)</span></label>
                                     <input
                                         type="tel"
                                         value={deliveryInfo.siteManagerPhone}
                                         onChange={(e) => setDeliveryInfo({ ...deliveryInfo, siteManagerPhone: e.target.value })}
                                         className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all mb-4"
-                                        placeholder="010-0000-0000 (?�장 관리자 번호)"
+                                        placeholder="010-0000-0000 (현장 관리자 번호)"
                                     />
-                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">?�차 조건 <span className="text-slate-400 font-normal ml-1">(?�택)</span></label>
+                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">하차 조건 <span className="text-slate-400 font-normal ml-1">(선택)</span></label>
                                     <input
                                         type="text"
                                         value={deliveryInfo.unloadCondition}
                                         onChange={(e) => setDeliveryInfo({ ...deliveryInfo, unloadCondition: e.target.value })}
                                         className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                                        placeholder="?? 지게차 ?�차, 까�?�?기�? ?�의?�항 ?�력"
+                                        placeholder="지게차 하차, 까대기 등 주의사항 입력"
                                     />
                                 </div>
                             </div>
@@ -432,13 +433,13 @@ export default function ShoppingCartCheckout() {
                                 <p className="mt-1.5 text-xs text-red-500 font-semibold flex items-center gap-1">
                                     <span className="material-symbols-outlined text-sm">schedule</span>
                                     {items.some(item => item.product?.inventory != null && item.qty > item.product?.inventory && item.product?.restockDate)
-                                        ? `?�절 ?�품(?�는 ?�고 부�????�고 ?�정??${minDeliveryDate}) ?�후로만 ?�택 가?�합?�다.` 
-                                        : '배송 주문 최소 3?�후'}
+                                        ? `품절 또는 재고 부족 상품의 입고 예정일(${minDeliveryDate}) 이후로만 선택 가능합니다.` 
+                                        : '배송 주문 최소 3일 후'}
                                 </p>
                             </div>
                             <p className="text-xs text-slate-500 bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-100 dark:border-slate-800">
                                 <span className="material-symbols-outlined text-sm align-middle mr-1">info</span>
-                                ?�력?�신 ?�보???�활??배송 �?주문 ?�인???�해?�만 ?�용?�니??
+                                입력하신 정보는 원활한 배송 및 주문 확인을 위해서만 이용됩니다.
                             </p>
                         </div>
                     </div>
@@ -450,7 +451,7 @@ export default function ShoppingCartCheckout() {
                                 <input defaultChecked className="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4" name="payment" type="radio" />
                                 <span className="material-symbols-outlined text-2xl mb-2 text-primary">credit_card</span>
                                 <span className="font-bold text-sm">신용카드</span>
-                                <span className="text-xs text-slate-500">실시간 안전 결제</span>
+                                <span className="text-xs text-slate-500">일시불/할부 결제</span>
                             </label>
                             <label className="relative flex flex-col p-4 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary/50 cursor-pointer transition-all">
                                 <input className="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4" name="payment" type="radio" />
@@ -481,11 +482,11 @@ export default function ShoppingCartCheckout() {
                                     className="mt-1 w-5 h-5 text-primary focus:ring-primary rounded border-slate-300"
                                 />
                                 <div className="text-sm">
-                                    <p className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">주문 내역 확인 및 주의사항 동의 (필수)</p>
+                                    <p className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">주문 내역 확인 및 유의사항 동의 (필수)</p>
                                     <p className="text-slate-500 mt-1 leading-relaxed">
                                         상품의 주문 수량, 옵션, 결제 금액을 확인하였으며, 쇼핑몰 이용약관 및 개인정보 처리방침에 동의합니다.
-                                        특히 바닥재 재단 상품의 경우 단순 변심 반품이 제한될 수 있음을 확인하였습니다.
-                                        <Link to="/shopping-guide" className="text-primary hover:underline ml-1 font-medium">[상세정보 보기]</Link>
+                                        특히 바닥재 재단 상품의 경우 단순 변심에 의한 반품이 제한될 수 있음을 확인하였습니다.
+                                        <Link to="/shopping-guide" className="text-primary hover:underline ml-1 font-medium">[자세히 보기]</Link>
                                     </p>
                                 </div>
                             </label>
@@ -497,14 +498,14 @@ export default function ShoppingCartCheckout() {
                         <h3 className="text-xl font-bold mb-6">결제 요약</h3>
                         <div className="space-y-4 mb-6">
                             <div className="flex justify-between text-sm">
-                                <span className="text-slate-600 dark:text-slate-400">상품 금액{isBusiness ? ' (사업자할인)' : ''}</span>
+                                <span className="text-slate-600 dark:text-slate-400">상품 금액{isBusiness ? ' (사업자용)' : ''}</span>
                                 <span className="font-medium">{totalPrice.toLocaleString()}원</span>
                             </div>
                             <div className="flex justify-between text-sm">
                                 <span className="text-slate-600 dark:text-slate-400">부가세(10%)</span>
                                 <span className="font-medium">{tax.toLocaleString()}원</span>
                             </div>
-                            {/* 배송비 결제정보 */}
+                            {/* 배송비 안내 - 전체 착불 */}
                             <div className="flex justify-between text-sm">
                                 <span className="text-slate-600 dark:text-slate-400">배송비</span>
                                 <span className="font-bold text-red-500">착불</span>
@@ -514,13 +515,13 @@ export default function ShoppingCartCheckout() {
                                 <span className="text-2xl font-black text-primary">{finalPrice.toLocaleString()}원</span>
                             </div>
 
-                            {/* 사업자 할인 안내 */}
+                            {/* 사업자 할인 혜택 요약 */}
                             {isBusiness && discountAmount > 0 && (
                                 <div className="mt-4 p-4 bg-gradient-to-r from-red-50 to-orange-50 rounded-xl border border-red-200 shadow-sm">
                                     <div className="flex items-center gap-2 mb-3">
                                         <span className="material-symbols-outlined text-[18px] text-[#c8221f]">savings</span>
                                         <span className="text-[14px] font-black text-[#c8221f]">사업자 할인 혜택</span>
-                                        <span className="ml-auto text-[11px] bg-[#c8221f] text-white px-2 py-0.5 rounded-full font-bold">총 {discountRate}% 절감</span>
+                                        <span className="ml-auto text-[11px] bg-[#c8221f] text-white px-2 py-0.5 rounded-full font-bold">약 {discountRate}% 절감</span>
                                     </div>
                                     <div className="space-y-2 text-[13px]">
                                         <div className="flex justify-between">
@@ -528,7 +529,7 @@ export default function ShoppingCartCheckout() {
                                             <span className="text-slate-400 line-through">{originalTotal.toLocaleString()}원</span>
                                         </div>
                                         <div className="flex justify-between">
-                                            <span className="text-slate-500">사업자 할인가</span>
+                                            <span className="text-slate-500">사업자가 적용</span>
                                             <span className="font-bold text-slate-700">{totalPrice.toLocaleString()}원</span>
                                         </div>
                                         <div className="flex justify-between pt-2 border-t border-red-200">
@@ -536,7 +537,7 @@ export default function ShoppingCartCheckout() {
                                                 <span className="material-symbols-outlined text-[14px]">arrow_downward</span>
                                                 총 절감 금액
                                             </span>
-                                            <span className="font-black text-[#c8221f] text-[15px]">- {discountAmount.toLocaleString()}원</span>
+                                            <span className="font-black text-[#c8221f] text-[15px]">-{discountAmount.toLocaleString()}원</span>
                                         </div>
                                     </div>
                                 </div>
@@ -560,7 +561,7 @@ export default function ShoppingCartCheckout() {
                                 <span className="material-symbols-outlined text-primary text-xl">verified_user</span>
                                 <div className="text-xs text-slate-500 leading-relaxed">
                                     <p className="font-bold text-slate-700 dark:text-slate-300 mb-1">안전 결제 에스크로 보증</p>
-                                    고객님의 결제 정보는 암호화되어 안전하게 처리되며, 개인정보 처리방침에 따라 철저하게 보호됩니다.
+                                    고객님의 결제 정보는 철저히 보호되어 안전하게 처리되며, 개인정보 처리방침에 따라 관리됩니다.
                                 </div>
                             </div>
                         </div>

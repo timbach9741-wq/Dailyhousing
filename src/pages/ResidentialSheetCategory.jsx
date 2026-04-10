@@ -210,7 +210,7 @@ export default function ResidentialSheetCategory() {
                                 <img
                                     src={product.imageUrl}
                                     alt={product.title}
-                                    className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${product.inventory === 0 ? 'grayscale opacity-60' : ''}`}
+                                    className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${product.salesStatus === '일시 품절' || product.salesStatus === '단종' ? 'grayscale opacity-60' : ''}`}
                                     loading="lazy"
                                 />
 
@@ -234,9 +234,9 @@ export default function ResidentialSheetCategory() {
                                 </div>
 
                                 {/* 품절 오버레이 */}
-                                {product.inventory === 0 && (
-                                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center z-5">
-                                        <span className="text-white/80 text-lg sm:text-2xl font-black tracking-widest">SOLD OUT</span>
+                                {(product.salesStatus === '일시 품절' || product.salesStatus === '단종') && (
+                                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center z-[5]">
+                                        <span className="text-white/80 text-lg sm:text-2xl font-black tracking-widest">{product.salesStatus === '단종' ? 'DISCONTINUED' : 'SOLD OUT'}</span>
                                     </div>
                                 )}
 

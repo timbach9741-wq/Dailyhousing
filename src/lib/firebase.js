@@ -14,6 +14,11 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+
+// 신규 사용자 등록 등에 사용하기 위한 보조 Auth 인스턴스 (메인 세션 로그아웃 방지)
+const secondaryApp = initializeApp(firebaseConfig, "SecondaryApp");
+export const secondaryAuth = getAuth(secondaryApp);
+
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 
