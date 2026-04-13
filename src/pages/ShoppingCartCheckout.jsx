@@ -99,8 +99,8 @@ export default function ShoppingCartCheckout() {
 
         (async () => {
             try {
-                // 테스트 클라이언트 키 (토스 문서 공식 샘플)
-                const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
+                // .env 파일의 실제 클라이언트 키(Live)를 먼저 찾고, 없으면 테스트 키 사용
+                const clientKey = import.meta.env.VITE_PG_CLIENT_KEY || "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
                 const paymentWidget = await loadPaymentWidget(clientKey, customerKey);
                 paymentWidgetRef.current = paymentWidget;
 

@@ -86,6 +86,15 @@ export default function CommercialLVTCategory() {
             result = [...result].sort((a, b) => (b.id || '').localeCompare(a.id || ''));
         }
 
+        // 제고 없는 상품(일시 품절, 단종) 맨 뒤로 정렬 (안정 정렬)
+        result = [...result].sort((a, b) => {
+            const isAOut = a.salesStatus === '일시 품절' || a.salesStatus === '단종';
+            const isBOut = b.salesStatus === '일시 품절' || b.salesStatus === '단종';
+            if (isAOut && !isBOut) return 1;
+            if (!isAOut && isBOut) return -1;
+            return 0;
+        });
+
         return result;
     }, [products, activeTab, detailTab, sortOrder]);
 

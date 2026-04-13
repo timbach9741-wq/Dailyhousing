@@ -8,9 +8,22 @@ export default function Home() {
     const { products, initProducts } = useProductStore();
     const { user, isAuthenticated } = useAuthStore();
     const isBusiness = user?.role === 'business';
-    const featuredProducts = products.filter(p => p.tags?.includes('인기')).length > 0 
-        ? products.filter(p => p.tags?.includes('인기')).slice(0, 8)
-        : products.slice(0, 8);
+    const featuredProducts = (() => {
+        let baseProducts = products.filter(p => p.tags?.includes('인기')).length > 0 
+            ? products.filter(p => p.tags?.includes('인기'))
+            : products.slice();
+        
+        // 제고 없는 상품(일시 품절, 단종) 맨 뒤로 정렬
+        baseProducts.sort((a, b) => {
+            const isAOut = a.salesStatus === '일시 품절' || a.salesStatus === '단종';
+            const isBOut = b.salesStatus === '일시 품절' || b.salesStatus === '단종';
+            if (isAOut && !isBOut) return 1;
+            if (!isAOut && isBOut) return -1;
+            return 0;
+        });
+        
+        return baseProducts.slice(0, 8);
+    })();
 
     const [cmsData, setCmsData] = useState(null);
 

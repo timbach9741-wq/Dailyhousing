@@ -18,7 +18,7 @@ const MobileBusinessCard = () => {
       company: "데일리하우징",
       phone: "010-7590-5522",
       officePhone: "031-409-5556",
-      email: "wkwk76@naver.com",
+      email: "dailyhousing76@gmail.com",
       address: "경기도 안산시 상록구 용신로 258",
       website: DOMAIN, 
       cardUrl: `${DOMAIN}/card/ceo` 
@@ -27,9 +27,9 @@ const MobileBusinessCard = () => {
       name: "이홍석",
       title: "대표이사", 
       company: "데일리하우징",
-      phone: "010-6351-9509", 
+      phone: "010-2246-9509", 
       officePhone: "031-409-5556",
-      email: "timbach@naver.com",
+      email: "dailyhousing76@gmail.com",
       address: "경기도 안산시 상록구 용신로 258",
       website: DOMAIN, 
       cardUrl: `${DOMAIN}/card/director` 
