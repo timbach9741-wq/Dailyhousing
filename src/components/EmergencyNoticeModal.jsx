@@ -26,17 +26,21 @@ export default function EmergencyNoticeModal() {
 
     return (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-            <div className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden transition-all transform origin-center scale-100">
+            <div className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden transition-all transform origin-center scale-100">
                 {/* Header */}
-                <div className="bg-red-600 px-6 py-4 flex items-center justify-between">
+                <div className="bg-red-600 px-6 py-4 flex items-center justify-between shrink-0">
                     <div className="flex items-center gap-2">
                         <span className="material-symbols-outlined text-white text-[24px]">warning</span>
                         <h2 className="text-white text-lg font-bold tracking-tight">긴급 공지</h2>
                     </div>
+                    {/* 우측 상단 X 닫기 버튼 추가 */}
+                    <button onClick={handleClose} className="text-white hover:text-red-200 transition-colors">
+                        <span className="material-symbols-outlined text-[24px]">close</span>
+                    </button>
                 </div>
 
                 {/* Content */}
-                <div className="p-6 sm:p-8">
+                <div className="p-6 sm:p-8 overflow-y-auto flex-1">
                     <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 break-keep">
                         [긴급] 중동 지역 전쟁 여파로 인한 원자재 수급 불안정 및 배송 지연 안내
                     </h3>
@@ -77,18 +81,25 @@ export default function EmergencyNoticeModal() {
                     </p>
                 </div>
 
-                {/* Footer Buttons */}
-                <div className="bg-slate-50 border-t border-slate-100 flex items-center">
-                    <button 
-                        onClick={handleHideToday}
-                        className="flex-1 py-4 text-[14px] font-medium text-slate-500 hover:bg-slate-100 transition-colors"
-                    >
-                        오늘 하루 더 이상 보지 않기
-                    </button>
-                    <div className="w-[1px] h-8 bg-slate-200"></div>
+                {/* Footer Checkbox & Buttons */}
+                <div className="bg-slate-50 border-t border-slate-100 flex items-center justify-between px-6 py-4 shrink-0">
+                    <label className="flex items-center gap-2 cursor-pointer group">
+                        <input 
+                            type="checkbox" 
+                            onChange={(e) => {
+                                if (e.target.checked) {
+                                    handleHideToday();
+                                }
+                            }}
+                            className="w-5 h-5 rounded border-slate-300 text-red-600 focus:ring-red-500 cursor-pointer"
+                        />
+                        <span className="text-[14px] font-medium text-slate-600 group-hover:text-slate-900 transition-colors">
+                            오늘 하루 보지 않기
+                        </span>
+                    </label>
                     <button 
                         onClick={handleClose}
-                        className="flex-1 py-4 text-[15px] font-bold text-slate-800 hover:bg-slate-100 transition-colors"
+                        className="px-6 py-2 bg-slate-800 text-white text-[15px] font-bold rounded-lg hover:bg-slate-900 transition-colors shadow-sm"
                     >
                         닫기
                     </button>
