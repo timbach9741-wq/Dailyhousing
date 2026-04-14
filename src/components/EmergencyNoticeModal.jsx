@@ -41,13 +41,13 @@ export default function EmergencyNoticeModal() {
 
                 {/* Content */}
                 <div className="p-6 sm:p-8 overflow-y-auto flex-1">
-                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 break-keep">
-                        [긴급] 중동 지역 전쟁 여파로 인한 원자재 수급 불안정 및 배송 지연 안내
+                    <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 break-keep leading-snug">
+                        [긴급] 중동 지역 전쟁 여파로 인한<br className="hidden sm:block" /> 원자재 수급 불안정 및 배송 지연 안내
                     </h3>
                     
-                    <p className="text-slate-700 text-[15px] leading-relaxed mb-6">
+                    <p className="text-slate-700 text-[15px] leading-relaxed mb-6 break-keep">
                         안녕하세요, 데일리하우징입니다.<br/>
-                        현재 중동 지역의 급격한 정세 악화로 인해 바닥재 핵심 원자재 수급과 수입 물류 상황이 매우 불안정합니다. 이에 따라 부득이하게 아래와 같이 운영 방침을 안내드립니다.
+                        현재 중동 지역의 급격한 정세 악화로 인해 바닥재 핵심 원자재 수급과 수입 물류 상황이 매우 불안정합니다.<br className="hidden sm:block" /> 이에 따라 부득이하게 아래와 같이 운영 방침을 안내드립니다.
                     </p>
 
                     <div className="space-y-4 mb-6">
@@ -56,7 +56,9 @@ export default function EmergencyNoticeModal() {
                                 <span className="material-symbols-outlined text-[18px]">inventory_2</span>
                                 재고 확인 후 주문 안내
                             </h4>
-                            <p className="text-[14px] text-red-700 break-keep">일부 품목의 경우 현재 재고가 급격히 소진되어 '품절' 처리 중입니다. 주문 전 반드시 재고 현황을 통해 재고 유무를 먼저 확인해 주시기 바랍니다.</p>
+                            <p className="text-[14px] text-red-700 break-keep">
+                                일부 품목의 경우 현재 재고가 급격히 소진되어 '품절' 처리 중입니다.<br className="hidden sm:block" /> 주문 전 반드시 재고 현황을 통해 재고 유무를 먼저 확인해 주시기 바랍니다.
+                            </p>
                         </div>
                         
                         <div className="bg-orange-50 p-4 rounded-xl border border-orange-100">
@@ -64,7 +66,9 @@ export default function EmergencyNoticeModal() {
                                 <span className="material-symbols-outlined text-[18px]">cancel</span>
                                 주문 취소 가능성
                             </h4>
-                            <p className="text-[14px] text-orange-700 break-keep">재고가 없는 상태에서 결제된 주문은 부득이하게 사전 안내 후 자동 취소될 수 있음을 양해 부탁드립니다.</p>
+                            <p className="text-[14px] text-orange-700 break-keep">
+                                재고가 없는 상태에서 결제된 주문은 부득이하게<br className="hidden sm:block" /> 사전 안내 후 자동 취소될 수 있음을 양해 부탁드립니다.
+                            </p>
                         </div>
 
                         <div className="bg-yellow-50 p-4 rounded-xl border border-yellow-100">
@@ -72,12 +76,14 @@ export default function EmergencyNoticeModal() {
                                 <span className="material-symbols-outlined text-[18px]">payments</span>
                                 단가 변동 예고
                             </h4>
-                            <p className="text-[14px] text-yellow-700 break-keep">수입 단가 상승으로 인해 예고 없이 제품 가격이 인상될 수 있습니다.</p>
+                            <p className="text-[14px] text-yellow-700 break-keep">
+                                수입 단가 상승으로 인해 예고 없이 제품 가격이 인상될 수 있습니다.
+                            </p>
                         </div>
                     </div>
 
-                    <p className="text-slate-600 text-[14px] leading-relaxed font-medium">
-                        고객님들의 넓은 양해 부탁드리며, 최대한 빠르게 물량을 확보할 수 있도록 최선을 다하겠습니다. 감사합니다.
+                    <p className="text-slate-600 text-[14px] leading-relaxed font-medium break-keep text-center sm:text-left">
+                        고객님들의 넓은 양해 부탁드리며, 최대한 빠르게 물량을 확보할 수 있도록 최선을 다하겠습니다.<br />감사합니다.
                     </p>
                 </div>
 
