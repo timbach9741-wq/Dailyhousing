@@ -117,7 +117,7 @@ const AdminDashboard = () => {
     const [adjustStockModal, setAdjustStockModal] = useState(null); // { product, type: 'in' | 'out', amount: '' }
     const [newProduct, setNewProduct] = useState({
         title: '', model_id: '', categoryId: 'residential', subCategory: '',
-        price: 0, businessPrice: 0, sellingPrice: 0, imageUrl: '', thickness: 5,
+        price: 0, businessPrice: 0, sellingPrice: 0, inventory: 0, imageUrl: '', thickness: 5,
         patterns: [], tags: [], priceUnit: 'm²',
         specifications: { size: '', material: '' }
     });
@@ -543,6 +543,7 @@ const AdminDashboard = () => {
         setProductSaving(true);
         try {
             const productId = String(editingProduct.id);
+            const inventoryNum = Number(editingProduct.inventory) || 0;
             const updateData = {
                 title: editingProduct.title || '',
                 model_id: editingProduct.model_id || '',
@@ -551,6 +552,8 @@ const AdminDashboard = () => {
                 price: Number(editingProduct.price) || 0,
                 businessPrice: Number(editingProduct.businessPrice) || 0,
                 sellingPrice: Number(editingProduct.sellingPrice) || 0,
+                inventory: inventoryNum,
+                status: inventoryNum <= 0 ? '일시품절' : '판매중',
                 tags: editingProduct.tags || [],
                 updatedAt: new Date().toISOString()
             };
@@ -582,12 +585,15 @@ const AdminDashboard = () => {
         setProductSaving(true);
         try {
             const productId = `custom_${Date.now()}`;
+            const inventoryNum = Number(newProduct.inventory) || 0;
             const productData = {
                 ...newProduct,
                 id: productId,
                 price: Number(newProduct.price),
                 businessPrice: Number(newProduct.businessPrice),
                 sellingPrice: Number(newProduct.sellingPrice || 0),
+                inventory: inventoryNum,
+                status: inventoryNum <= 0 ? '일시품절' : '판매중',
                 rating: 4.8,
                 reviews: 0,
                 description: `${newProduct.title} (${newProduct.model_id})`,
@@ -600,7 +606,7 @@ const AdminDashboard = () => {
             setNewProductModal(false);
             setNewProduct({
                 title: '', model_id: '', categoryId: 'residential', subCategory: '',
-                price: 0, businessPrice: 0, sellingPrice: 0, imageUrl: '', thickness: 5,
+                price: 0, businessPrice: 0, sellingPrice: 0, inventory: 0, imageUrl: '', thickness: 5,
                 patterns: [], tags: [], priceUnit: 'm²',
                 specifications: { size: '', material: '' }
             });
@@ -1668,7 +1674,7 @@ const AdminDashboard = () => {
                                             </div>
                                         )}
                                     </div>
-                                    <div className="grid grid-cols-3 gap-4">
+                                    <div className="grid grid-cols-2 gap-4">
                                         <div>
                                             <label className="block text-sm font-medium text-slate-400 mb-2">일반 가격 (원)</label>
                                             <input
@@ -1695,6 +1701,16 @@ const AdminDashboard = () => {
                                                 onChange={e => setNewProduct(prev => ({ ...prev, sellingPrice: e.target.value }))}
                                                 className="w-full bg-rose-500/5 border border-rose-500/20 rounded-xl px-4 py-3 text-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-500/50"
                                                 placeholder="매입 원가"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-emerald-400 mb-2">📦 직접 수량 수정</label>
+                                            <input
+                                                type="number"
+                                                value={newProduct.inventory === undefined ? '' : newProduct.inventory}
+                                                onChange={e => setNewProduct(prev => ({ ...prev, inventory: e.target.value }))}
+                                                className="w-full bg-emerald-500/5 border border-emerald-500/20 rounded-xl px-4 py-3 text-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                                                placeholder="현재 수량 입력"
                                             />
                                         </div>
                                     </div>
@@ -1827,7 +1843,7 @@ const AdminDashboard = () => {
                                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
                                         />
                                     </div>
-                                    <div className="grid grid-cols-3 gap-4">
+                                    <div className="grid grid-cols-2 gap-4">
                                         <div>
                                             <label className="block text-sm font-medium text-slate-400 mb-2">일반 가격 (원)</label>
                                             <input
@@ -1854,6 +1870,16 @@ const AdminDashboard = () => {
                                                 onChange={e => setEditingProduct(prev => ({ ...prev, sellingPrice: e.target.value }))}
                                                 className="w-full bg-rose-500/5 border border-rose-500/20 rounded-xl px-4 py-3 text-rose-400 focus:outline-none focus:ring-2 focus:ring-rose-500/50"
                                                 placeholder="매입 원가"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-sm font-medium text-emerald-400 mb-2">📦 직접 수량 수정</label>
+                                            <input
+                                                type="number"
+                                                value={editingProduct.inventory === undefined ? '' : editingProduct.inventory}
+                                                onChange={e => setEditingProduct(prev => ({ ...prev, inventory: e.target.value }))}
+                                                className="w-full bg-emerald-500/5 border border-emerald-500/20 rounded-xl px-4 py-3 text-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+                                                placeholder="현재 수량 입력"
                                             />
                                         </div>
                                     </div>

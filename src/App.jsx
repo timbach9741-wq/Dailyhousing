@@ -9,6 +9,7 @@ import KakaoChatButton from './components/KakaoChatButton'
 import ProtectedRoute from './components/ProtectedRoute'
 import ErrorBoundary from './components/ErrorBoundary'
 import { checkFirebaseConnection } from './lib/firebase'
+import EmergencyNoticeModal from './components/EmergencyNoticeModal'
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('./pages/Home'))
@@ -84,6 +85,7 @@ function App() {
       {!isHideLayoutRoute && <ScrollToTop />}
       {!isHideLayoutRoute && <ScrollToTopButton />}
       {!isHideLayoutRoute && <KakaoChatButton />}
+      {!isHideLayoutRoute && <EmergencyNoticeModal />}
       {!isHideLayoutRoute && <Header />}
       
       <Toast />
