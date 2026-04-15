@@ -21,7 +21,19 @@ function Header() {
     const cartCount = useCartStore((state) => state.items.length);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [productDropdown, setProductDropdown] = useState(false);
-    const contact = getSiteContact();
+    const [contact, setContact] = useState(getSiteContact());
+
+    useEffect(() => {
+        const handleCmsUpdate = () => {
+            setContact(getSiteContact());
+        };
+        window.addEventListener('cmsUpdated', handleCmsUpdate);
+        window.addEventListener('storage', handleCmsUpdate);
+        return () => {
+            window.removeEventListener('cmsUpdated', handleCmsUpdate);
+            window.removeEventListener('storage', handleCmsUpdate);
+        };
+    }, []);
 
     // 검색 상태 및 Refs
     const [searchQuery, setSearchQuery] = useState('');

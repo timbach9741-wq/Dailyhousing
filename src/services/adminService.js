@@ -148,25 +148,26 @@ const withTimeout = (promise, ms = 5000) => {
 };
 
 export const getHomepageContent = async () => {
-    // 1. Check localStorage FIRST for speed and stability
+    try {
+        // Try Firestore with timeout FIRST for real-time sync
+        const docRef = doc(db, 'site_config', 'homepage');
+        const docSnap = await withTimeout(getDoc(docRef), 3000);
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            localStorage.setItem('homepage_cms_content', JSON.stringify(data));
+            window.dispatchEvent(new Event('cmsUpdated'));
+            return data;
+        }
+    } catch (error) {
+        console.warn("Firestore access bypassed or failed, using fallback:", error.message);
+    }
+
+    // 2. Check localStorage as fallback for speed/stability if offline
     const localData = localStorage.getItem('homepage_cms_content');
     if (localData) {
         try {
             return JSON.parse(localData);
         } catch (error) { console.warn('⚠️ getHomepageContent - localStorage 파싱 실패:', error); }
-    }
-
-    try {
-        // Try Firestore with timeout
-        const docRef = doc(db, 'site_config', 'homepage');
-        const docSnap = await withTimeout(getDoc(docRef));
-        if (docSnap.exists()) {
-            const data = docSnap.data();
-            localStorage.setItem('homepage_cms_content', JSON.stringify(data));
-            return data;
-        }
-    } catch (error) {
-        console.warn("Firestore access bypassed or failed:", error.message);
     }
 
     return null;
@@ -176,9 +177,11 @@ export const updateSiteContent = async (key, newValue) => {
     // Always update localStorage immediately
     let updatedData = {};
     try {
-        const currentData = await getHomepageContent() || {};
+        const localData = localStorage.getItem('homepage_cms_content');
+        const currentData = localData ? JSON.parse(localData) : {};
         updatedData = { ...currentData, [key]: newValue };
         localStorage.setItem('homepage_cms_content', JSON.stringify(updatedData));
+        window.dispatchEvent(new Event('cmsUpdated'));
     } catch (err) {
         console.error("Local storage update failed:", err);
     }

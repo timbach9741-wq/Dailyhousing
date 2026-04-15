@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const getSiteContact = () => {
     try {
@@ -15,8 +16,21 @@ const getSiteBusiness = () => {
 };
 
 export default function Footer() {
-    const contact = getSiteContact();
-    const biz = getSiteBusiness();
+    const [contact, setContact] = useState(getSiteContact());
+    const [biz, setBiz] = useState(getSiteBusiness());
+
+    useEffect(() => {
+        const handleCmsUpdate = () => {
+            setContact(getSiteContact());
+            setBiz(getSiteBusiness());
+        };
+        window.addEventListener('cmsUpdated', handleCmsUpdate);
+        window.addEventListener('storage', handleCmsUpdate);
+        return () => {
+            window.removeEventListener('cmsUpdated', handleCmsUpdate);
+            window.removeEventListener('storage', handleCmsUpdate);
+        };
+    }, []);
     return (
         <footer className="bg-white border-t border-slate-200">
             {/* Main Footer */}

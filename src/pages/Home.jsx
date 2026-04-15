@@ -38,6 +38,22 @@ export default function Home() {
             }
         };
         fetchCMS();
+
+        // 실시간 동기화 업데이트 핸들러
+        const handleCmsUpdate = () => {
+            const localData = localStorage.getItem('homepage_cms_content');
+            if (localData) {
+                setCmsData(JSON.parse(localData));
+            }
+        };
+
+        window.addEventListener('cmsUpdated', handleCmsUpdate);
+        window.addEventListener('storage', handleCmsUpdate);
+        
+        return () => {
+            window.removeEventListener('cmsUpdated', handleCmsUpdate);
+            window.removeEventListener('storage', handleCmsUpdate);
+        };
     }, [initProducts]);
 
     // 기본값 설정 (Fallback)

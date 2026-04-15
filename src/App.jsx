@@ -43,6 +43,13 @@ const PartnerDashboard = lazy(() => import('./pages/partner/PartnerDashboard'))
 // --- 모바일 명함 ---
 const MobileBusinessCard = lazy(() => import('./pages/MobileBusinessCard'))
 
+// --- 입주 청소 업체 홈페이지 ---
+const CleaningHome = lazy(() => import('./pages/CleaningHome'))
+const CleaningMoveIn = lazy(() => import('./pages/CleaningMoveIn'))
+const CleaningSickBuilding = lazy(() => import('./pages/CleaningSickBuilding'))
+const CleaningAppliance = lazy(() => import('./pages/CleaningAppliance'))
+const CleaningRegular = lazy(() => import('./pages/CleaningRegular'))
+
 // Loading component
 const PageLoader = () => (
   <div className="flex h-[60vh] w-full items-center justify-center">
@@ -60,8 +67,11 @@ function App() {
   // 모바일 명함 라우트인지 확인
   const isCardRoute = location.pathname.startsWith('/card')
 
+  // 입주청소 홈 라우트인지 확인
+  const isCleaningRoute = location.pathname.startsWith('/cleaning')
+
   // 공통 UI(헤더,푸터 등)를 숨겨야 하는 경로
-  const isHideLayoutRoute = isPartnerRoute || isCardRoute;
+  const isHideLayoutRoute = isPartnerRoute || isCardRoute || isCleaningRoute;
 
   useEffect(() => {
     const check = async () => {
@@ -82,7 +92,7 @@ function App() {
       )}
       
       {/* 벤더 앱이나 모바일 명함에서는 Dailyhousing 공통 컴포넌트들을 숨김 */}
-      {!isHideLayoutRoute && <ScrollToTop />}
+      <ScrollToTop />
       {!isHideLayoutRoute && <ScrollToTopButton />}
       {!isHideLayoutRoute && <KakaoChatButton />}
       {!isHideLayoutRoute && <EmergencyNoticeModal />}
@@ -102,6 +112,14 @@ function App() {
             {/* --- 데일리하우징 모바일 명함 라우트 --- */}
             <Route path="/card" element={<MobileBusinessCard />} />
             <Route path="/card/:userId" element={<MobileBusinessCard />} />
+            
+            {/* --- 입주 청소 홈페이지 라우트 --- */}
+            <Route path="/cleaning" element={<CleaningHome />} />
+            <Route path="/cleaning/move-in" element={<CleaningMoveIn />} />
+            <Route path="/cleaning/sick-building" element={<CleaningSickBuilding />} />
+            <Route path="/cleaning/appliance" element={<CleaningAppliance />} />
+            <Route path="/cleaning/regular" element={<CleaningRegular />} />
+
             {/* --- Dailyhousing 기본 라우트 --- */}
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
