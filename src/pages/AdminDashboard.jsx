@@ -211,7 +211,7 @@ const AdminDashboard = () => {
         try {
             const batch = writeBatch(db);
             const pRef = doc(db, 'products', product.id);
-            batch.update(pRef, { inventory: finalStock, status: finalStock === 0 ? '일시품절' : '판매중' });
+            batch.set(pRef, { inventory: finalStock, status: finalStock === 0 ? '일시품절' : '판매중', updatedAt: new Date().toISOString() }, { merge: true });
 
             const logRef = doc(collection(db, 'inventory_logs'));
             const newLog = {
@@ -291,7 +291,7 @@ const AdminDashboard = () => {
 
             const docRef = doc(db, 'products', productId);
             const newStatus = finalStock <= 0 ? '일시품절' : '판매중';
-            batch.update(docRef, { inventory: finalStock, status: newStatus, updatedAt: new Date().toISOString() });
+            batch.set(docRef, { inventory: finalStock, status: newStatus, updatedAt: new Date().toISOString() }, { merge: true });
 
             const logRef = doc(collection(db, 'inventory_logs'));
             const newLog = {

@@ -103,7 +103,9 @@ export const useProductStore = create(
                                     return {
                                         ...p,
                                         stock: fbData.stock !== undefined ? fbData.stock : p.stock,
-                                        salesStatus: fbData.salesStatus || p.salesStatus,
+                                        inventory: fbData.stock !== undefined ? fbData.stock : (p.inventory ?? p.stock),
+                                        salesStatus: fbData.salesStatus || p.salesStatus || p.status,
+                                        status: fbData.salesStatus || p.status || p.salesStatus,
                                         expectedDate: fbData.expectedDate || p.expectedDate,
                                         remarks: fbData.remarks || p.remarks
                                     };
@@ -178,8 +180,8 @@ export const useProductStore = create(
                 // 2. Firestore 저장 (비동기)
                 try {
                     await setDoc(doc(db, 'inventory', targetId), {
-                        stock: updates.stock !== undefined ? updates.stock : 0,
-                        salesStatus: updates.salesStatus || '판매중',
+                        stock: updates.inventory ?? updates.stock ?? 0,
+                        salesStatus: updates.status || updates.salesStatus || '판매중',
                         expectedDate: updates.expectedDate || '',
                         remarks: updates.remarks || '',
                         updatedAt: new Date().toISOString()
