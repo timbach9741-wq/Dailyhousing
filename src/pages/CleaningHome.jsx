@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 export default function CleaningHome() {
   const [houseType, setHouseType] = useState('아파트');
   const [size, setSize] = useState(24);
-  const [sliderPosition, setSliderPosition] = useState(50);
   
+
   // 부가서비스 옵션 상태
   const [addons, setAddons] = useState({
     syndrome: false,
