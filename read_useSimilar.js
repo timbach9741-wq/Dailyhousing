@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-env node */
 const fs = require('fs');
 const content = fs.readFileSync('src/hooks/useSimilarProducts.js', 'utf8');
 const lines = content.split('\n');

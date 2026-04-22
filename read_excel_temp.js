@@ -1,5 +1,5 @@
 import * as xlsx from 'xlsx';
-import path from 'path';
+
 
 const filePath = 'c:\\Users\\Tim\\Desktop\\데일리하우징_재고업데이트양식.xlsx';
 const workbook = xlsx.readFile(filePath);

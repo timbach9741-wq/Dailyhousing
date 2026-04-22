@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-env node */
 const { onRequest } = require("firebase-functions/v2/https");
 const { defineSecret } = require("firebase-functions/params");
 const logger = require("firebase-functions/logger");

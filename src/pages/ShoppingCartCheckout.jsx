@@ -1,7 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCartStore, getEffectivePrice } from '../store/useCartStore';
-import { useOrderStore } from '../store/useOrderStore';
 import { useAuthStore } from '../store/useAuthStore';
 import { formatOrderUnit } from '../services/adminService';
 import DaumPostcode from 'react-daum-postcode';
@@ -23,8 +22,7 @@ function getEditonBoxInfo(item) {
 }
 
 export default function ShoppingCartCheckout() {
-    const { items, removeFromCart, updateQuantity, clearCart } = useCartStore();
-    const { addOrder } = useOrderStore();
+    const { items, removeFromCart, updateQuantity } = useCartStore();
     const { user } = useAuthStore();
     const isBusiness = user?.role === 'business';
     const navigate = useNavigate();
@@ -67,7 +65,8 @@ export default function ShoppingCartCheckout() {
     // --- Toss Payments 결제 위젯 참조 ---
     const paymentWidgetRef = useRef(null);
     const paymentMethodsWidgetRef = useRef(null);
-    const customerKey = useMemo(() => user?.uid || `guest_${Math.random().toString(36).slice(2)}`, [user]);
+    const [guestId] = useState(() => `guest_${Math.random().toString(36).slice(2)}`);
+    const customerKey = useMemo(() => user?.uid || guestId, [user, guestId]);
 
     const handlePostcodeComplete = (data) => {
         let fullAddress = data.address;
@@ -119,6 +118,7 @@ export default function ShoppingCartCheckout() {
                 console.error('결제 위젯 로딩 실패:', error);
             }
         })();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [customerKey]); // 위젯 최초 로드시에만 동작
 
     // 가격 변경 시 위젯 금액 업데이트

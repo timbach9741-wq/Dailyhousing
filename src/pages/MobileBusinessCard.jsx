@@ -17,7 +17,7 @@ const MobileBusinessCard = () => {
       title: "대표이사",
       company: "데일리하우징",
       phone: "010-7590-5522",
-      officePhone: "031-409-5556",
+      officePhone: "031-409-9509",
       email: "dailyhousing76@gmail.com",
       address: "경기도 안산시 상록구 용신로 258",
       website: DOMAIN, 
@@ -28,7 +28,7 @@ const MobileBusinessCard = () => {
       title: "대표이사", 
       company: "데일리하우징",
       phone: "010-2246-9509", 
-      officePhone: "031-409-5556",
+      officePhone: "031-409-9509",
       email: "dailyhousing76@gmail.com",
       address: "경기도 안산시 상록구 용신로 258",
       website: DOMAIN, 
@@ -140,7 +140,7 @@ END:VCARD`;
              </div>
              <div className="flex-1 pl-1">
                 <p className="text-[12px] text-slate-500 font-bold tracking-wide mb-0.5">사무실 번호</p>
-                <p className="font-extrabold text-slate-700 text-[16px] tracking-tight">{profile.officePhone}</p>
+                <p className="font-black text-slate-800 text-[18px] tracking-tight">{profile.officePhone}</p>
              </div>
            </a>
 

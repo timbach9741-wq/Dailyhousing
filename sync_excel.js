@@ -1,4 +1,5 @@
-import fs from 'fs';
+/* eslint-env node */
+import process from 'process';
 import ExcelJS from 'exceljs';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
@@ -49,7 +50,7 @@ async function run() {
 
     sheet.eachRow((row, rowNumber) => {
         if (headerRowIdx !== -1) return;
-        row.eachCell((cell, colNumber) => {
+        row.eachCell((cell) => {
             const val = cell.value ? String(cell.value) : '';
             if (val.includes('품번') || val.includes('모델명')) {
                 headerRowIdx = rowNumber;
