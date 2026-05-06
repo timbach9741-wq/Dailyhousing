@@ -26,39 +26,43 @@ export default function PaymentSuccess() {
             }
 
             try {
-                console.log(`토스 승인 요청 진행: paymentKey=${paymentKey}, orderId=${orderId}, amount=${amount}`);
-                
-                // Cloud Function API 호출 (firebase.json rewrites를 통해 프록시 처리)
-                const apiHost = import.meta.env.MODE === 'development' 
-                    ? 'http://127.0.0.1:5001/project-dog-1-51759630-ea08b/us-central1/confirmTossPayment' // 개발환경 로컬 에뮬레이터 주소 (포트는 환경에 맞게 변경)
-                    : '/api/confirmTossPayment'; // 운영 환경 (Firebase Hosting rewrites)
+                if (paymentKey === 'bank_transfer') {
+                    console.log('무통장 입금 승인: API 호출 생략');
+                } else {
+                    console.log(`토스 승인 요청 진행: paymentKey=${paymentKey}, orderId=${orderId}, amount=${amount}`);
+                    
+                    // Cloud Function API 호출 (firebase.json rewrites를 통해 프록시 처리)
+                    const apiHost = import.meta.env.MODE === 'development' 
+                        ? 'http://127.0.0.1:5001/project-dog-1-51759630-ea08b/us-central1/confirmTossPayment' // 개발환경 로컬 에뮬레이터 주소 (포트는 환경에 맞게 변경)
+                        : '/api/confirmTossPayment'; // 운영 환경 (Firebase Hosting rewrites)
 
-                // 실제 운영 환경에서는 개발 환경 체크 후 fetch 라우트 조정 필요
-                // 여기서는 우선 Hosting Rewrites를 사용한다고 가정하고 /api/confirmTossPayment 사용
-                let fetchUrl = '/api/confirmTossPayment';
-                
-                // 만약 Vite 내장 dev 서버로 돌리는 중이라면 직접 로컬 / 운영 URL을 바라보게 분기할 수 있음
-                if (import.meta.env.DEV) {
-                    // 개발 서버에서는 배포된 함수(혹은 에뮬레이터)를 직접 가리켜야 함.
-                    // 현재는 테스트 편의를 위해 직접 배포 주소 또는 에뮬 주소를 하드코딩할 수도 있으나,
-                    // 일단은 백엔드를 타는 공통 로직으로 구현.
-                    // 만약 CORS가 난다면 이 주소를 자신의 Firebase 프로젝트 API 주소로 직접 명시해야 함.
-                    // fetchUrl = 'https://us-central1-[projectId].cloudfunctions.net/confirmTossPayment'; 
+                    // 실제 운영 환경에서는 개발 환경 체크 후 fetch 라우트 조정 필요
+                    // 여기서는 우선 Hosting Rewrites를 사용한다고 가정하고 /api/confirmTossPayment 사용
+                    let fetchUrl = '/api/confirmTossPayment';
+                    
+                    // 만약 Vite 내장 dev 서버로 돌리는 중이라면 직접 로컬 / 운영 URL을 바라보게 분기할 수 있음
+                    if (import.meta.env.DEV) {
+                        // 개발 서버에서는 배포된 함수(혹은 에뮬레이터)를 직접 가리켜야 함.
+                        // 현재는 테스트 편의를 위해 직접 배포 주소 또는 에뮬 주소를 하드코딩할 수도 있으나,
+                        // 일단은 백엔드를 타는 공통 로직으로 구현.
+                        // 만약 CORS가 난다면 이 주소를 자신의 Firebase 프로젝트 API 주소로 직접 명시해야 함.
+                        // fetchUrl = 'https://us-central1-[projectId].cloudfunctions.net/confirmTossPayment'; 
+                    }
+
+                    const response = await fetch(fetchUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ paymentKey, orderId, amount: parseInt(amount) })
+                    });
+
+                    const data = await response.json();
+
+                    if (!response.ok || !data.success) {
+                        throw new Error(data.error?.message || data.error || '결제 승인에 실패했습니다.');
+                    }
+                    
+                    console.log('결제 승인 성공:', data.data);
                 }
-
-                const response = await fetch(fetchUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ paymentKey, orderId, amount: parseInt(amount) })
-                });
-
-                const data = await response.json();
-
-                if (!response.ok || !data.success) {
-                    throw new Error(data.error?.message || data.error || '결제 승인에 실패했습니다.');
-                }
-                
-                console.log('결제 승인 성공:', data.data);
                 
                 // 세션 스토리지에서 배송 정보 복원
                 const checkoutUserStr = sessionStorage.getItem('pendingOrderDeliveryInfo');
@@ -81,7 +85,11 @@ export default function PaymentSuccess() {
                 
                 // 안전한 UI 렌더링 후 안내
                 setTimeout(() => {
-                    alert('결제가 성공적으로 완료되었습니다.');
+                    if (paymentKey === 'bank_transfer') {
+                        alert('주문이 접수되었습니다.\n신한은행 110-123-456789 (예금주: 데일리하우징)으로 입금 부탁드립니다.');
+                    } else {
+                        alert('결제가 성공적으로 완료되었습니다.');
+                    }
                     if (user) navigate('/mypage', { replace: true });
                     else navigate('/order-lookup', { replace: true });
                 }, 500);

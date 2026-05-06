@@ -4,7 +4,7 @@ import { useCartStore, getEffectivePrice } from '../store/useCartStore';
 import { useAuthStore } from '../store/useAuthStore';
 import { formatOrderUnit } from '../services/adminService';
 import DaumPostcode from 'react-daum-postcode';
-import { loadPaymentWidget } from '@tosspayments/payment-widget-sdk';
+// import { loadPaymentWidget } from '@tosspayments/payment-widget-sdk';
 
 // 에디톤 제품 박스 배송 정보
 const EDITON_BOX_INFO = {
@@ -62,11 +62,11 @@ export default function ShoppingCartCheckout() {
 
     const [deliveryInfo, setDeliveryInfo] = useState(initialDeliveryInfo);
 
-    // --- Toss Payments 결제 위젯 참조 ---
-    const paymentWidgetRef = useRef(null);
-    const paymentMethodsWidgetRef = useRef(null);
+    // --- 무통장 입금 안내 ---
+    // const paymentWidgetRef = useRef(null);
+    // const paymentMethodsWidgetRef = useRef(null);
     const [guestId] = useState(() => `guest_${Math.random().toString(36).slice(2)}`);
-    const customerKey = useMemo(() => user?.uid || guestId, [user, guestId]);
+    // const customerKey = useMemo(() => user?.uid || guestId, [user, guestId]);
 
     const handlePostcodeComplete = (data) => {
         let fullAddress = data.address;
@@ -92,6 +92,7 @@ export default function ShoppingCartCheckout() {
     const tax = Math.floor(totalPrice * 0.1);
     const finalPrice = totalPrice + tax;
 
+    /*
     // --- 토스페이먼츠 위젯 마운트 ---
     useEffect(() => {
         if (items.length === 0 || finalPrice <= 0) return;
@@ -127,6 +128,7 @@ export default function ShoppingCartCheckout() {
             paymentMethodsWidgetRef.current.updateAmount(finalPrice);
         }
     }, [finalPrice]);
+    */
 
     const handleCheckout = async () => {
         if (items.length === 0) return;
@@ -161,6 +163,10 @@ export default function ShoppingCartCheckout() {
             : items[0].product.title;
 
         try {
+            // 무통장 입금으로 바로 성공 페이지로 이동
+            navigate(`/payment/success?paymentKey=bank_transfer&orderId=${generatedOrderId}&amount=${finalPrice}`);
+            
+            /*
             await paymentWidgetRef.current?.requestPayment({
                 orderId: generatedOrderId,
                 orderName: orderName,
@@ -170,9 +176,9 @@ export default function ShoppingCartCheckout() {
                 customerName: checkoutUser.name,
                 customerMobilePhone: checkoutUser.phone.replace(/[^0-9]/g, '')
             });
+            */
         } catch (error) {
             console.error('결제 요청 중단/에러:', error);
-            // 에러 시 콜백으로 안 갈 수도 있음(유저가 결제창을 닫은 경우 등)
         }
     };
 
@@ -500,15 +506,34 @@ export default function ShoppingCartCheckout() {
                     </div>
 
                     <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-                        <h3 className="text-lg font-bold border-b border-slate-100 pb-2">결제 수단</h3>
-                        <div id="payment-widget" className="w-full min-h-[300px]" />
+                        <h3 className="text-lg font-bold border-b border-slate-100 pb-2 mb-4">결제 수단</h3>
+                        <div className="w-full bg-slate-50 dark:bg-slate-800 rounded-lg p-5 border border-slate-200 dark:border-slate-700">
+                            <p className="font-bold text-slate-800 dark:text-slate-200 mb-2">무통장 입금 (계좌 이체)</p>
+                            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                                현재 <span className="font-bold text-primary">B2B 파트너 전용 도매가 시스템 연동 작업</span>으로 인해 한시적으로 무통장 입금 결제만 지원합니다.<br/>
+                                주문 접수 후 아래 계좌로 입금해주시면 즉시 배송 준비가 시작됩니다.
+                            </p>
+                            <div className="bg-white dark:bg-slate-900 p-4 rounded border border-slate-200 dark:border-slate-700 font-medium">
+                                <div className="flex justify-between items-center mb-2">
+                                    <span className="text-slate-500 text-sm">은행</span>
+                                    <span className="text-slate-800 dark:text-slate-200">카카오뱅크</span>
+                                </div>
+                                <div className="flex justify-between items-center mb-2">
+                                    <span className="text-slate-500 text-sm">계좌번호</span>
+                                    <span className="text-primary font-bold">3333-02-0797998</span>
+                                </div>
+                                <div className="flex justify-between items-center">
+                                    <span className="text-slate-500 text-sm">예금주</span>
+                                    <span className="text-slate-800 dark:text-slate-200">이홍석</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Terms Agreement Section */}
                     <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-                        <h3 className="text-lg font-bold">약관 동의</h3>
-                        <div id="agreement" className="w-full my-2" />
-                        <div className="space-y-4 pt-4 border-t border-slate-100">
+                        <h3 className="text-lg font-bold mb-4">약관 동의</h3>
+                        <div className="space-y-4 pt-2 border-t border-slate-100">
                             <label className="flex items-start gap-3 cursor-pointer group">
                                 <input
                                     type="checkbox"
@@ -585,7 +610,7 @@ export default function ShoppingCartCheckout() {
                                 onClick={handleCheckout}
                             >
                                 <span className="material-symbols-outlined">{agreed ? 'lock' : 'check_circle'}</span>
-                                {agreed ? '결제하기' : '약관 동의 필요'}
+                                {agreed ? '결제하기 (무통장 입금)' : '약관 동의 필요'}
                             </button>
                             <button onClick={() => navigate(-1)} className="w-full border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold py-3 rounded-lg transition-colors">
                                 쇼핑 계속하기
