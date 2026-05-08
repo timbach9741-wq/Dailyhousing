@@ -1,67 +1,54 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import xlsx from 'xlsx';
+import dotenv from 'dotenv';
+import { SolapiMessageService } from 'solapi';
 
+// 환경변수 로드
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.join(__dirname, '../.env') });
 
-// 바탕화면 DB 경로
-const dbPath = 'C:\\Users\\Tim\\Desktop\\데일리 하우징 DB\\temp_1773110596023.2146167981.xlsx';
-const smsTemplatePath = path.join(__dirname, '../카카오_영업메시지_최종.txt');
+const CONFIG = {
+  smsTemplatePath: path.join(__dirname, '../B2B_영업문자_템플릿.txt'),
+  solapiApiKey: process.env.SOLAPI_API_KEY,
+  solapiApiSecret: process.env.SOLAPI_API_SECRET,
+  solapiSenderNumber: process.env.SOLAPI_SENDER_NUMBER,
+};
 
-async function dryRunSms() {
-  console.log('📊 [1단계] 바탕화면 데일리하우징 DB를 불러옵니다...');
+async function sendTestSms() {
+  console.log('🧪 파일럿 테스트 발송을 시작합니다...');
   
-  if (!fs.existsSync(dbPath)) {
-    console.error('⚠️ DB 파일을 찾을 수 없습니다:', dbPath);
+  if (!CONFIG.solapiApiKey || !CONFIG.solapiApiSecret || !CONFIG.solapiSenderNumber) {
+    console.error('🚨 .env 파일 설정이 누락되었습니다.');
     return;
   }
 
-  // 엑셀 파일 읽기 (xlsx 패키지 사용)
-  const workbook = xlsx.readFile(dbPath);
-  const sheetName = workbook.SheetNames[0];
-  const worksheet = workbook.Sheets[sheetName];
+  const messageService = new SolapiMessageService(CONFIG.solapiApiKey, CONFIG.solapiApiSecret);
+  const smsTemplate = fs.readFileSync(CONFIG.smsTemplatePath, 'utf8');
   
-  // JSON 형태로 변환 (헤더 없이 배열로 받기 위해 header: 1 옵션 사용)
-  const rows = xlsx.utils.sheet_to_json(worksheet, { header: 1 });
+  // 테스트용 수신번호 및 업체명 설정
+  const targetPhone = CONFIG.solapiSenderNumber; // 본인 번호로 발송
+  const targetName = '데일리하우징(테스트)';
   
-  const targets = [];
-  // 1번째 줄은 헤더라고 가정하고 스킵 (필요시 조정)
-  for (let i = 1; i < rows.length; i++) {
-    const row = rows[i];
-    // 콘솔 결과 분석 기반 열 맵핑:
-    // row[0] = 업체명 (ex: 써니토탈인테리어)
-    // row[2] = 연락처 (ex: 010-8567-1197)
-    // row[4] = 대표자명 (ex: 박태환)
-    const companyName = row[0] ? String(row[0]).trim() : '';
-    const phone = row[2] ? String(row[2]).trim() : '';
-    const ownerName = row[4] ? String(row[4]).trim() : '';
+  const messageText = smsTemplate.replace(/{업체명}/g, targetName);
 
-    if (companyName && phone && phone.includes('-')) {
-      targets.push({ companyName, phone, ownerName });
+  try {
+    const response = await messageService.send({
+      to: targetPhone,
+      from: CONFIG.solapiSenderNumber,
+      text: messageText,
+      autoTypeDetect: true
+    });
+    console.log(`✅ [전송 성공] 대상: ${targetName} (${targetPhone})`);
+    console.log(`📝 메시지 ID: ${response.messageId}`);
+    console.log(`\n발송된 메시지 내용:\n------------------\n${messageText}\n------------------`);
+  } catch (error) {
+    console.error(`❌ [전송 실패] 사유: ${error.message}`);
+    if (error.failedMessageList) {
+      console.error(JSON.stringify(error.failedMessageList, null, 2));
     }
-  }
-
-  console.log(`✅ 총 ${targets.length}개의 유효한 연락처 데이터를 확보했습니다!`);
-  console.log('--------------------------------------------------');
-  
-  const smsTemplateRaw = fs.readFileSync(smsTemplatePath, 'utf8');
-  
-  // 카카오 메시지 추출
-  let templateToUse = smsTemplateRaw.split('[웹발신]')[1].split('---')[0];
-
-  console.log('📱 [2단계] 발송 시뮬레이션 (상위 3개 업체만 미리보기)\n');
-
-  for (let i = 0; i < 3; i++) {
-    const target = targets[i];
-    let message = templateToUse.replace(/{업체명}/g, target.companyName)
-                           .replace(/{대표자명}/g, target.ownerName || '사장님');
-                           
-    console.log(`[발송 대상 ${i+1}] 👤 수신자: ${target.companyName} (${target.ownerName}) / 📞 ${target.phone}`);
-    console.log(`[문자 내용]\n${message.trim()}`);
-    console.log('\n==================================================\n');
   }
 }
 
-dryRunSms();
+sendTestSms();

@@ -2,6 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import exceljs from 'exceljs';
+import dotenv from 'dotenv';
+import { SolapiMessageService } from 'solapi';
+
+// 환경변수(.env) 로드
+dotenv.config({ path: path.join(path.dirname(fileURLToPath(import.meta.url)), '../.env') });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,8 +16,10 @@ const CONFIG = {
   dbPath: path.join(__dirname, '../data/b2b_partners_db.xlsx'),
   smsTemplatePath: path.join(__dirname, '../B2B_영업문자_템플릿.txt'),
   blogTemplatePath: path.join(__dirname, '../네이버블로그_원고_4종.txt'),
-  // 외부 문자 발송 API (예: Aligo, Solapi 등) 키 세팅
-  smsApiKey: process.env.SMS_API_KEY || 'YOUR_SMS_API_KEY',
+  // 외부 문자 발송 API (Solapi) 키 세팅
+  solapiApiKey: process.env.SOLAPI_API_KEY,
+  solapiApiSecret: process.env.SOLAPI_API_SECRET,
+  solapiSenderNumber: process.env.SOLAPI_SENDER_NUMBER,
   naverBlogApiKey: process.env.NAVER_API_KEY || 'YOUR_NAVER_API_KEY'
 };
 
@@ -53,19 +60,37 @@ async function sendSmsCampaign() {
 
   const smsTemplate = fs.readFileSync(CONFIG.smsTemplatePath, 'utf8');
   
-  console.log('\n🚀 [카카오/문자 발송 캠페인 시작]');
+  // 솔라피 연동 확인
+  if (!CONFIG.solapiApiKey || !CONFIG.solapiApiSecret || !CONFIG.solapiSenderNumber) {
+    console.log('🚨 .env 파일에 솔라피 API 키와 발신번호가 세팅되지 않았습니다.');
+    console.log('발신을 중단합니다. .env 파일을 먼저 확인해주세요.');
+    return;
+  }
+
+  const messageService = new SolapiMessageService(CONFIG.solapiApiKey, CONFIG.solapiApiSecret);
+
+  console.log('\n🚀 [솔라피 문자 대량 발송 캠페인 시작]');
   
   for (const target of targets) {
     try {
-      // 템플릿 변환: {업체명} 등의 치환자가 있다면 변환
-      const message = smsTemplate.replace(/{업체명}/g, target.name);
+      // 템플릿 변환: {업체명} 치환
+      const messageText = smsTemplate.replace(/{업체명}/g, target.name);
       
-      // TODO: 실제 SMS API 연동 코드 삽입 (Aligo, Solapi 등)
-      // await axios.post('https://api.aligo.in/send/', { ... });
+      // 수신자 번호 형식 다듬기 (하이픈 제거 등)
+      const targetPhone = target.phone.toString().replace(/[^0-9]/g, '');
 
-      console.log(`[전송 완료] 대상: ${target.name} (${target.phone})`);
+      // 솔라피 발송 요청
+      const response = await messageService.send({
+        to: targetPhone,
+        from: CONFIG.solapiSenderNumber,
+        text: messageText,
+        // 알림톡/LMS/SMS 여부는 text 길이나 템플릿 설정에 따라 자동 지정됨 (기본값)
+        autoTypeDetect: true
+      });
+
+      console.log(`[전송 성공] 대상: ${target.name} (${target.phone}) - 메시지 ID: ${response.messageId}`);
       
-      // 발송 딜레이 (스팸 방지)
+      // 발송 딜레이 (스팸/서버 과부하 방지, 1초)
       await new Promise(resolve => setTimeout(resolve, 1000));
     } catch (error) {
       console.error(`[전송 실패] 대상: ${target.name} - 사유: ${error.message}`);

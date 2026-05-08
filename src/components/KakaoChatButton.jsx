@@ -20,8 +20,8 @@ const KakaoChatButton = () => {
 
     const isOnline = checkBusinessHours();
 
-    // KAKAO_CHANNEL_URL: 실제 데일리하우징 카카오 채널 URL로 교체 필요
-    const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_';
+    // KAKAO_CHANNEL_URL: 카카오톡 비즈니스 채널 링크 (바로 채팅방 연결)
+    const KAKAO_CHANNEL_URL = 'http://pf.kakao.com/_xlpIKX/chat';
 
     return (
         <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3 pointer-events-none">
