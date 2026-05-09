@@ -3,6 +3,7 @@ import { useProductStore } from '../store/useProductStore';
 import { useAuthStore } from '../store/useAuthStore';
 import { useState, useEffect } from 'react';
 import { getHomepageContent } from '../services/adminService';
+import SEO from '../components/SEO';
 
 export default function Home() {
     const { products, initProducts } = useProductStore();
@@ -94,6 +95,13 @@ export default function Home() {
 
     return (
         <main className="flex-1 bg-white">
+            <SEO 
+                title="메인" 
+                description="데일리하우징에서 주거용, 상업용 프리미엄 바닥재를 만나보세요. LX Z:IN 공식 유통 파트너로서 전문 시공과 B2B 특가를 제공합니다." 
+                url="https://데일리하우징.kr"
+                imageUrl="https://데일리하우징.kr/og-image.jpg"
+            />
+
 
             {/* =============================================
                 SECTION 1: Hero Banner

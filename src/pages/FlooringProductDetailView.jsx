@@ -16,6 +16,7 @@ import CommercialPrestigeFeature from '../components/product/CommercialPrestigeF
 import MaruPremiumFeature from '../components/product/MaruPremiumFeature';
 import SheetStandard18Feature from '../components/product/SheetStandard18Feature';
 import SheetStandard20Feature from '../components/product/SheetStandard20Feature';
+import SEO from '../components/SEO';
 
 // 에디톤 마루 상세 이미지 목록 (문서참조 - 실제 다운로드 제공 파일)
 const MARU_LAYERS = [
@@ -242,27 +243,6 @@ export default function FlooringProductDetailView() {
         }
     }, [id, product]);
 
-    useEffect(() => {
-        if (product) {
-            document.title = `${product.title} | 데일리하우징`;
-            document.querySelector('meta[property="og:title"]')
-                ?.setAttribute('content', product.title);
-            document.querySelector('meta[property="og:description"]')
-                ?.setAttribute('content', `${product.title} - ${product.subtitle || '프리미엄 바닥재'}`);
-            document.querySelector('meta[property="og:image"]')
-                ?.setAttribute('content', product.imageUrl || '/og-image.jpg');
-        }
-        return () => {
-            document.title = '데일리하우징 - 프리미엄 바닥재 전문';
-            document.querySelector('meta[property="og:title"]')
-                ?.setAttribute('content', '데일리하우징 - 프리미엄 바닥재 전문');
-            document.querySelector('meta[property="og:description"]')
-                ?.setAttribute('content', '데일리하우징에서 주거용, 상업용 프리미엄 바닥재를 만나보세요');
-            document.querySelector('meta[property="og:image"]')
-                ?.setAttribute('content', '/og-image.jpg');
-        };
-    }, [product]);
-
     if (!product) {
         return (
             <div className="flex-1 flex flex-col items-center justify-center py-20">
@@ -287,6 +267,12 @@ export default function FlooringProductDetailView() {
 
     return (
         <main className="flex-1 w-full pb-40 lg:pb-32">
+            <SEO
+                title={product.title}
+                description={`${product.title} - ${product.subtitle || '프리미엄 바닥재'}`}
+                url={`https://데일리하우징.kr/product/${product.id}`}
+                imageUrl={product.imageUrl ? `https://데일리하우징.kr${product.imageUrl}` : 'https://데일리하우징.kr/og-image.jpg'}
+            />
             {/* 뒤로가기 및 브레드크럼 */}
             <div className="max-w-7xl mx-auto px-4 md:px-10 pt-6 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <button
