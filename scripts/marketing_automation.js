@@ -17,6 +17,7 @@ const CONFIG = {
   smsTemplatePath: path.join(__dirname, '../B2B_영업문자_템플릿.txt'),
   blogTemplatePath: path.join(__dirname, '../네이버블로그_원고_4종.txt'),
   sentHistoryPath: path.join(__dirname, '../data/sent_history.json'), // 발송 이력 파일 추가
+  failedHistoryPath: path.join(__dirname, '../data/failed_history.json'), // 실패 이력 파일 추가
   // 외부 문자 발송 API (Solapi) 키 세팅
   solapiApiKey: process.env.SOLAPI_API_KEY,
   solapiApiSecret: process.env.SOLAPI_API_SECRET,
@@ -41,6 +42,23 @@ function saveSentHistory(history) {
   fs.writeFileSync(CONFIG.sentHistoryPath, JSON.stringify(history, null, 2), 'utf8');
 }
 
+// 실패 이력 불러오기
+function getFailedHistory() {
+  if (fs.existsSync(CONFIG.failedHistoryPath)) {
+    try {
+      return JSON.parse(fs.readFileSync(CONFIG.failedHistoryPath, 'utf8'));
+    } catch (e) {
+      return [];
+    }
+  }
+  return [];
+}
+
+// 실패 이력 저장하기
+function saveFailedHistory(history) {
+  fs.writeFileSync(CONFIG.failedHistoryPath, JSON.stringify(history, null, 2), 'utf8');
+}
+
 /**
  * 1. 엑셀 DB에서 타겟 업체 연락처 추출
  */
@@ -56,6 +74,7 @@ async function loadTargetDB() {
   const worksheet = workbook.worksheets[0]; // 첫 번째 시트
 
   const sentHistory = getSentHistory();
+  const failedHistory = getFailedHistory();
   const targets = [];
   worksheet.eachRow((row, rowNumber) => {
     const name = row.getCell(1).value;    // 1열: 업체명
@@ -70,9 +89,12 @@ async function loadTargetDB() {
       // 헤더나 빈 행(예: '2025'로 채워진 행) 스킵하고, 7열에 '2025'가 포함된 실제 사업자만 추출
       if (nameStr !== '2025' && yearStr.includes('2025') && phoneStr.length > 8) {
         const cleanPhone = phoneStr.replace(/[^0-9]/g, '');
-        // 이미 발송한 이력이 없는 번호만 추가
-        if (!sentHistory.includes(cleanPhone)) {
-          targets.push({ name: nameStr, phone: cleanPhone, rawPhone: phoneStr });
+        // 010으로 시작하는 휴대폰 번호만 선별 (유선 번호 발송 실패 방지)
+        if (cleanPhone.startsWith('010')) {
+          // 이미 발송한 이력이 없거나 실패 이력에도 없는 번호만 추가
+          if (!sentHistory.includes(cleanPhone) && !failedHistory.some(f => f.phone === cleanPhone)) {
+            targets.push({ name: nameStr, phone: cleanPhone, rawPhone: phoneStr });
+          }
         }
       }
     }
@@ -85,14 +107,14 @@ async function loadTargetDB() {
 /**
  * 2. 카카오톡/문자 대량 발송 (템플릿 기반)
  */
-async function sendSmsCampaign(limit = 50) {
+async function sendSmsCampaign(limit = 300) {
   const allTargets = await loadTargetDB();
   if (allTargets.length === 0) {
     console.log('✨ 모든 타겟에게 발송이 완료되었거나 대기 중인 타겟이 없습니다.');
     return;
   }
 
-  // 발송 제한(기본 50)만큼 잘라내기. limit이 0이나 false면 전체 발송
+  // 발송 제한(기본 300)만큼 잘라내기. limit이 0이나 false면 전체 발송
   const targets = limit > 0 ? allTargets.slice(0, limit) : allTargets;
 
   const smsTemplate = fs.readFileSync(CONFIG.smsTemplatePath, 'utf8');
@@ -106,6 +128,7 @@ async function sendSmsCampaign(limit = 50) {
 
   const messageService = new SolapiMessageService(CONFIG.solapiApiKey, CONFIG.solapiApiSecret);
   const sentHistory = getSentHistory();
+  const failedHistory = getFailedHistory();
 
   console.log(`\n🚀 [솔라피 문자 대량 발송 캠페인 시작] 금일 ${targets.length}건 발송 예정`);
   
@@ -133,6 +156,15 @@ async function sendSmsCampaign(limit = 50) {
       await new Promise(resolve => setTimeout(resolve, 1000));
     } catch (error) {
       console.error(`[전송 실패] 대상: ${target.name} - 사유: ${error.message}`);
+      
+      // 실패 이력 저장
+      failedHistory.push({
+        name: target.name,
+        phone: target.phone,
+        reason: error.message,
+        date: new Date().toISOString()
+      });
+      saveFailedHistory(failedHistory);
     }
   }
   
@@ -191,7 +223,7 @@ const action = process.argv[2];
 
 if (action === 'sms') {
   const limitArg = process.argv[3];
-  const limit = limitArg !== undefined ? parseInt(limitArg, 10) : 50; // 기본 50건
+  const limit = limitArg !== undefined ? parseInt(limitArg, 10) : 300; // 기본 300건
   sendSmsCampaign(limit);
 } else if (action === 'blog') {
   autoPostToNaverBlog();
@@ -205,7 +237,7 @@ if (action === 'sms') {
   console.log(`
 [데일리하우징 마케팅 자동화 스크립트]
 사용법: 
-  node scripts/marketing_automation.js sms        # 미발송 대상자에게 50건 발송 (기본값)
+  node scripts/marketing_automation.js sms        # 미발송 대상자에게 300건 발송 (기본값)
   node scripts/marketing_automation.js sms 100    # 미발송 대상자에게 100건 발송
   node scripts/marketing_automation.js sms 0      # 남은 전원에게 전부 발송
   node scripts/marketing_automation.js blog       # 네이버 블로그 포스팅

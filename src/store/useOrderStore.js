@@ -143,6 +143,34 @@ export const useOrderStore = create((set, get) => ({
         }
 
         set({ orders: [newOrder, ...get().orders] });
+
+        // 텔레그램 알림 발송 (백그라운드 비동기 처리)
+        try {
+            const token = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+            const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+            
+            if (token && chatId) {
+                const message = `🔔 [새로운 주문 접수]\n\n` +
+                    `📦 주문번호: ${generatedOrderId}\n` +
+                    `👤 주문자: ${userInfo.displayName || userInfo.name || '비회원'}\n` +
+                    `📱 연락처: ${userInfo.phone || '미기재'}\n` +
+                    `💰 총 금액: ${totalAmount.toLocaleString()}원\n` +
+                    `🚚 배송지: ${userInfo.address || '미기재'}\n\n` +
+                    `🛒 주문상품:\n${newOrder.items.map(item => `- ${item.productName} (${item.qty}개)`).join('\n')}`;
+
+                fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message
+                    })
+                }).catch(err => console.error('텔레그램 알림 발송 실패:', err));
+            }
+        } catch (error) {
+            console.warn('⚠️ 텔레그램 알림 로직 에러:', error);
+        }
+
         return newOrder.orderId;
     },
 

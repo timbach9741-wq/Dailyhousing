@@ -259,8 +259,9 @@ const Signup = () => {
           {activeTab === 'business' && (
             <div className="bg-[#a51c30]/10 border border-[#a51c30]/30 rounded-xl p-4 flex flex-col md:flex-row items-center justify-center gap-3 mb-[-1.5rem] mt-[-1rem]">
               <span className="material-symbols-outlined text-[#a51c30] text-2xl animate-bounce">sell</span>
-              <p className="text-[#a51c30] font-black text-sm md:text-base text-center">
-                🔥 사업자 번호 실시간 인증 시, 관리자 대기 없이 <span className="underline underline-offset-4">즉시 도매가 승인(10~20% 할인)</span> 적용!
+              <p className="text-[#a51c30] font-black text-sm md:text-base text-center break-keep leading-relaxed">
+                🔥 사업자 번호 실시간 인증 시, 관리자 대기 없이 <br className="block sm:hidden" />
+                <span className="underline underline-offset-4">즉시 도매가 승인(10~20% 할인)</span> 적용!
               </p>
             </div>
           )}
