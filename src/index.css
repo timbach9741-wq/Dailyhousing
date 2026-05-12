@@ -231,3 +231,31 @@ button, [role="button"] {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* ========================================
+   Print Optimization (A4 영수증 인쇄)
+   ======================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 15mm;
+  }
+  
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: white !important;
+  }
+
+  /* 불필요한 여백 제거 */
+  main {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* 숨김 처리 명시적 보장 */
+  .print\:hidden {
+    display: none !important;
+  }
+}

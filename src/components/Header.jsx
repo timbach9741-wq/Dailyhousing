@@ -109,7 +109,7 @@ function Header() {
     };
 
     return (
-        <header className="sticky top-0 z-50 w-full">
+        <header className="sticky top-0 z-50 w-full print:hidden">
             {/* Top Utility Bar */}
             <div className="bg-[#f8f9fa] border-b border-slate-200 text-slate-600 text-[13px] font-medium">
                 <div className="w-full px-4 sm:px-6 lg:px-12 flex items-center justify-between py-2">

@@ -32,7 +32,7 @@ export default function Footer() {
         };
     }, []);
     return (
-        <footer className="bg-white border-t border-slate-200">
+        <footer className="bg-white border-t border-slate-200 print:hidden">
             {/* Main Footer */}
             <div className="px-4 sm:px-6 lg:px-16 xl:px-24 pt-10 sm:pt-14 lg:pt-20 pb-8 sm:pb-12">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-16">

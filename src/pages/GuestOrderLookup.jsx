@@ -121,7 +121,7 @@ const GuestOrderLookup = () => {
                                     </div>
                                 </div>
                                 <div className="flex gap-2">
-                                    {order.status !== 'CANCELED' && (
+                                    {['PENDING', 'PAID', 'PREPARING'].includes(order.status) && (
                                         <button
                                             onClick={() => handleCancelClick(order.orderId)}
                                             className="bg-white border border-slate-200 text-slate-700 text-sm font-bold px-4 py-2 rounded-lg hover:bg-slate-50 transition-colors"

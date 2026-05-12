@@ -120,7 +120,7 @@ export default function MyPageOrderTracking() {
                                         </div>
                                     </div>
                                     <div className="flex gap-2">
-                                        {order.status !== 'CANCELED' && (
+                                        {['PENDING', 'PAID', 'PREPARING'].includes(order.status) && (
                                             <button onClick={() => {
                                                 if (confirm('정말 주문을 취소하시겠습니까?')) {
                                                     cancelOrder(order.orderId);

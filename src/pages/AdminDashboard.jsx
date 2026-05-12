@@ -89,7 +89,7 @@ const AdminDashboard = () => {
     const { addToast } = useToastStore();
 
     const { products, initProducts, addProduct, updateProduct, removeProduct } = useProductStore();
-    const { fetchAllOrders, addOrder } = useOrderStore();
+    const { fetchAllOrders, addOrder, cancelOrder } = useOrderStore();
 
     const [stats, setStats] = useState({ totalOrders: 0, pendingOrders: 0, completedOrders: 0, totalRevenue: 0, recentActivity: [] });
     const [loading, setLoading] = useState(true);
@@ -648,6 +648,25 @@ const AdminDashboard = () => {
             if (result.success) addToast(result.message, 'success');
         } catch {
             addToast('저장 중 오류가 발생했습니다.', 'error');
+        }
+    };
+
+    const handleCancelOrder = async (order) => {
+        if (order.status === 'CANCELED') {
+            addToast('이미 취소된 주문입니다.', 'warning');
+            return;
+        }
+        if (!window.confirm(`주문번호 ${order.id}를 취소 처리하시겠습니까?\n이 작업은 되돌릴 수 없습니다.`)) return;
+        
+        try {
+            await cancelOrder(order.id);
+            setProcessedOrders(prev => prev.map(o => 
+                o.id === order.id ? { ...o, status: 'CANCELED', statusLabel: '주문취소' } : o
+            ));
+            addToast('주문이 정상적으로 취소되었습니다.', 'success');
+        } catch (error) {
+            console.error('취소 오류:', error);
+            addToast('주문 취소 중 오류가 발생했습니다.', 'error');
         }
     };
 
@@ -1301,6 +1320,11 @@ const AdminDashboard = () => {
                                                                             <button onClick={() => setPurchaseOrderModal(order)} className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-amber-500/20 transition-all" title="발주서 양식">
                                                                                 <span className="material-symbols-outlined text-slate-400 text-[16px]">description</span>
                                                                             </button>
+                                                                            {order.status !== 'CANCELED' && (
+                                                                                <button onClick={() => handleCancelOrder(order)} className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-red-500/20 transition-all" title="주문 취소">
+                                                                                    <span className="material-symbols-outlined text-red-400 text-[16px]">cancel</span>
+                                                                                </button>
+                                                                            )}
                                                                         </div>
                                                                     </div>
 

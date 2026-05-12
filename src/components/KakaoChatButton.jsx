@@ -24,7 +24,7 @@ const KakaoChatButton = () => {
     const KAKAO_CHANNEL_URL = 'http://pf.kakao.com/_xlpIKX/chat';
 
     return (
-        <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3 pointer-events-none">
+        <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-3 pointer-events-none print:hidden">
             {/* 상담하기 말풍선 (데스크탑에서 호버 시 노출) */}
             <div
                 className={`

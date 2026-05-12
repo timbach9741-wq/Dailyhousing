@@ -175,15 +175,15 @@ export const useOrderStore = create((set, get) => ({
     },
 
     cancelOrder: async (orderId) => {
-        const order = get().orders.find(o => o.orderId === orderId);
-        if (order?.firestoreId) {
-            try {
-                await updateDoc(doc(db, 'orders', order.firestoreId), {
-                    status: 'CANCELED',
-                    statusLabel: '주문취소'
-                });
-            } catch (error) { console.warn('⚠️ cancelOrder - Firestore 업데이트 실패:', error?.message); /* 로컬만 업데이트 */ }
+        try {
+            await updateDoc(doc(db, 'orders', orderId), {
+                status: 'CANCELED',
+                statusLabel: '주문취소'
+            });
+        } catch (error) {
+            console.warn('⚠️ cancelOrder - Firestore 업데이트 실패:', error?.message);
         }
+        
         set({
             orders: get().orders.map(o =>
                 o.orderId === orderId
