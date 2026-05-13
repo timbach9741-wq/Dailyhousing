@@ -55,7 +55,6 @@
 
 html {
   scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -63,7 +62,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
   /* iOS 안전영역 대응 */
   padding-bottom: env(safe-area-inset-bottom);
 }
@@ -226,7 +224,6 @@ button, [role="button"] {
 /* 스크롤바 숨김 유틸리티 */
 .scrollbar-hide {
   -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;

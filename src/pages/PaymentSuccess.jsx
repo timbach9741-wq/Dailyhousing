@@ -271,7 +271,7 @@ export default function PaymentSuccess() {
                                                 displayUnit = formatted.unit;
                                                 displayQty = formatted.displayQty;
                                             }
-                                        } catch(e) {
+                                        } catch {
                                             // Fallback if formatOrderUnit fails
                                             if (cat.includes('시트') || cat.includes('합판')) {
                                                 displayUnit = 'R';
