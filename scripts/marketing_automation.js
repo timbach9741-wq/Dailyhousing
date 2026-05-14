@@ -71,36 +71,40 @@ async function loadTargetDB() {
 
   const workbook = new exceljs.Workbook();
   await workbook.xlsx.readFile(CONFIG.dbPath);
-  const worksheet = workbook.worksheets[0]; // 첫 번째 시트
+  const worksheetsToProcess = [
+    { sheet: workbook.worksheets[0], year: '2025' },
+    { sheet: workbook.worksheets[1], year: '2024' }
+  ];
 
   const sentHistory = getSentHistory();
   const failedHistory = getFailedHistory();
   const targets = [];
-  worksheet.eachRow((row, rowNumber) => {
-    const name = row.getCell(1).value;    // 1열: 업체명
-    const phone = row.getCell(3).value;   // 3열: 연락처
-    const yearIdentifier = row.getCell(7).value; // 7열: 2025 식별자 포함 컬럼
+  
+  for (const { sheet, year } of worksheetsToProcess) {
+    if (!sheet) continue;
+    sheet.eachRow((row, rowNumber) => {
+      const name = row.getCell(1).value;    // 1열: 업체명
+      const phone = row.getCell(3).value;   // 3열: 연락처
 
-    if (name && phone && yearIdentifier) {
-      const nameStr = String(name).trim();
-      const phoneStr = String(phone).trim();
-      const yearStr = String(yearIdentifier).trim();
+      if (name && phone) {
+        const nameStr = String(name).trim();
+        const phoneStr = String(phone).trim();
 
-      // 헤더나 빈 행(예: '2025'로 채워진 행) 스킵하고, 7열에 '2025'가 포함된 실제 사업자만 추출
-      if (nameStr !== '2025' && yearStr.includes('2025') && phoneStr.length > 8) {
-        const cleanPhone = phoneStr.replace(/[^0-9]/g, '');
-        // 010으로 시작하는 휴대폰 번호만 선별 (유선 번호 발송 실패 방지)
-        if (cleanPhone.startsWith('010')) {
-          // 이미 발송한 이력이 없거나 실패 이력에도 없는 번호만 추가
-          if (!sentHistory.includes(cleanPhone) && !failedHistory.some(f => f.phone === cleanPhone)) {
-            targets.push({ name: nameStr, phone: cleanPhone, rawPhone: phoneStr });
+        if (nameStr !== '2025' && nameStr !== '2024' && phoneStr.length > 8) {
+          const cleanPhone = phoneStr.replace(/[^0-9]/g, '');
+          // 010으로 시작하는 휴대폰 번호만 선별 (유선 번호 발송 실패 방지)
+          if (cleanPhone.startsWith('010')) {
+            // 이미 발송한 이력이 없거나 실패 이력에도 없는 번호만 추가
+            if (!sentHistory.includes(cleanPhone) && !failedHistory.some(f => f.phone === cleanPhone)) {
+              targets.push({ name: nameStr, phone: cleanPhone, rawPhone: phoneStr });
+            }
           }
         }
       }
-    }
-  });
+    });
+  }
 
-  console.log(`✅ 발송 대기 중인 타겟(미발송) 업체: 총 ${targets.length}개 로드 완료 (2025년 기준)`);
+  console.log(`✅ 발송 대기 중인 타겟(미발송) 업체: 총 ${targets.length}개 로드 완료 (2025년 및 2024년 기준)`);
   return targets;
 }
 
