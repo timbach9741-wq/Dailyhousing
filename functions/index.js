@@ -63,3 +63,96 @@ exports.confirmTossPayment = onRequest(
     });
   }
 );
+
+// ============================================================================
+// 네이버 블로그 AI 마케팅 자동화 봇 (주 3회 발행)
+// ============================================================================
+
+const { onSchedule } = require("firebase-functions/v2/scheduler");
+
+// Secrets 설정 (추후 firebase functions:secrets:set 로 설정 필요)
+const OPENAI_API_KEY = defineSecret("OPENAI_API_KEY");
+const NAVER_CLIENT_ID = defineSecret("NAVER_CLIENT_ID");
+const NAVER_CLIENT_SECRET = defineSecret("NAVER_CLIENT_SECRET");
+const NAVER_ACCESS_TOKEN = defineSecret("NAVER_ACCESS_TOKEN"); // 사용자 블로그용
+
+/**
+ * 네이버 블로그 AI 자동 포스팅 봇 (매주 월, 수, 금 오전 10시 실행)
+ * - 대표님 요청에 따라 '비공개(임시저장 성격)'로 업로드하여 수동 검토 후 발행.
+ * - 셀프 인테리어, DIY 키워드 금지 및 데일리하우징 주력 상품 위주.
+ */
+exports.generateBlogDraft = onSchedule(
+  {
+    schedule: "0 10 * * 1,3,5", // 매주 월, 수, 금 오전 10시 (KST)
+    timeZone: "Asia/Seoul",
+    secrets: [OPENAI_API_KEY, NAVER_CLIENT_ID, NAVER_CLIENT_SECRET, NAVER_ACCESS_TOKEN],
+    timeoutSeconds: 300 // AI 텍스트 생성이 지연될 수 있으므로 여유롭게 5분 부여
+  },
+  async (event) => {
+    logger.info("블로그 자동 포스팅 스케줄러가 시작되었습니다.");
+
+    try {
+      // 1. OpenAI 연동 (원고 생성)
+      const { OpenAI } = require("openai");
+      const openai = new OpenAI({
+        apiKey: OPENAI_API_KEY.value(),
+      });
+      
+      const prompt = `
+당신은 10년 차 이상의 베테랑 바닥재 전문 시공 엔지니어이자 인테리어 전문가입니다.
+오늘 '데일리하우징' 네이버 블로그에 올릴 홍보성 칼럼을 하나 작성해주세요.
+
+[규칙]
+1. 타겟 키워드: 장판, 마루, 데코타일, LX지인 에디톤 중 하나를 메인 주제로 잡으세요.
+2. 금지어: 셀프 인테리어, DIY. (셀프 시공의 단점과 마감 불량을 언급하며, 반드시 데일리하우징 같은 '전문 업체'에 맡겨야 완벽한 결과물이 나옴을 강력하게 강조하세요.)
+3. 글의 어조는 신뢰감을 주면서도 친절하게 작성하세요.
+4. 제목은 HTML 태그 없이 작성하고, 본문 내용은 네이버 블로그에 그대로 복사할 수 있도록 HTML 포맷(H2, H3, P, Strong 태그 등)으로 깔끔하게 작성해주세요.
+5. 응답은 반드시 JSON 형태로 출력해주세요.
+
+JSON 형식:
+{
+  "title": "[데일리하우징] 블로그 제목 작성",
+  "content": "<h1>블로그 HTML 본문...</h1>"
+}
+      `;
+
+      logger.info("OpenAI API 호출 중...");
+      const completion = await openai.chat.completions.create({
+        messages: [{ role: "system", content: prompt }],
+        model: "gpt-4o",
+        response_format: { type: "json_object" },
+      });
+
+      const responseText = completion.choices[0].message.content;
+      const { title, content } = JSON.parse(responseText);
+      
+      logger.info(`✅ 원고 생성 완료. 제목: ${title}`);
+
+      // 2. 네이버 블로그 API 연동 (비공개로 업로드하여 '임시저장' 효과)
+      // 네이버 블로그는 완전한 '임시저장' API는 미지원하므로 비공개 발행(secret: true) 후 직접 수정
+      /*
+      // TODO: 네이버 API 키가 발급되면 이 주석을 해제하고 연동합니다.
+      const naverApiUrl = "https://openapi.naver.com/blog/writePost.json";
+      
+      const formData = new URLSearchParams();
+      formData.append("title", title);
+      formData.append("contents", content);
+      
+      // 비공개로 발행하여 임시저장처럼 활용
+      // (대표님이 네이버 블로그 접속 -> 비공개 글에 현장 사진 추가 -> 공개 발행)
+      const naverResponse = await axios.post(naverApiUrl, formData.toString(), {
+        headers: {
+          "Authorization": \`Bearer \${NAVER_ACCESS_TOKEN.value()}\`,
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
+      });
+      
+      logger.info("네이버 블로그 비공개 발행 성공:", naverResponse.data);
+      */
+      
+      logger.info("블로그 자동 생성 프로세스(테스트)가 성공적으로 완료되었습니다.");
+    } catch (error) {
+      logger.error("블로그 자동 포스팅 중 오류 발생:", error.response ? error.response.data : error.message);
+    }
+  }
+);
