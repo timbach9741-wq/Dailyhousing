@@ -99,13 +99,13 @@ exports.generateBlogDraft = onSchedule(
       });
       
       const prompt = `
-당신은 10년 차 이상의 베테랑 바닥재 전문 시공 엔지니어이자 인테리어 전문가입니다.
-오늘 '데일리하우징' 네이버 블로그에 올릴 홍보성 칼럼을 하나 작성해주세요.
+당신은 B2B 전문 바닥재 도매 및 대규모 시공 전문 기업 '데일리하우징'의 수석 엔지니어입니다.
+오늘 인테리어 업체, 건축/시공사 등 기업 고객을 타겟으로 하는 B2B 홍보 칼럼을 하나 작성해주세요.
 
 [규칙]
 1. 타겟 키워드: 장판, 마루, 데코타일, LX지인 에디톤 중 하나를 메인 주제로 잡으세요.
-2. 금지어: 셀프 인테리어, DIY. (셀프 시공의 단점과 마감 불량을 언급하며, 반드시 데일리하우징 같은 '전문 업체'에 맡겨야 완벽한 결과물이 나옴을 강력하게 강조하세요.)
-3. 글의 어조는 신뢰감을 주면서도 친절하게 작성하세요.
+2. 타겟 독자(B2B): '셀프 시공', 'DIY' 등 일반 소비자 대상의 내용은 절대 포함하지 마세요. 오직 인테리어 업체, 건설사 등 B2B 고객을 대상으로 '대량 발주', '정확한 납기', '검증된 B2B 시공 퀄리티' 등 비즈니스 파트너로서의 강점을 강력하게 강조하세요.
+3. 글의 어조는 비즈니스 파트너에게 신뢰감을 주는 전문적이고 정중한 톤으로 작성하세요.
 4. 제목은 HTML 태그 없이 작성하고, 본문 내용은 네이버 블로그에 그대로 복사할 수 있도록 HTML 포맷(H2, H3, P, Strong 태그 등)으로 깔끔하게 작성해주세요.
 5. 응답은 반드시 JSON 형태로 출력해주세요.
 
@@ -130,25 +130,24 @@ JSON 형식:
 
       // 2. 네이버 블로그 API 연동 (비공개로 업로드하여 '임시저장' 효과)
       // 네이버 블로그는 완전한 '임시저장' API는 미지원하므로 비공개 발행(secret: true) 후 직접 수정
-      /*
-      // TODO: 네이버 API 키가 발급되면 이 주석을 해제하고 연동합니다.
+      // 네이버 API 키가 발급되었으므로 주석을 해제하고 연동합니다.
       const naverApiUrl = "https://openapi.naver.com/blog/writePost.json";
       
       const formData = new URLSearchParams();
       formData.append("title", title);
       formData.append("contents", content);
+      // 비공개 설정을 원하실 경우, 네이버 블로그 카테고리의 기본 설정을 '비공개'로 두시길 권장합니다.
       
       // 비공개로 발행하여 임시저장처럼 활용
       // (대표님이 네이버 블로그 접속 -> 비공개 글에 현장 사진 추가 -> 공개 발행)
       const naverResponse = await axios.post(naverApiUrl, formData.toString(), {
         headers: {
-          "Authorization": \`Bearer \${NAVER_ACCESS_TOKEN.value()}\`,
+          "Authorization": `Bearer ${NAVER_ACCESS_TOKEN.value()}`,
           "Content-Type": "application/x-www-form-urlencoded"
         }
       });
       
       logger.info("네이버 블로그 비공개 발행 성공:", naverResponse.data);
-      */
       
       logger.info("블로그 자동 생성 프로세스(테스트)가 성공적으로 완료되었습니다.");
     } catch (error) {
