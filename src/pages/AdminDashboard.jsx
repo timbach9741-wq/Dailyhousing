@@ -3019,8 +3019,67 @@ const AdminDashboard = () => {
                         const b2b = cmsContent?.b2b || defaultB2b;
                         const contact = cmsContent?.contact || defaultContact;
 
+                        const defaultPopup = {
+                            enabled: false,
+                            headerText: '긴급 공지',
+                            theme: 'warning',
+                            title: '[긴급] 중동 지역 전쟁 여파로 인한 원자재 수급 불안정 및 배송 지연 안내',
+                            content: '안녕하세요, 데일리하우징입니다.\n현재 중동 지역의 급격한 정세 악화로 인해 바닥재 핵심 원자재 수급과 수입 물류 상황이 매우 불안정합니다.\n이에 따라 부득이하게 주문 전 재고 확인 등 운영 방침을 안내드립니다.'
+                        };
+                        const popup = cmsContent?.popup || defaultPopup;
+
                         return (
                             <>
+                                {/* 팝업창 관리 카드 */}
+                                <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6">
+                                    <div className="flex items-center justify-between mb-6">
+                                        <h2 className="text-lg font-bold flex items-center gap-2"><span>📢</span> 팝업창 관리</h2>
+                                        <SaveBtn onClick={() => handleCmsUpdate('popup', popup)} />
+                                    </div>
+                                    <div className="space-y-4">
+                                        {/* 활성화 토글 */}
+                                        <div className="flex items-center justify-between p-4 rounded-2xl bg-white/5 border border-white/10">
+                                            <div>
+                                                <h3 className="text-sm font-semibold text-white">팝업창 노출 상태</h3>
+                                                <p className="text-xs text-slate-400 mt-0.5">활성화 시 홈페이지 접속자에게 팝업창이 노출됩니다.</p>
+                                            </div>
+                                            <button
+                                                onClick={() => setCmsContent({ ...cmsContent, popup: { ...popup, enabled: !popup.enabled } })}
+                                                className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${popup.enabled ? 'bg-indigo-600' : 'bg-slate-700'}`}
+                                            >
+                                                <span className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${popup.enabled ? 'translate-x-5' : 'translate-x-0'}`} />
+                                            </button>
+                                        </div>
+
+                                        {/* 헤더 문구 & 테마 스타일 */}
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div>
+                                                <label className={labelCls}>팝업 헤더 문구</label>
+                                                <input className={inputCls} placeholder="예: 긴급 공지, 공지사항" value={popup.headerText || ''} onChange={e => setCmsContent({ ...cmsContent, popup: { ...popup, headerText: e.target.value } })} />
+                                            </div>
+                                            <div>
+                                                <label className={labelCls}>팝업 테마 스타일</label>
+                                                <select className={inputCls} value={popup.theme || 'warning'} onChange={e => setCmsContent({ ...cmsContent, popup: { ...popup, theme: e.target.value } })}>
+                                                    <option value="warning" className="bg-[#1e293b]">경고/긴급 (Red)</option>
+                                                    <option value="notice" className="bg-[#1e293b]">일반/공지 (Slate)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        {/* 공지 제목 */}
+                                        <div>
+                                            <label className={labelCls}>공지 제목 (중요 문구)</label>
+                                            <input className={inputCls} placeholder="예: [긴급] 바닥재 원자재 수급 및 가격 변동 예고" value={popup.title || ''} onChange={e => setCmsContent({ ...cmsContent, popup: { ...popup, title: e.target.value } })} />
+                                        </div>
+
+                                        {/* 공지 본문 */}
+                                        <div>
+                                            <label className={labelCls}>공지 상세 내용 (줄바꿈 가능)</label>
+                                            <textarea rows="6" className={inputCls} placeholder="팝업에 들어갈 전체 상세 문구를 입력해주세요." value={popup.content || ''} onChange={e => setCmsContent({ ...cmsContent, popup: { ...popup, content: e.target.value } })} />
+                                        </div>
+                                    </div>
+                                </div>
+
                                 {/* Row 1: 히어로 + 통계 */}
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                                     <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6">
