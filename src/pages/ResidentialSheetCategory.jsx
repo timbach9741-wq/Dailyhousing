@@ -64,12 +64,12 @@ export default function ResidentialSheetCategory() {
                 result = result.filter(p => p.subCategory === selectedDetailCategory);
             }
         } else if (selectedSubCategory === '타일') {
-            result = result.filter(p => p.subtitle.includes('타일'));
+            result = result.filter(p => p.subtitle && p.subtitle.includes('타일'));
             if (selectedDetailCategory !== '전체') {
                 result = result.filter(p => p.subCategory === selectedDetailCategory);
             }
         } else {
-            result = result.filter(p => p.subCategory === selectedSubCategory);
+            result = result.filter(p => p.subCategory && p.subCategory === selectedSubCategory);
         }
 
         // 정렬 적용
