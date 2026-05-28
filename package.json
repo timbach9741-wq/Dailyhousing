@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node setup-env.js",
     "dev": "vite",
+    "prebuild": "node setup-env.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
