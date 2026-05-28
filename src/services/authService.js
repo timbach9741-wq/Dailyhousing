@@ -11,6 +11,36 @@ import { doc, getDoc, setDoc, collection, query, where, getDocs } from "firebase
 import { useAuthStore } from "../store/useAuthStore";
 import { useCartStore } from "../store/useCartStore";
 import { recordSignupToSheets } from './googleSheetsService';
+import { sendTelegramAlert } from './telegramService';
+
+// 사업자 가입 시 텔레그램 알림 발송 헬퍼
+const triggerBusinessSignupNotification = async (userData) => {
+    if (userData.role !== 'business') return;
+    
+    try {
+        const { displayName, email, phoneNumber, businessInfo, approved } = userData;
+        const businessName = businessInfo?.businessName || '미기재';
+        const businessNumber = businessInfo?.businessNumber || '미기재';
+        const ntsVerified = businessInfo?.ntsVerified ? '✅ 인증 완료' : '❌ 미인증';
+        const licenseUrl = businessInfo?.licenseUrl;
+        const approvalStatus = approved ? '⚡ 즉시 자동 승인' : '⏳ 승인 대기 (관리자 확인 필요)';
+
+        const message = `🔔 <b>[새로운 사업자 가입 신청]</b>\n\n` +
+            `🏢 <b>상호명:</b> ${businessName}\n` +
+            `💼 <b>사업자번호:</b> ${businessNumber}\n` +
+            `👤 <b>대표자명:</b> ${displayName}\n` +
+            `📱 <b>연락처:</b> ${phoneNumber || '미기재'}\n` +
+            `📧 <b>이메일:</b> ${email}\n` +
+            `🔍 <b>국세청 인증:</b> ${ntsVerified}\n` +
+            `📄 <b>사업자등록증:</b> ${licenseUrl ? `<a href="${licenseUrl}">[다운로드/보기]</a>` : '미첨부'}\n` +
+            `⌛ <b>승인 상태:</b> ${approvalStatus}`;
+
+        await sendTelegramAlert(message);
+    } catch (err) {
+        console.warn('⚠️ 사업자 가입 텔레그램 알림 실패:', err);
+    }
+};
+
 
 // 로컬 스토리지 키
 const LOCAL_USERS_KEY = 'floorcraft_mock_users';
@@ -181,6 +211,9 @@ export const signup = async (email, password, displayName, role = 'individual', 
         // Google Sheets에 회원정보 기록 (비동기, 실패해도 무시)
         recordSignupToSheets(userData).catch(() => {});
 
+        // 사업자 가입 텔레그램 알림 발송 (비동기)
+        triggerBusinessSignupNotification(userData).catch(() => {});
+
         if (needsApproval) {
             // 사업자 회원: 승인 대기 → 로그아웃 처리
             await signOut(auth);
@@ -215,6 +248,9 @@ export const signup = async (email, password, displayName, role = 'individual', 
 
         // Google Sheets에 회원정보 기록 (비동기, 실패해도 무시)
         recordSignupToSheets(newUser).catch(() => {});
+
+        // 사업자 가입 텔레그램 알림 발송 (비동기)
+        triggerBusinessSignupNotification(newUser).catch(() => {});
 
         if (needsApproval) {
             return { success: true, pendingApproval: true, user: newUser };
