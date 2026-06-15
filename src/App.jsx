@@ -49,6 +49,7 @@ const CleaningMoveIn = lazy(() => import('./pages/CleaningMoveIn'))
 const CleaningSickBuilding = lazy(() => import('./pages/CleaningSickBuilding'))
 const CleaningAppliance = lazy(() => import('./pages/CleaningAppliance'))
 const CleaningRegular = lazy(() => import('./pages/CleaningRegular'))
+const LocalFlooringSEO = lazy(() => import('./pages/LocalFlooringSEO'))
 
 // Loading component
 const PageLoader = () => (
@@ -159,6 +160,7 @@ function App() {
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/quality-assurance" element={<QualityAssurance />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/:regionKey-flooring" element={<LocalFlooringSEO />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>

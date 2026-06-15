@@ -17,6 +17,41 @@ export default function PaymentSuccess() {
     const [receiptData, setReceiptData] = useState(null);
     const processedRef = useRef(false);
 
+    const [biz, setBiz] = useState(() => {
+        try {
+            const d = JSON.parse(localStorage.getItem('homepage_cms_content') || '{}');
+            return d.business || {};
+        } catch (e) {
+            return {};
+        }
+    });
+    const [contact, setContact] = useState(() => {
+        try {
+            const d = JSON.parse(localStorage.getItem('homepage_cms_content') || '{}');
+            return d.contact || {};
+        } catch (e) {
+            return {};
+        }
+    });
+
+    useEffect(() => {
+        const handleCmsUpdate = () => {
+            try {
+                const d = JSON.parse(localStorage.getItem('homepage_cms_content') || '{}');
+                if (d.business) setBiz(d.business);
+                if (d.contact) setContact(d.contact);
+            } catch (e) {
+                console.warn(e);
+            }
+        };
+        window.addEventListener('cmsUpdated', handleCmsUpdate);
+        window.addEventListener('storage', handleCmsUpdate);
+        return () => {
+            window.removeEventListener('cmsUpdated', handleCmsUpdate);
+            window.removeEventListener('storage', handleCmsUpdate);
+        };
+    }, []);
+
     useEffect(() => {
         const confirmPayment = async () => {
             if (processedRef.current) return;
@@ -188,19 +223,19 @@ export default function PaymentSuccess() {
                                 <tbody>
                                     <tr className="border-b border-slate-100">
                                         <th className="py-2.5 px-3 bg-slate-50 text-slate-600 font-medium text-left w-1/3">등록번호</th>
-                                        <td className="py-2.5 px-3 text-slate-900 font-bold tracking-wider">650-86-02758</td>
+                                        <td className="py-2.5 px-3 text-slate-900 font-bold tracking-wider">{biz.bizNumber || '361-28-01723'}</td>
                                     </tr>
                                     <tr className="border-b border-slate-100">
                                         <th className="py-2.5 px-3 bg-slate-50 text-slate-600 font-medium text-left">상호(법인명)</th>
-                                        <td className="py-2.5 px-3 text-slate-900 font-bold">스튜디오언트 주식회사</td>
+                                        <td className="py-2.5 px-3 text-slate-900 font-bold">{biz.companyName || '데일리하우징'}</td>
                                     </tr>
                                     <tr className="border-b border-slate-100">
                                         <th className="py-2.5 px-3 bg-slate-50 text-slate-600 font-medium text-left">대표자</th>
-                                        <td className="py-2.5 px-3 text-slate-900">이홍석</td>
+                                        <td className="py-2.5 px-3 text-slate-900">{biz.ceoName || '이홍석'}</td>
                                     </tr>
                                     <tr className="border-b border-slate-100">
                                         <th className="py-2.5 px-3 bg-slate-50 text-slate-600 font-medium text-left">사업장 주소</th>
-                                        <td className="py-2.5 px-3 text-slate-900 text-xs">경기도 고양시 일산동구 동국로 32, 503호</td>
+                                        <td className="py-2.5 px-3 text-slate-900 text-xs">{contact.address || '경기도 안산시 상록구 장화3길 35'}</td>
                                     </tr>
                                 </tbody>
                             </table>

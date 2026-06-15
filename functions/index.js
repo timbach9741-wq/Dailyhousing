@@ -155,3 +155,38 @@ JSON 형식:
     }
   }
 );
+
+// ============================================================================
+// 텔레그램 알림 발송 (프론트엔드 취약점 보안용)
+// ============================================================================
+exports.sendTelegramAlert = onRequest({ cors: true }, async (req, res) => {
+  if (req.method !== 'POST') {
+    return res.status(405).send('Method Not Allowed');
+  }
+  
+  const { message } = req.body;
+  if (!message) {
+    return res.status(400).json({ success: false, error: '메시지가 없습니다.' });
+  }
+
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+
+  if (!token || !chatId) {
+    logger.error("텔레그램 토큰 또는 챗 ID가 서버에 설정되지 않았습니다.");
+    return res.status(500).json({ success: false, error: '서버 환경변수 설정 오류' });
+  }
+
+  try {
+    const response = await axios.post(`https://api.telegram.org/bot${token}/sendMessage`, {
+      chat_id: chatId,
+      text: message,
+      parse_mode: 'HTML'
+    });
+    
+    return res.status(200).json({ success: true, data: response.data });
+  } catch (error) {
+    logger.error("텔레그램 발송 실패:", error.response ? error.response.data : error.message);
+    return res.status(500).json({ success: false, error: '텔레그램 발송 중 오류 발생' });
+  }
+});

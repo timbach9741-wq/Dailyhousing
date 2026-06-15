@@ -8,6 +8,8 @@
     "dev": "vite",
     "prebuild": "node setup-env.js",
     "build": "vite build",
+    "build:seo": "node setup-env.js && vite build && node scripts/generate-sitemap.js && node prerender.js",
+    "deploy:seo": "npm run build:seo && firebase deploy --only hosting",
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy:hosting": "firebase deploy --only hosting",

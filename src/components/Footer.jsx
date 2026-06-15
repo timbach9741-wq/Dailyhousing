@@ -101,7 +101,7 @@ export default function Footer() {
                             </div>
                             <div className="flex items-start gap-3">
                                 <span className="material-symbols-outlined text-[20px] text-slate-400 mt-0.5">location_on</span>
-                                <p className="text-[15px] font-normal text-slate-500 leading-relaxed">{contact.address || '서울특별시 강남구 테헤란로 123'}</p>
+                                <p className="text-[15px] font-normal text-slate-500 leading-relaxed">{contact.address || '경기도 안산시 상록구 장화3길 35'}</p>
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@ export default function Footer() {
             <div className="bg-slate-50 border-t border-slate-200 px-4 sm:px-6 lg:px-16 xl:px-24 py-5 sm:py-6 mt-4">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                     <div className="text-[13px] font-normal text-slate-400 text-center md:text-left leading-relaxed">
-                        <p>대표: {biz.ceoName || '이홍석'} | 사업자등록번호: {biz.bizNumber || '(미설정)'} | 통신판매업 신고번호: {biz.ecomNumber || '(미설정)'}</p>
+                        <p>대표: {biz.ceoName || '이홍석'} | 사업자등록번호: {biz.bizNumber || '361-28-01723'} | 통신판매업 신고번호: {biz.ecomNumber || '(미설정)'}</p>
                         <p className="mt-1">© 2026 {biz.companyName || '데일리하우징'}. All rights reserved.</p>
 
                     </div>

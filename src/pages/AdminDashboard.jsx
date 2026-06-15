@@ -3013,7 +3013,7 @@ const AdminDashboard = () => {
                                 { text: '정품 보증 & A/S 지원', sub: 'LX Z:IN 공식 품질 보증' },
                             ]
                         };
-                        const defaultContact = { phone: '031-409-5556', email: 'timbach@naver.com', address: '서울특별시 강남구 테헤란로 123', hours: '평일 09:00 – 18:00' };
+                        const defaultContact = { phone: '031-409-5556', email: 'timbach@naver.com', address: '경기도 안산시 상록구 장화3길 35', hours: '평일 09:00 – 18:00' };
 
                         const strengths = cmsContent?.strengths?.length > 0 ? cmsContent.strengths : defaultStrengths;
                         const b2b = cmsContent?.b2b || defaultB2b;
