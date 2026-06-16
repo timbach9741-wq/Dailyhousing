@@ -63,8 +63,56 @@ export default function ShoppingCartCheckout() {
     const [deliveryInfo, setDeliveryInfo] = useState(initialDeliveryInfo);
 
     // --- 무통장 입금 안내 ---
-    // const paymentWidgetRef = useRef(null);
-    // const paymentMethodsWidgetRef = useRef(null);
+    const [biz, setBiz] = useState(() => {
+        try {
+            const d = JSON.parse(localStorage.getItem('homepage_cms_content') || '{}');
+            return d.business || {};
+        } catch (e) {
+            return {};
+        }
+    });
+
+    useEffect(() => {
+        const handleCmsUpdate = () => {
+            try {
+                const d = JSON.parse(localStorage.getItem('homepage_cms_content') || '{}');
+                if (d.business) setBiz(d.business);
+            } catch (e) {
+                console.warn(e);
+            }
+        };
+        window.addEventListener('cmsUpdated', handleCmsUpdate);
+        window.addEventListener('storage', handleCmsUpdate);
+        return () => {
+            window.removeEventListener('cmsUpdated', handleCmsUpdate);
+            window.removeEventListener('storage', handleCmsUpdate);
+        };
+    }, []);
+
+    const bankInfo = useMemo(() => {
+        const bankAccountStr = biz.bankAccount;
+        if (!bankAccountStr) {
+            return {
+                bankName: '국민은행',
+                accountNo: '350601-04-419058',
+                holderName: '데일리하우징'
+            };
+        }
+        const match = bankAccountStr.match(/^([^\s]+)\s+([^\s\(]+)(?:\s*\(예금주:\s*([^\)]+)\))?/);
+        if (match) {
+            return {
+                bankName: match[1],
+                accountNo: match[2],
+                holderName: match[3] || '데일리하우징'
+            };
+        }
+        return {
+            bankName: '국민은행',
+            accountNo: '350601-04-419058',
+            holderName: '데일리하우징'
+        };
+    }, [biz.bankAccount]);
+
     const [guestId] = useState(() => `guest_${Math.random().toString(36).slice(2)}`);
     // const customerKey = useMemo(() => user?.uid || guestId, [user, guestId]);
 
@@ -513,20 +561,20 @@ export default function ShoppingCartCheckout() {
                                 현재 <span className="font-bold text-primary">B2B 파트너 전용 도매가 시스템 연동 작업</span>으로 인해 한시적으로 무통장 입금 결제만 지원합니다.<br/>
                                 주문 접수 후 아래 계좌로 입금해주시면 즉시 배송 준비가 시작됩니다.
                             </p>
-                            <div className="bg-white dark:bg-slate-900 p-4 rounded border border-slate-200 dark:border-slate-700 font-medium">
-                                <div className="flex justify-between items-center mb-2">
-                                    <span className="text-slate-500 text-sm">은행</span>
-                                    <span className="text-slate-800 dark:text-slate-200">카카오뱅크</span>
-                                </div>
-                                <div className="flex justify-between items-center mb-2">
-                                    <span className="text-slate-500 text-sm">계좌번호</span>
-                                    <span className="text-primary font-bold">3333-02-0797998</span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                    <span className="text-slate-500 text-sm">예금주</span>
-                                    <span className="text-slate-800 dark:text-slate-200">이홍석</span>
-                                </div>
-                            </div>
+                             <div className="bg-white dark:bg-slate-900 p-4 rounded border border-slate-200 dark:border-slate-700 font-medium">
+                                 <div className="flex justify-between items-center mb-2">
+                                     <span className="text-slate-500 text-sm">은행</span>
+                                     <span className="text-slate-800 dark:text-slate-200">{bankInfo.bankName}</span>
+                                 </div>
+                                 <div className="flex justify-between items-center mb-2">
+                                     <span className="text-slate-500 text-sm">계좌번호</span>
+                                     <span className="text-primary font-bold">{bankInfo.accountNo}</span>
+                                 </div>
+                                 <div className="flex justify-between items-center">
+                                     <span className="text-slate-500 text-sm">예금주</span>
+                                     <span className="text-slate-800 dark:text-slate-200">{bankInfo.holderName}</span>
+                                 </div>
+                             </div>
                         </div>
                     </div>
 

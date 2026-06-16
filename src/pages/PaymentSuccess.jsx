@@ -199,10 +199,14 @@ export default function PaymentSuccess() {
                                 <span className="material-symbols-outlined text-[18px]">account_balance</span>
                                 입금 계좌 안내
                             </p>
-                            <p className="text-xl sm:text-3xl font-black text-amber-900 tracking-tight mb-2">
-                                카카오뱅크 3333-02-0797998
+                            <p className="text-xl sm:text-2xl font-black text-amber-900 tracking-tight mb-2">
+                                {biz.bankAccount || '국민은행 350601-04-419058'}
                             </p>
-                            <p className="text-amber-700 text-sm font-medium">예금주: 이홍석 (데일리하우징)</p>
+                            {(!biz.bankAccount || !biz.bankAccount.includes('예금주')) && (
+                                <p className="text-amber-700 text-sm font-medium">
+                                    예금주: 데일리하우징
+                                </p>
+                            )}
                             
                             <div className="mt-5 pt-5 border-t border-amber-200/50 flex flex-col items-center justify-center gap-2">
                                 <p className="text-xs text-amber-600">입금하실 금액 (VAT 포함)</p>
