@@ -32,14 +32,20 @@ const Signup = () => {
 
   // 사업자번호 검증 실행
   const handleVerifyBusinessNumber = async () => {
-    if (!formData.registrationNumber.trim()) {
+    const cleaned = formData.registrationNumber.replace(/[^0-9]/g, '');
+    if (!cleaned) {
       setBizVerifyStatus('fail');
       setBizVerifyMessage('사업자등록번호를 입력해주세요.');
       return;
     }
+    if (cleaned.length !== 10) {
+      setBizVerifyStatus('fail');
+      setBizVerifyMessage('사업자등록번호는 10자리 숫자입니다.');
+      return;
+    }
     setBizVerifyStatus('loading');
     setBizVerifyMessage('검증 중...');
-    const result = await verifyBusinessNumber(formData.registrationNumber);
+    const result = await verifyBusinessNumber(cleaned);
     if (result.success) {
       if (result.isActive === false && result.status !== 'format_only') {
         setBizVerifyStatus('inactive');
@@ -51,6 +57,49 @@ const Signup = () => {
     } else {
       setBizVerifyStatus('fail');
       setBizVerifyMessage(`❌ ${result.error}`);
+    }
+  };
+
+  // 사업자등록번호 형식 포맷팅 (000-00-00000) 및 자동 검증
+  const handleBizNumberChange = async (e) => {
+    const { value } = e.target;
+    const cleaned = value.replace(/[^0-9]/g, '');
+    const limited = cleaned.slice(0, 10);
+
+    // 포맷팅 (000-00-00000)
+    let formatted = limited;
+    if (limited.length > 3 && limited.length <= 5) {
+      formatted = `${limited.slice(0, 3)}-${limited.slice(3)}`;
+    } else if (limited.length > 5) {
+      formatted = `${limited.slice(0, 3)}-${limited.slice(3, 5)}-${limited.slice(5)}`;
+    }
+
+    setFormData(prev => ({ ...prev, registrationNumber: formatted }));
+
+    // 10자리가 아니면 상태 초기화
+    if (limited.length < 10) {
+      setBizVerifyStatus(null);
+      setBizVerifyMessage('');
+      return;
+    }
+
+    // 10자리가 채워지면 자동 검증 실행
+    if (limited.length === 10) {
+      setBizVerifyStatus('loading');
+      setBizVerifyMessage('자동 검증 중...');
+      const result = await verifyBusinessNumber(limited);
+      if (result.success) {
+        if (result.isActive === false && result.status !== 'format_only') {
+          setBizVerifyStatus('inactive');
+          setBizVerifyMessage(`⚠️ ${result.statusText} (휴·폐업 사업자)`);
+        } else {
+          setBizVerifyStatus('success');
+          setBizVerifyMessage(`✅ ${result.statusText}`);
+        }
+      } else {
+        setBizVerifyStatus('fail');
+        setBizVerifyMessage(`❌ ${result.error}`);
+      }
     }
   };
 
@@ -311,7 +360,7 @@ const Signup = () => {
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-bold text-slate-700" htmlFor="registrationNumber">사업자 등록번호 <span className="text-[#a51c30]">*</span></label>
                   <div className="flex gap-2">
-                    <input id="registrationNumber" value={formData.registrationNumber} onChange={(e) => { handleInputChange(e); setBizVerifyStatus(null); setBizVerifyMessage(''); }} className="flex-1 rounded-lg border-slate-300 focus:ring-[#a51c30] focus:border-[#a51c30] px-4 py-2.5 bg-white border outline-none transition-colors" placeholder="000-00-00000" required type="text" />
+                    <input id="registrationNumber" value={formData.registrationNumber} onChange={handleBizNumberChange} className="flex-1 rounded-lg border-slate-300 focus:ring-[#a51c30] focus:border-[#a51c30] px-4 py-2.5 bg-white border outline-none transition-colors" placeholder="000-00-00000" required type="text" />
                     <button
                       type="button"
                       onClick={handleVerifyBusinessNumber}
