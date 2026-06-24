@@ -306,12 +306,19 @@ const Signup = () => {
 
         <form onSubmit={handleSubmit} className="space-y-10 bg-white p-8 md:p-10 rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100">
           {activeTab === 'business' && (
-            <div className="bg-[#a51c30]/10 border border-[#a51c30]/30 rounded-xl p-4 flex flex-col md:flex-row items-center justify-center gap-3 mb-[-1.5rem] mt-[-1rem]">
-              <span className="material-symbols-outlined text-[#a51c30] text-2xl animate-bounce">sell</span>
-              <p className="text-[#a51c30] font-black text-sm md:text-base text-center break-keep leading-relaxed">
-                🔥 사업자 번호 실시간 인증 시, 관리자 대기 없이 <br className="block sm:hidden" />
-                <span className="underline underline-offset-4">즉시 도매가 승인(10~20% 할인)</span> 적용!
-              </p>
+            <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-[#a51c30]/15 via-[#a51c30]/5 to-slate-50 border border-[#a51c30]/20 p-5 mb-[-1.5rem] mt-[-1rem] flex items-center gap-4">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#a51c30] text-white shadow-md shadow-[#a51c30]/20">
+                <span className="material-symbols-outlined text-2xl">verified</span>
+              </div>
+              <div className="flex-1">
+                <h4 className="text-slate-900 font-extrabold text-sm md:text-base flex items-center gap-1.5 leading-snug">
+                  사업자 번호 실시간 인증 즉시 승인!
+                  <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-[#a51c30] text-white text-[10px] font-bold leading-none animate-pulse">HOT</span>
+                </h4>
+                <p className="text-slate-600 text-xs md:text-sm mt-1 leading-relaxed">
+                  가입 즉시 대기 없이 <strong className="text-[#a51c30] font-black underline underline-offset-4">도매 회원 단가 (10~20% 즉시 할인)</strong>가 적용됩니다.
+                </p>
+              </div>
             </div>
           )}
           <section>
