@@ -14,6 +14,30 @@ const Login = () => {
   const { addToast } = useToastStore();
   const from = location.state?.from?.pathname || '/';
 
+  const handleSocialLogin = (provider) => {
+    const kakaoClientId = import.meta.env.VITE_KAKAO_CLIENT_ID || '';
+    const naverClientId = import.meta.env.VITE_NAVER_CLIENT_ID || '';
+    const redirectUri = `${window.location.origin}/auth/callback`;
+
+    sessionStorage.setItem('social_provider', provider);
+    sessionStorage.setItem('social_signup_role', 'individual');
+
+    if (provider === 'kakao') {
+      if (!kakaoClientId) {
+        addToast('카카오 Client ID가 .env에 설정되지 않았습니다.', 'error');
+        return;
+      }
+      window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${kakaoClientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code`;
+    } else if (provider === 'naver') {
+      if (!naverClientId) {
+        addToast('네이버 Client ID가 .env에 설정되지 않았습니다.', 'error');
+        return;
+      }
+      const state = Math.random().toString(36).substring(2);
+      window.location.href = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naverClientId}&redirect_uri=${encodeURIComponent(redirectUri)}&state=${state}`;
+    }
+  };
+
   // 계정 찾기 모달 상태
   const [showFindModal, setShowFindModal] = useState(false);
   const [findName, setFindName] = useState('');
@@ -161,6 +185,32 @@ const Login = () => {
             {loading ? '로그인 중...' : '로그인'}
           </button>
         </form>
+
+        <div className="social-login-separator">
+          <span>또는 간편 로그인</span>
+        </div>
+
+        <div className="social-login-buttons">
+          <button
+            type="button"
+            onClick={() => handleSocialLogin('kakao')}
+            className="social-btn kakao-btn"
+          >
+            <svg viewBox="0 0 24 24" className="social-icon" fill="currentColor">
+              <path d="M12 3C6.477 3 2 6.48 2 10.78c0 2.78 1.88 5.22 4.69 6.63L5.5 21.64l4.72-3.41c.58.1 1.17.16 1.78.16 5.52 0 10-3.48 10-7.78C22 6.48 17.52 3 12 3z" />
+            </svg>
+            카카오 로그인
+          </button>
+          
+          <button
+            type="button"
+            onClick={() => handleSocialLogin('naver')}
+            className="social-btn naver-btn"
+          >
+            <span className="naver-icon-txt">N</span>
+            네이버 로그인
+          </button>
+        </div>
 
         <div className="login-footer">
           <p>계정이 없으신가요? <Link to="/signup">회원가입</Link></p>
@@ -645,6 +695,82 @@ const Login = () => {
         .found-hint {
           font-size: 0.8rem;
           color: #999;
+        }
+
+        .social-login-separator {
+          display: flex;
+          align-items: center;
+          text-align: center;
+          margin: 24px 0;
+          color: #aaa;
+          font-size: 0.85rem;
+        }
+
+        .social-login-separator::before,
+        .social-login-separator::after {
+          content: '';
+          flex: 1;
+          border-bottom: 1px solid #eee;
+        }
+
+        .social-login-separator:not(:empty)::before {
+          margin-right: .5em;
+        }
+
+        .social-login-separator:not(:empty)::after {
+          margin-left: .5em;
+        }
+
+        .social-login-buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          margin-bottom: 24px;
+        }
+
+        .social-btn {
+          width: 100%;
+          padding: 12px;
+          border-radius: 12px;
+          border: none;
+          font-size: 0.95rem;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        .kakao-btn {
+          background-color: #FEE500;
+          color: #191919;
+        }
+
+        .kakao-btn:hover {
+          background-color: #E6CF00;
+        }
+
+        .naver-btn {
+          background-color: #03C75A;
+          color: #fff;
+        }
+
+        .naver-btn:hover {
+          background-color: #02b34f;
+        }
+
+        .social-icon {
+          width: 18px;
+          height: 18px;
+        }
+
+        .naver-icon-txt {
+          font-family: 'Outfit', sans-serif;
+          font-weight: 900;
+          font-size: 1.1rem;
+          margin-right: 2px;
         }
       `}</style>
     </div>

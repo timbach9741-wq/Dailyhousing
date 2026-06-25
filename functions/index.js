@@ -5,11 +5,22 @@ const { defineSecret } = require("firebase-functions/params");
 const logger = require("firebase-functions/logger");
 const axios = require("axios");
 const cors = require("cors")({ origin: true });
+const admin = require("firebase-admin");
+
+try {
+  admin.initializeApp();
+} catch (e) {
+  // Ignore
+}
 
 // 토스페이먼츠 시크릿 키 (Firebase Secret Manager로 안전하게 관리)
 // 배포 전 아래 명령어로 시크릿 등록 필요:
 // firebase functions:secrets:set TOSS_SECRET_KEY
 const TOSS_SECRET_KEY = defineSecret("TOSS_SECRET_KEY");
+
+// 카카오 소셜 로그인 비밀값 정의
+const KAKAO_REST_API_KEY = defineSecret("KAKAO_REST_API_KEY");
+const KAKAO_CLIENT_SECRET = defineSecret("KAKAO_CLIENT_SECRET");
 
 exports.confirmTossPayment = onRequest(
   { secrets: [TOSS_SECRET_KEY] },
@@ -190,3 +201,298 @@ exports.sendTelegramAlert = onRequest({ cors: true }, async (req, res) => {
     return res.status(500).json({ success: false, error: '텔레그램 발송 중 오류 발생' });
   }
 });
+
+// ============================================================================
+// 카카오 로그인 인증 및 커스텀 토큰 생성
+// ============================================================================
+exports.kakaoLogin = onRequest(
+  { secrets: [KAKAO_REST_API_KEY, KAKAO_CLIENT_SECRET], cors: true },
+  async (req, res) => {
+    if (req.method !== 'POST') {
+      return res.status(405).send('Method Not Allowed');
+    }
+
+    const { code, redirectUri } = req.body;
+    if (!code || !redirectUri) {
+      return res.status(400).json({ success: false, error: 'code와 redirectUri가 필요합니다.' });
+    }
+
+    try {
+      const restApiKey = KAKAO_REST_API_KEY.value();
+      const clientSecret = KAKAO_CLIENT_SECRET.value();
+
+      // 1. 카카오 액세스 토큰 요청
+      const tokenParams = {
+        grant_type: 'authorization_code',
+        client_id: restApiKey,
+        redirect_uri: redirectUri,
+        code: code
+      };
+      if (clientSecret) {
+        tokenParams.client_secret = clientSecret;
+      }
+
+      const tokenResponse = await axios.post(
+        'https://kauth.kakao.com/oauth/token',
+        new URLSearchParams(tokenParams).toString(),
+        {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }
+      );
+
+      const accessToken = tokenResponse.data.access_token;
+      if (!accessToken) {
+        throw new Error('Access token not found in Kakao response.');
+      }
+
+      // 2. 카카오 프로필 요청
+      const profileResponse = await axios.get('https://kapi.kakao.com/v2/user/me', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+        }
+      });
+
+      const profile = profileResponse.data;
+      const kakaoId = String(profile.id);
+      
+      const email = profile.kakao_account?.email || `kakao_${kakaoId}@dailyhousing.com`;
+      const nickname = profile.properties?.nickname || profile.kakao_account?.profile?.nickname || '카카오 회원';
+      const photoURL = profile.properties?.profile_image || profile.kakao_account?.profile?.profile_image_url || '';
+      
+      const db = admin.firestore();
+      
+      let userRecord = null;
+      let uid = '';
+      
+      // A. 이메일로 기존 Auth 유저 조회
+      try {
+        userRecord = await admin.auth().getUserByEmail(email);
+        uid = userRecord.uid;
+        logger.info(`기존 이메일 매칭 회원 발견: ${email}, uid: ${uid}`);
+      } catch (err) {
+        // Ignore
+      }
+
+      // B. Firestore에서 kakaoId로 연동된 회원 조회
+      if (!uid) {
+        const usersSnap = await db.collection('users').where('socialLinks.kakaoId', '==', kakaoId).limit(1).get();
+        if (!usersSnap.empty) {
+          uid = usersSnap.docs[0].id;
+          logger.info(`Firestore kakaoId 연동 회원 발견, uid: ${uid}`);
+        }
+      }
+
+      // C. 신규 회원 생성
+      let isNewUser = false;
+      if (!uid) {
+        isNewUser = true;
+        const randomPassword = Math.random().toString(36).slice(-16) + 'A1!';
+        userRecord = await admin.auth().createUser({
+          email,
+          emailVerified: true,
+          password: randomPassword,
+          displayName: nickname,
+          ...(photoURL ? { photoURL } : {})
+        });
+        uid = userRecord.uid;
+        logger.info(`신규 소셜 회원 생성 성공, uid: ${uid}`);
+      }
+
+      // 4. Firestore 유저 문서 동기화
+      const userRef = db.collection('users').doc(uid);
+      const userSnap = await userRef.get();
+      
+      const socialLinkUpdate = {
+        'socialLinks.kakaoId': kakaoId,
+        'socialLinks.kakaoEmail': email,
+        updatedAt: new Date().toISOString()
+      };
+
+      if (!userSnap.exists) {
+        await userRef.set({
+          uid,
+          email,
+          displayName: nickname,
+          role: 'individual',
+          approved: true,
+          socialLinks: {
+            kakaoId,
+            kakaoEmail: email
+          },
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        });
+      } else {
+        await userRef.update(socialLinkUpdate);
+      }
+
+      // 5. Firebase Custom Token 생성
+      const customToken = await admin.auth().createCustomToken(uid);
+
+      return res.status(200).json({
+        success: true,
+        customToken,
+        uid,
+        email,
+        isNewUser,
+        role: userSnap.exists ? (userSnap.data().role || 'individual') : 'individual',
+        approved: userSnap.exists ? (userSnap.data().approved !== false) : true
+      });
+
+    } catch (error) {
+      logger.error('카카오 로그인 처리 실패:', error.response ? error.response.data : error.message);
+      return res.status(500).json({
+        success: false,
+        error: error.response?.data || error.message || '카카오 로그인 처리 중 에러가 발생했습니다.'
+      });
+    }
+  }
+);
+
+// ============================================================================
+// 네이버 로그인 인증 및 커스텀 토큰 생성
+// ============================================================================
+exports.naverLogin = onRequest(
+  { secrets: [NAVER_CLIENT_ID, NAVER_CLIENT_SECRET], cors: true },
+  async (req, res) => {
+    if (req.method !== 'POST') {
+      return res.status(405).send('Method Not Allowed');
+    }
+
+    const { code, redirectUri, state } = req.body;
+    if (!code || !redirectUri) {
+      return res.status(400).json({ success: false, error: 'code와 redirectUri가 필요합니다.' });
+    }
+
+    try {
+      const clientId = NAVER_CLIENT_ID.value();
+      const clientSecret = NAVER_CLIENT_SECRET.value();
+
+      // 1. 네이버 액세스 토큰 요청
+      const tokenResponse = await axios.post(
+        'https://nid.naver.com/oauth2.0/token',
+        new URLSearchParams({
+          grant_type: 'authorization_code',
+          client_id: clientId,
+          client_secret: clientSecret,
+          redirect_uri: redirectUri,
+          code: code,
+          state: state || 'naver_login'
+        }).toString(),
+        {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }
+      );
+
+      const accessToken = tokenResponse.data.access_token;
+      if (!accessToken) {
+        throw new Error('Access token not found in Naver response.');
+      }
+
+      // 2. 네이버 프로필 요청
+      const profileResponse = await axios.get('https://openapi.naver.com/v1/nid/me', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+
+      const profile = profileResponse.data.response;
+      if (!profile) {
+        throw new Error('Naver profile response is empty.');
+      }
+
+      const naverId = String(profile.id);
+      const email = profile.email || `naver_${naverId}@dailyhousing.com`;
+      const nickname = profile.name || profile.nickname || '네이버 회원';
+      const photoURL = profile.profile_image || '';
+      
+      const db = admin.firestore();
+      
+      let userRecord = null;
+      let uid = '';
+      
+      // A. 이메일로 기존 Auth 유저 조회
+      try {
+        userRecord = await admin.auth().getUserByEmail(email);
+        uid = userRecord.uid;
+        logger.info(`기존 이메일 매칭 회원 발견: ${email}, uid: ${uid}`);
+      } catch (err) {
+        // Ignore
+      }
+
+      // B. Firestore에서 naverId로 연동된 회원 조회
+      if (!uid) {
+        const usersSnap = await db.collection('users').where('socialLinks.naverId', '==', naverId).limit(1).get();
+        if (!usersSnap.empty) {
+          uid = usersSnap.docs[0].id;
+          logger.info(`Firestore naverId 연동 회원 발견, uid: ${uid}`);
+        }
+      }
+
+      // C. 신규 회원 생성
+      let isNewUser = false;
+      if (!uid) {
+        isNewUser = true;
+        const randomPassword = Math.random().toString(36).slice(-16) + 'A1!';
+        userRecord = await admin.auth().createUser({
+          email,
+          emailVerified: true,
+          password: randomPassword,
+          displayName: nickname,
+          ...(photoURL ? { photoURL } : {})
+        });
+        uid = userRecord.uid;
+        logger.info(`신규 소셜 회원 생성 성공, uid: ${uid}`);
+      }
+
+      // 4. Firestore 유저 문서 동기화
+      const userRef = db.collection('users').doc(uid);
+      const userSnap = await userRef.get();
+      
+      const socialLinkUpdate = {
+        'socialLinks.naverId': naverId,
+        'socialLinks.naverEmail': email,
+        updatedAt: new Date().toISOString()
+      };
+
+      if (!userSnap.exists) {
+        await userRef.set({
+          uid,
+          email,
+          displayName: nickname,
+          role: 'individual',
+          approved: true,
+          socialLinks: {
+            naverId,
+            naverEmail: email
+          },
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        });
+      } else {
+        await userRef.update(socialLinkUpdate);
+      }
+
+      // 5. Firebase Custom Token 생성
+      const customToken = await admin.auth().createCustomToken(uid);
+
+      return res.status(200).json({
+        success: true,
+        customToken,
+        uid,
+        email,
+        isNewUser,
+        role: userSnap.exists ? (userSnap.data().role || 'individual') : 'individual',
+        approved: userSnap.exists ? (userSnap.data().approved !== false) : true
+      });
+
+    } catch (error) {
+      logger.error('네이버 로그인 처리 실패:', error.response ? error.response.data : error.message);
+      return res.status(500).json({
+        success: false,
+        error: error.response?.data || error.message || '네이버 로그인 처리 중 에러가 발생했습니다.'
+      });
+    }
+  }
+);

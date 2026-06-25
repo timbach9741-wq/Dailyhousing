@@ -329,3 +329,49 @@ export const findUserEmail = async (name, phone) => {
         return { success: false, error: "정보를 찾는 중 오류가 발생했습니다." };
     }
 };
+
+// 소셜 가입 사업자 추가정보 기입 완료 처리
+export const completeBusinessSignup = async (uid, companyName, registrationNumber, licenseUrl, licenseFileName, ntsVerified) => {
+    try {
+        const businessInfo = {
+            businessName: companyName,
+            businessNumber: registrationNumber,
+            ntsVerified,
+            licenseUrl,
+            licenseFileName
+        };
+
+        const userRef = doc(db, 'users', uid);
+        const userDoc = await getDoc(userRef);
+        const userData = userDoc.exists() ? userDoc.data() : {};
+
+        // 국세청 인증이 되었고 사업자등록증이 첨부된 경우 즉시 자동 승인
+        const approved = ntsVerified && !!licenseUrl;
+
+        await updateDoc(userRef, {
+            role: 'business',
+            approved,
+            businessInfo,
+            updatedAt: new Date().toISOString()
+        });
+
+        const updatedUser = {
+            ...userData,
+            uid,
+            role: 'business',
+            approved,
+            businessInfo
+        };
+
+        // Google Sheets 기록 (비동기)
+        recordSignupToSheets(updatedUser).catch(e => console.error('Google Sheets 기록 에러:', e));
+
+        // 텔레그램 알림 발송 (비동기)
+        triggerBusinessSignupNotification(updatedUser).catch(e => console.error('텔레그램 알림 에러:', e));
+
+        return { success: true, approved, user: updatedUser };
+    } catch (error) {
+        console.error('completeBusinessSignup error:', error);
+        return { success: false, error: error.message };
+    }
+};

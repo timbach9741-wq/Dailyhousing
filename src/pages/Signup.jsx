@@ -260,6 +260,31 @@ const Signup = () => {
     }
   };
 
+  // 소셜 간편가입 처리
+  const handleSocialSignup = (provider) => {
+    const kakaoClientId = import.meta.env.VITE_KAKAO_CLIENT_ID || '';
+    const naverClientId = import.meta.env.VITE_NAVER_CLIENT_ID || '';
+    const redirectUri = `${window.location.origin}/auth/callback`;
+
+    sessionStorage.setItem('social_provider', provider);
+    sessionStorage.setItem('social_signup_role', activeTab); // 'individual' 또는 'business'
+
+    if (provider === 'kakao') {
+      if (!kakaoClientId) {
+        addToast('카카오 Client ID가 .env에 설정되지 않았습니다.', 'error');
+        return;
+      }
+      window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=${kakaoClientId}&redirect_uri=${encodeURIComponent(redirectUri)}&response_type=code`;
+    } else if (provider === 'naver') {
+      if (!naverClientId) {
+        addToast('네이버 Client ID가 .env에 설정되지 않았습니다.', 'error');
+        return;
+      }
+      const state = `naver_signup_${activeTab}`;
+      window.location.href = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naverClientId}&redirect_uri=${encodeURIComponent(redirectUri)}&state=${state}`;
+    }
+  };
+
   return (
     <div className="flex flex-1 justify-center py-8 px-4 md:px-10 bg-slate-50 min-h-screen">
       <div className="flex flex-col max-w-[720px] flex-1">
@@ -465,6 +490,36 @@ const Signup = () => {
               {loading && <span className="material-symbols-outlined animate-spin">progress_activity</span>}
               {loading ? '가입 중...' : (activeTab === 'business' ? '사업자 회원가입' : '개인 회원가입')}
             </button>
+
+            {/* 간편 회원가입 연동 */}
+            <div className="flex items-center my-6">
+              <div className="flex-grow border-t border-slate-200"></div>
+              <span className="mx-4 text-xs text-slate-400 font-medium whitespace-nowrap">또는 간편 회원가입</span>
+              <div className="flex-grow border-t border-slate-200"></div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <button
+                type="button"
+                onClick={() => handleSocialSignup('kakao')}
+                className="flex items-center justify-center gap-2 py-3 px-4 bg-[#FEE500] hover:bg-[#E6CF00] text-[#191919] rounded-xl text-sm font-bold shadow-sm transition-all"
+              >
+                <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="currentColor">
+                  <path d="M12 3C6.477 3 2 6.48 2 10.78c0 2.78 1.88 5.22 4.69 6.63L5.5 21.64l4.72-3.41c.58.1 1.17.16 1.78.16 5.52 0 10-3.48 10-7.78C22 6.48 17.52 3 12 3z" />
+                </svg>
+                카카오 가입
+              </button>
+              
+              <button
+                type="button"
+                onClick={() => handleSocialSignup('naver')}
+                className="flex items-center justify-center gap-2 py-3 px-4 bg-[#03C75A] hover:bg-[#02b34f] text-white rounded-xl text-sm font-bold shadow-sm transition-all"
+              >
+                <span className="font-extrabold text-base leading-none mr-0.5">N</span>
+                네이버 가입
+              </button>
+            </div>
+
             <div className="flex items-center justify-center gap-2 mt-6">
               <span className="text-slate-500 text-sm">이미 계정이 있으신가요?</span>
               <Link className="text-[#a51c30] font-bold text-sm hover:underline" to="/login">로그인하기</Link>

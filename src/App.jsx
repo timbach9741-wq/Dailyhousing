@@ -34,6 +34,8 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
 const QualityAssurance = lazy(() => import('./pages/QualityAssurance'))
 const FAQ = lazy(() => import('./pages/FAQ'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+const SocialAuthCallback = lazy(() => import('./pages/SocialAuthCallback'))
+const SignupBusinessInfo = lazy(() => import('./pages/SignupBusinessInfo'))
 
 // --- 파트너(Vendor) 앱 컴포넌트 ---
 const PartnerLayout = lazy(() => import('./layouts/PartnerLayout'))
@@ -125,6 +127,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/auth/callback" element={<SocialAuthCallback />} />
+            <Route path="/signup/business-info" element={<SignupBusinessInfo />} />
             <Route path="/category/residential" element={<ResidentialSheetCategory />} />
             <Route path="/product/:id" element={<FlooringProductDetailView />} />
             <Route path="/category/commercial" element={<CommercialLVTCategory />} />
