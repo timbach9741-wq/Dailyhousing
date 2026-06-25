@@ -2,6 +2,14 @@ import { create } from 'zustand';
 import { db } from '../lib/firebase';
 import { collection, getDocs, getDoc, doc, updateDoc, setDoc, query, orderBy, where } from 'firebase/firestore';
 
+const escapeHtml = (str) => {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+};
+
 export const useOrderStore = create((set, get) => ({
     orders: [],
 
@@ -146,13 +154,18 @@ export const useOrderStore = create((set, get) => ({
 
         // 텔레그램 알림 발송 (백그라운드 비동기 처리)
         try {
+            const safeDisplayName = escapeHtml(userInfo.displayName || userInfo.name || '비회원');
+            const safePhone = escapeHtml(userInfo.phone || '미기재');
+            const safeAddress = escapeHtml(userInfo.address || '미기재');
+            const safeProducts = newOrder.items.map(item => `- ${escapeHtml(item.productName)} (${item.qty}개)`).join('\n');
+
             const message = `🔔 [새로운 주문 접수]\n\n` +
                 `📦 주문번호: ${generatedOrderId}\n` +
-                `👤 주문자: ${userInfo.displayName || userInfo.name || '비회원'}\n` +
-                `📱 연락처: ${userInfo.phone || '미기재'}\n` +
+                `👤 주문자: ${safeDisplayName}\n` +
+                `📱 연락처: ${safePhone}\n` +
                 `💰 총 금액: ${totalAmount.toLocaleString()}원\n` +
-                `🚚 배송지: ${userInfo.address || '미기재'}\n\n` +
-                `🛒 주문상품:\n${newOrder.items.map(item => `- ${item.productName} (${item.qty}개)`).join('\n')}`;
+                `🚚 배송지: ${safeAddress}\n\n` +
+                `🛒 주문상품:\n${safeProducts}`;
 
             fetch('https://us-central1-project-dog-1-51759630-ea08b.cloudfunctions.net/sendTelegramAlert', {
                 method: 'POST',

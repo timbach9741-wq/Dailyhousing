@@ -13,24 +13,35 @@ import { useCartStore } from "../store/useCartStore";
 import { recordSignupToSheets } from './googleSheetsService';
 import { sendTelegramAlert } from './telegramService';
 
+const escapeHtml = (str) => {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+};
+
 // 사업자 가입 시 텔레그램 알림 발송 헬퍼
 const triggerBusinessSignupNotification = async (userData) => {
     if (userData.role !== 'business') return;
     
     try {
         const { displayName, email, phoneNumber, businessInfo, approved } = userData;
-        const businessName = businessInfo?.businessName || '미기재';
-        const businessNumber = businessInfo?.businessNumber || '미기재';
+        const businessName = escapeHtml(businessInfo?.businessName || '미기재');
+        const businessNumber = escapeHtml(businessInfo?.businessNumber || '미기재');
         const ntsVerified = businessInfo?.ntsVerified ? '✅ 인증 완료' : '❌ 미인증';
         const licenseUrl = businessInfo?.licenseUrl;
         const approvalStatus = approved ? '⚡ 즉시 자동 승인' : '⏳ 승인 대기 (관리자 확인 필요)';
+        const safeDisplayName = escapeHtml(displayName || '미기재');
+        const safePhoneNumber = escapeHtml(phoneNumber || '미기재');
+        const safeEmail = escapeHtml(email || '미기재');
 
         const message = `🔔 <b>[새로운 사업자 가입 신청]</b>\n\n` +
             `🏢 <b>상호명:</b> ${businessName}\n` +
             `💼 <b>사업자번호:</b> ${businessNumber}\n` +
-            `👤 <b>대표자명:</b> ${displayName}\n` +
-            `📱 <b>연락처:</b> ${phoneNumber || '미기재'}\n` +
-            `📧 <b>이메일:</b> ${email}\n` +
+            `👤 <b>대표자명:</b> ${safeDisplayName}\n` +
+            `📱 <b>연락처:</b> ${safePhoneNumber}\n` +
+            `📧 <b>이메일:</b> ${safeEmail}\n` +
             `🔍 <b>국세청 인증:</b> ${ntsVerified}\n` +
             `📄 <b>사업자등록증:</b> ${licenseUrl ? `<a href="${licenseUrl}">[다운로드/보기]</a>` : '미첨부'}\n` +
             `⌛ <b>승인 상태:</b> ${approvalStatus}`;
