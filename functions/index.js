@@ -218,8 +218,8 @@ exports.kakaoLogin = onRequest(
     }
 
     try {
-      const restApiKey = KAKAO_REST_API_KEY.value();
-      const clientSecret = KAKAO_CLIENT_SECRET.value();
+      const restApiKey = KAKAO_REST_API_KEY.value().trim();
+      const clientSecret = KAKAO_CLIENT_SECRET.value().trim();
 
       // 1. 카카오 액세스 토큰 요청
       const tokenParams = {
@@ -228,15 +228,17 @@ exports.kakaoLogin = onRequest(
         redirect_uri: redirectUri,
         code: code
       };
-      if (clientSecret) {
+      if (clientSecret && clientSecret !== "NONE") {
         tokenParams.client_secret = clientSecret;
       }
+      
+      logger.info("Kakao Token Request Params (excluding code):", { ...tokenParams, code: "***" });
 
       const tokenResponse = await axios.post(
         'https://kauth.kakao.com/oauth/token',
         new URLSearchParams(tokenParams).toString(),
         {
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8' }
         }
       );
 
@@ -366,8 +368,8 @@ exports.naverLogin = onRequest(
     }
 
     try {
-      const clientId = NAVER_CLIENT_ID.value();
-      const clientSecret = NAVER_CLIENT_SECRET.value();
+      const clientId = NAVER_CLIENT_ID.value().trim();
+      const clientSecret = NAVER_CLIENT_SECRET.value().trim();
 
       // 1. 네이버 액세스 토큰 요청
       const tokenResponse = await axios.post(

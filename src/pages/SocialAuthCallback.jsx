@@ -43,7 +43,8 @@ const SocialAuthCallback = () => {
 
                 if (!response.ok) {
                     const errData = await response.json().catch(() => ({}));
-                    throw new Error(errData.error || `로그인 처리 실패 (HTTP ${response.status})`);
+                    const errorMessage = typeof errData.error === 'object' ? JSON.stringify(errData.error) : (errData.error || `로그인 처리 실패 (HTTP ${response.status})`);
+                    throw new Error(errorMessage);
                 }
 
                 const result = await response.json();
