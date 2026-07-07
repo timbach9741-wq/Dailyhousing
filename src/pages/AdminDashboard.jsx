@@ -155,6 +155,15 @@ const AdminDashboard = () => {
     const [selectedUserOrders, setSelectedUserOrders] = useState([]);
     const [banConfirm, setBanConfirm] = useState(null); // { uid, displayName, action: 'ban'|'unban' }
 
+    // 수동 가입 상태
+    const [manualAddModal, setManualAddModal] = useState(false);
+    const [manualAddForm, setManualAddForm] = useState({
+        email: '', password: '', displayName: '', phoneNumber: '', companyName: '', registrationNumber: ''
+    });
+    const [manualAddFile, setManualAddFile] = useState(null);
+    const [manualAddLoading, setManualAddLoading] = useState(false);
+
+
     // 전화 주문 상담 모달
     const [proxyOrderModal, setProxyOrderModal] = useState(false);
     const [proxySearch, setProxySearch] = useState('');
@@ -535,6 +544,55 @@ const AdminDashboard = () => {
                 localStorage.setItem('floorcraft_mock_users', JSON.stringify(filtered));
             }
         } catch { /* ignore */ }
+    };
+
+    // 사업자 수동 추가 제출
+    const handleManualAddSubmit = async (e) => {
+        e.preventDefault();
+        setManualAddLoading(true);
+        try {
+            let licenseUrl = null;
+            let licenseFileName = null;
+            if (manualAddFile) {
+                const { ref: storageRef, uploadBytes, getDownloadURL } = await import('firebase/storage');
+                const { storage } = await import('../lib/firebase');
+                const fileExt = manualAddFile.name.split('.').pop();
+                const sRef = storageRef(storage, `business-licenses/${Date.now()}_${manualAddForm.registrationNumber}.${fileExt}`);
+                await uploadBytes(sRef, manualAddFile);
+                licenseUrl = await getDownloadURL(sRef);
+                licenseFileName = manualAddFile.name;
+            }
+
+            const { auth } = await import('../lib/firebase');
+            const token = await auth.currentUser?.getIdToken();
+            if (!token) throw new Error("관리자 인증 토큰을 찾을 수 없습니다.");
+
+            const res = await fetch('https://us-central1-project-dog-1-51759630-ea08b.cloudfunctions.net/adminCreateUser', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    ...manualAddForm,
+                    licenseUrl,
+                    licenseFileName
+                })
+            });
+            const result = await res.json();
+            if (!result.success) throw new Error(result.error || '생성 실패');
+
+            addToast('사업자 계정이 성공적으로 생성되었습니다!', 'success');
+            setManualAddModal(false);
+            setManualAddForm({ email: '', password: '', displayName: '', phoneNumber: '', companyName: '', registrationNumber: '' });
+            setManualAddFile(null);
+            fetchUsers(); // 목록 새로고침
+        } catch (err) {
+            console.error(err);
+            addToast(`계정 생성 실패: ${err.message}`, 'error');
+        } finally {
+            setManualAddLoading(false);
+        }
     };
 
     // 제품 저장 (Store 즉시 반영 + Firestore 백업)
@@ -2198,6 +2256,10 @@ const AdminDashboard = () => {
                                 <span className="material-symbols-outlined text-[16px]">phone_in_talk</span>
                                 <span className="hidden sm:inline">전화 주문</span>
                             </button>
+                            <button onClick={() => setManualAddModal(true)} className="px-4 py-2.5 rounded-xl bg-indigo-500/20 border border-indigo-500/30 text-indigo-400 text-xs font-bold hover:bg-indigo-500/30 transition-all flex items-center gap-2" title="사업자 수동 추가">
+                                <span className="material-symbols-outlined text-[16px]">person_add</span>
+                                <span className="hidden sm:inline">사업자 수동 추가</span>
+                            </button>
                         </div>
                     </div>
 
@@ -3178,6 +3240,88 @@ const AdminDashboard = () => {
                     })()}
                 </div>
             )}
+
+            {/* ===== 사업자 수동 추가 모달 ===== */}
+            {manualAddModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto" onClick={() => setManualAddModal(false)}>
+                    <div className="bg-[#0f172a] border border-white/10 rounded-3xl p-8 w-full max-w-lg shadow-2xl relative my-8" onClick={e => e.stopPropagation()}>
+                        <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                            <span className="material-symbols-outlined text-indigo-400">person_add</span>
+                            사업자 수동 추가
+                        </h3>
+                        <p className="text-slate-400 text-sm mb-6">
+                            입력된 정보로 즉시 승인된 사업자(도매) 계정이 생성됩니다.<br/>
+                            <strong className="text-amber-400">초기 비밀번호는 생성 후 고객에게 직접 전달해주세요.</strong>
+                        </p>
+                        
+                        <form onSubmit={handleManualAddSubmit} className="space-y-4">
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-1">
+                                    <label className="text-xs text-slate-400 font-bold">이메일(아이디)</label>
+                                    <input type="email" required value={manualAddForm.email} onChange={e => setManualAddForm(prev => ({...prev, email: e.target.value}))} placeholder="example@email.com" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-indigo-500 text-sm" />
+                                </div>
+                                <div className="space-y-1">
+                                    <label className="text-xs text-slate-400 font-bold">초기 비밀번호</label>
+                                    <input type="text" required value={manualAddForm.password} onChange={e => setManualAddForm(prev => ({...prev, password: e.target.value}))} placeholder="임시 비밀번호" minLength={6} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-indigo-500 text-sm" />
+                                </div>
+                            </div>
+                            
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-1">
+                                    <label className="text-xs text-slate-400 font-bold">대표자명</label>
+                                    <input type="text" required value={manualAddForm.displayName} onChange={e => setManualAddForm(prev => ({...prev, displayName: e.target.value}))} placeholder="홍길동" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-indigo-500 text-sm" />
+                                </div>
+                                <div className="space-y-1">
+                                    <label className="text-xs text-slate-400 font-bold">연락처</label>
+                                    <input type="text" required value={manualAddForm.phoneNumber} onChange={e => setManualAddForm(prev => ({...prev, phoneNumber: e.target.value}))} placeholder="010-0000-0000" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-indigo-500 text-sm" />
+                                </div>
+                            </div>
+                            
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-1">
+                                    <label className="text-xs text-slate-400 font-bold">상호명(업체명)</label>
+                                    <input type="text" required value={manualAddForm.companyName} onChange={e => setManualAddForm(prev => ({...prev, companyName: e.target.value}))} placeholder="OO인테리어" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-indigo-500 text-sm" />
+                                </div>
+                                <div className="space-y-1">
+                                    <label className="text-xs text-slate-400 font-bold">사업자등록번호</label>
+                                    <input type="text" required value={manualAddForm.registrationNumber} onChange={e => setManualAddForm(prev => ({...prev, registrationNumber: e.target.value}))} placeholder="000-00-00000" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-indigo-500 text-sm" />
+                                </div>
+                            </div>
+
+                            <div className="space-y-1 pt-2">
+                                <label className="text-xs text-slate-400 font-bold">사업자등록증 파일 첨부</label>
+                                <div className={`border-2 border-dashed ${manualAddFile ? 'border-indigo-500 bg-indigo-500/10' : 'border-white/20 bg-white/5'} rounded-xl p-4 flex flex-col items-center justify-center cursor-pointer transition-all hover:bg-white/10`} onClick={() => document.getElementById('manualFile').click()}>
+                                    <input type="file" id="manualFile" className="hidden" accept=".pdf,.jpg,.jpeg,.png" onChange={e => {
+                                        if (e.target.files && e.target.files[0]) {
+                                            setManualAddFile(e.target.files[0]);
+                                        }
+                                    }} />
+                                    {manualAddFile ? (
+                                        <div className="text-center">
+                                            <span className="material-symbols-outlined text-indigo-400 text-3xl mb-1">task</span>
+                                            <p className="text-white text-sm font-bold">{manualAddFile.name}</p>
+                                        </div>
+                                    ) : (
+                                        <div className="text-center">
+                                            <span className="material-symbols-outlined text-slate-400 text-3xl mb-1">upload_file</span>
+                                            <p className="text-slate-300 text-sm">클릭하여 파일 선택 (PDF, JPG, PNG)</p>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            
+                            <div className="flex items-center justify-end gap-3 pt-6 mt-4 border-t border-white/10">
+                                <button type="button" onClick={() => setManualAddModal(false)} className="px-4 py-2 rounded-xl text-sm font-bold text-slate-400 hover:text-white transition-all">취소</button>
+                                <button type="submit" disabled={manualAddLoading} className="px-6 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-bold shadow-lg transition-all disabled:opacity-50 flex items-center gap-2">
+                                    {manualAddLoading ? <span className="material-symbols-outlined animate-spin text-[16px]">progress_activity</span> : null}
+                                    {manualAddLoading ? '생성 중...' : '계정 생성'}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+            
             {/* ===== 세금계산서 / 현금영수증 발급 모달 (글로벌) ===== */}
             {taxInvoiceModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4" onClick={() => setTaxInvoiceModal(null)}>

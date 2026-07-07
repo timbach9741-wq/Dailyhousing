@@ -498,3 +498,88 @@ exports.naverLogin = onRequest(
     }
   }
 );
+
+// ============================================================================
+// 관리자 페이지 - 사업자 수동 추가
+// ============================================================================
+exports.adminCreateUser = onRequest({ cors: true }, async (req, res) => {
+  if (req.method !== 'POST') {
+    return res.status(405).send('Method Not Allowed');
+  }
+
+  const { email, password, displayName, phoneNumber, companyName, registrationNumber, licenseUrl, licenseFileName } = req.body;
+  if (!email || !password || !displayName || !companyName || !registrationNumber) {
+    return res.status(400).json({ success: false, error: '필수 항목이 누락되었습니다.' });
+  }
+
+  // 1. 관리자 권한 검증 (Bearer Token)
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ success: false, error: '권한이 없습니다.' });
+  }
+  
+  const idToken = authHeader.split('Bearer ')[1];
+  try {
+    const decodedToken = await admin.auth().verifyIdToken(idToken);
+    
+    // Firestore에서 관리자 권한 확인 (Custom claim 또는 Firestore 문서 확인)
+    let isAdmin = !!decodedToken.admin;
+    if (!isAdmin) {
+      const db = admin.firestore();
+      const adminDoc = await db.collection('users').doc(decodedToken.uid).get();
+      if (adminDoc.exists && adminDoc.data().role === 'admin') {
+        isAdmin = true;
+      }
+    }
+
+    if (!isAdmin) {
+      return res.status(403).json({ success: false, error: '관리자 권한이 없습니다.' });
+    }
+
+    // 2. Firebase Auth 사용자 생성
+    const userRecord = await admin.auth().createUser({
+      email,
+      password,
+      displayName,
+    });
+
+    const uid = userRecord.uid;
+
+    // 3. Firestore 사용자 데이터 저장
+    const businessInfo = {
+      businessName: companyName,
+      businessNumber: registrationNumber,
+      ntsVerified: true, // 관리자가 수동 추가하므로 검증된 것으로 간주
+      licenseUrl: licenseUrl || null,
+      licenseFileName: licenseFileName || null,
+    };
+
+    const userData = {
+      uid,
+      email,
+      displayName,
+      phoneNumber: phoneNumber || '',
+      role: 'business',
+      approved: true, // 관리자가 직접 추가하므로 즉시 자동 승인
+      businessInfo,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+
+    const db = admin.firestore();
+    await db.collection('users').doc(uid).set(userData);
+    
+    logger.info(`관리자 수동 회원 생성 성공, uid: ${uid}`);
+
+    // (선택) 텔레그램이나 구글 스프레드시트 기록은 기존 authService에서 호출하거나 여기서 추가 가능.
+    // 일단 프론트에서 성공 후 텔레그램을 보내거나 생략해도 됨(관리자 본인이 한 것이므로).
+
+    return res.status(200).json({ success: true, data: userData });
+  } catch (error) {
+    logger.error('adminCreateUser 에러:', error.message);
+    if (error.code === 'auth/email-already-exists') {
+      return res.status(400).json({ success: false, error: '이미 사용 중인 이메일입니다.' });
+    }
+    return res.status(500).json({ success: false, error: error.message });
+  }
+});
