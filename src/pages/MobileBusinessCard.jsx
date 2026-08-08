@@ -10,7 +10,7 @@ const MobileBusinessCard = () => {
   // 데일리하우징 운영 도메인 (데일리하우징.kr)
   const DOMAIN = 'https://xn--2n1b71jv6ljxa69ffzy.kr';
 
-  // 두 명의 명함 데이터를 매핑하는 객체
+  // 명함 데이터를 매핑하는 객체
   const profiles = {
     ceo: {
       name: "이광연",
@@ -33,6 +33,17 @@ const MobileBusinessCard = () => {
       address: "경기도 안산시 상록구 용신로 258",
       website: DOMAIN, 
       cardUrl: `${DOMAIN}/card/director` 
+    },
+    president: {
+      name: "이인경",
+      title: "대표이사",
+      company: "데일리하우징",
+      phone: "010-7119-4243",
+      officePhone: "031-409-9509",
+      email: "aa172270@naver.com",
+      address: "경기도 안산시 상록구 용신로 258",
+      website: DOMAIN,
+      cardUrl: `${DOMAIN}/card/president`
     }
   };
 

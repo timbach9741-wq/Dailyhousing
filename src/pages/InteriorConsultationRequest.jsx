@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useConsultationStore } from '../store/useConsultationStore';
 import { useToastStore } from '../store/useToastStore';
 import DaumPostcode from 'react-daum-postcode';
+import SEO from '../components/SEO';
 
 export default function InteriorConsultationRequest() {
     const { addConsultation } = useConsultationStore();
@@ -50,6 +51,11 @@ export default function InteriorConsultationRequest() {
 
     return (
         <>
+            <SEO
+                title="시공 상담 신청"
+                description="바닥재 선택부터 시공까지, 데일리하우징 전문가에게 무료로 상담받아보세요. 24시간 이내 담당자가 연락드립니다."
+                url="https://데일리하우징.kr/consultations/new"
+            />
             {/* 우편번호 검색 모달 */}
             {isPostcodeOpen && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm" onClick={() => setIsPostcodeOpen(false)}>

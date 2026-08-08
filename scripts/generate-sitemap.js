@@ -35,6 +35,9 @@ const staticPages = [
   '/cleaning/sick-building/',
   '/cleaning/appliance/',
   '/cleaning/regular/',
+  '/card/ceo/',
+  '/card/director/',
+  '/card/president/',
 ];
 
 async function generateSitemap() {

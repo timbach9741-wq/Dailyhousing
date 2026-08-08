@@ -37,6 +37,9 @@ const staticPages = [
   '/cleaning/sick-building',
   '/cleaning/appliance',
   '/cleaning/regular',
+  '/card/ceo',
+  '/card/director',
+  '/card/president',
 ];
 
 const ROUTES_TO_PRERENDER = [
