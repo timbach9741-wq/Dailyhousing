@@ -39,7 +39,6 @@ const MobileBusinessCard = () => {
       title: "대표이사",
       company: "데일리하우징",
       phone: "010-7119-4243",
-      officePhone: "031-409-9509",
       email: "aa172270@naver.com",
       address: "경기도 안산시 상록구 용신로 258",
       website: DOMAIN,
@@ -56,15 +55,19 @@ const MobileBusinessCard = () => {
 
   // vCard 자동 생성 및 다운로드 로직
   const downloadVCard = () => {
-    const vcard = `BEGIN:VCARD
+    let vcard = `BEGIN:VCARD
 VERSION:3.0
 N:${profile.name};;;;
 FN:${profile.name}
 ORG:${profile.company}
 TITLE:${profile.title}
-TEL;TYPE=CELL:${profile.phone}
-TEL;TYPE=WORK,VOICE:${profile.officePhone}
-EMAIL;TYPE=WORK:${profile.email}
+TEL;TYPE=CELL:${profile.phone}\n`;
+
+    if (profile.officePhone) {
+      vcard += `TEL;TYPE=WORK,VOICE:${profile.officePhone}\n`;
+    }
+
+    vcard += `EMAIL;TYPE=WORK:${profile.email}
 URL:${profile.website}
 END:VCARD`;
 
@@ -144,16 +147,18 @@ END:VCARD`;
         {/* 모던 데일리 컨택트 컨테이너 (각기 다른 스타일로 시각적 구분) */}
         <div className="px-8 mt-10 flex flex-col gap-3.5">
            
-           {/* 1. 사무실 (포멀 스퀘어형 - 슬레이트/인디고 톤) - 맨 위로 이동 */}
-           <a href={`tel:${profile.officePhone.replace(/-/g, '')}`} className="group flex items-center gap-4 bg-slate-50 p-3.5 rounded-[1.25rem] border border-slate-200 shadow-sm hover:shadow-md hover:bg-slate-100 active:scale-[0.98] transition-all cursor-pointer">
-             <div className="w-12 h-12 rounded-xl bg-slate-200 flex items-center justify-center text-slate-600 shrink-0 group-hover:scale-110 transition-transform">
-               <Building size={20} strokeWidth={2.5} />
-             </div>
-             <div className="flex-1 pl-1">
-                <p className="text-[12px] text-slate-500 font-bold tracking-wide mb-0.5">사무실 번호</p>
-                <p className="font-black text-slate-800 text-[18px] tracking-tight">{profile.officePhone}</p>
-             </div>
-           </a>
+           {/* 1. 사무실 (사무실 번호가 등록된 경우만 렌더링) */}
+           {profile.officePhone && (
+             <a href={`tel:${profile.officePhone.replace(/-/g, '')}`} className="group flex items-center gap-4 bg-slate-50 p-3.5 rounded-[1.25rem] border border-slate-200 shadow-sm hover:shadow-md hover:bg-slate-100 active:scale-[0.98] transition-all cursor-pointer">
+               <div className="w-12 h-12 rounded-xl bg-slate-200 flex items-center justify-center text-slate-600 shrink-0 group-hover:scale-110 transition-transform">
+                 <Building size={20} strokeWidth={2.5} />
+               </div>
+               <div className="flex-1 pl-1">
+                  <p className="text-[12px] text-slate-500 font-bold tracking-wide mb-0.5">사무실 번호</p>
+                  <p className="font-black text-slate-800 text-[18px] tracking-tight">{profile.officePhone}</p>
+               </div>
+             </a>
+           )}
 
            {/* 2. 휴대폰 (메인 액션형 - 블루 톤, 라운드) */}
            <a href={`tel:${profile.phone.replace(/-/g, '')}`} className="group flex items-center gap-4 bg-blue-50/50 p-4 rounded-[1.5rem] border border-blue-100 shadow-sm hover:shadow-md hover:border-blue-200 active:scale-[0.98] transition-all cursor-pointer">
