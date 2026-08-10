@@ -54,23 +54,6 @@ export default function LocalFlooringSEO() {
         }
     }, [regionKey]);
 
-    // 견적 계산기 상태
-    const [area, setArea] = useState(32);
-    const [productType, setProductType] = useState("sheet_2_2");
-
-    // 상품별 단가 정보 (평당 시공비 자재포함 가이드)
-    const productPriceGuide = {
-        sheet_2_2: { name: "LX 지아자연애 2.2T 장판", min: 65000, max: 75000 },
-        sheet_4_5: { name: "LX 지아소리잠 4.5T 장판", min: 115000, max: 125000 },
-        sheet_5_0: { name: "LX 엑스컴포트 5.0T 장판", min: 145000, max: 155000 },
-        maru_green: { name: "LX 강그린 프로 강마루", min: 120000, max: 130000 },
-        editon_solid: { name: "LX 에디톤 솔리드 보드", min: 160000, max: 175000 }
-    };
-
-    const currentPrice = productPriceGuide[productType];
-    const estimatedMinPrice = area * currentPrice.min;
-    const estimatedMaxPrice = area * currentPrice.max;
-
     // 상담 신청 처리
     const [formData, setFormData] = useState({
         name: '',
@@ -89,10 +72,8 @@ export default function LocalFlooringSEO() {
         const submissionData = {
             name: formData.name,
             phone: formData.phone,
-            productType: productType,
-            areaSize: area.toString(),
             addressMain: `[시공 지역] ${regionName}`,
-            details: `[지역 SEO 신청] ${regionName} 바닥재 견적 요청. 희망 상품: ${currentPrice.name}. 추가 요구사항: ${formData.details}`,
+            details: `[지역 SEO 신청] ${regionName} 바닥재 견적 요청. 추가 요구사항: ${formData.details}`,
         };
 
         try {
@@ -144,10 +125,7 @@ export default function LocalFlooringSEO() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row justify-center gap-4">
-                        <a href="#calculator" className="bg-[#d4a853] hover:bg-[#b8923e] text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg shadow-[#d4a853]/20 transition-all hover:-translate-y-1">
-                            예상 견적 계산하기
-                        </a>
-                        <a href="#consultation" className="bg-white/10 hover:bg-white/25 text-white font-bold px-8 py-4 rounded-xl border border-white/20 transition-all hover:-translate-y-1">
+                        <a href="#consultation" className="bg-[#d4a853] hover:bg-[#b8923e] text-slate-950 font-bold px-8 py-4 rounded-xl shadow-lg shadow-[#d4a853]/20 transition-all hover:-translate-y-1">
                             무료 현장실측 신청
                         </a>
                     </div>
@@ -155,132 +133,7 @@ export default function LocalFlooringSEO() {
             </section>
 
             {/* =============================================
-                2. PRICING TABLE SECTION
-            ============================================= */}
-            <section className="py-16 sm:py-24 bg-white" id="pricing">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-12">
-                        <span className="text-xs font-bold uppercase tracking-widest text-[#d4a853] bg-[#d4a853]/10 px-3 py-1 rounded-full">Price Guide</span>
-                        <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-950 mt-3 mb-4">
-                            {regionName} 바닥재 시공 단가표
-                        </h2>
-                        <p className="text-slate-500 max-w-xl mx-auto break-keep">
-                            자재 비용과 표준 전문 시공비가 합산된 평균 견적 가이드입니다. 평형별 자재 손실률(Loss)에 따라 약간의 차이가 발생할 수 있습니다.
-                        </p>
-                    </div>
-
-                    <div className="overflow-x-auto rounded-2xl border border-slate-100 shadow-xl shadow-slate-100/50">
-                        <table className="w-full text-left border-collapse bg-white">
-                            <thead>
-                                <tr className="bg-slate-50 border-b border-slate-100 text-slate-800 font-semibold text-sm">
-                                    <th className="p-4 sm:p-6">바닥재 종류</th>
-                                    <th className="p-4 sm:p-6">추천 제품 라인업</th>
-                                    <th className="p-4 sm:p-6">두께(T)</th>
-                                    <th className="p-4 sm:p-6 text-right">평당 표준 단가 (시공 포함)</th>
-                                </tr>
-                            </thead>
-                            <tbody className="divide-y divide-slate-100 text-slate-700 text-sm sm:text-base">
-                                <tr className="hover:bg-slate-50/50">
-                                    <td className="p-4 sm:p-6 font-bold text-slate-900">LX 친환경 장판 (시트)</td>
-                                    <td className="p-4 sm:p-6">지아자연애 (그레이콘크리트, 화이트오크 등)</td>
-                                    <td className="p-4 sm:p-6">2.2 mm</td>
-                                    <td className="p-4 sm:p-6 text-right text-[#d4a853] font-black">6.5만 ~ 7.5만 원</td>
-                                </tr>
-                                <tr className="hover:bg-slate-50/50">
-                                    <td className="p-4 sm:p-6 font-bold text-slate-900">LX 층간소음 저감 장판</td>
-                                    <td className="p-4 sm:p-6">지아소리잠 (소프트포세린, 멀티헤링본 등)</td>
-                                    <td className="p-4 sm:p-6">4.5 mm</td>
-                                    <td className="p-4 sm:p-6 text-right text-[#d4a853] font-black">11.5만 ~ 12.5만 원</td>
-                                </tr>
-                                <tr className="hover:bg-slate-50/50">
-                                    <td className="p-4 sm:p-6 font-bold text-slate-900">LX 하이엔드 럭셔리 장판</td>
-                                    <td className="p-4 sm:p-6">엑스컴포트 (텐더그레이, 밸리브라운 등)</td>
-                                    <td className="p-4 sm:p-6">5.0 mm</td>
-                                    <td className="p-4 sm:p-6 text-right text-[#d4a853] font-black">14.5만 ~ 15.5만 원</td>
-                                </tr>
-                                <tr className="hover:bg-slate-50/50">
-                                    <td className="p-4 sm:p-6 font-bold text-slate-900">LX 프리미엄 강마루</td>
-                                    <td className="p-4 sm:p-6">강그린 프로 (리얼 오크, 크림 테라조 등)</td>
-                                    <td className="p-4 sm:p-6">7.5 mm</td>
-                                    <td className="p-4 sm:p-6 text-right text-[#d4a853] font-black">12.0만 ~ 13.0만 원</td>
-                                </tr>
-                                <tr className="hover:bg-slate-50/50">
-                                    <td className="p-4 sm:p-6 font-bold text-slate-900">LX 최고급 석재 에디톤</td>
-                                    <td className="p-4 sm:p-6">에디톤 솔리드 (대리석 질감 고강도 보드)</td>
-                                    <td className="p-4 sm:p-6">6.0 mm</td>
-                                    <td className="p-4 sm:p-6 text-right text-[#d4a853] font-black">16.0만 ~ 17.5만 원</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-
-            {/* =============================================
-                3. CALCULATOR SECTION
-            ============================================= */}
-            <section className="py-16 sm:py-24 bg-slate-50 border-y border-slate-100" id="calculator">
-                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-xl shadow-slate-200/40 border border-slate-100">
-                        <div className="mb-8 text-center">
-                            <h3 className="text-xl sm:text-2xl font-black text-slate-950 mb-2">실시간 평형별 예상 견적기</h3>
-                            <p className="text-slate-400 text-sm">희망 평수와 바닥 자재를 선택하시면 시공비를 즉시 자동 계산합니다.</p>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                            <div className="flex flex-col gap-2">
-                                <label className="text-sm font-semibold text-slate-700">시공 공간 크기 (평수)</label>
-                                <div className="flex gap-2">
-                                    <input 
-                                        type="number" 
-                                        value={area} 
-                                        onChange={(e) => setArea(Number(e.target.value))} 
-                                        className="flex-1 px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-900 focus:border-[#d4a853] outline-none"
-                                        min="1"
-                                        max="200"
-                                    />
-                                    <div className="flex items-center px-4 bg-slate-100 text-slate-600 rounded-xl font-bold">평</div>
-                                </div>
-                                <span className="text-xs text-slate-400">㎡ 환산 면적: {Math.round(area * 3.3057)}㎡</span>
-                            </div>
-
-                            <div className="flex flex-col gap-2">
-                                <label className="text-sm font-semibold text-slate-700">희망 바닥 자재</label>
-                                <select 
-                                    value={productType} 
-                                    onChange={(e) => setProductType(e.target.value)}
-                                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl font-bold text-slate-900 focus:border-[#d4a853] outline-none"
-                                >
-                                    <option value="sheet_2_2">LX 지아자연애 2.2T 장판 (보급형)</option>
-                                    <option value="sheet_4_5">LX 지아소리잠 4.5T 장판 (방음형)</option>
-                                    <option value="sheet_5_0">LX 엑스컴포트 5.0T 장판 (하이엔드)</option>
-                                    <option value="maru_green">LX 강그린 프로 강마루 (목재마루)</option>
-                                    <option value="editon_solid">LX 에디톤 솔리드 보드 (석재타일)</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        {/* 계산 결과 */}
-                        <div className="bg-amber-50/50 rounded-2xl p-6 border border-[#d4a853]/20 text-center">
-                            <span className="text-xs font-bold text-[#d4a853] bg-[#d4a853]/10 px-2.5 py-0.5 rounded">
-                                {regionName} 지역 표준 시공 견적 범위
-                            </span>
-                            <div className="my-4">
-                                <span className="text-3xl sm:text-5xl font-black text-slate-900">
-                                    {Math.round(estimatedMinPrice / 10000).toLocaleString()}만 ~ {Math.round(estimatedMaxPrice / 10000).toLocaleString()}만
-                                </span>
-                                <span className="text-lg font-bold text-slate-500 ml-1">원</span>
-                            </div>
-                            <p className="text-xs sm:text-sm text-slate-500 max-w-md mx-auto leading-relaxed">
-                                본 견적은 표준 자재비 및 인건비가 모두 포함된 비용입니다. 현장 상태(기존 바닥 철거 유무, 문턱 제거, 샌딩 처리 여부)에 따라 변동될 수 있습니다.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* =============================================
-                4. LOCAL CASES SECTION
+                2. LOCAL CASES SECTION
             ============================================= */}
             {realCase ? (
                 <section className="py-16 sm:py-24 bg-white">
@@ -373,7 +226,7 @@ export default function LocalFlooringSEO() {
             )}
 
             {/* =============================================
-                5. CONSULTATION FORM SECTION
+                3. CONSULTATION FORM SECTION
             ============================================= */}
             <section className="py-16 sm:py-24 bg-slate-50 border-t border-slate-200/60" id="consultation">
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
