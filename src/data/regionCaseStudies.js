@@ -2,10 +2,10 @@
 // 여기 없는 지역 slug는 실제 시공 사례가 아직 없는 페이지로 간주되어 noindex 처리됩니다.
 export const regionCaseStudies = {
     'gyeonggi-yongin': {
-        complex: '용인 수지 아파트',
-        unit: '',
-        material: 'LX 지아자연애 2.2T 장판',
-        note: '용인 수지 지역 실제 시공 현장입니다.',
+        complex: '용인 수지구 죽전 동부센트레빌',
+        unit: '106동 1601호',
+        material: 'LX 지아사랑애 2.7T 장판',
+        note: '47평형 거실 확장, 빈집 상태로 첫차 시공한 현장입니다.',
         image: '/assets/images/case-studies/gyeonggi-yongin.jpg'
     },
     'gyeonggi-namyangju': {
