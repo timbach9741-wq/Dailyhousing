@@ -8,6 +8,10 @@ import { LXZIN_PRODUCTS } from './src/data/lxzin-products.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = join(__dirname, 'dist');
 
+// 기존 27개 지역은 이미 Google에 크롤링된 URL이라 그대로 프리렌더해서
+// noindex 태그가 정적 HTML에 정확히 박히도록 유지합니다(실사례 없는 지역은
+// LocalFlooringSEO.jsx가 자동으로 noindex 처리함). sitemap.xml에는 실사례
+// 있는 10개 지역만 올라갑니다 (scripts/generate-sitemap.js 참고).
 const PSEO_SLUGS = [
   "seoul-gangnam", "seoul-seocho", "seoul-songpa", "seoul-mapo", "seoul-yongsan",
   "seoul-seongdong", "seoul-gangdong", "seoul-nowon", "seoul-yeongdeungpo",
@@ -16,7 +20,9 @@ const PSEO_SLUGS = [
   "gyeonggi-anyang", "gyeonggi-bucheon", "gyeonggi-gwangmyeong",
   "incheon-yeonsu", "incheon-bupyeong",
   "busan-haeundae", "busan-suyeong", "busan-dongnae",
-  "daegu-suseong", "daejeon-yuseong"
+  "daegu-suseong", "daejeon-yuseong",
+  // 8/10 신규 추가 (실제 시공 사례 확보된 지역)
+  "seoul-yangcheon", "gyeonggi-siheung", "gyeonggi-gwangju", "chungnam-asan"
 ];
 
 // static pages to prerender

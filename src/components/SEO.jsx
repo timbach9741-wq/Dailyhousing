@@ -1,13 +1,14 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-function SEO({ title, description, url, imageUrl }) {
+function SEO({ title, description, url, imageUrl, noindex }) {
   return (
     <Helmet>
       {/* 기본 태그 */}
       <title>{title} | 데일리하우징</title>
       <meta name="description" content={description} />
-      
+      {noindex && <meta name="robots" content="noindex, follow" />}
+
       {/* 구글 검색 엔진용 */}
       <meta itemprop="name" content={`${title} | 데일리하우징`} />
       <meta itemprop="description" content={description} />

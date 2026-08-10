@@ -6,15 +6,13 @@ import { LXZIN_PRODUCTS } from '../src/data/lxzin-products.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = join(__dirname, '..', 'public');
 
+// 실제 시공 사례(거래명세표로 검증된 실주소)가 있는 지역만 포함합니다.
+// src/data/regionCaseStudies.js 에 새 실사례가 추가되면 여기에도 slug를 추가하세요.
+// (실사례 없는 지역을 대량으로 넣으면 Google이 "크롤링됨-색인 생성 안됨"으로 처리하는 것을 8/10 확인함)
 const PSEO_SLUGS = [
-  "seoul-gangnam", "seoul-seocho", "seoul-songpa", "seoul-mapo", "seoul-yongsan",
-  "seoul-seongdong", "seoul-gangdong", "seoul-nowon", "seoul-yeongdeungpo",
-  "gyeonggi-bundang", "gyeonggi-suwon", "gyeonggi-ilsan", "gyeonggi-gimpo",
-  "gyeonggi-hwaseong", "gyeonggi-yongin", "gyeonggi-hanami", "gyeonggi-namyangju",
-  "gyeonggi-anyang", "gyeonggi-bucheon", "gyeonggi-gwangmyeong",
-  "incheon-yeonsu", "incheon-bupyeong",
-  "busan-haeundae", "busan-suyeong", "busan-dongnae",
-  "daegu-suseong", "daejeon-yuseong"
+  "gyeonggi-yongin", "gyeonggi-namyangju", "gyeonggi-hwaseong", "gyeonggi-anyang",
+  "gyeonggi-suwon", "gyeonggi-ilsan", "seoul-yangcheon", "gyeonggi-siheung",
+  "gyeonggi-gwangju", "chungnam-asan"
 ];
 
 // static pages (trailing slashes matched)

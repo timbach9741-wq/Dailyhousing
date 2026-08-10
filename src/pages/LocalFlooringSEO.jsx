@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useConsultationStore } from '../store/useConsultationStore';
 import { useToastStore } from '../store/useToastStore';
 import SEO from '../components/SEO';
+import { regionCaseStudies } from '../data/regionCaseStudies';
 
 // 지역 슬러그 매핑 정보
 const SIDO_MAP = {
@@ -19,14 +20,22 @@ const GU_MAP = {
     hwaseong: "화성시", yongin: "용인시", hanami: "하남시", namyangju: "남양주시",
     anyang: "안양시", bucheon: "부천시", gwangmyeong: "광명시",
     yeonsu: "연수구", bupyeong: "부평구", haeundae: "해운대구",
-    suyeong: "수영구", dongnae: "동래구", suseong: "수성구", yuseong: "유성구"
+    suyeong: "수영구", dongnae: "동래구", suseong: "수성구", yuseong: "유성구",
+    yangcheon: "양천구", siheung: "시흥시", gwangju: "광주시", asan: "아산시"
 };
 
 export default function LocalFlooringSEO() {
-    const { regionKey } = useParams();
+    // 라우트가 "/:regionKey-flooring"이라 리액트 라우터가 하이픈까지 파라미터 이름에
+    // 포함시켜 실제 키는 "regionKey"가 아니라 "regionKey-flooring"으로 등록됨(URL은 그대로 두고
+    // 여기서만 올바른 키로 꺼내옴 — 8/10 발견, 지금까지 모든 지역 페이지가 "수도권"만 보여주던 원인)
+    const { 'regionKey-flooring': regionKey } = useParams();
     const navigate = useNavigate();
     const { addConsultation } = useConsultationStore();
     const { addToast } = useToastStore();
+
+    // 실제 시공 사례가 있는 지역인지 확인 (없으면 검색엔진에는 noindex 처리)
+    const cleanRegionKey = regionKey ? regionKey.replace('-flooring', '') : '';
+    const realCase = regionCaseStudies[cleanRegionKey];
 
     // 지역명 판별
     const [regionName, setRegionName] = useState("수도권");
@@ -102,6 +111,7 @@ export default function LocalFlooringSEO() {
                 description={`${regionName} 지역 LX Z:IN 엑스컴포트, 지아소리잠, 에디톤 공식 유통 및 평당 시공비 무료 가이드 제공. 데일리하우징에서 무료 방문 실측 및 견적 피드백을 받아보세요.`} 
                 url={`https://데일리하우징.kr/${regionKey}/`}
                 imageUrl="https://데일리하우징.kr/assets/images/hero_banner_2.png"
+                noindex={!realCase}
             />
 
             {/* =============================================
@@ -272,66 +282,95 @@ export default function LocalFlooringSEO() {
             {/* =============================================
                 4. LOCAL CASES SECTION
             ============================================= */}
-            <section className="py-16 sm:py-24 bg-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-12">
-                        <span className="text-xs font-bold uppercase tracking-widest text-[#d4a853] bg-[#d4a853]/10 px-3 py-1 rounded-full">Portfolio</span>
-                        <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-950 mt-3 mb-4">
-                            최근 {regionName} 인근 시공 사례
-                        </h2>
-                        <p className="text-slate-500 max-w-xl mx-auto break-keep">
-                            데일리하우징 직영 전문팀이 {regionName} 전역의 아파트, 상가, 오피스텔에 성공적으로 마친 실제 시공 정보입니다.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div className="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/50">
-                            <div className="aspect-[4/3] w-full bg-slate-200">
-                                <img src="/assets/images/hero_banner_2.png" alt={`${regionName} 아파트 장판 시공`} className="w-full h-full object-cover opacity-90" />
-                            </div>
-                            <div className="p-5">
-                                <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded">시공 완료</span>
-                                <h3 className="text-lg font-bold text-slate-900 mt-2 mb-1">{regionName} 아파트 34평형</h3>
-                                <p className="text-sm text-slate-500">LX 지아소리잠 4.5T (소프트 포세린) 전체 시공</p>
-                                <div className="mt-4 pt-4 border-t border-slate-200/60 flex justify-between text-xs font-medium text-slate-400">
-                                    <span>시공기간: 1일</span>
-                                    <span>만족도: ⭐⭐⭐⭐⭐</span>
-                                </div>
-                            </div>
+            {realCase ? (
+                <section className="py-16 sm:py-24 bg-white">
+                    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-12">
+                            <span className="text-xs font-bold uppercase tracking-widest text-[#d4a853] bg-[#d4a853]/10 px-3 py-1 rounded-full">Portfolio</span>
+                            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-950 mt-3 mb-4">
+                                {regionName} 실제 시공 사례
+                            </h2>
+                            <p className="text-slate-500 max-w-xl mx-auto break-keep">
+                                데일리하우징이 {regionName}에서 직접 완료한 실제 현장 사진입니다.
+                            </p>
                         </div>
 
-                        <div className="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/50">
-                            <div className="aspect-[4/3] w-full bg-slate-200">
-                                <img src="/assets/images/hero_banner_2.png" alt={`${regionName} 주택 마루 시공`} className="w-full h-full object-cover opacity-90" />
+                        <div className="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/50 md:flex">
+                            <div className="md:w-1/2 aspect-[4/3] md:aspect-auto bg-slate-200">
+                                <img src={realCase.image} alt={`${realCase.complex} 바닥재 시공`} className="w-full h-full object-cover" />
                             </div>
-                            <div className="p-5">
-                                <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded">시공 완료</span>
-                                <h3 className="text-lg font-bold text-slate-900 mt-2 mb-1">{regionName} 빌라 24평형</h3>
-                                <p className="text-sm text-slate-500">LX 강그린 프로 강마루 (크림 오크) 시공</p>
-                                <div className="mt-4 pt-4 border-t border-slate-200/60 flex justify-between text-xs font-medium text-slate-400">
-                                    <span>시공기간: 1일</span>
-                                    <span>만족도: ⭐⭐⭐⭐⭐</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/50">
-                            <div className="aspect-[4/3] w-full bg-slate-200">
-                                <img src="/assets/images/hero_banner_2.png" alt={`${regionName} 상가 데코타일 시공`} className="w-full h-full object-cover opacity-90" />
-                            </div>
-                            <div className="p-5">
-                                <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded">시공 완료</span>
-                                <h3 className="text-lg font-bold text-slate-900 mt-2 mb-1">{regionName} 오피스 상가 48평</h3>
-                                <p className="text-sm text-slate-500">LX 에코노플러스 데코타일 바닥재 전체 시공</p>
-                                <div className="mt-4 pt-4 border-t border-slate-200/60 flex justify-between text-xs font-medium text-slate-400">
-                                    <span>시공기간: 2일</span>
-                                    <span>만족도: ⭐⭐⭐⭐⭐</span>
-                                </div>
+                            <div className="p-6 sm:p-8 md:w-1/2 flex flex-col justify-center">
+                                <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded w-fit">시공 완료</span>
+                                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mt-3 mb-1">{realCase.complex}</h3>
+                                {realCase.unit && <p className="text-sm text-slate-400 mb-3">{realCase.unit}</p>}
+                                <p className="text-sm sm:text-base text-slate-600 font-medium">{realCase.material}</p>
+                                <p className="text-sm text-slate-500 mt-3 break-keep">{realCase.note}</p>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            ) : (
+                <section className="py-16 sm:py-24 bg-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-12">
+                            <span className="text-xs font-bold uppercase tracking-widest text-[#d4a853] bg-[#d4a853]/10 px-3 py-1 rounded-full">Portfolio</span>
+                            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-950 mt-3 mb-4">
+                                최근 {regionName} 인근 시공 사례
+                            </h2>
+                            <p className="text-slate-500 max-w-xl mx-auto break-keep">
+                                데일리하우징 직영 전문팀이 {regionName} 전역의 아파트, 상가, 오피스텔에 성공적으로 마친 실제 시공 정보입니다.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div className="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/50">
+                                <div className="aspect-[4/3] w-full bg-slate-200">
+                                    <img src="/assets/images/hero_banner_2.png" alt={`${regionName} 아파트 장판 시공`} className="w-full h-full object-cover opacity-90" />
+                                </div>
+                                <div className="p-5">
+                                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded">시공 완료</span>
+                                    <h3 className="text-lg font-bold text-slate-900 mt-2 mb-1">{regionName} 아파트 34평형</h3>
+                                    <p className="text-sm text-slate-500">LX 지아소리잠 4.5T (소프트 포세린) 전체 시공</p>
+                                    <div className="mt-4 pt-4 border-t border-slate-200/60 flex justify-between text-xs font-medium text-slate-400">
+                                        <span>시공기간: 1일</span>
+                                        <span>만족도: ⭐⭐⭐⭐⭐</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/50">
+                                <div className="aspect-[4/3] w-full bg-slate-200">
+                                    <img src="/assets/images/hero_banner_2.png" alt={`${regionName} 주택 마루 시공`} className="w-full h-full object-cover opacity-90" />
+                                </div>
+                                <div className="p-5">
+                                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded">시공 완료</span>
+                                    <h3 className="text-lg font-bold text-slate-900 mt-2 mb-1">{regionName} 빌라 24평형</h3>
+                                    <p className="text-sm text-slate-500">LX 강그린 프로 강마루 (크림 오크) 시공</p>
+                                    <div className="mt-4 pt-4 border-t border-slate-200/60 flex justify-between text-xs font-medium text-slate-400">
+                                        <span>시공기간: 1일</span>
+                                        <span>만족도: ⭐⭐⭐⭐⭐</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="bg-slate-50 rounded-2xl overflow-hidden border border-slate-200/50">
+                                <div className="aspect-[4/3] w-full bg-slate-200">
+                                    <img src="/assets/images/hero_banner_2.png" alt={`${regionName} 상가 데코타일 시공`} className="w-full h-full object-cover opacity-90" />
+                                </div>
+                                <div className="p-5">
+                                    <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded">시공 완료</span>
+                                    <h3 className="text-lg font-bold text-slate-900 mt-2 mb-1">{regionName} 오피스 상가 48평</h3>
+                                    <p className="text-sm text-slate-500">LX 에코노플러스 데코타일 바닥재 전체 시공</p>
+                                    <div className="mt-4 pt-4 border-t border-slate-200/60 flex justify-between text-xs font-medium text-slate-400">
+                                        <span>시공기간: 2일</span>
+                                        <span>만족도: ⭐⭐⭐⭐⭐</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            )}
 
             {/* =============================================
                 5. CONSULTATION FORM SECTION
