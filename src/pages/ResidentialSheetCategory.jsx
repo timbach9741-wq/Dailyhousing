@@ -11,7 +11,13 @@ export default function ResidentialSheetCategory() {
     const [searchParams, setSearchParams] = useSearchParams();
     const selectedSubCategory = searchParams.get('category') || '전체';
     const selectedDetailCategory = searchParams.get('sub') || '전체';
+    const selectedBrand = searchParams.get('brand') || '전체';
     const [sortOrder, setSortOrder] = useState('추천순');
+
+    const brandOptions = useMemo(() => {
+        const brands = Array.from(new Set(products.map(p => p.brand).filter(Boolean)));
+        return ['전체', ...brands];
+    }, [products]);
 
     useEffect(() => {
         initProducts();
@@ -71,6 +77,10 @@ export default function ResidentialSheetCategory() {
             result = result.filter(p => p.subCategory && p.subCategory === selectedSubCategory);
         }
 
+        if (selectedBrand !== '전체') {
+            result = result.filter(p => p.brand === selectedBrand);
+        }
+
         // 정렬 적용
         let sorted = result.slice();
         if (sortOrder === '추천순') {
@@ -99,22 +109,28 @@ export default function ResidentialSheetCategory() {
         });
 
         return sorted;
-    }, [products, selectedSubCategory, selectedDetailCategory, sortOrder]);
+    }, [products, selectedSubCategory, selectedDetailCategory, selectedBrand, sortOrder]);
 
     const handleMainCategoryChange = (cat) => {
-        if (cat === '전체') {
-            setSearchParams({});
-        } else {
-            setSearchParams({ category: cat });
-        }
+        const next = {};
+        if (cat !== '전체') next.category = cat;
+        if (selectedBrand !== '전체') next.brand = selectedBrand;
+        setSearchParams(next);
     }
 
     const handleDetailCategoryChange = (sub) => {
-        if (sub === '전체') {
-            setSearchParams({ category: selectedSubCategory });
-        } else {
-            setSearchParams({ category: selectedSubCategory, sub: sub });
-        }
+        const next = { category: selectedSubCategory };
+        if (sub !== '전체') next.sub = sub;
+        if (selectedBrand !== '전체') next.brand = selectedBrand;
+        setSearchParams(next);
+    }
+
+    const handleBrandChange = (brand) => {
+        const next = {};
+        if (selectedSubCategory !== '전체') next.category = selectedSubCategory;
+        if (selectedDetailCategory !== '전체') next.sub = selectedDetailCategory;
+        if (brand !== '전체') next.brand = brand;
+        setSearchParams(next);
     }
 
     return (
@@ -197,7 +213,21 @@ export default function ResidentialSheetCategory() {
                         총 <span className="text-[#d4a853]">{filteredProducts.length}</span>개의 제품
                     </p>
                     <div className="flex items-center gap-4">
-                        <select 
+                        {brandOptions.length > 2 && (
+                            <>
+                                <select
+                                    className="appearance-none bg-transparent border-none text-[14px] font-bold text-slate-600 focus:ring-0 cursor-pointer hover:text-[#d4a853] transition-colors"
+                                    value={selectedBrand}
+                                    onChange={(e) => handleBrandChange(e.target.value)}
+                                >
+                                    {brandOptions.map(b => (
+                                        <option key={b} value={b}>{b === '전체' ? '전체 브랜드' : b}</option>
+                                    ))}
+                                </select>
+                                <span className="material-symbols-outlined text-slate-300">storefront</span>
+                            </>
+                        )}
+                        <select
                             className="appearance-none bg-transparent border-none text-[14px] font-bold text-slate-600 focus:ring-0 cursor-pointer hover:text-[#d4a853] transition-colors"
                             value={sortOrder}
                             onChange={(e) => setSortOrder(e.target.value)}
@@ -260,6 +290,9 @@ export default function ResidentialSheetCategory() {
                                     <div className="flex items-center gap-2 mb-2">
                                         <span className="h-1.5 w-1.5 rounded-full bg-[#d4a853]"></span>
                                         <span className="text-[10px] text-slate-400 font-bold tracking-widest uppercase">{product.subCategory}</span>
+                                        {product.brand && (
+                                            <span className="text-[10px] text-slate-400 font-bold px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200">{product.brand}</span>
+                                        )}
                                     </div>
                                     <h4 className="text-base sm:text-lg xl:text-xl font-black text-slate-900 leading-tight group-hover:text-[#d4a853] transition-colors line-clamp-2">{product.title}</h4>
                                     <p className="text-[13px] text-slate-500 mt-2 font-medium line-clamp-1">{product.subtitle}</p>

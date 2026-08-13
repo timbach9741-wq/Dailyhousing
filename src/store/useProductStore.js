@@ -35,7 +35,10 @@ export const useProductStore = create(
             initProducts: async () => {
                 if (get().isLoaded) return;
                 const module = await import('../data/lxzin-products');
-                LXZIN_PRODUCTS = module.LXZIN_PRODUCTS;
+                LXZIN_PRODUCTS = module.LXZIN_PRODUCTS.map(p => ({ brand: 'LX Z:IN', ...p }));
+
+                const kujungModule = await import('../data/kujungmaru-products');
+                const KUJUNGMARU_PRODUCTS = kujungModule.KUJUNGMARU_PRODUCTS.map(p => ({ brand: '구정마루', ...p }));
 
                 // Sort functionality to match LX Z:IN website hierarchy
                 const getSortWeight = (p) => {
@@ -84,7 +87,7 @@ export const useProductStore = create(
                 const sortedProducts = indexedProducts.map(([p]) => p);
 
                 set({
-                    products: sortedProducts,
+                    products: [...sortedProducts, ...KUJUNGMARU_PRODUCTS],
                     isLoaded: true
                 });
 
