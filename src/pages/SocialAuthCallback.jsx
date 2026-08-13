@@ -25,7 +25,6 @@ const SocialAuthCallback = () => {
             }
 
             const provider = sessionStorage.getItem('social_provider') || (state && state.includes('naver') ? 'naver' : 'kakao');
-            const signupRole = sessionStorage.getItem('social_signup_role') || 'individual';
             const redirectUri = `${window.location.origin}/auth/callback`;
 
             setLoadingMessage(`${provider === 'kakao' ? '카카오' : '네이버'} 로그인 정보를 처리하고 있습니다...`);
@@ -48,7 +47,7 @@ const SocialAuthCallback = () => {
                 }
 
                 const result = await response.json();
-                const { customToken, isNewUser, uid } = result;
+                const { customToken } = result;
 
                 // 2. Firebase Custom Token으로 로그인
                 const userCredential = await signInWithCustomToken(auth, customToken);
@@ -59,27 +58,8 @@ const SocialAuthCallback = () => {
                 const userData = userDoc.exists() ? userDoc.data() : {};
 
                 // 4. 회원 가입 / 로그인 가이드 분기 처리
-                // A. 신규 사업자 회원 가입 시도인 경우 -> 추가 정보 입력 화면으로 리다이렉트
-                if (isNewUser && signupRole === 'business') {
-                    // 추가 입력이 진행되는 동안 임시 role 설정
-                    setUser({
-                        uid: fbUser.uid,
-                        email: fbUser.email,
-                        displayName: fbUser.displayName || '소셜 회원',
-                        role: 'business_pending_info',
-                        approved: false
-                    });
-                    
-                    // sessionStorage에 임시 상태 보존
-                    sessionStorage.setItem('social_temp_uid', fbUser.uid);
-                    
-                    addToast('사업자 추가 인증 정보를 입력해 주세요.', 'info');
-                    navigate('/signup/business-info');
-                    return;
-                }
-
-                // B. 이미 사업자 추가 정보를 제출했으나 관리자 승인 대기 중인 경우
-                if (userData.role === 'business' && userData.approved === false) {
+                // A. 승인 대기 중인(레거시) 계정인 경우 로그인 차단
+                if (userData.approved === false) {
                     addToast('가입 승인 대기 중입니다. 관리자 승인 후 이용 가능합니다.', 'info');
                     await auth.signOut();
                     setUser(null);
@@ -87,7 +67,7 @@ const SocialAuthCallback = () => {
                     return;
                 }
 
-                // C. 정상 로그인 처리
+                // B. 정상 로그인 처리 (신규 가입 시에도 즉시 승인)
                 const finalUser = {
                     uid: fbUser.uid,
                     email: fbUser.email,
@@ -112,7 +92,6 @@ const SocialAuthCallback = () => {
             } finally {
                 // 세션 정리
                 sessionStorage.removeItem('social_provider');
-                sessionStorage.removeItem('social_signup_role');
             }
         };
 

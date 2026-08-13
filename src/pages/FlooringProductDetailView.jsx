@@ -213,7 +213,7 @@ export default function FlooringProductDetailView() {
     const navigate = useNavigate();
     const product = useProductStore((state) => state.getProductById(id || 'res-001'));
     const initProducts = useProductStore((state) => state.initProducts);
-    const { user, isAuthenticated } = useAuthStore();
+    const { isAuthenticated } = useAuthStore();
     const setCartItem = useCartStore((state) => state.setCartItem);
     const { addToast } = useToastStore();
     const products = useProductStore(state => state.products);
@@ -226,7 +226,6 @@ export default function FlooringProductDetailView() {
     const [isImageModalOpen, setIsImageModalOpen] = useState(false);
     const [qty, setQty] = useState(1);
     const [prevId, setPrevId] = useState(id);
-    const isBusiness = user?.role === 'business';
 
     if (prevId !== id) {
         setPrevId(id);
@@ -360,54 +359,23 @@ export default function FlooringProductDetailView() {
                         {/* 가격 정보 */}
                         <div className="flex flex-col gap-1.5 mb-6 pb-6 border-b border-slate-100">
                             <div className="flex items-baseline gap-2 w-full">
-                                {isAuthenticated && isBusiness ? (
-                                    <div className="flex flex-col gap-2 w-full">
-                                        <div className="flex items-baseline gap-2">
-                                            <span className="text-[14px] text-slate-400 font-semibold line-through">
-                                                {product.priceLabel || '일반 회원가:'} {(product.price || 0).toLocaleString()}원
-                                            </span>
-                                        </div>
-                                        <div className="flex flex-wrap items-center gap-2 mt-1 py-3 px-4 bg-red-50 border border-red-200 rounded-lg">
-                                            <span className="text-[13px] font-bold text-[#c8221f]">내 사업자 특별가:</span>
-                                            <span className="text-[18px] md:text-[20px] font-black text-[#c8221f]">
-                                                {(product.businessPrice || 0).toLocaleString()}원
-                                            </span>
-                                            <span className="text-[11px] bg-[#c8221f] text-white px-2 py-0.5 rounded font-bold ml-1">
-                                                일반가 대비 {Math.round((1 - product.businessPrice / product.price) * 100)}% 혜택 적용됨
-                                            </span>
-                                            <span className="ml-auto text-[12px] font-bold text-red-600 flex items-center gap-0.5">
-                                                <span className="material-symbols-outlined text-[14px]">check_circle</span>
-                                                인증 완료
-                                            </span>
-                                        </div>
+                                {isAuthenticated ? (
+                                    <div className="flex items-baseline gap-2">
+                                        <span className="text-[14px] text-[#888888] font-semibold mr-2">{product.priceLabel || '가격:'}</span>
+                                        <span className="text-[26px] md:text-[30px] font-black text-[#222222]">
+                                            {(product.price === 0) ? "별도 문의" : `${(product.price || 0).toLocaleString()}원`}
+                                        </span>
+                                        {product.price !== 0 && product.priceUnit && (
+                                            <span className="text-[14px] text-[#888888] font-semibold ml-1">/{product.priceUnit}</span>
+                                        )}
                                     </div>
                                 ) : (
-                                    <div className="flex flex-col gap-2 w-full">
-                                        <div className="flex items-baseline gap-2">
-                                            <span className="text-[14px] text-[#888888] font-semibold mr-2">{product.priceLabel || '일반 회원가:'}</span>
-                                            <span className="text-[26px] md:text-[30px] font-black text-[#222222]">
-                                                {(product.price === 0) ? "별도 문의" : `${(product.price || 0).toLocaleString()}원`}
-                                            </span>
-                                            {product.price !== 0 && product.priceUnit && (
-                                                <span className="text-[14px] text-[#888888] font-semibold ml-1">/{product.priceUnit}</span>
-                                            )}
-                                        </div>
-                                        {/* 비회원 가격 할인 홍보 문구 */}
-                                        {product.price !== 0 && product.businessPrice && (
-                                            <div className="flex flex-wrap items-center gap-2 mt-1 py-3 px-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm">
-                                                <span className="text-[13px] font-bold text-slate-700">사업자 전용 혜택가:</span>
-                                                <span className="text-[18px] md:text-[20px] font-black text-[#c8221f]">
-                                                    사업자 회원 전용
-                                                </span>
-                                                <span className="text-[11px] bg-red-100 text-[#c8221f] px-1.5 py-0.5 rounded font-black ml-1 border border-red-200">
-                                                    사업자 가입 시 최대 {Math.round((1 - product.businessPrice / product.price) * 100)}% 할인
-                                                </span>
-                                                <Link to="/register" className="ml-auto text-[12px] font-bold text-slate-500 hover:text-[#c8221f] transition-all flex items-center gap-1 border border-slate-300 hover:border-[#c8221f] hover:bg-red-50 bg-white px-2.5 py-1 rounded">
-                                                    <span className="material-symbols-outlined text-[14px]">lock</span>
-                                                    가입하고 할인받기
-                                                </Link>
-                                            </div>
-                                        )}
+                                    <div className="flex flex-wrap items-center gap-2 py-3 px-4 bg-slate-50 border border-slate-200 rounded-lg shadow-sm w-full">
+                                        <span className="text-[14px] font-bold text-slate-700">가격은 로그인 후 확인 가능합니다</span>
+                                        <Link to="/login" className="ml-auto text-[12px] font-bold text-slate-500 hover:text-[#c8221f] transition-all flex items-center gap-1 border border-slate-300 hover:border-[#c8221f] hover:bg-red-50 bg-white px-2.5 py-1 rounded">
+                                            <span className="material-symbols-outlined text-[14px]">lock</span>
+                                            로그인하고 가격 보기
+                                        </Link>
                                     </div>
                                 )}
                             </div>
@@ -569,7 +537,7 @@ export default function FlooringProductDetailView() {
                         {/* 수량 선택 */}
                         {product.price !== 0 && (() => {
                             const unitInfo = getProductUnit(product);
-                            const effectivePrice = (isAuthenticated && isBusiness && product.businessPrice) ? product.businessPrice : product.price;
+                            const effectivePrice = product.price;
 
                             const isRollUnit = unitInfo.unit === 'R' && unitInfo.rollLength;
                             const isPrestigeUnit = unitInfo.isPrestigeUnit;
@@ -667,12 +635,6 @@ export default function FlooringProductDetailView() {
                                             {totalPrice.toLocaleString()}원
                                         </span>
                                     </div>
-                                    {isAuthenticated && isBusiness && product.businessPrice && (
-                                        <div className="mt-2 flex items-center gap-1.5 text-[11px] text-emerald-600 font-bold">
-                                            <span className="material-symbols-outlined text-[14px]">verified</span>
-                                            사업자 회원가 적용 됨 (일반가 대비 {Math.round((1 - product.businessPrice / product.price) * 100)}% 할인)
-                                        </div>
-                                    )}
                                 </div>
                             );
                         })()}

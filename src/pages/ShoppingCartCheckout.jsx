@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCartStore, getEffectivePrice } from '../store/useCartStore';
 import { useAuthStore } from '../store/useAuthStore';
 import { formatOrderUnit } from '../services/adminService';
+import { verifyBusinessNumber } from '../services/businessVerifyService';
 import DaumPostcode from 'react-daum-postcode';
 // import { loadPaymentWidget } from '@tosspayments/payment-widget-sdk';
 
@@ -24,10 +25,52 @@ function getEditonBoxInfo(item) {
 export default function ShoppingCartCheckout() {
     const { items, removeFromCart, updateQuantity } = useCartStore();
     const { user } = useAuthStore();
-    const isBusiness = user?.role === 'business';
     const navigate = useNavigate();
     const [agreed, setAgreed] = useState(false);
     const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
+
+    // --- 세금계산서 발행 요청 (선택) ---
+    const [taxInvoiceRequested, setTaxInvoiceRequested] = useState(false);
+    const [taxInvoiceBusinessName, setTaxInvoiceBusinessName] = useState('');
+    const [taxInvoiceBusinessNumber, setTaxInvoiceBusinessNumber] = useState('');
+    const [bizVerifyStatus, setBizVerifyStatus] = useState(null); // null | 'loading' | 'success' | 'fail' | 'inactive'
+    const [bizVerifyMessage, setBizVerifyMessage] = useState('');
+
+    const handleTaxInvoiceBizNumberChange = async (e) => {
+        const { value } = e.target;
+        const cleaned = value.replace(/[^0-9]/g, '');
+        const limited = cleaned.slice(0, 10);
+
+        let formatted = limited;
+        if (limited.length > 3 && limited.length <= 5) {
+            formatted = `${limited.slice(0, 3)}-${limited.slice(3)}`;
+        } else if (limited.length > 5) {
+            formatted = `${limited.slice(0, 3)}-${limited.slice(3, 5)}-${limited.slice(5)}`;
+        }
+        setTaxInvoiceBusinessNumber(formatted);
+
+        if (limited.length < 10) {
+            setBizVerifyStatus(null);
+            setBizVerifyMessage('');
+            return;
+        }
+
+        setBizVerifyStatus('loading');
+        setBizVerifyMessage('자동 검증 중...');
+        const result = await verifyBusinessNumber(limited);
+        if (result.success) {
+            if (result.isActive === false && result.status !== 'format_only') {
+                setBizVerifyStatus('inactive');
+                setBizVerifyMessage(`⚠️ ${result.statusText} (휴·폐업 사업자)`);
+            } else {
+                setBizVerifyStatus('success');
+                setBizVerifyMessage(`✅ ${result.statusText}`);
+            }
+        } else {
+            setBizVerifyStatus('fail');
+            setBizVerifyMessage(`❌ ${result.error}`);
+        }
+    };
 
     // 최소 배송일 기본 3일 후 (장바구니 상품 중 재고 부족이거나 입고 예정일이 있는 경우, 가장 늦은 날짜 적용)
     const minDeliveryDate = useMemo(() => {
@@ -133,10 +176,7 @@ export default function ShoppingCartCheckout() {
         setIsPostcodeOpen(false);
     };
 
-    const totalPrice = items.reduce((sum, item) => sum + (getEffectivePrice(item.product, isBusiness) * item.qty), 0);
-    const originalTotal = items.reduce((sum, item) => sum + ((item.product.price || 0) * item.qty), 0);
-    const discountAmount = isBusiness ? originalTotal - totalPrice : 0;
-    const discountRate = isBusiness && originalTotal > 0 ? Math.round((discountAmount / originalTotal) * 100) : 0;
+    const totalPrice = items.reduce((sum, item) => sum + (getEffectivePrice(item.product) * item.qty), 0);
     const tax = Math.floor(totalPrice * 0.1);
     const finalPrice = totalPrice + tax;
 
@@ -203,7 +243,11 @@ export default function ShoppingCartCheckout() {
 
         // 승인 후 성공 처리 페이지(Success)로 데이터를 넘기기 위해 세션에 저장
         sessionStorage.setItem('pendingOrderDeliveryInfo', JSON.stringify(checkoutUser));
-        sessionStorage.setItem('pendingOrderIsBusiness', isBusiness.toString());
+        sessionStorage.setItem('pendingOrderTaxInvoice', JSON.stringify(
+            taxInvoiceRequested
+                ? { requested: true, businessName: taxInvoiceBusinessName, businessNumber: taxInvoiceBusinessNumber }
+                : { requested: false }
+        ));
 
         const generatedOrderId = `order_${new Date().getTime()}_${Math.random().toString(36).slice(2, 8)}`;
         const orderName = items.length > 1 
@@ -343,18 +387,7 @@ export default function ShoppingCartCheckout() {
                                                 </div>
                                             </td>
                                             <td className="px-3 py-5 text-right font-bold text-slate-900 dark:text-slate-100 whitespace-nowrap">
-                                                {isBusiness && item.product.businessPrice ? (
-                                                    <div className="flex flex-col items-end">
-                                                        <span className="text-[11px] text-slate-400 line-through">
-                                                            {(item.product.price * item.qty).toLocaleString()}원
-                                                        </span>
-                                                        <span className="text-[#c8221f]">
-                                                            {(item.product.businessPrice * item.qty).toLocaleString()}원
-                                                        </span>
-                                                    </div>
-                                                ) : (
-                                                    <span>{(item.product.price * item.qty).toLocaleString()}원</span>
-                                                )}
+                                                <span>{(item.product.price * item.qty).toLocaleString()}원</span>
                                             </td>
                                             <td className="px-3 py-5 text-center">
                                                 <button onClick={() => removeFromCart(item.product.id, item.option)} className="text-slate-400 hover:text-red-500 transition-colors">
@@ -382,7 +415,7 @@ export default function ShoppingCartCheckout() {
                                 const rollMatch = pkg.match(/(\d+)M/i);
                                 const step = isSheet && rollMatch ? parseInt(rollMatch[1]) : 1;
                                 const minQty = step;
-                                const effectivePrice = getEffectivePrice(item.product, isBusiness);
+                                const effectivePrice = getEffectivePrice(item.product);
 
                                 return (
                                     <div key={`mobile-${item.product.id}-${index}`} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm">
@@ -442,14 +475,7 @@ export default function ShoppingCartCheckout() {
                                                 </button>
                                             </div>
                                             <div className="text-right">
-                                                {isBusiness && item.product.businessPrice ? (
-                                                    <div className="flex flex-col items-end">
-                                                        <span className="text-[11px] text-slate-400 line-through">{(item.product.price * item.qty).toLocaleString()}원</span>
-                                                        <span className="font-bold text-[#c8221f]">{(item.product.businessPrice * item.qty).toLocaleString()}원</span>
-                                                    </div>
-                                                ) : (
-                                                    <span className="font-bold text-slate-900 dark:text-slate-100">{(effectivePrice * item.qty).toLocaleString()}원</span>
-                                                )}
+                                                <span className="font-bold text-slate-900 dark:text-slate-100">{(effectivePrice * item.qty).toLocaleString()}원</span>
                                             </div>
                                         </div>
                                     </div>
@@ -558,7 +584,7 @@ export default function ShoppingCartCheckout() {
                         <div className="w-full bg-slate-50 dark:bg-slate-800 rounded-lg p-5 border border-slate-200 dark:border-slate-700">
                             <p className="font-bold text-slate-800 dark:text-slate-200 mb-2">무통장 입금 (계좌 이체)</p>
                             <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-                                현재 <span className="font-bold text-primary">B2B 파트너 전용 도매가 시스템 연동 작업</span>으로 인해 한시적으로 무통장 입금 결제만 지원합니다.<br/>
+                                현재 결제 시스템 연동 작업으로 인해 한시적으로 무통장 입금 결제만 지원합니다.<br/>
                                 주문 접수 후 아래 계좌로 입금해주시면 즉시 배송 준비가 시작됩니다.
                             </p>
                              <div className="bg-white dark:bg-slate-900 p-4 rounded border border-slate-200 dark:border-slate-700 font-medium">
@@ -576,6 +602,52 @@ export default function ShoppingCartCheckout() {
                                  </div>
                              </div>
                         </div>
+                    </div>
+
+                    {/* 세금계산서 발행 요청 (선택) */}
+                    <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+                        <h3 className="text-lg font-bold mb-4">세금계산서 발행</h3>
+                        <label className="flex items-start gap-3 cursor-pointer group">
+                            <input
+                                type="checkbox"
+                                checked={taxInvoiceRequested}
+                                onChange={(e) => setTaxInvoiceRequested(e.target.checked)}
+                                className="mt-1 w-5 h-5 text-primary focus:ring-primary rounded border-slate-300"
+                            />
+                            <div className="text-sm">
+                                <p className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-primary transition-colors">세금계산서 발행을 요청합니다 (선택)</p>
+                                <p className="text-slate-500 mt-1 leading-relaxed">체크하시면 아래 정보로 세금계산서를 발행해드립니다.</p>
+                            </div>
+                        </label>
+                        {taxInvoiceRequested && (
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                                <div>
+                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">업체명</label>
+                                    <input
+                                        type="text"
+                                        value={taxInvoiceBusinessName}
+                                        onChange={(e) => setTaxInvoiceBusinessName(e.target.value)}
+                                        className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                        placeholder="사업자등록증 상 상호"
+                                    />
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">사업자등록번호</label>
+                                    <input
+                                        type="text"
+                                        value={taxInvoiceBusinessNumber}
+                                        onChange={handleTaxInvoiceBizNumberChange}
+                                        className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                                        placeholder="000-00-00000"
+                                    />
+                                    {bizVerifyMessage && (
+                                        <p className={`text-xs mt-1 font-medium ${bizVerifyStatus === 'success' ? 'text-emerald-600' : bizVerifyStatus === 'inactive' ? 'text-amber-600' : 'text-red-600'}`}>
+                                            {bizVerifyMessage}
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     {/* Terms Agreement Section */}
@@ -606,7 +678,7 @@ export default function ShoppingCartCheckout() {
                         <h3 className="text-xl font-bold mb-6">결제 요약</h3>
                         <div className="space-y-4 mb-6">
                             <div className="flex justify-between text-sm">
-                                <span className="text-slate-600 dark:text-slate-400">상품 금액{isBusiness ? ' (사업자용)' : ''}</span>
+                                <span className="text-slate-600 dark:text-slate-400">상품 금액</span>
                                 <span className="font-medium">{totalPrice.toLocaleString()}원</span>
                             </div>
                             <div className="flex justify-between text-sm">
@@ -622,34 +694,6 @@ export default function ShoppingCartCheckout() {
                                 <span className="text-lg font-bold">최종 결제 금액</span>
                                 <span className="text-2xl font-black text-primary">{finalPrice.toLocaleString()}원</span>
                             </div>
-
-                            {/* 사업자 할인 혜택 요약 */}
-                            {isBusiness && discountAmount > 0 && (
-                                <div className="mt-4 p-4 bg-gradient-to-r from-red-50 to-orange-50 rounded-xl border border-red-200 shadow-sm">
-                                    <div className="flex items-center gap-2 mb-3">
-                                        <span className="material-symbols-outlined text-[18px] text-[#c8221f]">savings</span>
-                                        <span className="text-[14px] font-black text-[#c8221f]">사업자 할인 혜택</span>
-                                        <span className="ml-auto text-[11px] bg-[#c8221f] text-white px-2 py-0.5 rounded-full font-bold">약 {discountRate}% 절감</span>
-                                    </div>
-                                    <div className="space-y-2 text-[13px]">
-                                        <div className="flex justify-between">
-                                            <span className="text-slate-500">일반가 합계</span>
-                                            <span className="text-slate-400 line-through">{originalTotal.toLocaleString()}원</span>
-                                        </div>
-                                        <div className="flex justify-between">
-                                            <span className="text-slate-500">사업자가 적용</span>
-                                            <span className="font-bold text-slate-700">{totalPrice.toLocaleString()}원</span>
-                                        </div>
-                                        <div className="flex justify-between pt-2 border-t border-red-200">
-                                            <span className="font-bold text-[#c8221f] flex items-center gap-1">
-                                                <span className="material-symbols-outlined text-[14px]">arrow_downward</span>
-                                                총 절감 금액
-                                            </span>
-                                            <span className="font-black text-[#c8221f] text-[15px]">-{discountAmount.toLocaleString()}원</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
                         </div>
                         <div className="space-y-3">
                             <button

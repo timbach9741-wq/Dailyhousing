@@ -64,7 +64,7 @@ export const useOrderStore = create((set, get) => ({
         }
     },
 
-    addOrder: async (cartItems, totalAmount, uid, userInfo = {}, isBusiness = false) => {
+    addOrder: async (cartItems, totalAmount, uid, userInfo = {}, taxInvoiceInfo = null) => {
         const isGuest = !uid || uid === 'guest';
         const guestId = isGuest ? `guest_${Date.now()}_${Math.random().toString(36).slice(2, 8)}` : uid;
 
@@ -98,11 +98,9 @@ export const useOrderStore = create((set, get) => ({
             customer: userInfo.displayName || userInfo.name || '고객',
             email: userInfo.email || '',
             isGuest: isGuest,
-            isBusiness: isBusiness,
+            taxInvoice: taxInvoiceInfo,
             items: cartItems.map(item => {
                 const price = item.product?.price || item.unitPrice || 0;
-                const businessPrice = item.product?.businessPrice || 0;
-                const effectivePrice = (isBusiness && businessPrice) ? businessPrice : price;
                 return {
                     productName: item.product?.title || item.title || '',
                     productId: item.product?.id || item.id || '',
@@ -112,10 +110,8 @@ export const useOrderStore = create((set, get) => ({
                     packaging: item.product?.specifications?.packaging || item.product?.packaging || '',
                     option: item.option || '',
                     unitPrice: price,
-                    businessPrice: businessPrice,
-                    effectiveUnitPrice: effectivePrice,
                     sellingPrice: item.product?.sellingPrice || item.sellingPrice || 0,
-                    totalPrice: effectivePrice * item.qty,
+                    totalPrice: price * item.qty,
                     qty: item.qty,
                     imageUrl: item.product?.imageUrl || item.imageUrl || '',
                     vendor_info: { email: 'admin@dailyhousing.com' }

@@ -1,13 +1,11 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { useAuthStore } from './useAuthStore';
 
 /**
- * 제품의 유효 가격을 반환 (사업자는 businessPrice, 일반은 price)
+ * 제품의 유효 가격을 반환
  */
-export function getEffectivePrice(product, isBusiness = false) {
+export function getEffectivePrice(product) {
     if (!product) return 0;
-    if (isBusiness && product.businessPrice) return product.businessPrice;
     return product.price || 0;
 }
 
@@ -84,10 +82,8 @@ export const useCartStore = create(
             },
 
             getTotalPrice: () => {
-                const user = useAuthStore.getState().user;
-                const isBusiness = user?.role === 'business';
                 return get().items.reduce((total, item) => {
-                    const price = getEffectivePrice(item.product, isBusiness);
+                    const price = getEffectivePrice(item.product);
                     return total + (price * item.qty);
                 }, 0);
             }

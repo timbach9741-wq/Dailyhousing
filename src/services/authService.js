@@ -11,47 +11,6 @@ import { doc, getDoc, setDoc, collection, query, where, getDocs } from "firebase
 import { useAuthStore } from "../store/useAuthStore";
 import { useCartStore } from "../store/useCartStore";
 import { recordSignupToSheets } from './googleSheetsService';
-import { sendTelegramAlert } from './telegramService';
-
-const escapeHtml = (str) => {
-    if (!str) return '';
-    return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-};
-
-// 사업자 가입 시 텔레그램 알림 발송 헬퍼
-const triggerBusinessSignupNotification = async (userData) => {
-    if (userData.role !== 'business') return;
-    
-    try {
-        const { displayName, email, phoneNumber, businessInfo, approved } = userData;
-        const businessName = escapeHtml(businessInfo?.businessName || '미기재');
-        const businessNumber = escapeHtml(businessInfo?.businessNumber || '미기재');
-        const ntsVerified = businessInfo?.ntsVerified ? '✅ 인증 완료' : '❌ 미인증';
-        const licenseUrl = businessInfo?.licenseUrl;
-        const approvalStatus = approved ? '⚡ 즉시 자동 승인' : '⏳ 승인 대기 (관리자 확인 필요)';
-        const safeDisplayName = escapeHtml(displayName || '미기재');
-        const safePhoneNumber = escapeHtml(phoneNumber || '미기재');
-        const safeEmail = escapeHtml(email || '미기재');
-
-        const message = `🔔 <b>[새로운 사업자 가입 신청]</b>\n\n` +
-            `🏢 <b>상호명:</b> ${businessName}\n` +
-            `💼 <b>사업자번호:</b> ${businessNumber}\n` +
-            `👤 <b>대표자명:</b> ${safeDisplayName}\n` +
-            `📱 <b>연락처:</b> ${safePhoneNumber}\n` +
-            `📧 <b>이메일:</b> ${safeEmail}\n` +
-            `🔍 <b>국세청 인증:</b> ${ntsVerified}\n` +
-            `📄 <b>사업자등록증:</b> ${licenseUrl ? `<a href="${licenseUrl}">[다운로드/보기]</a>` : '미첨부'}\n` +
-            `⌛ <b>승인 상태:</b> ${approvalStatus}`;
-
-        await sendTelegramAlert(message);
-    } catch (err) {
-        console.warn('⚠️ 사업자 가입 텔레그램 알림 실패:', err);
-    }
-};
-
 
 // 로컬 스토리지 키
 const LOCAL_USERS_KEY = 'floorcraft_mock_users';
@@ -173,13 +132,8 @@ export const login = async (email, password) => {
     }
 };
 
-// 회원가입
-export const signup = async (email, password, displayName, role = 'individual', businessInfo = null, phoneNumber = '') => {
-    // 사업자 회원: 국세청 인증 통과 + 등록증 파일 업로드 시 자동 승인
-    const isBusiness = role === 'business';
-    const autoApproved = isBusiness && businessInfo?.ntsVerified && businessInfo?.licenseUrl;
-    const needsApproval = isBusiness && !autoApproved;
-
+// 회원가입 (모든 회원 동일 — 사업자/개인 구분 없이 즉시 승인)
+export const signup = async (email, password, displayName, phoneNumber = '') => {
     try {
         // 1. 파이어베이스 회원가입 시도
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -190,22 +144,16 @@ export const signup = async (email, password, displayName, role = 'individual', 
             uid: fbUser.uid,
             email: fbUser.email,
             displayName: displayName,
-            role: role,
-            businessInfo: isBusiness ? businessInfo : null,
+            role: 'individual',
+            businessInfo: null,
             phoneNumber: phoneNumber,
-            approved: !needsApproval // 개인: true, 사업자: false
+            approved: true
         };
 
         // Firestore에 사용자 정보 저장
         try {
             await setDoc(doc(db, "users", fbUser.uid), {
-                uid: fbUser.uid,
-                email: fbUser.email,
-                displayName: displayName,
-                role: role,
-                businessInfo: isBusiness ? businessInfo : null,
-                phoneNumber: phoneNumber,
-                approved: !needsApproval,
+                ...userData,
                 createdAt: new Date().toISOString()
             });
             console.log('✅ Firestore 사용자 문서 저장 성공:', fbUser.uid);
@@ -222,19 +170,10 @@ export const signup = async (email, password, displayName, role = 'individual', 
         // Google Sheets에 회원정보 기록 (비동기, 실패해도 무시)
         recordSignupToSheets(userData).catch(() => {});
 
-        // 사업자 가입 텔레그램 알림 발송 (비동기)
-        triggerBusinessSignupNotification(userData).catch(() => {});
-
-        if (needsApproval) {
-            // 사업자 회원: 승인 대기 → 로그아웃 처리
-            await signOut(auth);
-            return { success: true, pendingApproval: true, user: userData };
-        } else {
-            // 개인 회원: 즉시 로그인 상태 유지
-            setLocalSession(userData);
-            useAuthStore.getState().setUser(userData);
-            return { success: true, pendingApproval: false, user: userData };
-        }
+        // 즉시 로그인 상태 유지
+        setLocalSession(userData);
+        useAuthStore.getState().setUser(userData);
+        return { success: true, pendingApproval: false, user: userData };
     } catch (firebaseErr) {
         console.warn("Firebase Auth failed, switching to Local Auth mode:", firebaseErr?.message);
 
@@ -248,10 +187,10 @@ export const signup = async (email, password, displayName, role = 'individual', 
             uid: `local_${Date.now()}`,
             email,
             displayName,
-            role,
-            businessInfo: isBusiness ? businessInfo : null,
+            role: 'individual',
+            businessInfo: null,
             phoneNumber,
-            approved: !needsApproval,
+            approved: true,
             createdAt: new Date().toISOString()
         };
 
@@ -260,16 +199,9 @@ export const signup = async (email, password, displayName, role = 'individual', 
         // Google Sheets에 회원정보 기록 (비동기, 실패해도 무시)
         recordSignupToSheets(newUser).catch(() => {});
 
-        // 사업자 가입 텔레그램 알림 발송 (비동기)
-        triggerBusinessSignupNotification(newUser).catch(() => {});
-
-        if (needsApproval) {
-            return { success: true, pendingApproval: true, user: newUser };
-        } else {
-            setLocalSession(newUser);
-            useAuthStore.getState().setUser(newUser);
-            return { success: true, pendingApproval: false, user: newUser };
-        }
+        setLocalSession(newUser);
+        useAuthStore.getState().setUser(newUser);
+        return { success: true, pendingApproval: false, user: newUser };
     }
 };
 
@@ -327,51 +259,5 @@ export const findUserEmail = async (name, phone) => {
             return { success: true, email: localUser.email };
         }
         return { success: false, error: "정보를 찾는 중 오류가 발생했습니다." };
-    }
-};
-
-// 소셜 가입 사업자 추가정보 기입 완료 처리
-export const completeBusinessSignup = async (uid, companyName, registrationNumber, licenseUrl, licenseFileName, ntsVerified) => {
-    try {
-        const businessInfo = {
-            businessName: companyName,
-            businessNumber: registrationNumber,
-            ntsVerified,
-            licenseUrl,
-            licenseFileName
-        };
-
-        const userRef = doc(db, 'users', uid);
-        const userDoc = await getDoc(userRef);
-        const userData = userDoc.exists() ? userDoc.data() : {};
-
-        // 국세청 인증이 되었고 사업자등록증이 첨부된 경우 즉시 자동 승인
-        const approved = ntsVerified && !!licenseUrl;
-
-        await updateDoc(userRef, {
-            role: 'business',
-            approved,
-            businessInfo,
-            updatedAt: new Date().toISOString()
-        });
-
-        const updatedUser = {
-            ...userData,
-            uid,
-            role: 'business',
-            approved,
-            businessInfo
-        };
-
-        // Google Sheets 기록 (비동기)
-        recordSignupToSheets(updatedUser).catch(e => console.error('Google Sheets 기록 에러:', e));
-
-        // 텔레그램 알림 발송 (비동기)
-        triggerBusinessSignupNotification(updatedUser).catch(e => console.error('텔레그램 알림 에러:', e));
-
-        return { success: true, approved, user: updatedUser };
-    } catch (error) {
-        console.error('completeBusinessSignup error:', error);
-        return { success: false, error: error.message };
     }
 };

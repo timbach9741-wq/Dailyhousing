@@ -7,8 +7,7 @@ import SEO from '../components/SEO';
 
 export default function Home() {
     const { products, initProducts } = useProductStore();
-    const { user, isAuthenticated } = useAuthStore();
-    const isBusiness = user?.role === 'business';
+    const { isAuthenticated } = useAuthStore();
     const featuredProducts = (() => {
         let baseProducts = products.filter(p => p.tags?.includes('인기')).length > 0 
             ? products.filter(p => p.tags?.includes('인기'))
@@ -346,39 +345,21 @@ export default function Home() {
                                         ) : null}
                                     </div>
 
-                                    {/* 가격 표시 추가 */}
+                                    {/* 가격 표시 */}
                                     <div className="mt-3">
                                         <div className="flex flex-col gap-1.5 bg-slate-50 p-2.5 md:p-3 rounded-xl border border-slate-100 group-hover:border-red-100 transition-colors">
                                             <div className="flex justify-between items-center">
-                                                <span className="text-[11px] md:text-[12px] text-slate-500 font-medium">일반가</span>
+                                                <span className="text-[11px] md:text-[12px] text-slate-500 font-medium">가격</span>
                                                 <div className="flex items-baseline gap-0.5">
-                                                    <span className={`text-[12px] md:text-[13px] ${isAuthenticated && isBusiness ? 'line-through text-slate-400' : 'font-bold text-slate-900'}`}>
-                                                        {product.price != null && product.price !== 0 ? `${product.price.toLocaleString()}원` : '별도 문의'}
-                                                    </span>
+                                                    {isAuthenticated ? (
+                                                        <span className="text-[12px] md:text-[13px] font-bold text-slate-900">
+                                                            {product.price != null && product.price !== 0 ? `${product.price.toLocaleString()}원` : '별도 문의'}
+                                                        </span>
+                                                    ) : (
+                                                        <Link to="/login" className="text-[11px] md:text-[12px] font-bold text-[#d4a853] hover:underline">로그인 후 가격 확인</Link>
+                                                    )}
                                                 </div>
                                             </div>
-                                            {product.businessPrice && product.price !== 0 && (
-                                                <div className={`flex justify-between items-center p-1.5 md:p-2 rounded-lg border ${isAuthenticated && isBusiness ? 'bg-red-50 border-red-200' : 'bg-white border-slate-200 group-hover:bg-red-50 group-hover:border-red-100 transition-colors'}`}>
-                                                    <div className="flex items-center gap-1">
-                                                        <span className={`text-[11px] md:text-[12px] font-bold ${isAuthenticated && isBusiness ? 'text-[#c0392b]' : 'text-slate-600 group-hover:text-[#c0392b]'}`}>사업자가</span>
-                                                        <span className={`text-[10px] font-black px-1 rounded ${isAuthenticated && isBusiness ? 'text-white bg-[#c0392b]' : 'text-[#c0392b] bg-red-100 group-hover:bg-[#c0392b] group-hover:text-white transition-colors'}`}>
-                                                            {isAuthenticated && isBusiness ? `${Math.round((1 - product.businessPrice / product.price) * 100)}% ↓` : '?% ↓'}
-                                                        </span>
-                                                    </div>
-                                                    <div className="flex items-baseline gap-0.5">
-                                                        {isAuthenticated && isBusiness ? (
-                                                            <>
-                                                                <span className="text-[13px] md:text-[15px] font-black text-[#c0392b]">
-                                                                    {product.businessPrice.toLocaleString()}원
-                                                                </span>
-                                                                {product.priceUnit && <span className="text-[10px] text-slate-400">/{product.priceUnit}</span>}
-                                                            </>
-                                                        ) : (
-                                                            <Link to="/register" className="text-[10px] md:text-[11px] font-bold text-[#d4a853] hover:underline">회원 전용</Link>
-                                                        )}
-                                                    </div>
-                                                </div>
-                                            )}
                                         </div>
                                     </div>
 

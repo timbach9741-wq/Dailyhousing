@@ -93,31 +93,35 @@ export default function PaymentSuccess() {
                 
                 // 세션 스토리지에서 배송 정보 복원
                 const checkoutUserStr = sessionStorage.getItem('pendingOrderDeliveryInfo');
-                const isBusinessStr = sessionStorage.getItem('pendingOrderIsBusiness');
+                const taxInvoiceStr = sessionStorage.getItem('pendingOrderTaxInvoice');
                 if (!checkoutUserStr || !items || items.length === 0) {
                     throw new Error('장바구니 정보가 없거나 세션이 만료되었습니다. 장바구니로 돌아갑니다.');
                 }
-                
+
                 const checkoutUser = JSON.parse(checkoutUserStr);
-                const isBusiness = isBusinessStr === 'true';
+                let taxInvoiceInfo = null;
+                try {
+                    const parsed = taxInvoiceStr ? JSON.parse(taxInvoiceStr) : null;
+                    taxInvoiceInfo = parsed?.requested ? parsed : null;
+                } catch { /* 세금계산서 정보 없음 */ }
 
                 // 주문 DB 생성
-                const finalOrderId = await addOrder(items, parseInt(amount), user?.uid || 'guest', checkoutUser, isBusiness);
-                
+                const finalOrderId = await addOrder(items, parseInt(amount), user?.uid || 'guest', checkoutUser, taxInvoiceInfo);
+
                 // 영수증 UI용 데이터 세팅
                 setReceiptData({
                     orderId: finalOrderId || orderId,
                     items: [...items],
                     amount: parseInt(amount),
                     customer: checkoutUser,
-                    isBusiness,
+                    taxInvoice: taxInvoiceInfo,
                     paymentKey,
                     date: new Date().toLocaleString('ko-KR')
                 });
 
                 clearCart();
                 sessionStorage.removeItem('pendingOrderDeliveryInfo');
-                sessionStorage.removeItem('pendingOrderIsBusiness');
+                sessionStorage.removeItem('pendingOrderTaxInvoice');
                 
                 setIsConfirming(false);
             } catch (error) {
@@ -319,9 +323,7 @@ export default function PaymentSuccess() {
                                             }
                                         }
                                         
-                                        const price = receiptData.isBusiness && item.product?.businessPrice 
-                                            ? item.product.businessPrice 
-                                            : item.product?.price || 0;
+                                        const price = item.product?.price || 0;
                                         
                                         return (
                                             <tr key={index}>

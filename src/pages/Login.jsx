@@ -20,7 +20,6 @@ const Login = () => {
     const redirectUri = `${window.location.origin}/auth/callback`;
 
     sessionStorage.setItem('social_provider', provider);
-    sessionStorage.setItem('social_signup_role', 'individual');
 
     if (provider === 'kakao') {
       if (!kakaoClientId) {

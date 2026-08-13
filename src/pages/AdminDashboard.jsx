@@ -1287,21 +1287,21 @@ const AdminDashboard = () => {
                                         // 회원별 그룹핑
                                         const grouped = filteredOrders.reduce((acc, order) => {
                                             const key = order.vendorEmail || order.customer || 'unknown';
-                                            if (!acc[key]) acc[key] = { customer: order.customer, email: order.vendorEmail, isBusiness: order.isBusiness, orders: [] };
+                                            if (!acc[key]) acc[key] = { customer: order.customer, email: order.vendorEmail, orders: [] };
                                             acc[key].orders.push(order);
                                             return acc;
                                         }, {});
-                                        // 배송 미확인 사업자를 최상단으로 정렬
+                                        // 배송 미확인 주문을 최상단으로 정렬
                                         const sortedGroups = Object.entries(grouped).sort(([,a], [,b]) => {
-                                            const aNeed = a.isBusiness && a.orders.some(o => !o.deliveryType) ? 1 : 0;
-                                            const bNeed = b.isBusiness && b.orders.some(o => !o.deliveryType) ? 1 : 0;
+                                            const aNeed = a.orders.some(o => !o.deliveryType) ? 1 : 0;
+                                            const bNeed = b.orders.some(o => !o.deliveryType) ? 1 : 0;
                                             return bNeed - aNeed;
                                         });
                                         if (sortedGroups.length === 0) return <p className="text-center text-slate-500 py-16">해당 조건의 주문 내역이 없습니다.</p>;
                                         return sortedGroups.map(([key, group]) => {
-                                            const isExpanded = expandedCustomer[key] !== undefined ? expandedCustomer[key] : (group.isBusiness && group.orders.some(o => !o.deliveryType));
+                                            const isExpanded = expandedCustomer[key] !== undefined ? expandedCustomer[key] : group.orders.some(o => !o.deliveryType);
                                             const totalAmount = group.orders.reduce((s, o) => s + (o.totalAmount || o.items?.reduce((a, it) => a + ((it.price || 0) * (it.qty || it.quantity || 0)), 0) || 0), 0);
-                                            const hasNeedApproval = group.isBusiness && group.orders.some(o => !o.deliveryType);
+                                            const hasNeedApproval = group.orders.some(o => !o.deliveryType);
                                             const pendingCount = group.orders.filter(o => o.status === 'pending').length;
                                             return (
                                                 <div key={key} className={`rounded-2xl border overflow-hidden transition-all ${hasNeedApproval ? 'border-amber-500/40 animate-blink-delivery' : 'border-white/10'}`}>
@@ -1311,13 +1311,12 @@ const AdminDashboard = () => {
                                                         className="w-full px-5 py-4 flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all text-left"
                                                     >
                                                         <div className="flex items-center gap-3 min-w-0">
-                                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold ${group.isBusiness ? 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30' : 'bg-slate-500/20 text-slate-400 border border-slate-500/30'}`}>
-                                                                {group.isBusiness ? '🏢' : '👤'}
+                                                            <div className="w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold bg-slate-500/20 text-slate-400 border border-slate-500/30">
+                                                                👤
                                                             </div>
                                                             <div className="min-w-0">
                                                                 <div className="flex items-center gap-2 flex-wrap">
                                                                     <span className="font-bold text-white text-sm truncate">{group.customer}</span>
-                                                                    {group.isBusiness && <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">사업자</span>}
                                                                     {hasNeedApproval && <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-500/30 text-amber-300 border border-amber-500/50 animate-pulse">🚚 배송확인 필요</span>}
                                                                 </div>
                                                                 <p className="text-[11px] text-slate-500 truncate">{group.email}</p>
@@ -1336,7 +1335,6 @@ const AdminDashboard = () => {
                                                     {isExpanded && (
                                                         <div className="divide-y divide-white/5 bg-slate-900/30">
                                                             {group.orders.map((order, oi) => {
-                                                                const isBizOrder = order.isBusiness === true;
                                                                 return (<div key={oi} className="px-5 py-4">
                                                                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
                                                                         {/* 주문 정보 */}
@@ -1345,11 +1343,9 @@ const AdminDashboard = () => {
                                                                                 <div className="flex items-center gap-2">
                                                                                     <span className="text-xs font-mono text-slate-500">{order.id}</span>
                                                                                     <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${order.status === 'pending' ? 'bg-amber-500/20 text-amber-500' : order.status === 'completed' ? 'bg-emerald-500/20 text-emerald-500' : 'bg-blue-500/20 text-blue-500'}`}>{order.status}</span>
-                                                                                    {isBizOrder && (
-                                                                                        <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-red-500/20 text-red-400">
-                                                                                            📦 착불
-                                                                                        </span>
-                                                                                    )}
+                                                                                    <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-red-500/20 text-red-400">
+                                                                                        📦 착불
+                                                                                    </span>
                                                                                 </div>
                                                                                 <div className="flex flex-wrap gap-2 mt-1.5">
                                                                                     {order.items.map((item, idx) => (
@@ -1369,7 +1365,7 @@ const AdminDashboard = () => {
                                                                             <button onClick={() => handleDownload(order)} className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-blue-500/20 transition-all" title="발주서">
                                                                                 <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                                                                             </button>
-                                                                            <button onClick={() => setTaxInvoiceModal({ type: 'tax_invoice', user: { displayName: order.customer, email: order.vendorEmail } })} className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-indigo-500/20 transition-all" title="세금계산서">
+                                                                            <button onClick={() => setTaxInvoiceModal({ type: 'tax_invoice', user: { displayName: order.customer, email: order.vendorEmail, businessInfo: order.taxInvoice?.requested ? { businessName: order.taxInvoice.businessName, businessNumber: order.taxInvoice.businessNumber } : null } })} className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-indigo-500/20 transition-all" title="세금계산서">
                                                                                 <span className="material-symbols-outlined text-slate-400 text-[16px]">receipt</span>
                                                                             </button>
                                                                             <button onClick={() => setTaxInvoiceModal({ type: 'cash_receipt', user: { displayName: order.customer, email: order.vendorEmail } })} className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-violet-500/20 transition-all" title="현금영수증">
@@ -3332,7 +3328,7 @@ const AdminDashboard = () => {
                         </h3>
                         <p className="text-slate-400 text-sm mb-6">
                             <strong className="text-white">{taxInvoiceModal.user?.displayName}</strong>님
-                            {taxInvoiceModal.user?.role === 'business' && taxInvoiceModal.user?.businessInfo
+                            {taxInvoiceModal.user?.businessInfo
                                 ? ` (${taxInvoiceModal.user.businessInfo.businessName})`
                                 : ''}
                         </p>
