@@ -386,14 +386,15 @@ const AdminDashboard = () => {
         return Object.values(map).sort((a, b) => b.count - a.count).slice(0, 5);
     };
 
-    // 카테고리 목록 추출
+    // 카테고리 목록 추출 (선택된 브랜드 기준 — 다른 브랜드 전용 카테고리는 숨김)
     const productCategories = useMemo(() => {
+        const scoped = productBrand === 'all' ? products : products.filter(p => (p.brand || '기타') === productBrand);
         const cats = new Set();
-        products.forEach(p => {
+        scoped.forEach(p => {
             if (p.subCategory) cats.add(p.subCategory);
         });
         return ['all', ...Array.from(cats).sort()];
-    }, [products]);
+    }, [products, productBrand]);
 
     // 브랜드 목록 추출 (신규 브랜드 추가 시 코드 수정 없이 자동 반영)
     const productBrands = useMemo(() => {
@@ -1535,8 +1536,9 @@ const AdminDashboard = () => {
                         <div>
                             <h2 className="text-2xl font-bold text-white">🏷️ 제품 관리</h2>
                             <p className="text-slate-400 text-sm mt-1">
-                                총 {products.length}개 제품 · 
-                                {productCategory !== 'all' ? ` ${productCategory} (${categoryCount[productCategory] || 0}개)` : ' 전체'}
+                                총 {filteredProducts.length}개 제품 (전체 {products.length}개 중) ·
+                                {productBrand !== 'all' ? ` ${productBrand}` : ' 전체 브랜드'}
+                                {productCategory !== 'all' ? ` · ${productCategory}` : ''}
                             </p>
                         </div>
                         <div className="flex items-center gap-3">
