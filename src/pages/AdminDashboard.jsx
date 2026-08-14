@@ -113,6 +113,7 @@ const AdminDashboard = () => {
     const [editingProduct, setEditingProduct] = useState(null);
     const [productSaving, setProductSaving] = useState(false);
     const [productCategory, setProductCategory] = useState('all');
+    const [productBrand, setProductBrand] = useState('all');
     const [newProductModal, setNewProductModal] = useState(false);
     const [adjustStockModal, setAdjustStockModal] = useState(null); // { product, type: 'in' | 'out', amount: '' }
     const [newProduct, setNewProduct] = useState({
@@ -394,8 +395,17 @@ const AdminDashboard = () => {
         return ['all', ...Array.from(cats).sort()];
     }, [products]);
 
-    // 제품 필터링 (카테고리 + 검색어)
+    // 브랜드 목록 추출 (신규 브랜드 추가 시 코드 수정 없이 자동 반영)
+    const productBrands = useMemo(() => {
+        const brands = new Set();
+        products.forEach(p => brands.add(p.brand || '기타'));
+        return ['all', ...Array.from(brands).sort()];
+    }, [products]);
+
+    // 제품 필터링 (브랜드 + 카테고리 + 검색어)
     const filteredProducts = products.filter(p => {
+        // 브랜드 필터
+        if (productBrand !== 'all' && (p.brand || '기타') !== productBrand) return false;
         // 카테고리 필터
         if (productCategory !== 'all' && p.subCategory !== productCategory) return false;
         // 검색어 필터
@@ -406,13 +416,24 @@ const AdminDashboard = () => {
             (p.subCategory || '').toLowerCase().includes(q);
     });
 
-    // 카테고리별 제품 수
+    // 카테고리별 제품 수 (선택된 브랜드 기준)
     const categoryCount = useMemo(() => {
-        const counts = { all: products.length };
-        products.forEach(p => {
+        const scoped = productBrand === 'all' ? products : products.filter(p => (p.brand || '기타') === productBrand);
+        const counts = { all: scoped.length };
+        scoped.forEach(p => {
             if (p.subCategory) {
                 counts[p.subCategory] = (counts[p.subCategory] || 0) + 1;
             }
+        });
+        return counts;
+    }, [products, productBrand]);
+
+    // 브랜드별 제품 수
+    const brandCount = useMemo(() => {
+        const counts = { all: products.length };
+        products.forEach(p => {
+            const key = p.brand || '기타';
+            counts[key] = (counts[key] || 0) + 1;
         });
         return counts;
     }, [products]);
@@ -1576,6 +1597,20 @@ const AdminDashboard = () => {
                         </div>
                     </div>
 
+                    {/* 브랜드 필터 스크롤 */}
+                    <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-white/10">
+                        {productBrands.map(brand => (
+                            <button
+                                key={brand}
+                                onClick={() => { setProductBrand(brand); setProductCategory('all'); }}
+                                className={`px-4 py-2 rounded-xl text-xs font-bold border whitespace-nowrap transition-all shrink-0 ${productBrand === brand ? 'bg-amber-500/20 border-amber-500/50 text-amber-300 ring-1 ring-amber-500/30' : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:bg-white/10'}`}
+                            >
+                                {brand === 'all' ? '🏢 전체 브랜드' : brand}
+                                <span className="ml-1.5 text-[10px] opacity-60">({brandCount[brand] || 0})</span>
+                            </button>
+                        ))}
+                    </div>
+
                     {/* 카테고리 필터 스크롤 */}
                     <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-white/10">
                         {productCategories.map(cat => (
@@ -2075,7 +2110,12 @@ const AdminDashboard = () => {
                                                         )}
                                                     </div>
                                                     <div>
-                                                        <p className="text-white text-sm font-semibold">{product.title}</p>
+                                                        <div className="flex items-center gap-1.5">
+                                                            <p className="text-white text-sm font-semibold">{product.title}</p>
+                                                            {product.brand && (
+                                                                <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 whitespace-nowrap">{product.brand}</span>
+                                                            )}
+                                                        </div>
                                                         <p className="text-slate-500 text-xs">{product.model_id}</p>
                                                     </div>
                                                 </div>
@@ -2176,7 +2216,7 @@ const AdminDashboard = () => {
                         )}
                         {filteredProducts.length === 0 && (
                             <div className="px-8 py-16 text-center text-slate-500">
-                                {productSearch || productCategory !== 'all' ? '해당 조건의 제품이 없습니다.' : '등록된 제품이 없습니다.'}
+                                {productSearch || productCategory !== 'all' || productBrand !== 'all' ? '해당 조건의 제품이 없습니다.' : '등록된 제품이 없습니다.'}
                             </div>
                         )}
                     </div>
