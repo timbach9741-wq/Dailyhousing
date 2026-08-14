@@ -23,7 +23,25 @@ export default function ResidentialSheetCategory() {
         initProducts();
     }, [initProducts]);
 
-    const subCategories = ['전체', '에디톤', '마루', '시트', '타일'];
+    // 대분류 판별 로직 (filteredProducts와 동일 기준) — 선택된 브랜드에 실제로 있는 대분류만 탭에 노출
+    const matchesEditon = (p) => (p.subtitle && p.subtitle.includes('에디톤')) || (p.subCategory && p.subCategory.includes('에디톤'));
+    const matchesMaru = (p) => p.subCategory === '마루' || (p.subtitle && p.subtitle === '마루');
+    const matchesSheet = (p) => (p.subtitle && p.subtitle.includes('시트')) || (p.subCategory && (p.subCategory.includes('프리미엄') || p.subCategory.includes('스탠다드') || p.subCategory.includes('엑스컴포트')));
+    const matchesTile = (p) => p.subtitle && p.subtitle.includes('타일');
+
+    const brandScopedProducts = useMemo(() => (
+        selectedBrand === '전체' ? products : products.filter(p => p.brand === selectedBrand)
+    ), [products, selectedBrand]);
+
+    const subCategories = useMemo(() => {
+        const cats = ['전체'];
+        if (brandScopedProducts.some(matchesEditon)) cats.push('에디톤');
+        if (brandScopedProducts.some(matchesMaru)) cats.push('마루');
+        if (brandScopedProducts.some(matchesSheet)) cats.push('시트');
+        if (brandScopedProducts.some(matchesTile)) cats.push('타일');
+        return cats;
+    }, [brandScopedProducts]);
+
     const editonDetailCategories = ['전체', '에디톤 스톤', '에디톤 스퀘어', '에디톤 우드'];
     const maruDetailCategories = ['전체', '사각 400', '사각 600', '우드'];
     const sheetDetailCategories = ['전체', '엑스컴포트 5.0', '엑스컴포트 4.5(지아 소리잠)', '프리미엄 3.2/2.7(지아 사랑애)', '프리미엄 2.2(지아 자연애)', '스탠다드 2.0(은행목)', '스탠다드 1.8(뉴청맥)'];
@@ -126,16 +144,15 @@ export default function ResidentialSheetCategory() {
     }
 
     const handleBrandChange = (brand) => {
+        // 브랜드가 바뀌면 대분류 구성이 달라지므로 카테고리 선택은 초기화
         const next = {};
-        if (selectedSubCategory !== '전체') next.category = selectedSubCategory;
-        if (selectedDetailCategory !== '전체') next.sub = selectedDetailCategory;
         if (brand !== '전체') next.brand = brand;
         setSearchParams(next);
     }
 
-    // 배너 문구: 특정 브랜드를 보고 있을 때는 그 브랜드로, 전체보기일 때는 브랜드 중립적으로 표시
+    // 배너 문구: 특정 브랜드를 보고 있을 때는 브랜드명을 큰 제목으로, 전체보기일 때는 브랜드 중립적으로 표시
     const isSingleBrand = selectedBrand !== '전체';
-    const bannerBadge = isSingleBrand ? `${selectedBrand} Residential` : 'Residential';
+    const bannerBadge = 'Residential';
     const bannerSubtitle = isSingleBrand && selectedBrand !== 'LX Z:IN'
         ? '합리적인 가격과 다양한 컬러, 데일리하우징이 엄선한 프리미엄 바닥재를 만나보세요.'
         : (<>프리미엄 에디톤부터 친환경 시트까지,<br />라이프스타일에 맞춘 최적의 바닥재를 만나보세요.</>);
@@ -154,9 +171,18 @@ export default function ResidentialSheetCategory() {
                 </div>
                 <div className="relative z-10 text-center text-slate-900 px-4 mt-4 sm:mt-6">
                     <span className="inline-block px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white shadow-sm text-[11px] sm:text-[12px] font-bold text-[#d4a853] mb-4 sm:mb-6 tracking-[0.2em] sm:tracking-[0.3em] uppercase border border-slate-200">{bannerBadge}</span>
-                    <h2 className="text-2xl sm:text-4xl lg:text-6xl font-black mb-3 sm:mb-6 leading-tight tracking-tight text-slate-900">
-                        가장 완벽한<br />주거 공간의 완성
-                    </h2>
+                    {isSingleBrand ? (
+                        <>
+                            <h2 className="text-4xl sm:text-6xl lg:text-8xl font-black mb-2 sm:mb-4 leading-tight tracking-tight text-slate-900">
+                                {selectedBrand}
+                            </h2>
+                            <p className="text-lg sm:text-2xl lg:text-3xl font-bold text-slate-700 mb-3 sm:mb-5">가장 완벽한 주거 공간의 완성</p>
+                        </>
+                    ) : (
+                        <h2 className="text-2xl sm:text-4xl lg:text-6xl font-black mb-3 sm:mb-6 leading-tight tracking-tight text-slate-900">
+                            가장 완벽한<br />주거 공간의 완성
+                        </h2>
+                    )}
                     <p className="text-[13px] sm:text-base lg:text-lg font-medium text-slate-600 max-w-xl mx-auto leading-relaxed">
                         {bannerSubtitle}
                     </p>
