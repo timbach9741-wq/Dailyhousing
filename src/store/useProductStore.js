@@ -15,6 +15,7 @@ export const useProductStore = create(
             isLoaded: false,
             unsubscribeInventory: null,
             unsubscribeLogs: null,
+            unsubscribeProductEdits: null,
 
             // 관리자: 다건 로그 기록 추가
             addInventoryLogs: async (logs) => {
@@ -39,6 +40,9 @@ export const useProductStore = create(
 
                 const kujungModule = await import('../data/kujungmaru-products');
                 const KUJUNGMARU_PRODUCTS = kujungModule.KUJUNGMARU_PRODUCTS.map(p => ({ brand: '구정마루', ...p }));
+
+                const donghwaModule = await import('../data/donghwamaru-products');
+                const DONGHWAMARU_PRODUCTS = donghwaModule.DONGHWAMARU_PRODUCTS.map(p => ({ brand: '동화마루', ...p }));
 
                 // Sort functionality to match LX Z:IN website hierarchy
                 const getSortWeight = (p) => {
@@ -87,7 +91,7 @@ export const useProductStore = create(
                 const sortedProducts = indexedProducts.map(([p]) => p);
 
                 set({
-                    products: [...sortedProducts, ...KUJUNGMARU_PRODUCTS],
+                    products: [...sortedProducts, ...KUJUNGMARU_PRODUCTS, ...DONGHWAMARU_PRODUCTS],
                     isLoaded: true
                 });
 
@@ -121,6 +125,41 @@ export const useProductStore = create(
                         console.error('Firestore inventory onSnapshot 에러:', error);
                     });
                     set({ unsubscribeInventory: unsubInv });
+                }
+
+                // 실시간 Firestore 상품 수정(가격 등) 동기화
+                // 관리자 페이지에서 '수정' 저장 시 products/{id} 문서에 기록되는 값(price, businessPrice,
+                // sellingPrice, title, model_id, imageUrl, subCategory, tags)을 덮어써서
+                // 새로고침/재방문 후에도 가격 수정이 유지되도록 함 (재고는 위 inventory 컬렉션이 별도 처리)
+                if (!get().unsubscribeProductEdits) {
+                    const unsubEdits = onSnapshot(collection(db, 'products'), (snapshot) => {
+                        const editData = {};
+                        snapshot.forEach(docSnap => {
+                            editData[docSnap.id] = docSnap.data();
+                        });
+
+                        set((state) => {
+                            const newProducts = state.products.map(p => {
+                                const fbData = editData[String(p.id)];
+                                if (!fbData) return p;
+                                return {
+                                    ...p,
+                                    price: fbData.price !== undefined ? fbData.price : p.price,
+                                    businessPrice: fbData.businessPrice !== undefined ? fbData.businessPrice : p.businessPrice,
+                                    sellingPrice: fbData.sellingPrice !== undefined ? fbData.sellingPrice : p.sellingPrice,
+                                    title: fbData.title || p.title,
+                                    model_id: fbData.model_id || p.model_id,
+                                    imageUrl: fbData.imageUrl || p.imageUrl,
+                                    subCategory: fbData.subCategory || p.subCategory,
+                                    tags: fbData.tags && fbData.tags.length > 0 ? fbData.tags : p.tags,
+                                };
+                            });
+                            return { products: newProducts };
+                        });
+                    }, (error) => {
+                        console.error('Firestore products(수정) onSnapshot 에러:', error);
+                    });
+                    set({ unsubscribeProductEdits: unsubEdits });
                 }
 
                 // 실시간 Firestore 로그 동기화

@@ -17,6 +17,7 @@ function Header() {
     const { isAuthenticated, user } = useAuthStore();
     const navigate = useNavigate();
     const products = useProductStore((state) => state.products);
+    const initProducts = useProductStore((state) => state.initProducts);
     const [dropdownSearch, setDropdownSearch] = useState('');
     const cartCount = useCartStore((state) => state.items.length);
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -34,6 +35,33 @@ function Header() {
             window.removeEventListener('storage', handleCmsUpdate);
         };
     }, []);
+
+    useEffect(() => {
+        initProducts();
+    }, [initProducts]);
+
+    // 브랜드별 카테고리 그룹: 상품 데이터에서 자동으로 뽑아옴 (신규 브랜드 추가 시 코드 수정 불필요)
+    // 카테고리가 2개 이상인 브랜드(LX Z:IN)는 하위 목록으로, 1개뿐인 브랜드(구정마루 등)는 브랜드명 클릭 시 바로 이동
+    const categoryLabels = { residential: '주거용 바닥재', commercial: '상업용 바닥재' };
+    const categoryOrder = ['residential', 'commercial'];
+    const brandGroups = useMemo(() => {
+        const map = new Map();
+        products.forEach(p => {
+            if (!p.brand || !p.categoryId) return;
+            if (!map.has(p.brand)) map.set(p.brand, new Set());
+            map.get(p.brand).add(p.categoryId);
+        });
+        return Array.from(map.entries()).map(([brand, catSet]) => ({
+            brand,
+            categories: Array.from(catSet).sort((a, b) => categoryOrder.indexOf(a) - categoryOrder.indexOf(b)),
+        }));
+    }, [products]);
+
+    // 상품 데이터는 아직 없지만 이름만 미리 노출해두는 브랜드 (실제 상품 등록 후 자동으로 사라짐)
+    const UPCOMING_BRANDS = ['동화마루', '한솔마루', '노바마루'];
+    const upcomingBrands = useMemo(() => (
+        UPCOMING_BRANDS.filter(b => !brandGroups.some(g => g.brand === b))
+    ), [brandGroups]);
 
     // 검색 상태 및 Refs
     const [searchQuery, setSearchQuery] = useState('');
@@ -185,10 +213,49 @@ function Header() {
                                     </button>
                                 </form>
 
-                                {/* Categories List */}
-                                <div className="flex flex-col space-y-1">
-                                    <Link to="/category/residential" className="px-3 py-2 text-[15px] font-semibold text-slate-700 hover:text-[#d4a853] hover:bg-[#d4a853]/5 rounded-lg transition-colors border border-transparent hover:border-[#d4a853]/20">주거용 바닥재</Link>
-                                    <Link to="/category/commercial" className="px-3 py-2 text-[15px] font-semibold text-slate-700 hover:text-[#d4a853] hover:bg-[#d4a853]/5 rounded-lg transition-colors border border-transparent hover:border-[#d4a853]/20">상업용 바닥재</Link>
+                                {/* Brand-grouped Categories List */}
+                                <div className="flex flex-col">
+                                    {brandGroups.map(({ brand, categories }, idx) => (
+                                        <div key={brand} className={idx > 0 ? 'mt-3 pt-3 border-t border-slate-100' : ''}>
+                                            {categories.length > 1 ? (
+                                                <>
+                                                    <div className="px-3 py-1 text-[13px] font-black text-slate-800">{brand}</div>
+                                                    <div className="flex flex-col space-y-1 mt-1">
+                                                        {categories.map(catId => (
+                                                            <Link
+                                                                key={catId}
+                                                                to={`/category/${catId}?brand=${encodeURIComponent(brand)}`}
+                                                                className="px-3 py-2 text-[15px] font-semibold text-slate-700 hover:text-[#d4a853] hover:bg-[#d4a853]/5 rounded-lg transition-colors border border-transparent hover:border-[#d4a853]/20"
+                                                            >
+                                                                {categoryLabels[catId] || catId}
+                                                            </Link>
+                                                        ))}
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <Link
+                                                    to={`/category/${categories[0]}?brand=${encodeURIComponent(brand)}`}
+                                                    className="block px-3 py-2 text-[15px] font-black text-slate-800 hover:text-[#d4a853] hover:bg-[#d4a853]/5 rounded-lg transition-colors border border-transparent hover:border-[#d4a853]/20"
+                                                >
+                                                    {brand}
+                                                </Link>
+                                            )}
+                                        </div>
+                                    ))}
+
+                                    {upcomingBrands.length > 0 && (
+                                        <div className="mt-3 pt-3 border-t border-slate-100 flex flex-col space-y-1">
+                                            {upcomingBrands.map(brand => (
+                                                <span
+                                                    key={brand}
+                                                    className="px-3 py-2 text-[15px] font-black text-slate-400 rounded-lg flex items-center justify-between cursor-default select-none"
+                                                >
+                                                    {brand}
+                                                    <span className="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">준비중</span>
+                                                </span>
+                                            ))}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -453,10 +520,44 @@ function Header() {
                                         </button>
                                     </form>
 
-                                    {/* Products List - Mobile */}
-                                    <div className="flex flex-col bg-slate-50 rounded-lg overflow-hidden mt-1 border border-slate-100">
-                                        <Link to="/category/residential" onClick={() => setMobileOpen(false)} className="px-4 py-3 text-[15px] font-semibold text-slate-700 hover:text-[#d4a853] hover:bg-[#d4a853]/5 border-b border-white transition-colors">주거용 바닥재</Link>
-                                        <Link to="/category/commercial" onClick={() => setMobileOpen(false)} className="px-4 py-3 text-[15px] font-semibold text-slate-700 hover:text-[#d4a853] hover:bg-[#d4a853]/5 transition-colors">상업용 바닥재</Link>
+                                    {/* Products List - Mobile (Brand-grouped) */}
+                                    <div className="flex flex-col bg-slate-50 rounded-lg overflow-hidden mt-1 border border-slate-100 divide-y divide-white">
+                                        {brandGroups.map(({ brand, categories }) => (
+                                            categories.length > 1 ? (
+                                                <div key={brand} className="py-1">
+                                                    <div className="px-4 pt-2 pb-1 text-[12px] font-black text-slate-500 tracking-wide">{brand}</div>
+                                                    {categories.map(catId => (
+                                                        <Link
+                                                            key={catId}
+                                                            to={`/category/${catId}?brand=${encodeURIComponent(brand)}`}
+                                                            onClick={() => setMobileOpen(false)}
+                                                            className="block px-4 py-2.5 text-[15px] font-semibold text-slate-700 hover:text-[#d4a853] hover:bg-[#d4a853]/5 transition-colors"
+                                                        >
+                                                            {categoryLabels[catId] || catId}
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <Link
+                                                    key={brand}
+                                                    to={`/category/${categories[0]}?brand=${encodeURIComponent(brand)}`}
+                                                    onClick={() => setMobileOpen(false)}
+                                                    className="px-4 py-3 text-[15px] font-black text-slate-800 hover:text-[#d4a853] hover:bg-[#d4a853]/5 transition-colors"
+                                                >
+                                                    {brand}
+                                                </Link>
+                                            )
+                                        ))}
+
+                                        {upcomingBrands.map(brand => (
+                                            <span
+                                                key={brand}
+                                                className="px-4 py-3 text-[15px] font-black text-slate-400 flex items-center justify-between select-none"
+                                            >
+                                                {brand}
+                                                <span className="text-[10px] font-bold text-slate-400 bg-white px-2 py-0.5 rounded-full">준비중</span>
+                                            </span>
+                                        ))}
                                     </div>
                                 </div>
                             )}
