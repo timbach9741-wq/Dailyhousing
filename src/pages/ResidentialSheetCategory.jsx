@@ -47,11 +47,30 @@ export default function ResidentialSheetCategory() {
     const sheetDetailCategories = ['전체', '엑스컴포트 5.0', '엑스컴포트 4.5(지아 소리잠)', '프리미엄 3.2/2.7(지아 사랑애)', '프리미엄 2.2(지아 자연애)', '스탠다드 2.0(은행목)', '스탠다드 1.8(뉴청맥)'];
     const tileDetailCategories = ['전체', '하우스 타일 베이직(하우스)', '하우스 타일 스탠다드(하우스 Style)'];
 
-    let currentDetailCategories = [];
-    if (selectedSubCategory === '에디톤') currentDetailCategories = editonDetailCategories;
-    if (selectedSubCategory === '마루') currentDetailCategories = maruDetailCategories;
-    if (selectedSubCategory === '시트') currentDetailCategories = sheetDetailCategories;
-    if (selectedSubCategory === '타일') currentDetailCategories = tileDetailCategories;
+    // 2단계 상세 탭도 실제로 매칭되는 제품이 있는 항목만 노출 (구정마루/동화마루처럼
+    // LX 전용 상세분류(사각 400/사각 600 등)에 해당 제품이 없는 브랜드는 "전체"만 남고 탭 자체가 숨겨짐)
+    const detailMatchers = {
+        '에디톤': (p, label) => p.subCategory === label,
+        '마루': (p, label) => {
+            if (label === '사각 400') return p.title.startsWith('사각 400');
+            if (label === '사각 600') return p.title.startsWith('사각 600');
+            if (label === '우드') return p.title.startsWith('우드');
+            return true;
+        },
+        '시트': (p, label) => p.subCategory === label,
+        '타일': (p, label) => p.subCategory === label,
+    };
+
+    const bucketMatcher = { '에디톤': matchesEditon, '마루': matchesMaru, '시트': matchesSheet, '타일': matchesTile }[selectedSubCategory];
+    const rawDetailCategories = { '에디톤': editonDetailCategories, '마루': maruDetailCategories, '시트': sheetDetailCategories, '타일': tileDetailCategories }[selectedSubCategory] || [];
+
+    const currentDetailCategories = useMemo(() => {
+        if (!bucketMatcher) return [];
+        const bucketProducts = brandScopedProducts.filter(bucketMatcher);
+        const matcher = detailMatchers[selectedSubCategory];
+        const list = rawDetailCategories.filter(label => label === '전체' || bucketProducts.some(p => matcher(p, label)));
+        return list.length > 1 ? list : [];
+    }, [brandScopedProducts, selectedSubCategory]);
 
     const filteredProducts = useMemo(() => {
         let result = products;
