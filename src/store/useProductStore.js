@@ -44,6 +44,9 @@ export const useProductStore = create(
                 const donghwaModule = await import('../data/donghwamaru-products');
                 const DONGHWAMARU_PRODUCTS = donghwaModule.DONGHWAMARU_PRODUCTS.map(p => ({ brand: '동화마루', ...p }));
 
+                const hansolModule = await import('../data/hansolmaru-products');
+                const HANSOLMARU_PRODUCTS = hansolModule.HANSOLMARU_PRODUCTS.map(p => ({ brand: '한솔마루', ...p }));
+
                 // Sort functionality to match LX Z:IN website hierarchy
                 const getSortWeight = (p) => {
                     const fullText = (p.subCategory + (p.subtitle || '') + (p.title || '')).toLowerCase();
@@ -91,7 +94,7 @@ export const useProductStore = create(
                 const sortedProducts = indexedProducts.map(([p]) => p);
 
                 set({
-                    products: [...sortedProducts, ...KUJUNGMARU_PRODUCTS, ...DONGHWAMARU_PRODUCTS],
+                    products: [...sortedProducts, ...KUJUNGMARU_PRODUCTS, ...DONGHWAMARU_PRODUCTS, ...HANSOLMARU_PRODUCTS],
                     isLoaded: true
                 });
 
