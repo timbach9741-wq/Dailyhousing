@@ -5,6 +5,12 @@ import { useAuthStore } from '../store/useAuthStore';
 import { useProductStore } from '../store/useProductStore';
 import { useState, useRef, useEffect, useMemo } from 'react';
 
+// 브랜드별 공식 로고 (신규 브랜드 추가 시 여기만 채우면 드롭다운에 자동 노출)
+const BRAND_LOGOS = {
+    '구정마루': '/assets/brand-logos/kujungmaru-logo.svg',
+    '동화마루': '/assets/brand-logos/donghwamaru-logo.svg',
+};
+
 const getSiteContact = () => {
     try {
         const d = JSON.parse(localStorage.getItem('homepage_cms_content') || '{}');
@@ -235,8 +241,11 @@ function Header() {
                                             ) : (
                                                 <Link
                                                     to={`/category/${categories[0]}?brand=${encodeURIComponent(brand)}`}
-                                                    className="block px-3 py-2 text-[15px] font-black text-slate-800 hover:text-[#d4a853] hover:bg-[#d4a853]/5 rounded-lg transition-colors border border-transparent hover:border-[#d4a853]/20"
+                                                    className="flex items-center gap-2 px-3 py-2 text-[15px] font-black text-slate-800 hover:text-[#d4a853] hover:bg-[#d4a853]/5 rounded-lg transition-colors border border-transparent hover:border-[#d4a853]/20"
                                                 >
+                                                    {BRAND_LOGOS[brand] && (
+                                                        <img src={BRAND_LOGOS[brand]} alt="" className="h-4 w-4 object-contain shrink-0" />
+                                                    )}
                                                     {brand}
                                                 </Link>
                                             )}
@@ -542,8 +551,11 @@ function Header() {
                                                     key={brand}
                                                     to={`/category/${categories[0]}?brand=${encodeURIComponent(brand)}`}
                                                     onClick={() => setMobileOpen(false)}
-                                                    className="px-4 py-3 text-[15px] font-black text-slate-800 hover:text-[#d4a853] hover:bg-[#d4a853]/5 transition-colors"
+                                                    className="flex items-center gap-2 px-4 py-3 text-[15px] font-black text-slate-800 hover:text-[#d4a853] hover:bg-[#d4a853]/5 transition-colors"
                                                 >
+                                                    {BRAND_LOGOS[brand] && (
+                                                        <img src={BRAND_LOGOS[brand]} alt="" className="h-4 w-4 object-contain shrink-0" />
+                                                    )}
                                                     {brand}
                                                 </Link>
                                             )

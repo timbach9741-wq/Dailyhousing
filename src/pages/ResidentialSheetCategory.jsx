@@ -3,6 +3,12 @@ import { useProductStore } from '../store/useProductStore';
 import { useAuthStore } from '../store/useAuthStore';
 import { Link, useSearchParams } from 'react-router-dom';
 
+// 브랜드별 공식 로고 (신규 브랜드 추가 시 여기만 채우면 배너에 자동 노출)
+const BRAND_LOGOS = {
+    '구정마루': '/assets/brand-logos/kujungmaru-logo.svg',
+    '동화마루': '/assets/brand-logos/donghwamaru-logo.svg',
+};
+
 export default function ResidentialSheetCategory() {
     const products = useProductStore((state) => state.products).filter(p => p.categoryId === 'residential');
     const initProducts = useProductStore((state) => state.initProducts);
@@ -172,6 +178,7 @@ export default function ResidentialSheetCategory() {
     // 배너 문구: 특정 브랜드를 보고 있을 때는 브랜드명을 큰 제목으로, 전체보기일 때는 브랜드 중립적으로 표시
     const isSingleBrand = selectedBrand !== '전체';
     const bannerBadge = 'Residential';
+    const brandLogo = BRAND_LOGOS[selectedBrand];
     const bannerSubtitle = isSingleBrand && selectedBrand !== 'LX Z:IN'
         ? '합리적인 가격과 다양한 컬러, 데일리하우징이 엄선한 프리미엄 바닥재를 만나보세요.'
         : (<>프리미엄 에디톤부터 친환경 시트까지,<br />라이프스타일에 맞춘 최적의 바닥재를 만나보세요.</>);
@@ -179,7 +186,7 @@ export default function ResidentialSheetCategory() {
     return (
         <main className="w-full bg-white pb-24">
             {/* Minimalist Premium Banner */}
-            <section className="relative h-[280px] sm:h-[350px] lg:h-[400px] w-full overflow-hidden bg-slate-50 flex items-center justify-center">
+            <section className="relative min-h-[280px] sm:min-h-[350px] lg:min-h-[400px] w-full overflow-hidden bg-slate-50 flex items-center justify-center py-10 sm:py-14">
                 <div className="absolute inset-0 z-0">
                     <img
                         src="/assets/images/products/res-001.jpg"
@@ -192,6 +199,9 @@ export default function ResidentialSheetCategory() {
                     <span className="inline-block px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white shadow-sm text-[11px] sm:text-[12px] font-bold text-[#d4a853] mb-4 sm:mb-6 tracking-[0.2em] sm:tracking-[0.3em] uppercase border border-slate-200">{bannerBadge}</span>
                     {isSingleBrand ? (
                         <>
+                            {brandLogo && (
+                                <img src={brandLogo} alt={`${selectedBrand} 로고`} className="h-10 sm:h-14 lg:h-16 mx-auto mb-2 sm:mb-3 drop-shadow-sm" />
+                            )}
                             <h2 className="text-4xl sm:text-6xl lg:text-8xl font-black mb-2 sm:mb-4 leading-tight tracking-tight text-slate-900">
                                 {selectedBrand}
                             </h2>
