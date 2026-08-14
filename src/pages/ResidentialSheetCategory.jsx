@@ -133,6 +133,13 @@ export default function ResidentialSheetCategory() {
         setSearchParams(next);
     }
 
+    // 배너 문구: 특정 브랜드를 보고 있을 때는 그 브랜드로, 전체보기일 때는 브랜드 중립적으로 표시
+    const isSingleBrand = selectedBrand !== '전체';
+    const bannerBadge = isSingleBrand ? `${selectedBrand} Residential` : 'Residential';
+    const bannerSubtitle = isSingleBrand && selectedBrand !== 'LX Z:IN'
+        ? '합리적인 가격과 다양한 컬러, 데일리하우징이 엄선한 프리미엄 바닥재를 만나보세요.'
+        : (<>프리미엄 에디톤부터 친환경 시트까지,<br />라이프스타일에 맞춘 최적의 바닥재를 만나보세요.</>);
+
     return (
         <main className="w-full bg-white pb-24">
             {/* Minimalist Premium Banner */}
@@ -146,13 +153,12 @@ export default function ResidentialSheetCategory() {
                     <div className="absolute inset-0 bg-gradient-to-b from-white/90 to-white/40"></div>
                 </div>
                 <div className="relative z-10 text-center text-slate-900 px-4 mt-4 sm:mt-6">
-                    <span className="inline-block px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white shadow-sm text-[11px] sm:text-[12px] font-bold text-[#d4a853] mb-4 sm:mb-6 tracking-[0.2em] sm:tracking-[0.3em] uppercase border border-slate-200">LX Z:IN Residential</span>
+                    <span className="inline-block px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-white shadow-sm text-[11px] sm:text-[12px] font-bold text-[#d4a853] mb-4 sm:mb-6 tracking-[0.2em] sm:tracking-[0.3em] uppercase border border-slate-200">{bannerBadge}</span>
                     <h2 className="text-2xl sm:text-4xl lg:text-6xl font-black mb-3 sm:mb-6 leading-tight tracking-tight text-slate-900">
                         가장 완벽한<br />주거 공간의 완성
                     </h2>
                     <p className="text-[13px] sm:text-base lg:text-lg font-medium text-slate-600 max-w-xl mx-auto leading-relaxed">
-                        프리미엄 에디톤부터 친환경 시트까지,<br />
-                        라이프스타일에 맞춘 최적의 바닥재를 만나보세요.
+                        {bannerSubtitle}
                     </p>
                 </div>
             </section>
