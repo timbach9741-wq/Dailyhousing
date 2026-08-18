@@ -47,6 +47,9 @@ export const useProductStore = create(
                 const hansolModule = await import('../data/hansolmaru-products');
                 const HANSOLMARU_PRODUCTS = hansolModule.HANSOLMARU_PRODUCTS.map(p => ({ brand: '한솔마루', ...p }));
 
+                const novaModule = await import('../data/novamaru-products');
+                const NOVAMARU_PRODUCTS = novaModule.NOVAMARU_PRODUCTS.map(p => ({ brand: '노바마루', ...p }));
+
                 // Sort functionality to match LX Z:IN website hierarchy
                 const getSortWeight = (p) => {
                     const fullText = (p.subCategory + (p.subtitle || '') + (p.title || '')).toLowerCase();
@@ -94,7 +97,7 @@ export const useProductStore = create(
                 const sortedProducts = indexedProducts.map(([p]) => p);
 
                 set({
-                    products: [...sortedProducts, ...KUJUNGMARU_PRODUCTS, ...DONGHWAMARU_PRODUCTS, ...HANSOLMARU_PRODUCTS],
+                    products: [...sortedProducts, ...KUJUNGMARU_PRODUCTS, ...DONGHWAMARU_PRODUCTS, ...HANSOLMARU_PRODUCTS, ...NOVAMARU_PRODUCTS],
                     isLoaded: true
                 });
 

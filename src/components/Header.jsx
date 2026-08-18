@@ -10,6 +10,7 @@ const BRAND_LOGOS = {
     '구정마루': '/assets/brand-logos/kujungmaru-logo.svg',
     '동화마루': '/assets/brand-logos/donghwamaru-logo.svg',
     '한솔마루': '/assets/brand-logos/hansolmaru-logo.png',
+    '노바마루': '/assets/brand-logos/novamaru-logo.png',
 };
 
 const getSiteContact = () => {
