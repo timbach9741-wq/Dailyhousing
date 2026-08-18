@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo, useEffect } from 'react';
 import { useProductStore } from '../store/useProductStore';
 import { useAuthStore } from '../store/useAuthStore';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -8,6 +8,7 @@ const BRAND_LOGOS = {
     '구정마루': '/assets/brand-logos/kujungmaru-logo.svg',
     '동화마루': '/assets/brand-logos/donghwamaru-logo.svg',
     '한솔마루': '/assets/brand-logos/hansolmaru-logo.png',
+    '노바마루': '/assets/brand-logos/novamaru-logo.png',
 };
 
 export default function ResidentialSheetCategory() {
@@ -19,7 +20,6 @@ export default function ResidentialSheetCategory() {
     const selectedSubCategory = searchParams.get('category') || '전체';
     const selectedDetailCategory = searchParams.get('sub') || '전체';
     const selectedBrand = searchParams.get('brand') || '전체';
-    const [sortOrder, setSortOrder] = useState('추천순');
 
     const brandOptions = useMemo(() => {
         const brands = Array.from(new Set(products.map(p => p.brand).filter(Boolean)));
@@ -125,22 +125,15 @@ export default function ResidentialSheetCategory() {
             result = result.filter(p => p.brand === selectedBrand);
         }
 
-        // 정렬 적용
+        // 추천순 정렬: 마루 카테고리는 사각 400 > 사각 600 > 우드 순서 고정
         let sorted = result.slice();
-        if (sortOrder === '추천순') {
-            // 마루 카테고리: 사각 400 > 사각 600 > 우드 순서
-            if (selectedSubCategory === '마루') {
-                const maruOrder = (title) => {
-                    if (title.startsWith('사각 400')) return 0;
-                    if (title.startsWith('사각 600')) return 1;
-                    return 2; // 우드
-                };
-                sorted.sort((a, b) => maruOrder(a.title) - maruOrder(b.title));
-            }
-        } else if (sortOrder === '낮은가격순') {
-            sorted.sort((a, b) => (a.price || 0) - (b.price || 0));
-        } else if (sortOrder === '높은가격순') {
-            sorted.sort((a, b) => (b.price || 0) - (a.price || 0));
+        if (selectedSubCategory === '마루') {
+            const maruOrder = (title) => {
+                if (title.startsWith('사각 400')) return 0;
+                if (title.startsWith('사각 600')) return 1;
+                return 2; // 우드
+            };
+            sorted.sort((a, b) => maruOrder(a.title) - maruOrder(b.title));
         }
 
         // 제고 없는 상품(일시 품절, 단종) 맨 뒤로 정렬 (안정 정렬)
@@ -153,7 +146,7 @@ export default function ResidentialSheetCategory() {
         });
 
         return sorted;
-    }, [products, selectedSubCategory, selectedDetailCategory, selectedBrand, sortOrder]);
+    }, [products, selectedSubCategory, selectedDetailCategory, selectedBrand]);
 
     const handleMainCategoryChange = (cat) => {
         const next = {};
@@ -289,16 +282,6 @@ export default function ResidentialSheetCategory() {
                                 <span className="material-symbols-outlined text-slate-300">storefront</span>
                             </>
                         )}
-                        <select
-                            className="appearance-none bg-transparent border-none text-[14px] font-bold text-slate-600 focus:ring-0 cursor-pointer hover:text-[#d4a853] transition-colors"
-                            value={sortOrder}
-                            onChange={(e) => setSortOrder(e.target.value)}
-                        >
-                            <option>추천순</option>
-                            <option>낮은가격순</option>
-                            <option>높은가격순</option>
-                        </select>
-                        <span className="material-symbols-outlined text-slate-300">sort</span>
                     </div>
                 </div>
 

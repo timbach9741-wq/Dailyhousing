@@ -29,7 +29,6 @@ export default function CommercialLVTCategory() {
     const { isAuthenticated } = useAuthStore();
 
     const [searchParams, setSearchParams] = useSearchParams();
-    const [sortOrder, setSortOrder] = useState('추천순');
     const activeTab = searchParams.get('tab') || '전체';
     const detailTab = searchParams.get('sub') || '전체';
 
@@ -79,12 +78,6 @@ export default function CommercialLVTCategory() {
             }
         }
 
-        if (sortOrder === '가격순') {
-            result = [...result].sort((a, b) => (a.price || 0) - (b.price || 0));
-        } else if (sortOrder === '최신순') {
-            result = [...result].sort((a, b) => (b.id || '').localeCompare(a.id || ''));
-        }
-
         // 제고 없는 상품(일시 품절, 단종) 맨 뒤로 정렬 (안정 정렬)
         result = [...result].sort((a, b) => {
             const isAOut = a.salesStatus === '일시 품절' || a.salesStatus === '단종';
@@ -95,7 +88,7 @@ export default function CommercialLVTCategory() {
         });
 
         return result;
-    }, [products, activeTab, detailTab, sortOrder]);
+    }, [products, activeTab, detailTab]);
 
     const handleTabChange = (tab) => {
         if (tab === '전체') {
@@ -183,18 +176,6 @@ export default function CommercialLVTCategory() {
                     <p className="text-[15px] font-bold text-slate-900">
                         총 <span className="text-[#d4a853]">{filteredProducts.length}</span>개의 제품
                     </p>
-                    <div className="flex items-center gap-4">
-                        <select
-                            value={sortOrder}
-                            onChange={(e) => setSortOrder(e.target.value)}
-                            className="appearance-none bg-transparent border-none text-[14px] font-bold text-slate-600 focus:ring-0 cursor-pointer hover:text-[#d4a853] transition-colors"
-                        >
-                            <option>추천순</option>
-                            <option>최신순</option>
-                            <option>가격순</option>
-                        </select>
-                        <span className="material-symbols-outlined text-slate-300">sort</span>
-                    </div>
                 </div>
 
                 {/* Product Multi-Grid */}
