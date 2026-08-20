@@ -2,6 +2,17 @@ import { writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { LXZIN_PRODUCTS } from '../src/data/lxzin-products.js';
+import { KUJUNGMARU_PRODUCTS } from '../src/data/kujungmaru-products.js';
+import { DONGHWAMARU_PRODUCTS } from '../src/data/donghwamaru-products.js';
+import { HANSOLMARU_PRODUCTS } from '../src/data/hansolmaru-products.js';
+
+// 노바마루는 아직 사이트에 연결되지 않아 사이트맵 대상에서 제외
+const ALL_PRODUCTS = [
+  ...LXZIN_PRODUCTS,
+  ...KUJUNGMARU_PRODUCTS,
+  ...DONGHWAMARU_PRODUCTS,
+  ...HANSOLMARU_PRODUCTS,
+];
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = join(__dirname, '..', 'public');
@@ -65,7 +76,7 @@ async function generateSitemap() {
   });
 
   // 3. 상품 상세 페이지 추가 (전체 자재)
-  LXZIN_PRODUCTS.forEach(product => {
+  ALL_PRODUCTS.forEach(product => {
     urls.push({
       loc: `${baseDomain}/product/${product.id}/`,
       lastmod: new Date().toISOString().split('T')[0],

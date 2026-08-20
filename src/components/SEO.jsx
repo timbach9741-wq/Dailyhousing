@@ -5,7 +5,7 @@ function SEO({ title, description, url, imageUrl, noindex }) {
   return (
     <Helmet>
       {/* 기본 태그 */}
-      <title>{title} | 데일리하우징</title>
+      <title>{`${title} | 데일리하우징`}</title>
       <meta name="description" content={description} />
       {noindex && <meta name="robots" content="noindex, follow" />}
 

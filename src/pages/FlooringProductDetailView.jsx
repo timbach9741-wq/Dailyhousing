@@ -251,6 +251,9 @@ export default function FlooringProductDetailView() {
         );
     }
 
+    // 아래 상세 피처링 컴포넌트들은 LX Z:IN 원본 사이트 콘텐츠를 그대로 재현한 것이라
+    // LX Z:IN 상품에만 사용해야 함 (다른 브랜드 상품에 LX 인증서/시공가이드 문구가 노출되는 것 방지)
+    const isLX = product.brand === 'LX Z:IN';
     const isCommercial = product.categoryId === 'commercial';
     const isCommercialBotanic = isCommercial && product.subCategory?.includes('베이직');
     const isCommercialEcono = isCommercial && product.subCategory?.includes('스탠다드');
@@ -675,76 +678,91 @@ export default function FlooringProductDetailView() {
                 </div>
             </div>
 
-            {/* 에디톤 스톤 용 상세 피처링 */}
-            {isStone && !isSheet && (
-                <div className="w-full">
-                    <EditonStoneFeature />
-                </div>
+            {/* 아래 상세 피처링 블록 전체는 LX Z:IN 원본 콘텐츠라 LX 상품에만 노출 */}
+            {isLX && (
+                <>
+                    {/* 에디톤 스톤 용 상세 피처링 */}
+                    {isStone && !isSheet && (
+                        <div className="w-full">
+                            <EditonStoneFeature />
+                        </div>
+                    )}
+
+                    {/* 시트 스탠다드 1.8(뉴청맥) 용 상세 피처링 */}
+                    {isSheet && isNuchungmak && (
+                        <div className="w-full">
+                            <SheetStandard18Feature />
+                        </div>
+                    )}
+
+                    {/* 시트 스탠다드 2.0(은행목) 용 상세 피처링 */}
+                    {isSheet && isEunhaengmok && (
+                        <div className="w-full">
+                            <SheetStandard20Feature />
+                        </div>
+                    )}
+
+                    {/* 시트 용 상세 피처링 (뉴청맥/은행목 외) */}
+                    {isSheet && !isNuchungmak && !isEunhaengmok && (
+                        <div className="w-full">
+                            <SheetFeature subtitle={product.subtitle} />
+                        </div>
+                    )}
+
+                    {/* 타일 용 상세 피처링 */}
+                    {isTile && !isTileStandard && (
+                        <div className="w-full">
+                            <TileFeature />
+                        </div>
+                    )}
+
+                    {/* 타일 스탠다드 용 상세 피처링 */}
+                    {isTileStandard && (
+                        <div className="w-full">
+                            <TileStandardFeature />
+                        </div>
+                    )}
+
+                    {/* 상업용 LVT 용 상세 피처링 */}
+                    {isCommercialBotanic && (
+                        <div className="w-full">
+                            <CommercialBotanicFeature />
+                        </div>
+                    )}
+                    {isCommercialEcono && (
+                        <div className="w-full">
+                            <CommercialEconoFeature />
+                        </div>
+                    )}
+                    {isCommercialPrestige && (
+                        <div className="w-full">
+                            <CommercialPrestigeFeature />
+                        </div>
+                    )}
+
+                    {/* 강마루 프리미엄 합판 용 상세 피처링 */}
+                    {isMaru && isMaruPremium && !isStone && !isSheet && (
+                        <div className="w-full">
+                            <MaruPremiumFeature />
+                        </div>
+                    )}
+
+                    {/* 에디톤 마루 용 상세 피처링 */}
+                    {isMaru && !isMaruPremium && !isStone && !isSheet && (
+                        <div className="w-full">
+                            <EditonWoodFeature />
+                        </div>
+                    )}
+                </>
             )}
 
-            {/* 시트 스탠다드 1.8(뉴청맥) 용 상세 피처링 */}
-            {isSheet && isNuchungmak && (
-                <div className="w-full">
-                    <SheetStandard18Feature />
-                </div>
-            )}
-
-            {/* 시트 스탠다드 2.0(은행목) 용 상세 피처링 */}
-            {isSheet && isEunhaengmok && (
-                <div className="w-full">
-                    <SheetStandard20Feature />
-                </div>
-            )}
-
-            {/* 시트 용 상세 피처링 (뉴청맥/은행목 외) */}
-            {isSheet && !isNuchungmak && !isEunhaengmok && (
-                <div className="w-full">
-                    <SheetFeature subtitle={product.subtitle} />
-                </div>
-            )}
-
-            {/* 타일 용 상세 피처링 */}
-            {isTile && !isTileStandard && (
-                <div className="w-full">
-                    <TileFeature />
-                </div>
-            )}
-
-            {/* 타일 스탠다드 용 상세 피처링 */}
-            {isTileStandard && (
-                <div className="w-full">
-                    <TileStandardFeature />
-                </div>
-            )}
-
-            {/* 상업용 LVT 용 상세 피처링 */}
-            {isCommercialBotanic && (
-                <div className="w-full">
-                    <CommercialBotanicFeature />
-                </div>
-            )}
-            {isCommercialEcono && (
-                <div className="w-full">
-                    <CommercialEconoFeature />
-                </div>
-            )}
-            {isCommercialPrestige && (
-                <div className="w-full">
-                    <CommercialPrestigeFeature />
-                </div>
-            )}
-
-            {/* 강마루 프리미엄 합판 용 상세 피처링 */}
-            {isMaru && isMaruPremium && !isStone && !isSheet && (
-                <div className="w-full">
-                    <MaruPremiumFeature />
-                </div>
-            )}
-
-            {/* 에디톤 마루 용 상세 피처링 */}
-            {isMaru && !isMaruPremium && !isStone && !isSheet && (
-                <div className="w-full">
-                    <EditonWoodFeature />
+            {/* LX 외 브랜드(구정마루/동화마루/한솔마루 등) 상품 설명 */}
+            {!isLX && product.description && (
+                <div className="w-full bg-[#fafafa] border-t border-slate-100">
+                    <div className="max-w-[1280px] mx-auto px-4 md:px-10 py-12">
+                        <h2 className="text-[20px] font-black text-[#222222] mb-4">제품 설명</h2>
+                        <p className="text-[15px] text-[#555555] leading-relaxed">{product.description}</p>
+                    </div>
                 </div>
             )}
 

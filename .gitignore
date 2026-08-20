@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# prerender.js가 빌드마다 만드는 임시 셸 스냅샷 (소스 아님)
+.prerender-pristine-shell.html
+
 # Environment variables
 .env
 .env.local
