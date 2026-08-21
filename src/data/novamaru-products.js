@@ -18,7 +18,7 @@ export const NOVAMARU_PRODUCTS = [
             "트라베"
         ],
         "imageUrl": "/assets/novamaru/nv_001_트라베_로엔오크",
-        "description": "노바마루 강마루 트라베 라인 로엔오크 색상입니다."
+        "description": "로엔오크의 제품 사양은 시공 접착식, 규격 230 X 2420 X 8.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 5pcs/box (2.78㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-002",
@@ -39,7 +39,7 @@ export const NOVAMARU_PRODUCTS = [
             "트라베"
         ],
         "imageUrl": "/assets/novamaru/nv_002_트라베_헤리티지오크",
-        "description": "노바마루 강마루 트라베 라인 헤리티지오크 색상입니다."
+        "description": "헤리티지오크의 제품 사양은 시공 접착식, 규격 230 X 2420 X 8.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 5pcs/box (2.78㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-003",
@@ -60,7 +60,7 @@ export const NOVAMARU_PRODUCTS = [
             "트라베"
         ],
         "imageUrl": "/assets/novamaru/nv_003_트라베_돌체샌드",
-        "description": "노바마루 강마루 트라베 라인 돌체샌드 색상입니다."
+        "description": "돌체샌드의 제품 사양은 시공 접착식, 규격 230 X 2420 X 8.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 5pcs/box (2.78㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-004",
@@ -81,7 +81,7 @@ export const NOVAMARU_PRODUCTS = [
             "트라베"
         ],
         "imageUrl": "/assets/novamaru/nv_004_트라베_노체월넛",
-        "description": "노바마루 강마루 트라베 라인 노체월넛 색상입니다."
+        "description": "노체월넛의 제품 사양은 시공 접착식, 규격 230 X 2420 X 8.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 5pcs/box (2.78㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-005",
@@ -102,7 +102,7 @@ export const NOVAMARU_PRODUCTS = [
             "플로"
         ],
         "imageUrl": "/assets/novamaru/nv_005_플로_로엔오크1900",
-        "description": "노바마루 강마루 플로 라인 로엔오크1900 색상입니다."
+        "description": "로엔오크1900의 제품 사양은 시공 접착식, 규격 190 X 1900 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 9pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-006",
@@ -123,7 +123,7 @@ export const NOVAMARU_PRODUCTS = [
             "플로"
         ],
         "imageUrl": "/assets/novamaru/nv_006_플로_헤리티지오크1900",
-        "description": "노바마루 강마루 플로 라인 헤리티지오크1900 색상입니다."
+        "description": "헤리티지오크1900의 제품 사양은 시공 접착식, 규격 190 X 1900 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 9pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-007",
@@ -144,7 +144,7 @@ export const NOVAMARU_PRODUCTS = [
             "플로"
         ],
         "imageUrl": "/assets/novamaru/nv_007_플로_돌체샌드1900",
-        "description": "노바마루 강마루 플로 라인 돌체샌드1900 색상입니다."
+        "description": "돌체샌드1900의 제품 사양은 시공 접착식, 규격 190 X 1900 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 9pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-008",
@@ -165,7 +165,7 @@ export const NOVAMARU_PRODUCTS = [
             "플로"
         ],
         "imageUrl": "/assets/novamaru/nv_008_플로_노체월넛1900",
-        "description": "노바마루 강마루 플로 라인 노체월넛1900 색상입니다."
+        "description": "노체월넛1900의 제품 사양은 시공 접착식, 규격 190 X 1900 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 9pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-009",
@@ -186,7 +186,7 @@ export const NOVAMARU_PRODUCTS = [
             "플로"
         ],
         "imageUrl": "/assets/novamaru/nv_009_플로_시그니처오크1600",
-        "description": "노바마루 강마루 플로 라인 시그니처오크1600 색상입니다."
+        "description": "시그니처오크1600의 제품 사양은 시공 접착식, 규격 190 X 1600 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-010",
@@ -207,7 +207,7 @@ export const NOVAMARU_PRODUCTS = [
             "플로"
         ],
         "imageUrl": "/assets/novamaru/nv_010_플로_애프터눈오크1600",
-        "description": "노바마루 강마루 플로 라인 애프터눈오크1600 색상입니다."
+        "description": "애프터눈오크1600의 제품 사양은 시공 접착식, 규격 190 X 1600 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-011",
@@ -228,7 +228,7 @@ export const NOVAMARU_PRODUCTS = [
             "플로"
         ],
         "imageUrl": "/assets/novamaru/nv_011_플로_멜로우오크",
-        "description": "노바마루 강마루 플로 라인 멜로우오크 색상입니다.",
+        "description": "멜로우오크의 제품 사양은 시공 접착식, 규격 190 X 1600 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -250,7 +250,7 @@ export const NOVAMARU_PRODUCTS = [
             "플로"
         ],
         "imageUrl": "/assets/novamaru/nv_012_플로_코코월넛",
-        "description": "노바마루 강마루 플로 라인 코코월넛 색상입니다.",
+        "description": "코코월넛의 제품 사양은 시공 접착식, 규격 190 X 1600 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -272,7 +272,7 @@ export const NOVAMARU_PRODUCTS = [
             "플로"
         ],
         "imageUrl": "/assets/novamaru/nv_013_플로_테디브라운오크",
-        "description": "노바마루 강마루 플로 라인 테디브라운오크 색상입니다.",
+        "description": "테디브라운오크의 제품 사양은 시공 접착식, 규격 190 X 1600 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -294,7 +294,7 @@ export const NOVAMARU_PRODUCTS = [
             "플로"
         ],
         "imageUrl": "/assets/novamaru/nv_014_플로_플럼브라운",
-        "description": "노바마루 강마루 플로 라인 플럼브라운 색상입니다.",
+        "description": "플럼브라운의 제품 사양은 시공 접착식, 규격 190 X 1600 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -316,7 +316,7 @@ export const NOVAMARU_PRODUCTS = [
             "플로"
         ],
         "imageUrl": "/assets/novamaru/nv_015_플로_샬롯그레이",
-        "description": "노바마루 강마루 플로 라인 샬롯그레이 색상입니다.",
+        "description": "샬롯그레이의 제품 사양은 시공 접착식, 규격 190 X 1600 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -338,7 +338,7 @@ export const NOVAMARU_PRODUCTS = [
             "플로"
         ],
         "imageUrl": "/assets/novamaru/nv_016_플로_듀이브라운",
-        "description": "노바마루 강마루 플로 라인 듀이브라운 색상입니다.",
+        "description": "듀이브라운의 제품 사양은 시공 접착식, 규격 190 X 1600 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -360,7 +360,7 @@ export const NOVAMARU_PRODUCTS = [
             "플로"
         ],
         "imageUrl": "/assets/novamaru/nv_017_플로_쉐이드",
-        "description": "노바마루 강마루 플로 라인 쉐이드 색상입니다.",
+        "description": "쉐이드의 제품 사양은 시공 접착식, 규격 190 X 1600 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -382,7 +382,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_018_블랙라벨_오드페일",
-        "description": "노바마루 강마루 블랙라벨 라인 오드페일 색상입니다."
+        "description": "오드페일의 제품 사양은 타입 접착식, 규격 165X1200 X7.5T, 원목단판 온돌용, 포장단위 고강도HPM, 시공방식 16pcs/box (3.17㎡), 마감 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-019",
@@ -403,7 +403,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_019_블랙라벨_프릴리아",
-        "description": "노바마루 강마루 블랙라벨 라인 프릴리아 색상입니다."
+        "description": "프릴리아의 제품 사양은 시공 접착식, 규격 165X1200 X7.5T, 용도 온돌용, 표면/후면 고강도HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-020",
@@ -424,7 +424,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_020_블랙라벨_글라이드",
-        "description": "노바마루 강마루 블랙라벨 라인 글라이드 색상입니다."
+        "description": "글라이드의 제품 사양은 타입 접착식, 규격 165X1200 X7.5T, 원목단판 온돌용, 포장단위 고강도HPM, 시공방식 16pcs/box (3.17㎡), 마감 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-021",
@@ -445,7 +445,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_021_블랙라벨_유세이지",
-        "description": "노바마루 강마루 블랙라벨 라인 유세이지 색상입니다."
+        "description": "유세이지의 제품 사양은 타입 접착식, 규격 165X1200 X7.5T, 원목단판 온돌용, 포장단위 고강도HPM, 시공방식 16pcs/box (3.17㎡), 마감 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-022",
@@ -466,7 +466,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_022_블랙라벨_나잇포그",
-        "description": "노바마루 강마루 블랙라벨 라인 나잇포그 색상입니다."
+        "description": "나잇포그의 제품 사양은 타입 접착식, 규격 165X1200 X7.5T, 원목단판 온돌용, 포장단위 고강도HPM, 시공방식 16pcs/box (3.17㎡), 마감 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-023",
@@ -487,7 +487,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_023_블랙라벨_벨라오크",
-        "description": "노바마루 강마루 블랙라벨 라인 벨라오크 색상입니다."
+        "description": "벨라오크의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-024",
@@ -508,7 +508,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_024_블랙라벨_블랑오크",
-        "description": "노바마루 강마루 블랙라벨 라인 블랑오크 색상입니다."
+        "description": "블랑오크의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-025",
@@ -529,7 +529,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_025_블랙라벨_남산오크",
-        "description": "노바마루 강마루 블랙라벨 라인 남산오크 색상입니다."
+        "description": "남산오크의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-026",
@@ -550,7 +550,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_026_블랙라벨_블루밍오크",
-        "description": "노바마루 강마루 블랙라벨 라인 블루밍오크 색상입니다."
+        "description": "블루밍오크의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-027",
@@ -571,7 +571,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_027_블랙라벨_스완",
-        "description": "노바마루 강마루 블랙라벨 라인 스완 색상입니다."
+        "description": "스완의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-028",
@@ -592,7 +592,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_028_블랙라벨_솔티",
-        "description": "노바마루 강마루 블랙라벨 라인 솔티 색상입니다."
+        "description": "솔티의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-029",
@@ -613,7 +613,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_029_블랙라벨_스노우필드",
-        "description": "노바마루 강마루 블랙라벨 라인 스노우필드 색상입니다."
+        "description": "스노우필드의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-030",
@@ -634,7 +634,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_030_블랙라벨_미스틱그레이",
-        "description": "노바마루 강마루 블랙라벨 라인 미스틱그레이 색상입니다."
+        "description": "미스틱그레이의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-031",
@@ -655,7 +655,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_031_블랙라벨_뮤트브라운",
-        "description": "노바마루 강마루 블랙라벨 라인 뮤트브라운 색상입니다."
+        "description": "뮤트브라운의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-032",
@@ -676,7 +676,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_032_블랙라벨_헬렌티크",
-        "description": "노바마루 강마루 블랙라벨 라인 헬렌티크 색상입니다."
+        "description": "헬렌티크의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-033",
@@ -697,7 +697,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_033_블랙라벨_클래시월넛",
-        "description": "노바마루 강마루 블랙라벨 라인 클래시월넛 색상입니다."
+        "description": "클래시월넛의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-034",
@@ -718,7 +718,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_034_블랙라벨_누아르블랙",
-        "description": "노바마루 강마루 블랙라벨 라인 누아르블랙 색상입니다."
+        "description": "누아르블랙의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-035",
@@ -739,7 +739,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_035_블랙라벨_포니애쉬",
-        "description": "노바마루 강마루 블랙라벨 라인 포니애쉬 색상입니다.",
+        "description": "포니애쉬의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -761,7 +761,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_036_블랙라벨_그레이스",
-        "description": "노바마루 강마루 블랙라벨 라인 그레이스 색상입니다.",
+        "description": "그레이스의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -783,7 +783,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_037_블랙라벨_네바다",
-        "description": "노바마루 강마루 블랙라벨 라인 네바다 색상입니다.",
+        "description": "네바다의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -805,7 +805,7 @@ export const NOVAMARU_PRODUCTS = [
             "블랙라벨"
         ],
         "imageUrl": "/assets/novamaru/nv_038_블랙라벨_헤이즐티크",
-        "description": "노바마루 강마루 블랙라벨 라인 헤이즐티크 색상입니다.",
+        "description": "헤이즐티크의 제품 사양은 시공 접착식, 규격 165 X 1200 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 16pcs/box (3.17㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -827,7 +827,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_039_뉴트로_세레나데오크",
-        "description": "노바마루 강마루 뉴트로 라인 세레나데오크 색상입니다."
+        "description": "세레나데오크의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-040",
@@ -848,7 +848,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_040_뉴트로_홀리데이오크",
-        "description": "노바마루 강마루 뉴트로 라인 홀리데이오크 색상입니다."
+        "description": "홀리데이오크의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-041",
@@ -869,7 +869,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_041_뉴트로_크림",
-        "description": "노바마루 강마루 뉴트로 라인 크림 색상입니다."
+        "description": "크림의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-042",
@@ -890,7 +890,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_042_뉴트로_화이트그레이",
-        "description": "노바마루 강마루 뉴트로 라인 화이트그레이 색상입니다."
+        "description": "화이트그레이의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-043",
@@ -911,7 +911,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_043_뉴트로_모스카토그레이",
-        "description": "노바마루 강마루 뉴트로 라인 모스카토그레이 색상입니다."
+        "description": "모스카토그레이의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-044",
@@ -932,7 +932,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_044_뉴트로_오트브라운",
-        "description": "노바마루 강마루 뉴트로 라인 오트브라운 색상입니다."
+        "description": "오트브라운의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-045",
@@ -953,7 +953,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_045_뉴트로_루시월넛",
-        "description": "노바마루 강마루 뉴트로 라인 루시월넛 색상입니다."
+        "description": "루시월넛의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-046",
@@ -974,7 +974,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_046_뉴트로_루지아오크",
-        "description": "노바마루 강마루 뉴트로 라인 루지아오크 색상입니다.",
+        "description": "루지아오크의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -996,7 +996,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_047_뉴트로_리즈브라운",
-        "description": "노바마루 강마루 뉴트로 라인 리즈브라운 색상입니다.",
+        "description": "리즈브라운의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -1018,7 +1018,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_048_뉴트로_피오브라운",
-        "description": "노바마루 강마루 뉴트로 라인 피오브라운 색상입니다.",
+        "description": "피오브라운의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -1040,7 +1040,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_049_뉴트로_리버그레이",
-        "description": "노바마루 강마루 뉴트로 라인 리버그레이 색상입니다.",
+        "description": "리버그레이의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -1062,7 +1062,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_050_뉴트로_스카치",
-        "description": "노바마루 강마루 뉴트로 라인 스카치 색상입니다.",
+        "description": "스카치의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -1084,7 +1084,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_051_뉴트로_아테네오크",
-        "description": "노바마루 강마루 뉴트로 라인 아테네오크 색상입니다.",
+        "description": "아테네오크의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -1106,7 +1106,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_052_뉴트로_덴버오크",
-        "description": "노바마루 강마루 뉴트로 라인 덴버오크 색상입니다.",
+        "description": "덴버오크의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -1128,7 +1128,7 @@ export const NOVAMARU_PRODUCTS = [
             "뉴트로"
         ],
         "imageUrl": "/assets/novamaru/nv_053_뉴트로_비비안애쉬",
-        "description": "노바마루 강마루 뉴트로 라인 비비안애쉬 색상입니다.",
+        "description": "비비안애쉬의 제품 사양은 시공 접착식, 규격 115 X 800 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 33pcs/box (3.04㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -1150,7 +1150,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스"
         ],
         "imageUrl": "/assets/novamaru/nv_054_테라스_아보리샌즈",
-        "description": "노바마루 강마루 테라스 라인 아보리샌즈 색상입니다."
+        "description": "아보리샌즈의 제품 사양은 시공 접착식 (마루·벽체공용), 규격 395 X 790 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.12㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-055",
@@ -1171,7 +1171,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스"
         ],
         "imageUrl": "/assets/novamaru/nv_055_테라스_아로하베이지",
-        "description": "노바마루 강마루 테라스 라인 아로하베이지 색상입니다."
+        "description": "아로하베이지의 제품 사양은 시공 접착식 (마루·벽체공용), 규격 395 X 790 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.12㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-056",
@@ -1192,7 +1192,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스"
         ],
         "imageUrl": "/assets/novamaru/nv_056_테라스_베이비블룸",
-        "description": "노바마루 강마루 테라스 라인 베이비블룸 색상입니다."
+        "description": "베이비블룸의 제품 사양은 시공 접착식 (마루·벽체공용), 규격 395 X 790 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.12㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-057",
@@ -1213,7 +1213,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스"
         ],
         "imageUrl": "/assets/novamaru/nv_057_테라스_마블로단테",
-        "description": "노바마루 강마루 테라스 라인 마블로단테 색상입니다."
+        "description": "마블로단테의 제품 사양은 시공 접착식 (마루·벽체공용), 규격 395 X 790 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.12㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-058",
@@ -1234,7 +1234,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스"
         ],
         "imageUrl": "/assets/novamaru/nv_058_테라스_데이지모션",
-        "description": "노바마루 강마루 테라스 라인 데이지모션 색상입니다."
+        "description": "데이지모션의 제품 사양은 시공 접착식 (마루·벽체공용), 규격 395 X 790 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.12㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-059",
@@ -1255,7 +1255,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스"
         ],
         "imageUrl": "/assets/novamaru/nv_059_테라스_델피늄그레이",
-        "description": "노바마루 강마루 테라스 라인 델피늄그레이 색상입니다."
+        "description": "델피늄그레이의 제품 사양은 시공 접착식 (마루·벽체공용), 규격 395 X 790 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.12㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-060",
@@ -1276,7 +1276,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스"
         ],
         "imageUrl": "/assets/novamaru/nv_060_테라스_릴리안포츠",
-        "description": "노바마루 강마루 테라스 라인 릴리안포츠 색상입니다."
+        "description": "릴리안포츠의 제품 사양은 타입 접착식 (마루 벽체공용), 규격 395 X 790 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.12㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-061",
@@ -1297,7 +1297,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스"
         ],
         "imageUrl": "/assets/novamaru/nv_061_테라스_해글리토스",
-        "description": "노바마루 강마루 테라스 라인 해글리토스 색상입니다."
+        "description": "해글리토스의 제품 사양은 시공 접착식 (마루·벽체공용), 규격 395 X 790 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.12㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-062",
@@ -1318,7 +1318,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스"
         ],
         "imageUrl": "/assets/novamaru/nv_062_테라스_플라야스폿",
-        "description": "노바마루 강마루 테라스 라인 플라야스폿 색상입니다."
+        "description": "플라야스폿의 제품 사양은 시공 접착식 (마루·벽체공용), 규격 395 X 790 X 7.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 10pcs/box (3.12㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-063",
@@ -1339,7 +1339,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스스퀘어"
         ],
         "imageUrl": "/assets/novamaru/nv_063_테라스스퀘어_아보리샌즈",
-        "description": "노바마루 강마루 테라스스퀘어 라인 아보리샌즈 색상입니다."
+        "description": "아보리샌즈의 제품 사양은 시공 접착식, 규격 597 X 597 X 8T, 용도 온돌용, 표면/후면 고강도 HPM, 포장단위 9pcs/box (3.207㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-064",
@@ -1360,7 +1360,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스스퀘어"
         ],
         "imageUrl": "/assets/novamaru/nv_064_테라스스퀘어_아로하베이지",
-        "description": "노바마루 강마루 테라스스퀘어 라인 아로하베이지 색상입니다."
+        "description": "아로하베이지의 제품 사양은 시공 접착식, 규격 597 X 597 X 8T, 용도 온돌용, 표면/후면 고강도 HPM, 포장단위 9pcs/box (3.207㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-065",
@@ -1381,7 +1381,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스스퀘어"
         ],
         "imageUrl": "/assets/novamaru/nv_065_테라스스퀘어_베이비블룸",
-        "description": "노바마루 강마루 테라스스퀘어 라인 베이비블룸 색상입니다."
+        "description": "베이비블룸의 제품 사양은 시공 접착식, 규격 597 X 597 X 8T, 용도 온돌용, 표면/후면 고강도 HPM, 포장단위 9pcs/box (3.207㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-066",
@@ -1402,7 +1402,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스스퀘어"
         ],
         "imageUrl": "/assets/novamaru/nv_066_테라스스퀘어_릴리안포츠",
-        "description": "노바마루 강마루 테라스스퀘어 라인 릴리안포츠 색상입니다."
+        "description": "릴리안포츠의 제품 사양은 시공 접착식, 규격 597 X 597 X 8T, 용도 온돌용, 표면/후면 고강도 HPM, 포장단위 9pcs/box (3.207㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-067",
@@ -1423,7 +1423,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스스퀘어"
         ],
         "imageUrl": "/assets/novamaru/nv_067_테라스스퀘어_데이지모션",
-        "description": "노바마루 강마루 테라스스퀘어 라인 데이지모션 색상입니다."
+        "description": "데이지모션의 제품 사양은 시공 접착식, 규격 597 X 597 X 8T, 용도 온돌용, 표면/후면 고강도 HPM, 포장단위 9pcs/box (3.207㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-068",
@@ -1444,7 +1444,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스스퀘어"
         ],
         "imageUrl": "/assets/novamaru/nv_068_테라스스퀘어_마티에르",
-        "description": "노바마루 강마루 테라스스퀘어 라인 마티에르 색상입니다."
+        "description": "마티에르의 제품 사양은 시공 접착식, 규격 597 X 597 X 8T, 용도 온돌용, 표면/후면 고강도 HPM, 포장단위 9pcs/box (3.207㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-069",
@@ -1465,7 +1465,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스스퀘어"
         ],
         "imageUrl": "/assets/novamaru/nv_069_테라스스퀘어_베나토",
-        "description": "노바마루 강마루 테라스스퀘어 라인 베나토 색상입니다."
+        "description": "베나토의 제품 사양은 시공 접착식, 규격 597 X 597 X 8T, 용도 온돌용, 표면/후면 고강도 HPM, 포장단위 9pcs/box (3.207㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-070",
@@ -1486,7 +1486,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스스퀘어"
         ],
         "imageUrl": "/assets/novamaru/nv_070_테라스스퀘어_토스카나",
-        "description": "노바마루 강마루 테라스스퀘어 라인 토스카나 색상입니다."
+        "description": "토스카나의 제품 사양은 시공 접착식, 규격 597 X 597 X 8T, 용도 온돌용, 표면/후면 고강도 HPM, 포장단위 9pcs/box (3.207㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-071",
@@ -1507,7 +1507,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스스퀘어"
         ],
         "imageUrl": "/assets/novamaru/nv_071_테라스스퀘어_아라베스크",
-        "description": "노바마루 강마루 테라스스퀘어 라인 아라베스크 색상입니다."
+        "description": "아라베스크의 제품 사양은 시공 접착식, 규격 597 X 597 X 8T, 용도 온돌용, 표면/후면 고강도 HPM, 포장단위 9pcs/box (3.207㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-072",
@@ -1528,7 +1528,7 @@ export const NOVAMARU_PRODUCTS = [
             "테라스스퀘어"
         ],
         "imageUrl": "/assets/novamaru/nv_072_테라스스퀘어_이스타리아",
-        "description": "노바마루 강마루 테라스스퀘어 라인 이스타리아 색상입니다."
+        "description": "이스타리아의 제품 사양은 시공 접착식, 규격 597 X 597 X 8T, 용도 온돌용, 표면/후면 고강도 HPM, 포장단위 9pcs/box (3.207㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-073",
@@ -1549,7 +1549,7 @@ export const NOVAMARU_PRODUCTS = [
             "노블강"
         ],
         "imageUrl": "/assets/novamaru/nv_073_노블강_리얼오크",
-        "description": "노바마루 강마루 노블강 라인 리얼오크 색상입니다."
+        "description": "리얼오크의 제품 사양은 시공 접착식, 규격 95 X 800 X 6.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 42pcs/box (3.19㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-074",
@@ -1570,7 +1570,7 @@ export const NOVAMARU_PRODUCTS = [
             "노블강"
         ],
         "imageUrl": "/assets/novamaru/nv_074_노블강_리얼애쉬",
-        "description": "노바마루 강마루 노블강 라인 리얼애쉬 색상입니다."
+        "description": "리얼애쉬의 제품 사양은 시공 접착식, 규격 95 X 800 X 6.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 42pcs/box (3.19㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-075",
@@ -1591,7 +1591,7 @@ export const NOVAMARU_PRODUCTS = [
             "노블강"
         ],
         "imageUrl": "/assets/novamaru/nv_075_노블강_리얼티크",
-        "description": "노바마루 강마루 노블강 라인 리얼티크 색상입니다."
+        "description": "리얼티크의 제품 사양은 시공 접착식, 규격 95 X 800 X 6.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 42pcs/box (3.19㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-076",
@@ -1612,7 +1612,7 @@ export const NOVAMARU_PRODUCTS = [
             "노블강"
         ],
         "imageUrl": "/assets/novamaru/nv_076_노블강_마인워시",
-        "description": "노바마루 강마루 노블강 라인 마인워시 색상입니다."
+        "description": "마인워시의 제품 사양은 타입 접착식, 규격 95 X 800 X 6.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 42pcs/box (3.19㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-077",
@@ -1633,7 +1633,7 @@ export const NOVAMARU_PRODUCTS = [
             "노블강"
         ],
         "imageUrl": "/assets/novamaru/nv_077_노블강_마인미스트",
-        "description": "노바마루 강마루 노블강 라인 마인미스트 색상입니다."
+        "description": "마인미스트의 제품 사양은 시공 접착식, 규격 95 X 800 X 6.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 42pcs/box (3.19㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-078",
@@ -1654,7 +1654,7 @@ export const NOVAMARU_PRODUCTS = [
             "노블강"
         ],
         "imageUrl": "/assets/novamaru/nv_078_노블강_마인스웨이드",
-        "description": "노바마루 강마루 노블강 라인 마인스웨이드 색상입니다."
+        "description": "마인스웨이드의 제품 사양은 시공 접착식, 규격 95 X 800 X 6.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 42pcs/box (3.19㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-079",
@@ -1675,7 +1675,7 @@ export const NOVAMARU_PRODUCTS = [
             "노블강"
         ],
         "imageUrl": "/assets/novamaru/nv_079_노블강_리얼시티",
-        "description": "노바마루 강마루 노블강 라인 리얼시티 색상입니다."
+        "description": "리얼시티의 제품 사양은 시공 접착식, 규격 95 X 800 X 6.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 42pcs/box (3.19㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-080",
@@ -1696,7 +1696,7 @@ export const NOVAMARU_PRODUCTS = [
             "노블강"
         ],
         "imageUrl": "/assets/novamaru/nv_080_노블강_리얼카카오",
-        "description": "노바마루 강마루 노블강 라인 리얼카카오 색상입니다."
+        "description": "리얼카카오의 제품 사양은 시공 접착식, 규격 95 X 800 X 6.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 42pcs/box (3.19㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-081",
@@ -1717,7 +1717,7 @@ export const NOVAMARU_PRODUCTS = [
             "노블강"
         ],
         "imageUrl": "/assets/novamaru/nv_081_노블강_리얼블랙",
-        "description": "노바마루 강마루 노블강 라인 리얼블랙 색상입니다."
+        "description": "리얼블랙의 제품 사양은 시공 접착식, 규격 95 X 800 X 6.5T, 용도 온돌용, 표면 고강도 HPM, 포장단위 42pcs/box (3.19㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-082",
@@ -1738,7 +1738,7 @@ export const NOVAMARU_PRODUCTS = [
             "ACRO-K"
         ],
         "imageUrl": "/assets/novamaru/nv_082_아크로K_라델리온",
-        "description": "노바마루 원목마루 ACRO-K 라인 라델리온 색상입니다."
+        "description": "라델리온의 제품 사양은 타입 접착식, 규격 190 X 1900 X 15(3)T, 용도 온돌용, 표면 천연 원목, 포장단위 6pcs/box (2.166㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-083",
@@ -1759,7 +1759,7 @@ export const NOVAMARU_PRODUCTS = [
             "ACRO-K"
         ],
         "imageUrl": "/assets/novamaru/nv_083_아크로K_오벨리아",
-        "description": "노바마루 원목마루 ACRO-K 라인 오벨리아 색상입니다."
+        "description": "오벨리아의 제품 사양은 타입 접착식, 규격 190 X 1900 X 15(3)T, 용도 온돌용, 표면 천연 원목, 포장단위 6pcs/box (2.166㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-084",
@@ -1780,7 +1780,7 @@ export const NOVAMARU_PRODUCTS = [
             "ACRO-K"
         ],
         "imageUrl": "/assets/novamaru/nv_084_아크로K_세렌티아",
-        "description": "노바마루 원목마루 ACRO-K 라인 세렌티아 색상입니다."
+        "description": "세렌티아의 제품 사양은 시공 접착식, 규격 190 X 1900 X 15(3)T, 용도 온돌용, 표면 천연 원목, 포장단위 6pcs/box (2.166㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-085",
@@ -1801,7 +1801,7 @@ export const NOVAMARU_PRODUCTS = [
             "ACRO-K"
         ],
         "imageUrl": "/assets/novamaru/nv_085_아크로K_피오르드",
-        "description": "노바마루 원목마루 ACRO-K 라인 피오르드 색상입니다."
+        "description": "피오르드의 제품 사양은 시공 접착식, 규격 190 X 1900 X 15(3)T, 용도 온돌용, 표면 천연 원목, 포장단위 6pcs/box (2.166㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-086",
@@ -1822,7 +1822,7 @@ export const NOVAMARU_PRODUCTS = [
             "ACRO-K"
         ],
         "imageUrl": "/assets/novamaru/nv_086_아크로K_돌체비타",
-        "description": "노바마루 원목마루 ACRO-K 라인 돌체비타 색상입니다."
+        "description": "돌체비타의 제품 사양은 시공 접착식, 규격 190 X 1900 X 15(3)T, 용도 온돌용, 표면 천연 원목, 포장단위 6pcs/box (2.166㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-087",
@@ -1843,7 +1843,7 @@ export const NOVAMARU_PRODUCTS = [
             "ACRO-K"
         ],
         "imageUrl": "/assets/novamaru/nv_087_아크로K_데일트리",
-        "description": "노바마루 원목마루 ACRO-K 라인 데일트리 색상입니다."
+        "description": "데일트리의 제품 사양은 시공 접착식, 규격 190 X 1900 X 15(3)T, 용도 온돌용, 표면 천연 원목, 포장단위 6pcs/box (2.166㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-088",
@@ -1864,7 +1864,7 @@ export const NOVAMARU_PRODUCTS = [
             "ACRO-K"
         ],
         "imageUrl": "/assets/novamaru/nv_088_아크로K_비스코티",
-        "description": "노바마루 원목마루 ACRO-K 라인 비스코티 색상입니다."
+        "description": "비스코티의 제품 사양은 시공 접착식, 규격 190 X 1900 X 15(3)T, 용도 온돌용, 표면 천연 원목, 포장단위 6pcs/box (2.166㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-089",
@@ -1885,7 +1885,7 @@ export const NOVAMARU_PRODUCTS = [
             "ACRO-K"
         ],
         "imageUrl": "/assets/novamaru/nv_089_아크로K_에르디아",
-        "description": "노바마루 원목마루 ACRO-K 라인 에르디아 색상입니다."
+        "description": "에르디아의 제품 사양은 시공 접착식, 규격 190 X 1900 X 15(3)T, 용도 온돌용, 표면 천연 원목, 포장단위 6pcs/box (2.166㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-090",
@@ -1906,7 +1906,7 @@ export const NOVAMARU_PRODUCTS = [
             "ACRO-K"
         ],
         "imageUrl": "/assets/novamaru/nv_090_아크로K_레오그로",
-        "description": "노바마루 원목마루 ACRO-K 라인 레오그로 색상입니다."
+        "description": "레오그로의 제품 사양은 시공 접착식, 규격 190 X 1900 X 15(3)T, 용도 온돌용, 표면 천연 원목, 포장단위 6pcs/box (2.166㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-091",
@@ -1927,7 +1927,7 @@ export const NOVAMARU_PRODUCTS = [
             "ACRO-K"
         ],
         "imageUrl": "/assets/novamaru/nv_091_아크로K_반타블랙",
-        "description": "노바마루 원목마루 ACRO-K 라인 반타블랙 색상입니다.",
+        "description": "반타블랙의 제품 사양은 시공 접착식, 규격 190 X 1900 X 15(3)T, 용도 온돌용, 표면 천연 원목, 포장단위 6pcs/box (2.166㎡), 환경등급 SE0 (Super E0)SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -1949,7 +1949,7 @@ export const NOVAMARU_PRODUCTS = [
             "ACRO-K"
         ],
         "imageUrl": "/assets/novamaru/nv_092_아크로K_헤이즐넛",
-        "description": "노바마루 원목마루 ACRO-K 라인 헤이즐넛 색상입니다.",
+        "description": "헤이즐넛의 제품 사양은 시공 접착식, 규격 190 X 1900 X 15(3)T, 용도 온돌용, 표면 천연 원목, 포장단위 6pcs/box (2.166㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -1971,7 +1971,7 @@ export const NOVAMARU_PRODUCTS = [
             "STK시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_093_STK_다즐링",
-        "description": "노바마루 원목마루 STK시리즈 라인 다즐링 색상입니다."
+        "description": "다즐링의 제품 사양은 시공 접착식, 규격 190 X 1900 X 11(1)T, 용도 온돌용, 표면 천연 원목, 포장단위 8pcs/box (2.888㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-094",
@@ -1992,7 +1992,7 @@ export const NOVAMARU_PRODUCTS = [
             "STK시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_094_STK_타히티",
-        "description": "노바마루 원목마루 STK시리즈 라인 타히티 색상입니다."
+        "description": "타히티의 제품 사양은 시공 접착식, 규격 190 X 1900 X 11(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 8pcs/box (2.888㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-095",
@@ -2013,7 +2013,7 @@ export const NOVAMARU_PRODUCTS = [
             "STK시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_095_STK_에그쉘",
-        "description": "노바마루 원목마루 STK시리즈 라인 에그쉘 색상입니다."
+        "description": "에그쉘의 제품 사양은 시공 접착식, 규격 190 X 1900 X 11(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 8pcs/box (2.888㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-096",
@@ -2034,7 +2034,7 @@ export const NOVAMARU_PRODUCTS = [
             "STK시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_096_STK_가이아",
-        "description": "노바마루 원목마루 STK시리즈 라인 가이아 색상입니다."
+        "description": "가이아의 제품 사양은 시공 접착식, 규격 190 X 1900 X 11(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 8pcs/box (2.888㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-097",
@@ -2055,7 +2055,7 @@ export const NOVAMARU_PRODUCTS = [
             "STK시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_097_STK_제스티",
-        "description": "노바마루 원목마루 STK시리즈 라인 제스티 색상입니다."
+        "description": "제스티의 제품 사양은 시공 접착식, 규격 190 X 1900 X 11(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 8pcs/box (2.888㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-098",
@@ -2076,7 +2076,7 @@ export const NOVAMARU_PRODUCTS = [
             "STK시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_098_STK_나르시",
-        "description": "노바마루 원목마루 STK시리즈 라인 나르시 색상입니다."
+        "description": "나르시의 제품 사양은 시공 접착식, 규격 190 X 1900 X 11(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 8pcs/box (2.888㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-099",
@@ -2097,7 +2097,7 @@ export const NOVAMARU_PRODUCTS = [
             "STK시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_099_STK_테라피",
-        "description": "노바마루 원목마루 STK시리즈 라인 테라피 색상입니다."
+        "description": "테라피의 제품 사양은 시공 접착식, 규격 190 X 1900 X 11(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 8pcs/box (2.888㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-100",
@@ -2118,7 +2118,7 @@ export const NOVAMARU_PRODUCTS = [
             "STK시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_100_STK_시에나",
-        "description": "노바마루 원목마루 STK시리즈 라인 시에나 색상입니다.",
+        "description": "시에나의 제품 사양은 시공 접착식, 규격 190 X 1900 X 11(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 8pcs/box (2.888㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -2140,7 +2140,7 @@ export const NOVAMARU_PRODUCTS = [
             "STK시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_101_STK_리버티",
-        "description": "노바마루 원목마루 STK시리즈 라인 리버티 색상입니다."
+        "description": "리버티의 제품 사양은 시공 접착식, 규격 190 X 1900 X 11(1)T, 용도 온돌용, 표면 천연 원목, 포장단위 8pcs/box (2.9㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-102",
@@ -2161,7 +2161,7 @@ export const NOVAMARU_PRODUCTS = [
             "B시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_102_B_내추럴오크",
-        "description": "노바마루 원목마루 B시리즈 라인 내추럴오크 색상입니다."
+        "description": "내추럴오크의 제품 사양은 타입 원목마루, 규격 150(W) X 1200(L) X 10(T), 원목단판 2T, 포장단위 18pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-103",
@@ -2182,7 +2182,7 @@ export const NOVAMARU_PRODUCTS = [
             "B시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_103_B_코튼오크",
-        "description": "노바마루 원목마루 B시리즈 라인 코튼오크 색상입니다."
+        "description": "코튼오크의 제품 사양은 타입 원목마루, 규격 150(W) X 1200(L) X 10(T), 원목단판 2T, 포장단위 18pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-104",
@@ -2203,7 +2203,7 @@ export const NOVAMARU_PRODUCTS = [
             "B시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_104_B_르메르브라운",
-        "description": "노바마루 원목마루 B시리즈 라인 르메르브라운 색상입니다.",
+        "description": "르메르브라운의 제품 사양은 타입 원목마루, 규격 150(W) X 1200(L) X 10(T), 원목단판 2T, 포장단위 18pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다.",
         "salesStatus": "단종"
     },
     {
@@ -2225,7 +2225,7 @@ export const NOVAMARU_PRODUCTS = [
             "B시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_105_B_앤티크브론즈",
-        "description": "노바마루 원목마루 B시리즈 라인 앤티크브론즈 색상입니다.",
+        "description": "앤티크브론즈의 제품 사양은 타입 원목마루, 규격 150(W) X 1200(L) X 10(T), 원목단판 2T, 포장단위 18pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다.",
         "salesStatus": "단종"
     },
     {
@@ -2247,7 +2247,7 @@ export const NOVAMARU_PRODUCTS = [
             "ST시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_106_ST_내추럴오크",
-        "description": "노바마루 원목마루 ST시리즈 라인 내추럴오크 색상입니다."
+        "description": "내추럴오크의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 9(T), 원목단판 1.2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-107",
@@ -2268,7 +2268,7 @@ export const NOVAMARU_PRODUCTS = [
             "ST시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_107_ST_카키브라운",
-        "description": "노바마루 원목마루 ST시리즈 라인 카키브라운 색상입니다."
+        "description": "카키브라운의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 9(T), 원목단판 1.2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-108",
@@ -2289,7 +2289,7 @@ export const NOVAMARU_PRODUCTS = [
             "ST시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_108_ST_젠틀브라운",
-        "description": "노바마루 원목마루 ST시리즈 라인 젠틀브라운 색상입니다."
+        "description": "젠틀브라운의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 9(T), 원목단판 1.2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-109",
@@ -2310,7 +2310,7 @@ export const NOVAMARU_PRODUCTS = [
             "ST시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_109_ST_코지다크",
-        "description": "노바마루 원목마루 ST시리즈 라인 코지다크 색상입니다."
+        "description": "코지다크의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 9(T), 원목단판 1.2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-110",
@@ -2331,7 +2331,7 @@ export const NOVAMARU_PRODUCTS = [
             "ST시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_110_ST_화이트워시오크_N",
-        "description": "노바마루 원목마루 ST시리즈 라인 화이트워시오크-N 색상입니다."
+        "description": "화이트워시오크-N의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 9(T), 원목단판 1.2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-111",
@@ -2352,7 +2352,7 @@ export const NOVAMARU_PRODUCTS = [
             "ST시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_111_ST_버건디로즈",
-        "description": "노바마루 원목마루 ST시리즈 라인 버건디로즈 색상입니다."
+        "description": "버건디로즈의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 9(T), 원목단판 1.2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-112",
@@ -2373,7 +2373,7 @@ export const NOVAMARU_PRODUCTS = [
             "ST시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_112_ST_언더포레스트",
-        "description": "노바마루 원목마루 ST시리즈 라인 언더포레스트 색상입니다."
+        "description": "언더포레스트의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 9(T), 원목단판 1.2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-113",
@@ -2394,7 +2394,7 @@ export const NOVAMARU_PRODUCTS = [
             "ST시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_113_ST_애쉬내추럴",
-        "description": "노바마루 원목마루 ST시리즈 라인 애쉬내추럴 색상입니다."
+        "description": "애쉬내추럴의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 9(T), 원목단판 1.2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-114",
@@ -2415,7 +2415,7 @@ export const NOVAMARU_PRODUCTS = [
             "ST시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_114_ST_애쉬L_브라운",
-        "description": "노바마루 원목마루 ST시리즈 라인 애쉬L.브라운 색상입니다."
+        "description": "애쉬L.브라운의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 9(T), 원목단판 1.2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-115",
@@ -2436,7 +2436,7 @@ export const NOVAMARU_PRODUCTS = [
             "ST시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_115_ST_애쉬그레이",
-        "description": "노바마루 원목마루 ST시리즈 라인 애쉬그레이 색상입니다."
+        "description": "애쉬그레이의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 9(T), 원목단판 1.2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-116",
@@ -2457,7 +2457,7 @@ export const NOVAMARU_PRODUCTS = [
             "STB시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_116_STB_카밀로",
-        "description": "노바마루 원목마루 STB시리즈 라인 카밀로 색상입니다."
+        "description": "카밀로의 제품 사양은 시공 접착식, 규격 150 X 1200 X 9(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 18pcs/box (3.24㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-117",
@@ -2478,7 +2478,7 @@ export const NOVAMARU_PRODUCTS = [
             "STB시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_117_STB_피오타",
-        "description": "노바마루 원목마루 STB시리즈 라인 피오타 색상입니다."
+        "description": "피오타의 제품 사양은 시공 접착식, 규격 150 X 1200 X 9(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 18pcs/box (3.24㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-118",
@@ -2499,7 +2499,7 @@ export const NOVAMARU_PRODUCTS = [
             "STB시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_118_STB_플루나",
-        "description": "노바마루 원목마루 STB시리즈 라인 플루나 색상입니다."
+        "description": "플루나의 제품 사양은 시공 접착식, 규격 150 X 1200 X 9(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 18pcs/box (3.24㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-119",
@@ -2520,7 +2520,7 @@ export const NOVAMARU_PRODUCTS = [
             "STB시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_119_STB_엘리아",
-        "description": "노바마루 원목마루 STB시리즈 라인 엘리아 색상입니다."
+        "description": "엘리아의 제품 사양은 시공 접착식, 규격 150 X 1200 X 9(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 18pcs/box (3.24㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-120",
@@ -2541,7 +2541,7 @@ export const NOVAMARU_PRODUCTS = [
             "STB시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_120_STB_클레오",
-        "description": "노바마루 원목마루 STB시리즈 라인 클레오 색상입니다."
+        "description": "클레오의 제품 사양은 시공 접착식, 규격 150 X 1200 X 9(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 18pcs/box (3.24㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-121",
@@ -2562,7 +2562,7 @@ export const NOVAMARU_PRODUCTS = [
             "STB시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_121_STB_제라닉",
-        "description": "노바마루 원목마루 STB시리즈 라인 제라닉 색상입니다."
+        "description": "제라닉의 제품 사양은 시공 접착식, 규격 150 X 1200 X 9(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 18pcs/box (3.24㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-122",
@@ -2583,7 +2583,7 @@ export const NOVAMARU_PRODUCTS = [
             "STB시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_122_STB_캄피오",
-        "description": "노바마루 원목마루 STB시리즈 라인 캄피오 색상입니다."
+        "description": "캄피오의 제품 사양은 시공 접착식, 규격 150 X 1200 X 9(1.2)T, 용도 온돌용, 표면 천연 원목, 포장단위 18pcs/box (3.24㎡), 환경등급 SE0 (Super E0)입니다."
     },
     {
         "id": "nv-123",
@@ -2604,7 +2604,7 @@ export const NOVAMARU_PRODUCTS = [
             "STB시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_123_STB_Vintage_첼시오크",
-        "description": "노바마루 원목마루 STB시리즈 라인 Vintage 첼시오크 색상입니다.",
+        "description": "Vintage 첼시오크의 제품 사양은 시공 접착식, 규격 150 X 1200 X 9(1)T, 용도 온돌용, 표면 천연 원목, 포장단위 18pcs/box (3.24㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "단종"
     },
     {
@@ -2626,7 +2626,7 @@ export const NOVAMARU_PRODUCTS = [
             "STB시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_124_STB_Vintage_뮬란베이지",
-        "description": "노바마루 원목마루 STB시리즈 라인 Vintage 뮬란베이지 색상입니다.",
+        "description": "Vintage 뮬란베이지의 제품 사양은 시공 접착식, 규격 150 X 1200 X 9(1)T, 용도 온돌용, 표면 천연 원목, 포장단위 18pcs/box (3.24㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -2648,7 +2648,7 @@ export const NOVAMARU_PRODUCTS = [
             "STB시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_125_STB_Vintage_모니카브라운",
-        "description": "노바마루 원목마루 STB시리즈 라인 Vintage 모니카브라운 색상입니다.",
+        "description": "Vintage 모니카브라운의 제품 사양은 시공 접착식, 규격 150 X 1200 X 9(1)T, 용도 온돌용, 표면 천연 원목, 포장단위 18pcs/box (3.24㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "일시 품절"
     },
     {
@@ -2670,7 +2670,7 @@ export const NOVAMARU_PRODUCTS = [
             "STB시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_126_STB_Vintage_켄달카키",
-        "description": "노바마루 원목마루 STB시리즈 라인 Vintage 켄달카키 색상입니다.",
+        "description": "Vintage 켄달카키의 제품 사양은 시공 접착식, 규격 150 X 1200 X 9(1)T, 용도 온돌용, 표면 천연 원목, 포장단위 18pcs/box (3.24㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "단종"
     },
     {
@@ -2692,7 +2692,7 @@ export const NOVAMARU_PRODUCTS = [
             "STB시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_127_STB_Vintage_퍼지다크",
-        "description": "노바마루 원목마루 STB시리즈 라인 Vintage 퍼지다크 색상입니다.",
+        "description": "Vintage 퍼지다크의 제품 사양은 시공 접착식, 규격 150 X 1200 X 9(1)T, 용도 온돌용, 표면 천연 원목, 포장단위 18pcs/box (3.24㎡), 환경등급 SE0 (Super E0)입니다.",
         "salesStatus": "단종"
     },
     {
@@ -2714,7 +2714,7 @@ export const NOVAMARU_PRODUCTS = [
             "W시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_128_W_내추럴오크",
-        "description": "노바마루 원목마루 W시리즈 라인 내추럴오크 색상입니다."
+        "description": "내추럴오크의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 10(T), 원목단판 2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-129",
@@ -2735,7 +2735,7 @@ export const NOVAMARU_PRODUCTS = [
             "W시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_129_W_멀바우",
-        "description": "노바마루 원목마루 W시리즈 라인 멀바우 색상입니다."
+        "description": "멀바우의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 10(T), 원목단판 2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-130",
@@ -2756,7 +2756,7 @@ export const NOVAMARU_PRODUCTS = [
             "W시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_130_W_브라운오크",
-        "description": "노바마루 원목마루 W시리즈 라인 브라운오크 색상입니다."
+        "description": "브라운오크의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 10(T), 원목단판 2T, 포장단위 ㅊㅊ, 시공방식 일반계단시공, 마감 ㅊ입니다."
     },
     {
         "id": "nv-131",
@@ -2777,7 +2777,7 @@ export const NOVAMARU_PRODUCTS = [
             "W시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_131_W_빈티지오크",
-        "description": "노바마루 원목마루 W시리즈 라인 빈티지오크 색상입니다."
+        "description": "빈티지오크의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 10(T), 원목단판 2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-132",
@@ -2798,7 +2798,7 @@ export const NOVAMARU_PRODUCTS = [
             "W시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_132_W_샌드브라운",
-        "description": "노바마루 원목마루 W시리즈 라인 샌드브라운 색상입니다."
+        "description": "샌드브라운의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 10(T), 원목단판 2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-133",
@@ -2819,7 +2819,7 @@ export const NOVAMARU_PRODUCTS = [
             "W시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_133_W_소프트그레이",
-        "description": "노바마루 원목마루 W시리즈 라인 소프트그레이 색상입니다."
+        "description": "소프트그레이의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 10(T), 원목단판 2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-134",
@@ -2840,7 +2840,7 @@ export const NOVAMARU_PRODUCTS = [
             "W시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_134_W_스노우베이지",
-        "description": "노바마루 원목마루 W시리즈 라인 스노우베이지 색상입니다."
+        "description": "스노우베이지의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 10(T), 원목단판 2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-135",
@@ -2861,7 +2861,7 @@ export const NOVAMARU_PRODUCTS = [
             "W시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_135_W_워시오크",
-        "description": "노바마루 원목마루 W시리즈 라인 워시오크 색상입니다."
+        "description": "워시오크의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 10(T), 원목단판 2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-136",
@@ -2882,7 +2882,7 @@ export const NOVAMARU_PRODUCTS = [
             "W시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_136_W_월넛",
-        "description": "노바마루 원목마루 W시리즈 라인 월넛 색상입니다."
+        "description": "월넛의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 10(T), 원목단판 2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 -입니다."
     },
     {
         "id": "nv-137",
@@ -2903,7 +2903,7 @@ export const NOVAMARU_PRODUCTS = [
             "W시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_137_W_티크",
-        "description": "노바마루 원목마루 W시리즈 라인 티크 색상입니다."
+        "description": "티크의 제품 사양은 타입 원목마루, 규격 125(W) x 900(L) x 10T, 원목단판 2T, 포장단위 28pcs/box, 시공방식 일반시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-138",
@@ -2924,7 +2924,7 @@ export const NOVAMARU_PRODUCTS = [
             "W시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_138_W_프렌치블랙",
-        "description": "노바마루 원목마루 W시리즈 라인 프렌치블랙 색상입니다."
+        "description": "프렌치블랙의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 10(T), 원목단판 2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-139",
@@ -2945,7 +2945,7 @@ export const NOVAMARU_PRODUCTS = [
             "W시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_139_W_물랑루즈",
-        "description": "노바마루 원목마루 W시리즈 라인 물랑루즈 색상입니다."
+        "description": "물랑루즈의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 10(T), 원목단판 2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-140",
@@ -2966,7 +2966,7 @@ export const NOVAMARU_PRODUCTS = [
             "W시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_140_W_차콜그레이",
-        "description": "노바마루 원목마루 W시리즈 라인 차콜그레이 색상입니다."
+        "description": "차콜그레이의 제품 사양은 타입 원목마루, 규격 125(W) X 900(L) X 10(T), 원목단판 2T, 포장단위 28pcs/box, 시공방식 일반계단시공, 마감 브러쉬입니다."
     },
     {
         "id": "nv-141",
@@ -2987,7 +2987,7 @@ export const NOVAMARU_PRODUCTS = [
             "S시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_141_S_내추럴오크",
-        "description": "노바마루 원목마루 S시리즈 라인 내추럴오크 색상입니다."
+        "description": "내추럴오크의 제품 사양은 타입 원목마루, 규격 80(W) X 600(L) X 10(T), 원목단판 2T, 포장단위 33pcs/box, 시공방식 일반계단, 헤링본 시공, 마감 광택도장입니다."
     },
     {
         "id": "nv-142",
@@ -3008,7 +3008,7 @@ export const NOVAMARU_PRODUCTS = [
             "S시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_142_S_두시에",
-        "description": "노바마루 원목마루 S시리즈 라인 두시에 색상입니다."
+        "description": "두시에의 제품 사양은 타입 원목마루, 규격 80(W) X 600(L) X 10(T), 원목단판 2T, 포장단위 33pcs/box, 시공방식 일반계단, 헤링본 시공, 마감 광택도장입니다."
     },
     {
         "id": "nv-143",
@@ -3029,7 +3029,7 @@ export const NOVAMARU_PRODUCTS = [
             "S시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_143_S_멀바우",
-        "description": "노바마루 원목마루 S시리즈 라인 멀바우 색상입니다."
+        "description": "멀바우의 제품 사양은 타입 원목마루, 규격 80(W) X 600(L) X 10(T), 원목단판 2T, 포장단위 33pcs/box, 시공방식 일반계단, 헤링본 시공, 마감 광택도장입니다."
     },
     {
         "id": "nv-144",
@@ -3050,7 +3050,7 @@ export const NOVAMARU_PRODUCTS = [
             "S시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_144_S_버찌",
-        "description": "노바마루 원목마루 S시리즈 라인 버찌 색상입니다."
+        "description": "버찌의 제품 사양은 타입 원목마루, 규격 80(W) X 600(L) X 10(T), 원목단판 2T, 포장단위 33pcs/box, 시공방식 일반계단, 헤링본 시공, 마감 광택도장입니다."
     },
     {
         "id": "nv-145",
@@ -3071,7 +3071,7 @@ export const NOVAMARU_PRODUCTS = [
             "S시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_145_S_월넛",
-        "description": "노바마루 원목마루 S시리즈 라인 월넛 색상입니다."
+        "description": "월넛의 제품 사양은 타입 원목마루, 규격 80(W) X 600(L) X 10(T), 원목단판 2T, 포장단위 33pcs/box, 시공방식 일반계단, 헤링본 시공, 마감 광택도장입니다."
     },
     {
         "id": "nv-146",
@@ -3092,7 +3092,7 @@ export const NOVAMARU_PRODUCTS = [
             "S시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_146_S_이로코",
-        "description": "노바마루 원목마루 S시리즈 라인 이로코 색상입니다."
+        "description": "이로코의 제품 사양은 타입 원목마루, 규격 80(W) X 600(L) X 10(T), 원목단판 2T, 포장단위 33pcs/box, 시공방식 일반계단, 헤링본 시공, 마감 광택도장입니다."
     },
     {
         "id": "nv-147",
@@ -3113,6 +3113,6 @@ export const NOVAMARU_PRODUCTS = [
             "S시리즈"
         ],
         "imageUrl": "/assets/novamaru/nv_147_S_티크",
-        "description": "노바마루 원목마루 S시리즈 라인 티크 색상입니다."
+        "description": "티크의 제품 사양은 타입 원목마루, 규격 80(W) X 600(L) X 10(T), 원목단판 2T, 포장단위 33pcs/box, 시공방식 일반, 헤링본, 마감 광택도장입니다."
     }
 ];
