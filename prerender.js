@@ -7,13 +7,14 @@ import { LXZIN_PRODUCTS } from './src/data/lxzin-products.js';
 import { KUJUNGMARU_PRODUCTS } from './src/data/kujungmaru-products.js';
 import { DONGHWAMARU_PRODUCTS } from './src/data/donghwamaru-products.js';
 import { HANSOLMARU_PRODUCTS } from './src/data/hansolmaru-products.js';
+import { NOVAMARU_PRODUCTS } from './src/data/novamaru-products.js';
 
-// 노바마루는 아직 사이트에 연결되지 않아 프리렌더 대상에서 제외
 const ALL_PRODUCTS = [
   ...LXZIN_PRODUCTS,
   ...KUJUNGMARU_PRODUCTS,
   ...DONGHWAMARU_PRODUCTS,
   ...HANSOLMARU_PRODUCTS,
+  ...NOVAMARU_PRODUCTS,
 ];
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
