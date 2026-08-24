@@ -5,7 +5,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "로엔오크",
         "subtitle": "노바마루 강마루 (트라베)",
-        "price": 265000,
+        "price": 0,
         "thickness": 8.5,
         "specifications": {
             "size": "230x2420",
@@ -26,7 +26,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "헤리티지오크",
         "subtitle": "노바마루 강마루 (트라베)",
-        "price": 265000,
+        "price": 0,
         "thickness": 8.5,
         "specifications": {
             "size": "230x2420",
@@ -47,7 +47,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "돌체샌드",
         "subtitle": "노바마루 강마루 (트라베)",
-        "price": 265000,
+        "price": 0,
         "thickness": 8.5,
         "specifications": {
             "size": "230x2420",
@@ -68,7 +68,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "노체월넛",
         "subtitle": "노바마루 강마루 (트라베)",
-        "price": 265000,
+        "price": 0,
         "thickness": 8.5,
         "specifications": {
             "size": "230x2420",
@@ -89,7 +89,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "로엔오크1900",
         "subtitle": "노바마루 강마루 (플로)",
-        "price": 207000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "190x1900",
@@ -110,7 +110,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "헤리티지오크1900",
         "subtitle": "노바마루 강마루 (플로)",
-        "price": 207000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "190x1900",
@@ -131,7 +131,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "돌체샌드1900",
         "subtitle": "노바마루 강마루 (플로)",
-        "price": 207000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "190x1900",
@@ -152,7 +152,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "노체월넛1900",
         "subtitle": "노바마루 강마루 (플로)",
-        "price": 207000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "190x1900",
@@ -173,7 +173,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "시그니처오크1600",
         "subtitle": "노바마루 강마루 (플로)",
-        "price": 207000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "190x1600",
@@ -194,7 +194,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "애프터눈오크1600",
         "subtitle": "노바마루 강마루 (플로)",
-        "price": 207000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "190x1600",
@@ -215,7 +215,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "멜로우오크",
         "subtitle": "노바마루 강마루 (플로)",
-        "price": 207000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "190x1600",
@@ -237,7 +237,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "코코월넛",
         "subtitle": "노바마루 강마루 (플로)",
-        "price": 207000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "190x1600",
@@ -259,7 +259,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "테디브라운오크",
         "subtitle": "노바마루 강마루 (플로)",
-        "price": 207000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "190x1600",
@@ -281,7 +281,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "플럼브라운",
         "subtitle": "노바마루 강마루 (플로)",
-        "price": 207000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "190x1600",
@@ -303,7 +303,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "샬롯그레이",
         "subtitle": "노바마루 강마루 (플로)",
-        "price": 207000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "190x1600",
@@ -325,7 +325,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "듀이브라운",
         "subtitle": "노바마루 강마루 (플로)",
-        "price": 207000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "190x1600",
@@ -347,7 +347,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "쉐이드",
         "subtitle": "노바마루 강마루 (플로)",
-        "price": 207000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "190x1600",
@@ -369,7 +369,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오드페일",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -390,7 +390,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "프릴리아",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -411,7 +411,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "글라이드",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -432,7 +432,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "유세이지",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -453,7 +453,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "나잇포그",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -474,7 +474,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "벨라오크",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -495,7 +495,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "블랑오크",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -516,7 +516,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "남산오크",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -537,7 +537,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "블루밍오크",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -558,7 +558,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "스완",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -579,7 +579,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "솔티",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -600,7 +600,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "스노우필드",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -621,7 +621,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "미스틱그레이",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -642,7 +642,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "뮤트브라운",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -663,7 +663,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "헬렌티크",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -684,7 +684,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "클래시월넛",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -705,7 +705,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "누아르블랙",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -726,7 +726,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "포니애쉬",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -748,7 +748,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "그레이스",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -770,7 +770,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "네바다",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -792,7 +792,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "헤이즐티크",
         "subtitle": "노바마루 강마루 (블랙라벨)",
-        "price": 202000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1200",
@@ -814,7 +814,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "세레나데오크",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -835,7 +835,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "홀리데이오크",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -856,7 +856,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "크림",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -877,7 +877,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "화이트그레이",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -898,7 +898,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "모스카토그레이",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -919,7 +919,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오트브라운",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -940,7 +940,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "루시월넛",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -961,7 +961,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "루지아오크",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -983,7 +983,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리즈브라운",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -1005,7 +1005,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "피오브라운",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -1027,7 +1027,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리버그레이",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -1049,7 +1049,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "스카치",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -1071,7 +1071,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "아테네오크",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -1093,7 +1093,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "덴버오크",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -1115,7 +1115,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "비비안애쉬",
         "subtitle": "노바마루 강마루 (뉴트로)",
-        "price": 174000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -1137,7 +1137,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "아보리샌즈",
         "subtitle": "노바마루 강마루 (테라스)",
-        "price": 216000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "395x790",
@@ -1158,7 +1158,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "아로하베이지",
         "subtitle": "노바마루 강마루 (테라스)",
-        "price": 216000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "395x790",
@@ -1179,7 +1179,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "베이비블룸",
         "subtitle": "노바마루 강마루 (테라스)",
-        "price": 216000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "395x790",
@@ -1200,7 +1200,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "마블로단테",
         "subtitle": "노바마루 강마루 (테라스)",
-        "price": 216000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "395x790",
@@ -1221,7 +1221,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "데이지모션",
         "subtitle": "노바마루 강마루 (테라스)",
-        "price": 216000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "395x790",
@@ -1242,7 +1242,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "델피늄그레이",
         "subtitle": "노바마루 강마루 (테라스)",
-        "price": 216000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "395x790",
@@ -1263,7 +1263,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "릴리안포츠",
         "subtitle": "노바마루 강마루 (테라스)",
-        "price": 216000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "395x790",
@@ -1284,7 +1284,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "해글리토스",
         "subtitle": "노바마루 강마루 (테라스)",
-        "price": 216000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "395x790",
@@ -1305,7 +1305,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "플라야스폿",
         "subtitle": "노바마루 강마루 (테라스)",
-        "price": 216000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "395x790",
@@ -1326,7 +1326,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "아보리샌즈",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
-        "price": 235000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "597x597",
@@ -1347,7 +1347,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "아로하베이지",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
-        "price": 235000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "597x597",
@@ -1368,7 +1368,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "베이비블룸",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
-        "price": 235000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "597x597",
@@ -1389,7 +1389,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "릴리안포츠",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
-        "price": 235000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "597x597",
@@ -1410,7 +1410,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "데이지모션",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
-        "price": 235000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "597x597",
@@ -1431,7 +1431,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "마티에르",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
-        "price": 235000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "597x597",
@@ -1452,7 +1452,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "베나토",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
-        "price": 235000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "597x597",
@@ -1473,7 +1473,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "토스카나",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
-        "price": 235000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "597x597",
@@ -1494,7 +1494,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "아라베스크",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
-        "price": 235000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "597x597",
@@ -1515,7 +1515,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "이스타리아",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
-        "price": 235000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "597x597",
@@ -1536,7 +1536,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리얼오크",
         "subtitle": "노바마루 강마루 (노블강)",
-        "price": 170000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -1557,7 +1557,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리얼애쉬",
         "subtitle": "노바마루 강마루 (노블강)",
-        "price": 170000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -1578,7 +1578,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리얼티크",
         "subtitle": "노바마루 강마루 (노블강)",
-        "price": 170000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -1599,7 +1599,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "마인워시",
         "subtitle": "노바마루 강마루 (노블강)",
-        "price": 170000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -1620,7 +1620,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "마인미스트",
         "subtitle": "노바마루 강마루 (노블강)",
-        "price": 170000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -1641,7 +1641,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "마인스웨이드",
         "subtitle": "노바마루 강마루 (노블강)",
-        "price": 170000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -1662,7 +1662,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리얼시티",
         "subtitle": "노바마루 강마루 (노블강)",
-        "price": 170000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -1683,7 +1683,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리얼카카오",
         "subtitle": "노바마루 강마루 (노블강)",
-        "price": 170000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -1704,7 +1704,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리얼블랙",
         "subtitle": "노바마루 강마루 (노블강)",
-        "price": 170000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -1725,7 +1725,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "라델리온",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
-        "price": 532000,
+        "price": 0,
         "thickness": 15,
         "specifications": {
             "size": "190x1900",
@@ -1746,7 +1746,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오벨리아",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
-        "price": 482000,
+        "price": 0,
         "thickness": 15,
         "specifications": {
             "size": "190x1900",
@@ -1767,7 +1767,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "세렌티아",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
-        "price": 482000,
+        "price": 0,
         "thickness": 15,
         "specifications": {
             "size": "190x1900",
@@ -1788,7 +1788,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "피오르드",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
-        "price": 482000,
+        "price": 0,
         "thickness": 15,
         "specifications": {
             "size": "190x1900",
@@ -1809,7 +1809,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "돌체비타",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
-        "price": 482000,
+        "price": 0,
         "thickness": 15,
         "specifications": {
             "size": "190x1900",
@@ -1830,7 +1830,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "데일트리",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
-        "price": 482000,
+        "price": 0,
         "thickness": 15,
         "specifications": {
             "size": "190x1900",
@@ -1851,7 +1851,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "비스코티",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
-        "price": 482000,
+        "price": 0,
         "thickness": 15,
         "specifications": {
             "size": "190x1900",
@@ -1872,7 +1872,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "에르디아",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
-        "price": 482000,
+        "price": 0,
         "thickness": 15,
         "specifications": {
             "size": "190x1900",
@@ -1893,7 +1893,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "레오그로",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
-        "price": 482000,
+        "price": 0,
         "thickness": 15,
         "specifications": {
             "size": "190x1900",
@@ -1914,7 +1914,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "반타블랙",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
-        "price": 482000,
+        "price": 0,
         "thickness": 15,
         "specifications": {
             "size": "190x1900",
@@ -1936,7 +1936,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "헤이즐넛",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
-        "price": 482000,
+        "price": 0,
         "thickness": 15,
         "specifications": {
             "size": "190x1900",
@@ -1958,7 +1958,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "다즐링",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
-        "price": 367000,
+        "price": 0,
         "thickness": 11,
         "specifications": {
             "size": "190x1900",
@@ -1979,7 +1979,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "타히티",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
-        "price": 367000,
+        "price": 0,
         "thickness": 11,
         "specifications": {
             "size": "190x1900",
@@ -2000,7 +2000,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "에그쉘",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
-        "price": 367000,
+        "price": 0,
         "thickness": 11,
         "specifications": {
             "size": "190x1900",
@@ -2021,7 +2021,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "가이아",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
-        "price": 367000,
+        "price": 0,
         "thickness": 11,
         "specifications": {
             "size": "190x1900",
@@ -2042,7 +2042,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "제스티",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
-        "price": 367000,
+        "price": 0,
         "thickness": 11,
         "specifications": {
             "size": "190x1900",
@@ -2063,7 +2063,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "나르시",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
-        "price": 367000,
+        "price": 0,
         "thickness": 11,
         "specifications": {
             "size": "190x1900",
@@ -2084,7 +2084,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "테라피",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
-        "price": 367000,
+        "price": 0,
         "thickness": 11,
         "specifications": {
             "size": "190x1900",
@@ -2105,7 +2105,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "시에나",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
-        "price": 367000,
+        "price": 0,
         "thickness": 11,
         "specifications": {
             "size": "190x1900",
@@ -2127,7 +2127,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리버티",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
-        "price": 367000,
+        "price": 0,
         "thickness": 11,
         "specifications": {
             "size": "190x1900",
@@ -2148,7 +2148,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "내추럴오크",
         "subtitle": "노바마루 원목마루 (B시리즈)",
-        "price": 370000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "150x1200",
@@ -2169,7 +2169,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "코튼오크",
         "subtitle": "노바마루 원목마루 (B시리즈)",
-        "price": 370000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "150x1200",
@@ -2190,7 +2190,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "르메르브라운",
         "subtitle": "노바마루 원목마루 (B시리즈)",
-        "price": 370000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "150x1200",
@@ -2212,7 +2212,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "앤티크브론즈",
         "subtitle": "노바마루 원목마루 (B시리즈)",
-        "price": 370000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "150x1200",
@@ -2234,7 +2234,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "내추럴오크",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
-        "price": 285000,
+        "price": 0,
         "thickness": 9.2,
         "specifications": {
             "size": "125x900",
@@ -2255,7 +2255,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "카키브라운",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
-        "price": 285000,
+        "price": 0,
         "thickness": 9.2,
         "specifications": {
             "size": "125x900",
@@ -2276,7 +2276,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "젠틀브라운",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
-        "price": 285000,
+        "price": 0,
         "thickness": 9.2,
         "specifications": {
             "size": "125x900",
@@ -2297,7 +2297,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "코지다크",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
-        "price": 285000,
+        "price": 0,
         "thickness": 9.2,
         "specifications": {
             "size": "125x900",
@@ -2318,7 +2318,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "화이트워시오크-N",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
-        "price": 285000,
+        "price": 0,
         "thickness": 9.2,
         "specifications": {
             "size": "125x900",
@@ -2339,7 +2339,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "버건디로즈",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
-        "price": 285000,
+        "price": 0,
         "thickness": 9.2,
         "specifications": {
             "size": "125x900",
@@ -2360,7 +2360,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "언더포레스트",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
-        "price": 285000,
+        "price": 0,
         "thickness": 9.2,
         "specifications": {
             "size": "125x900",
@@ -2381,7 +2381,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "애쉬내추럴",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
-        "price": 285000,
+        "price": 0,
         "thickness": 9.2,
         "specifications": {
             "size": "125x900",
@@ -2402,7 +2402,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "애쉬L.브라운",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
-        "price": 285000,
+        "price": 0,
         "thickness": 9.2,
         "specifications": {
             "size": "125x900",
@@ -2423,7 +2423,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "애쉬그레이",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
-        "price": 285000,
+        "price": 0,
         "thickness": 9.2,
         "specifications": {
             "size": "125x900",
@@ -2444,7 +2444,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "카밀로",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
-        "price": 315000,
+        "price": 0,
         "thickness": 9,
         "specifications": {
             "size": "150x1200",
@@ -2465,7 +2465,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "피오타",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
-        "price": 295000,
+        "price": 0,
         "thickness": 9,
         "specifications": {
             "size": "150x1200",
@@ -2486,7 +2486,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "플루나",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
-        "price": 295000,
+        "price": 0,
         "thickness": 9,
         "specifications": {
             "size": "150x1200",
@@ -2507,7 +2507,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "엘리아",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
-        "price": 295000,
+        "price": 0,
         "thickness": 9,
         "specifications": {
             "size": "150x1200",
@@ -2528,7 +2528,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "클레오",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
-        "price": 295000,
+        "price": 0,
         "thickness": 9,
         "specifications": {
             "size": "150x1200",
@@ -2549,7 +2549,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "제라닉",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
-        "price": 295000,
+        "price": 0,
         "thickness": 9,
         "specifications": {
             "size": "150x1200",
@@ -2570,7 +2570,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "캄피오",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
-        "price": 295000,
+        "price": 0,
         "thickness": 9,
         "specifications": {
             "size": "150x1200",
@@ -2591,7 +2591,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "Vintage 첼시오크",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
-        "price": 295000,
+        "price": 0,
         "thickness": 9,
         "specifications": {
             "size": "150x1200",
@@ -2613,7 +2613,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "Vintage 뮬란베이지",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
-        "price": 295000,
+        "price": 0,
         "thickness": 9,
         "specifications": {
             "size": "150x1200",
@@ -2635,7 +2635,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "Vintage 모니카브라운",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
-        "price": 295000,
+        "price": 0,
         "thickness": 9,
         "specifications": {
             "size": "150x1200",
@@ -2657,7 +2657,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "Vintage 켄달카키",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
-        "price": 295000,
+        "price": 0,
         "thickness": 9,
         "specifications": {
             "size": "150x1200",
@@ -2679,7 +2679,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "Vintage 퍼지다크",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
-        "price": 295000,
+        "price": 0,
         "thickness": 9,
         "specifications": {
             "size": "150x1200",
@@ -2701,7 +2701,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "내추럴오크",
         "subtitle": "노바마루 원목마루 (W시리즈)",
-        "price": 330000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "125x900",
@@ -2722,7 +2722,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "멀바우",
         "subtitle": "노바마루 원목마루 (W시리즈)",
-        "price": 370000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "125x900",
@@ -2743,7 +2743,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "브라운오크",
         "subtitle": "노바마루 원목마루 (W시리즈)",
-        "price": 330000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "125x900",
@@ -2764,7 +2764,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "빈티지오크",
         "subtitle": "노바마루 원목마루 (W시리즈)",
-        "price": 330000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "125x900",
@@ -2785,7 +2785,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "샌드브라운",
         "subtitle": "노바마루 원목마루 (W시리즈)",
-        "price": 330000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "125x900",
@@ -2806,7 +2806,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "소프트그레이",
         "subtitle": "노바마루 원목마루 (W시리즈)",
-        "price": 330000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "125x900",
@@ -2827,7 +2827,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "스노우베이지",
         "subtitle": "노바마루 원목마루 (W시리즈)",
-        "price": 330000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "125x900",
@@ -2848,7 +2848,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "워시오크",
         "subtitle": "노바마루 원목마루 (W시리즈)",
-        "price": 330000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "125x900",
@@ -2869,7 +2869,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "월넛",
         "subtitle": "노바마루 원목마루 (W시리즈)",
-        "price": 400000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "125x900",
@@ -2890,7 +2890,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "티크",
         "subtitle": "노바마루 원목마루 (W시리즈)",
-        "price": 430000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "125x900",
@@ -2911,7 +2911,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "프렌치블랙",
         "subtitle": "노바마루 원목마루 (W시리즈)",
-        "price": 330000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "125x900",
@@ -2932,7 +2932,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "물랑루즈",
         "subtitle": "노바마루 원목마루 (W시리즈)",
-        "price": 330000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "125x900",
@@ -2953,7 +2953,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "차콜그레이",
         "subtitle": "노바마루 원목마루 (W시리즈)",
-        "price": 330000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "125x900",
@@ -2974,7 +2974,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "내추럴오크",
         "subtitle": "노바마루 원목마루 (S시리즈)",
-        "price": 290000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "80x600",
@@ -2995,7 +2995,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "두시에",
         "subtitle": "노바마루 원목마루 (S시리즈)",
-        "price": 320000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "80x600",
@@ -3016,7 +3016,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "멀바우",
         "subtitle": "노바마루 원목마루 (S시리즈)",
-        "price": 320000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "80x600",
@@ -3037,7 +3037,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "버찌",
         "subtitle": "노바마루 원목마루 (S시리즈)",
-        "price": 290000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "80x600",
@@ -3058,7 +3058,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "월넛",
         "subtitle": "노바마루 원목마루 (S시리즈)",
-        "price": 342500,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "80x600",
@@ -3079,7 +3079,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "이로코",
         "subtitle": "노바마루 원목마루 (S시리즈)",
-        "price": 320000,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "80x600",
@@ -3100,7 +3100,7 @@ export const NOVAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "티크",
         "subtitle": "노바마루 원목마루 (S시리즈)",
-        "price": 357500,
+        "price": 0,
         "thickness": 10,
         "specifications": {
             "size": "80x600",

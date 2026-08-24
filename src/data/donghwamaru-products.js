@@ -5,7 +5,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오크5",
         "subtitle": "동화마루 강화마루 (클릭S)",
-        "price": 80000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "190x1200"
@@ -25,7 +25,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "파인2",
         "subtitle": "동화마루 강화마루 (클릭S)",
-        "price": 80000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "190x1200"
@@ -45,7 +45,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "월넛",
         "subtitle": "동화마루 강화마루 (클릭S)",
-        "price": 80000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "190x1200"
@@ -65,7 +65,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "메이플",
         "subtitle": "동화마루 강화마루 (클릭S)",
-        "price": 80000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "190x1200"
@@ -85,7 +85,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "아카시아1",
         "subtitle": "동화마루 강화마루 (클릭S)",
-        "price": 80000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "190x1200"
@@ -105,7 +105,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오크1",
         "subtitle": "동화마루 강화마루 (클릭S)",
-        "price": 80000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "190x1200"
@@ -125,7 +125,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오크3",
         "subtitle": "동화마루 강화마루 (클릭S)",
-        "price": 80000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "190x1200"
@@ -145,7 +145,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "체스트넛",
         "subtitle": "동화마루 강화마루 (클릭)",
-        "price": 85000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "190x1200"
@@ -165,7 +165,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "히코리",
         "subtitle": "동화마루 강화마루 (클릭)",
-        "price": 85000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "190x1200"
@@ -185,7 +185,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "스위트 오크",
         "subtitle": "동화마루 강화마루 (클릭)",
-        "price": 85000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "190x1200"
@@ -205,7 +205,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "내추럴 오크",
         "subtitle": "동화마루 강화마루 (클릭)",
-        "price": 85000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "190x1200"
@@ -225,7 +225,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "마호가니",
         "subtitle": "동화마루 강화마루 (클릭)",
-        "price": 85000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "190x1200"
@@ -245,7 +245,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "그레이 쏘컷",
         "subtitle": "동화마루 강화마루 (클릭)",
-        "price": 85000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "190x1200"
@@ -265,7 +265,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "워시오크 스트립",
         "subtitle": "동화마루 강화마루 (클릭)",
-        "price": 85000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "190x1200"
@@ -285,7 +285,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "웨이브",
         "subtitle": "동화마루 강화마루 (스톤)",
-        "price": 88000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "325x800"
@@ -305,7 +305,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "사하라",
         "subtitle": "동화마루 강화마루 (스톤)",
-        "price": 88000,
+        "price": 0,
         "thickness": 8,
         "specifications": {
             "size": "325x800"
@@ -325,7 +325,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오크6",
         "subtitle": "동화마루 강화마루 (크로젠)",
-        "price": 88000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "89x801"
@@ -345,7 +345,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오크7",
         "subtitle": "동화마루 강화마루 (크로젠)",
-        "price": 88000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "89x801"
@@ -365,7 +365,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "월넛",
         "subtitle": "동화마루 강화마루 (크로젠)",
-        "price": 88000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "89x801"
@@ -385,7 +385,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오크1",
         "subtitle": "동화마루 강화마루 (크로젠)",
-        "price": 88000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "89x801"
@@ -405,7 +405,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오크2",
         "subtitle": "동화마루 강화마루 (크로젠)",
-        "price": 88000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "89x801"
@@ -425,7 +425,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오크3",
         "subtitle": "동화마루 강화마루 (크로젠)",
-        "price": 88000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "89x801"
@@ -445,7 +445,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "소프트 그레이",
         "subtitle": "동화마루 강마루 (강 오리진)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "95x800",
@@ -466,7 +466,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리얼 티크",
         "subtitle": "동화마루 강마루 (강 오리진)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "95x800",
@@ -487,7 +487,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "윈디 오크",
         "subtitle": "동화마루 강마루 (강 오리진)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "95x800",
@@ -508,7 +508,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "모던 그레이",
         "subtitle": "동화마루 강마루 (강 오리진)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "95x800",
@@ -529,7 +529,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오리진 오크",
         "subtitle": "동화마루 강마루 (강 오리진)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "95x800",
@@ -550,7 +550,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오리진 크림",
         "subtitle": "동화마루 강마루 (강 오리진)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "95x800",
@@ -571,7 +571,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "브라운 오크",
         "subtitle": "동화마루 강마루 (강 오리진)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "95x800",
@@ -592,7 +592,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "빈티지 카키",
         "subtitle": "동화마루 강마루 (강 포레)",
-        "price": 115000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -613,7 +613,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "그레이",
         "subtitle": "동화마루 강마루 (강 포레)",
-        "price": 115000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -634,7 +634,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "라이트 그레이",
         "subtitle": "동화마루 강마루 (강 포레)",
-        "price": 115000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -655,7 +655,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "네이쳐 그레이",
         "subtitle": "동화마루 강마루 (강 포레)",
-        "price": 115000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -676,7 +676,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "네이쳐 오크",
         "subtitle": "동화마루 강마루 (강 포레)",
-        "price": 115000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -697,7 +697,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "코코아",
         "subtitle": "동화마루 강마루 (강 포레)",
-        "price": 115000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -718,7 +718,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "네이쳐 애쉬",
         "subtitle": "동화마루 강마루 (강 포레)",
-        "price": 115000,
+        "price": 0,
         "thickness": 6.5,
         "specifications": {
             "size": "95x800",
@@ -739,7 +739,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "블론디 오크",
         "subtitle": "동화마루 강마루 (강 텍스쳐)",
-        "price": 120000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1205",
@@ -760,7 +760,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리네아 라이트",
         "subtitle": "동화마루 강마루 (강 텍스쳐)",
-        "price": 120000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1205",
@@ -781,7 +781,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리네아 내추럴",
         "subtitle": "동화마루 강마루 (강 텍스쳐)",
-        "price": 120000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1205",
@@ -802,7 +802,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "돌체 브라운",
         "subtitle": "동화마루 강마루 (강 텍스쳐)",
-        "price": 120000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1205",
@@ -823,7 +823,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "멜란지 화이트",
         "subtitle": "동화마루 강마루 (강 텍스쳐)",
-        "price": 120000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "165x1205",
@@ -844,7 +844,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "브리즈 펄 (정각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
-        "price": 165000,
+        "price": 0,
         "thickness": 9.5,
         "specifications": {
             "size": "597x597",
@@ -865,7 +865,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "몬테클라우드 (정각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
-        "price": 165000,
+        "price": 0,
         "thickness": 9.5,
         "specifications": {
             "size": "597x597",
@@ -886,7 +886,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "몬테 크레마 (정각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
-        "price": 165000,
+        "price": 0,
         "thickness": 9.5,
         "specifications": {
             "size": "597x597",
@@ -907,7 +907,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "사하라퓨어 (정각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
-        "price": 165000,
+        "price": 0,
         "thickness": 9.5,
         "specifications": {
             "size": "597x597",
@@ -928,7 +928,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "플로쏘 화이트 (정각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
-        "price": 165000,
+        "price": 0,
         "thickness": 9.5,
         "specifications": {
             "size": "597x597",
@@ -949,7 +949,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "맨하탄 클레이 (정각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
-        "price": 165000,
+        "price": 0,
         "thickness": 9.5,
         "specifications": {
             "size": "597x597",
@@ -970,7 +970,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "브리즈 펄 (직각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
-        "price": 160000,
+        "price": 0,
         "thickness": 9.5,
         "specifications": {
             "size": "597x1205",
@@ -991,7 +991,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "몬테클라우드 (직각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
-        "price": 160000,
+        "price": 0,
         "thickness": 9.5,
         "specifications": {
             "size": "597x1205",
@@ -1012,7 +1012,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "몬테 크레마 (직각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
-        "price": 160000,
+        "price": 0,
         "thickness": 9.5,
         "specifications": {
             "size": "597x1205",
@@ -1033,7 +1033,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "사하라퓨어 (직각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
-        "price": 160000,
+        "price": 0,
         "thickness": 9.5,
         "specifications": {
             "size": "597x1205",
@@ -1054,7 +1054,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "플로쏘 화이트 (직각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
-        "price": 160000,
+        "price": 0,
         "thickness": 9.5,
         "specifications": {
             "size": "597x1205",
@@ -1075,7 +1075,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "맨하탄 클레이 (직각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
-        "price": 160000,
+        "price": 0,
         "thickness": 9.5,
         "specifications": {
             "size": "597x1205",
@@ -1096,7 +1096,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "퓨어 실버",
         "subtitle": "동화마루 진마루 (진 오리진)",
-        "price": 110000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "98x805",
@@ -1117,7 +1117,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "퓨어 크림",
         "subtitle": "동화마루 진마루 (진 오리진)",
-        "price": 110000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "98x805",
@@ -1138,7 +1138,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "어반 내추럴",
         "subtitle": "동화마루 진마루 (진 오리진)",
-        "price": 110000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "98x805",
@@ -1159,7 +1159,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "어반 샌디에고",
         "subtitle": "동화마루 진마루 (진 오리진)",
-        "price": 110000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "98x805",
@@ -1180,7 +1180,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "어반 밀크티",
         "subtitle": "동화마루 진마루 (진 오리진)",
-        "price": 110000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "98x805",
@@ -1201,7 +1201,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "어반 화이트",
         "subtitle": "동화마루 진마루 (진 오리진)",
-        "price": 110000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "98x805",
@@ -1222,7 +1222,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "몬테 그레이",
         "subtitle": "동화마루 진마루 (진 그란데)",
-        "price": 115000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "325x805",
@@ -1243,7 +1243,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "포틀랜드 모티프",
         "subtitle": "동화마루 진마루 (진 그란데)",
-        "price": 115000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "325x805",
@@ -1264,7 +1264,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "포틀랜드 스틸",
         "subtitle": "동화마루 진마루 (진 그란데)",
-        "price": 115000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "325x805",
@@ -1285,7 +1285,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "몬테 화이트",
         "subtitle": "동화마루 진마루 (진 그란데)",
-        "price": 115000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "325x805",
@@ -1306,7 +1306,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "슬레이트 모티프",
         "subtitle": "동화마루 진마루 (진 그란데)",
-        "price": 115000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "325x805",
@@ -1327,7 +1327,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "슬레이트 스틸",
         "subtitle": "동화마루 진마루 (진 그란데)",
-        "price": 115000,
+        "price": 0,
         "thickness": 7,
         "specifications": {
             "size": "325x805",
@@ -1348,7 +1348,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "콰이엇 웨이브 (800각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
-        "price": 155000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "805x805",
@@ -1369,7 +1369,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "코지 그레이 (800각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
-        "price": 155000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "805x805",
@@ -1390,7 +1390,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "포틀랜드 모티프 (800각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
-        "price": 155000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "805x805",
@@ -1411,7 +1411,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "슬레이트 스틸 (800각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
-        "price": 155000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "805x805",
@@ -1432,7 +1432,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "보타니 엠버",
         "subtitle": "동화마루 진마루 (진 테라)",
-        "price": 115000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "161x1205",
@@ -1453,7 +1453,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "보타니 라이트",
         "subtitle": "동화마루 진마루 (진 테라)",
-        "price": 115000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "161x1205",
@@ -1474,7 +1474,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "모나 엠버",
         "subtitle": "동화마루 진마루 (진 테라)",
-        "price": 115000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "161x1205",
@@ -1495,7 +1495,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "노르딕 화이트",
         "subtitle": "동화마루 진마루 (진 테라)",
-        "price": 115000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "161x1205",
@@ -1516,7 +1516,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "모나 내추럴",
         "subtitle": "동화마루 진마루 (진 테라)",
-        "price": 115000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "161x1205",
@@ -1537,7 +1537,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "루미나 내추럴",
         "subtitle": "동화마루 진마루 (진 테라)",
-        "price": 115000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "161x1205",
@@ -1558,7 +1558,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "루미나 브라운",
         "subtitle": "동화마루 진마루 (진 테라)",
-        "price": 115000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "161x1205",
@@ -1579,7 +1579,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "클레이",
         "subtitle": "동화마루 진마루 (진 테라 맥스)",
-        "price": 145000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "195x2040",
@@ -1600,7 +1600,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오리진",
         "subtitle": "동화마루 진마루 (진 테라 맥스)",
-        "price": 145000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "195x2040",
@@ -1621,7 +1621,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "브라운",
         "subtitle": "동화마루 진마루 (진 테라 맥스)",
-        "price": 145000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "195x2040",
@@ -1642,7 +1642,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "내추럴",
         "subtitle": "동화마루 진마루 (진 테라 맥스)",
-        "price": 145000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "195x2040",
@@ -1663,7 +1663,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "화이트",
         "subtitle": "동화마루 진마루 (진 테라 맥스)",
-        "price": 145000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "195x2040",
@@ -1684,7 +1684,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "베이지",
         "subtitle": "동화마루 진마루 (진 테라 맥스)",
-        "price": 145000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "195x2040",
@@ -1705,7 +1705,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "레노 피치 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1726,7 +1726,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "아르보 라이트 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1747,7 +1747,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "아르보 내추럴 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1768,7 +1768,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리베로 그레이 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1789,7 +1789,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "레노 내추럴 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1810,7 +1810,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "레노 브라운 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1831,7 +1831,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리베로 스모키 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1852,7 +1852,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "레노 피치 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1873,7 +1873,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "아르보 라이트 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1894,7 +1894,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "아르보 내추럴 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1915,7 +1915,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리베로 그레이 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1936,7 +1936,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "레노 내추럴 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1957,7 +1957,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "레노 브라운 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1978,7 +1978,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리베로 스모키 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 125000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -1999,7 +1999,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "레노 피치 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 135000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -2020,7 +2020,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "아르보 라이트 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 135000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -2041,7 +2041,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "아르보 내추럴 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 135000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -2062,7 +2062,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리베로 그레이 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 135000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -2083,7 +2083,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "레노 내추럴 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 135000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -2104,7 +2104,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "레노 브라운 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 135000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -2125,7 +2125,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리베로 스모키 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
-        "price": 135000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "192x1200",
@@ -2146,7 +2146,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "콰이엇 웨이브 (정각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
-        "price": 150000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "650x650",
@@ -2167,7 +2167,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "코지 그레이 (정각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
-        "price": 150000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "650x650",
@@ -2188,7 +2188,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "포틀랜드 모티프 (정각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
-        "price": 150000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "650x650",
@@ -2209,7 +2209,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "슬레이트 스틸 (정각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
-        "price": 150000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "650x650",
@@ -2230,7 +2230,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "콰이엇 웨이브 (직각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
-        "price": 145000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "650x1220",
@@ -2251,7 +2251,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "코지 그레이 (직각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
-        "price": 145000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "650x1220",
@@ -2272,7 +2272,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "포틀랜드 모티프 (직각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
-        "price": 145000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "650x1220",
@@ -2293,7 +2293,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "슬레이트 스틸 (직각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
-        "price": 145000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "650x1220",
@@ -2314,7 +2314,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "윈디 오크",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
-        "price": 66000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -2335,7 +2335,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "리얼 티크",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
-        "price": 66000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -2356,7 +2356,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "플랫 화이트",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
-        "price": 66000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -2377,7 +2377,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "모던 그레이",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
-        "price": 66000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -2398,7 +2398,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오리진 오크",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
-        "price": 66000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -2419,7 +2419,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "오리진 크림",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
-        "price": 66000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -2440,7 +2440,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "브라운 오크",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
-        "price": 66000,
+        "price": 0,
         "thickness": 7.5,
         "specifications": {
             "size": "115x800",
@@ -2461,7 +2461,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "에센스 뮤트",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐)",
-        "price": 130000,
+        "price": 0,
         "thickness": 10.5,
         "specifications": {
             "size": "165x1200",
@@ -2482,7 +2482,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "화이트 가드니아",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐)",
-        "price": 130000,
+        "price": 0,
         "thickness": 10.5,
         "specifications": {
             "size": "165x1200",
@@ -2503,7 +2503,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "에센스 오크",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐)",
-        "price": 130000,
+        "price": 0,
         "thickness": 10.5,
         "specifications": {
             "size": "165x1200",
@@ -2524,7 +2524,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "소프트 카모마일",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐)",
-        "price": 130000,
+        "price": 0,
         "thickness": 10.5,
         "specifications": {
             "size": "165x1200",
@@ -2545,7 +2545,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "브램튼 새들",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐 맥스)",
-        "price": 140000,
+        "price": 0,
         "thickness": 10.5,
         "specifications": {
             "size": "232x2400",
@@ -2566,7 +2566,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "브램튼 내추럴",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐 맥스)",
-        "price": 140000,
+        "price": 0,
         "thickness": 10.5,
         "specifications": {
             "size": "232x2400",
@@ -2587,7 +2587,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "사비아 라이트",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐 맥스)",
-        "price": 140000,
+        "price": 0,
         "thickness": 10.5,
         "specifications": {
             "size": "232x2400",
@@ -2608,7 +2608,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "subCategory": "마루",
         "title": "돌체 내추럴",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐 맥스)",
-        "price": 140000,
+        "price": 0,
         "thickness": 10.5,
         "specifications": {
             "size": "232x2400",
