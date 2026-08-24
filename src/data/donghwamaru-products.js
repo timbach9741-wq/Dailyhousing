@@ -593,7 +593,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "title": "빈티지 카키",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 115000,
-        "thickness": 6,
+        "thickness": 6.5,
         "specifications": {
             "size": "95x800",
             "packaging": "전수증 (3.192m²)"
@@ -614,7 +614,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "title": "그레이",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 115000,
-        "thickness": 6,
+        "thickness": 6.5,
         "specifications": {
             "size": "95x800",
             "packaging": "전수증 (3.192m²)"
@@ -635,7 +635,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "title": "라이트 그레이",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 115000,
-        "thickness": 6,
+        "thickness": 6.5,
         "specifications": {
             "size": "95x800",
             "packaging": "전수증 (3.192m²)"
@@ -656,7 +656,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "title": "네이쳐 그레이",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 115000,
-        "thickness": 6,
+        "thickness": 6.5,
         "specifications": {
             "size": "95x800",
             "packaging": "전수증 (3.192m²)"
@@ -677,7 +677,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "title": "네이쳐 오크",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 115000,
-        "thickness": 6,
+        "thickness": 6.5,
         "specifications": {
             "size": "95x800",
             "packaging": "전수증 (3.192m²)"
@@ -698,7 +698,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "title": "코코아",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 115000,
-        "thickness": 6,
+        "thickness": 6.5,
         "specifications": {
             "size": "95x800",
             "packaging": "전수증 (3.192m²)"
@@ -719,7 +719,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "title": "네이쳐 애쉬",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 115000,
-        "thickness": 6,
+        "thickness": 6.5,
         "specifications": {
             "size": "95x800",
             "packaging": "전수증 (3.192m²)"
@@ -742,7 +742,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 120000,
         "thickness": 7.5,
         "specifications": {
-            "size": "143x1205",
+            "size": "165x1205",
             "packaging": "전수증 (3.102m²)"
         },
         "patterns": [
@@ -763,7 +763,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 120000,
         "thickness": 7.5,
         "specifications": {
-            "size": "143x1205",
+            "size": "165x1205",
             "packaging": "전수증 (3.102m²)"
         },
         "patterns": [
@@ -784,7 +784,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 120000,
         "thickness": 7.5,
         "specifications": {
-            "size": "143x1205",
+            "size": "165x1205",
             "packaging": "전수증 (3.102m²)"
         },
         "patterns": [
@@ -805,7 +805,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 120000,
         "thickness": 7.5,
         "specifications": {
-            "size": "143x1205",
+            "size": "165x1205",
             "packaging": "전수증 (3.102m²)"
         },
         "patterns": [
@@ -826,7 +826,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 120000,
         "thickness": 7.5,
         "specifications": {
-            "size": "143x1205",
+            "size": "165x1205",
             "packaging": "전수증 (3.102m²)"
         },
         "patterns": [
@@ -1099,7 +1099,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 110000,
         "thickness": 7,
         "specifications": {
-            "size": "98x815",
+            "size": "98x805",
             "packaging": "전수증 (3.077m²)"
         },
         "patterns": [
@@ -1120,7 +1120,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 110000,
         "thickness": 7,
         "specifications": {
-            "size": "98x815",
+            "size": "98x805",
             "packaging": "전수증 (3.077m²)"
         },
         "patterns": [
@@ -1141,7 +1141,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 110000,
         "thickness": 7,
         "specifications": {
-            "size": "98x815",
+            "size": "98x805",
             "packaging": "전수증 (3.077m²)"
         },
         "patterns": [
@@ -1162,7 +1162,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 110000,
         "thickness": 7,
         "specifications": {
-            "size": "98x815",
+            "size": "98x805",
             "packaging": "전수증 (3.077m²)"
         },
         "patterns": [
@@ -1183,7 +1183,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 110000,
         "thickness": 7,
         "specifications": {
-            "size": "98x815",
+            "size": "98x805",
             "packaging": "전수증 (3.077m²)"
         },
         "patterns": [
@@ -1204,7 +1204,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 110000,
         "thickness": 7,
         "specifications": {
-            "size": "98x815",
+            "size": "98x805",
             "packaging": "전수증 (3.077m²)"
         },
         "patterns": [
@@ -1225,7 +1225,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 115000,
         "thickness": 7,
         "specifications": {
-            "size": "325x810",
+            "size": "325x805",
             "packaging": "전수증 (3.139m²)"
         },
         "patterns": [
@@ -1246,7 +1246,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 115000,
         "thickness": 7,
         "specifications": {
-            "size": "325x810",
+            "size": "325x805",
             "packaging": "전수증 (3.139m²)"
         },
         "patterns": [
@@ -1267,7 +1267,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 115000,
         "thickness": 7,
         "specifications": {
-            "size": "325x810",
+            "size": "325x805",
             "packaging": "전수증 (3.139m²)"
         },
         "patterns": [
@@ -1288,7 +1288,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 115000,
         "thickness": 7,
         "specifications": {
-            "size": "325x810",
+            "size": "325x805",
             "packaging": "전수증 (3.139m²)"
         },
         "patterns": [
@@ -1309,7 +1309,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 115000,
         "thickness": 7,
         "specifications": {
-            "size": "325x810",
+            "size": "325x805",
             "packaging": "전수증 (3.139m²)"
         },
         "patterns": [
@@ -1330,7 +1330,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 115000,
         "thickness": 7,
         "specifications": {
-            "size": "325x810",
+            "size": "325x805",
             "packaging": "전수증 (3.139m²)"
         },
         "patterns": [
@@ -1435,7 +1435,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 115000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1215",
+            "size": "161x1205",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -1456,7 +1456,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 115000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1215",
+            "size": "161x1205",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -1477,7 +1477,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 115000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1215",
+            "size": "161x1205",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -1498,7 +1498,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 115000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1215",
+            "size": "161x1205",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -1519,7 +1519,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 115000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1215",
+            "size": "161x1205",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -1540,7 +1540,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 115000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1215",
+            "size": "161x1205",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -1561,7 +1561,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 115000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1215",
+            "size": "161x1205",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -1708,7 +1708,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "143x1205",
+            "size": "192x1200",
             "packaging": "전수증 (3.102m²)"
         },
         "patterns": [
@@ -1729,7 +1729,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "143x1205",
+            "size": "192x1200",
             "packaging": "전수증 (3.102m²)"
         },
         "patterns": [
@@ -1750,7 +1750,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "143x1205",
+            "size": "192x1200",
             "packaging": "전수증 (3.102m²)"
         },
         "patterns": [
@@ -1771,7 +1771,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "143x1205",
+            "size": "192x1200",
             "packaging": "전수증 (3.102m²)"
         },
         "patterns": [
@@ -1792,7 +1792,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "143x1205",
+            "size": "192x1200",
             "packaging": "전수증 (3.102m²)"
         },
         "patterns": [
@@ -1813,7 +1813,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "143x1205",
+            "size": "192x1200",
             "packaging": "전수증 (3.102m²)"
         },
         "patterns": [
@@ -1834,7 +1834,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "143x1205",
+            "size": "192x1200",
             "packaging": "전수증 (3.102m²)"
         },
         "patterns": [
@@ -1855,7 +1855,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1204",
+            "size": "192x1200",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -1876,7 +1876,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1204",
+            "size": "192x1200",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -1897,7 +1897,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1204",
+            "size": "192x1200",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -1918,7 +1918,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1204",
+            "size": "192x1200",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -1939,7 +1939,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1204",
+            "size": "192x1200",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -1960,7 +1960,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1204",
+            "size": "192x1200",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -1981,7 +1981,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 125000,
         "thickness": 7.5,
         "specifications": {
-            "size": "161x1204",
+            "size": "192x1200",
             "packaging": "전수증 (3.104m²)"
         },
         "patterns": [
@@ -2464,7 +2464,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 130000,
         "thickness": 10.5,
         "specifications": {
-            "size": "163x1200",
+            "size": "165x1200",
             "packaging": "전수증 (3.13m²)"
         },
         "patterns": [
@@ -2485,7 +2485,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 130000,
         "thickness": 10.5,
         "specifications": {
-            "size": "163x1200",
+            "size": "165x1200",
             "packaging": "전수증 (3.13m²)"
         },
         "patterns": [
@@ -2506,7 +2506,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 130000,
         "thickness": 10.5,
         "specifications": {
-            "size": "163x1200",
+            "size": "165x1200",
             "packaging": "전수증 (3.13m²)"
         },
         "patterns": [
@@ -2527,7 +2527,7 @@ export const DONGHWAMARU_PRODUCTS = [
         "price": 130000,
         "thickness": 10.5,
         "specifications": {
-            "size": "163x1200",
+            "size": "165x1200",
             "packaging": "전수증 (3.13m²)"
         },
         "patterns": [
