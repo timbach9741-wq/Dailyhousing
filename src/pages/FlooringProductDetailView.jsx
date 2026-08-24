@@ -18,6 +18,8 @@ import SheetStandard18Feature from '../components/product/SheetStandard18Feature
 import SheetStandard20Feature from '../components/product/SheetStandard20Feature';
 import KujungmaruGangmaruFeature from '../components/product/KujungmaruGangmaruFeature';
 import KujungmaruGangmaruStructure from '../components/product/KujungmaruGangmaruStructure';
+import KujungmaruTileFeature from '../components/product/KujungmaruTileFeature';
+import KujungmaruTileStructure from '../components/product/KujungmaruTileStructure';
 import SEO from '../components/SEO';
 
 // 에디톤 마루 상세 이미지 목록 (문서참조 - 실제 다운로드 제공 파일)
@@ -269,6 +271,7 @@ export default function FlooringProductDetailView() {
     const isNuchungmak = product.subtitle?.includes('뉴청맥') || product.subtitle?.includes('스탠다드 1.8') || product.subCategory?.includes('스탠다드 1.8');
     const isEunhaengmok = product.subtitle?.includes('은행목') || product.subtitle?.includes('스탠다드 2.0') || product.subCategory?.includes('스탠다드 2.0');
     const isKujungmaruGangmaru = product.subtitle?.includes('구정마루') && product.subtitle?.includes('강마루');
+    const isKujungmaruTile = product.subtitle?.includes('구정마루') && product.subtitle?.includes('타일마루');
 
     return (
         <main className="flex-1 w-full pb-40 lg:pb-32">
@@ -774,6 +777,14 @@ export default function FlooringProductDetailView() {
                 <div className="border-t border-slate-100">
                     <KujungmaruGangmaruFeature />
                     <KujungmaruGangmaruStructure line={product.tags?.[0]} />
+                </div>
+            )}
+
+            {/* 구정마루 타일마루(마뷸러스) 라인 공식 상세정보 */}
+            {isKujungmaruTile && (
+                <div className="border-t border-slate-100">
+                    <KujungmaruTileFeature />
+                    <KujungmaruTileStructure line={product.tags?.[0]} />
                 </div>
             )}
 
