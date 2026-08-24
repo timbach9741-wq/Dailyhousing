@@ -2235,7 +2235,7 @@ export const NOVAMARU_PRODUCTS = [
         "title": "내추럴오크",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 285000,
-        "thickness": 9,
+        "thickness": 9.2,
         "specifications": {
             "size": "125x900",
             "packaging": "전수증 (3.15m²)"
@@ -2256,7 +2256,7 @@ export const NOVAMARU_PRODUCTS = [
         "title": "카키브라운",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 285000,
-        "thickness": 9,
+        "thickness": 9.2,
         "specifications": {
             "size": "125x900",
             "packaging": "전수증 (3.15m²)"
@@ -2277,7 +2277,7 @@ export const NOVAMARU_PRODUCTS = [
         "title": "젠틀브라운",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 285000,
-        "thickness": 9,
+        "thickness": 9.2,
         "specifications": {
             "size": "125x900",
             "packaging": "전수증 (3.15m²)"
@@ -2298,7 +2298,7 @@ export const NOVAMARU_PRODUCTS = [
         "title": "코지다크",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 285000,
-        "thickness": 9,
+        "thickness": 9.2,
         "specifications": {
             "size": "125x900",
             "packaging": "전수증 (3.15m²)"
@@ -2319,7 +2319,7 @@ export const NOVAMARU_PRODUCTS = [
         "title": "화이트워시오크-N",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 285000,
-        "thickness": 9,
+        "thickness": 9.2,
         "specifications": {
             "size": "125x900",
             "packaging": "전수증 (3.15m²)"
@@ -2340,7 +2340,7 @@ export const NOVAMARU_PRODUCTS = [
         "title": "버건디로즈",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 285000,
-        "thickness": 9,
+        "thickness": 9.2,
         "specifications": {
             "size": "125x900",
             "packaging": "전수증 (3.15m²)"
@@ -2361,7 +2361,7 @@ export const NOVAMARU_PRODUCTS = [
         "title": "언더포레스트",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 285000,
-        "thickness": 9,
+        "thickness": 9.2,
         "specifications": {
             "size": "125x900",
             "packaging": "전수증 (3.15m²)"
@@ -2382,7 +2382,7 @@ export const NOVAMARU_PRODUCTS = [
         "title": "애쉬내추럴",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 285000,
-        "thickness": 9,
+        "thickness": 9.2,
         "specifications": {
             "size": "125x900",
             "packaging": "전수증 (3.15m²)"
@@ -2403,7 +2403,7 @@ export const NOVAMARU_PRODUCTS = [
         "title": "애쉬L.브라운",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 285000,
-        "thickness": 9,
+        "thickness": 9.2,
         "specifications": {
             "size": "125x900",
             "packaging": "전수증 (3.15m²)"
@@ -2424,7 +2424,7 @@ export const NOVAMARU_PRODUCTS = [
         "title": "애쉬그레이",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 285000,
-        "thickness": 9,
+        "thickness": 9.2,
         "specifications": {
             "size": "125x900",
             "packaging": "전수증 (3.15m²)"

@@ -23,6 +23,7 @@ import KujungmaruTileStructure from '../components/product/KujungmaruTileStructu
 import DonghwamaruFeature from '../components/product/DonghwamaruFeature';
 import DonghwamaruStructure from '../components/product/DonghwamaruStructure';
 import HansolmaruFeature from '../components/product/HansolmaruFeature';
+import NovamaruFeature from '../components/product/NovamaruFeature';
 import SEO from '../components/SEO';
 
 // 에디톤 마루 상세 이미지 목록 (문서참조 - 실제 다운로드 제공 파일)
@@ -277,6 +278,7 @@ export default function FlooringProductDetailView() {
     const isKujungmaruTile = product.subtitle?.includes('구정마루') && product.subtitle?.includes('타일마루');
     const isDonghwamaru = product.subtitle?.includes('동화마루');
     const isHansolmaru = product.subtitle?.includes('한솔마루');
+    const isNovamaru = product.subtitle?.includes('노바마루');
 
     return (
         <main className="flex-1 w-full pb-40 lg:pb-32">
@@ -803,6 +805,9 @@ export default function FlooringProductDetailView() {
 
             {/* 한솔마루 라인 공식 특장점(콘텐츠 있는 라인만 렌더링) */}
             {isHansolmaru && <HansolmaruFeature line={product.tags?.[0]} />}
+
+            {/* 노바마루(NOVA) 라인 공식 특장점 */}
+            {isNovamaru && <NovamaruFeature line={product.tags?.[0]} />}
 
             {/* 하단 고정 최근 본 상품 바 */}
             <div className="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200 p-3 z-40 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
