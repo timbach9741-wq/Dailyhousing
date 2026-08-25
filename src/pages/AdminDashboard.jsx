@@ -1394,11 +1394,11 @@ const AdminDashboard = () => {
                                                                             <button onClick={() => handleDownload(order)} className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-blue-500/20 transition-all" title="발주서">
                                                                                 <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                                                                             </button>
-                                                                            <button onClick={() => setTaxInvoiceModal({ type: 'tax_invoice', user: { displayName: order.customer, email: order.vendorEmail, businessInfo: order.taxInvoice?.requested ? { businessName: order.taxInvoice.businessName, businessNumber: order.taxInvoice.businessNumber } : null } })} className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-indigo-500/20 transition-all" title="세금계산서">
-                                                                                <span className="material-symbols-outlined text-slate-400 text-[16px]">receipt</span>
+                                                                            <button onClick={() => setTaxInvoiceModal({ type: 'tax_invoice', orderId: order.id, issued: !!order.taxInvoiceIssued, user: { displayName: order.customer, email: order.vendorEmail, businessInfo: order.taxInvoice?.requested ? { businessName: order.taxInvoice.businessName, businessNumber: order.taxInvoice.businessNumber } : null } })} className={`p-2 rounded-lg border transition-all ${order.taxInvoiceIssued ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-white/5 border-white/10 hover:bg-indigo-500/20'}`} title={order.taxInvoiceIssued ? '세금계산서 발급완료' : '세금계산서'}>
+                                                                                <span className={`material-symbols-outlined text-[16px] ${order.taxInvoiceIssued ? 'text-emerald-400' : 'text-slate-400'}`}>{order.taxInvoiceIssued ? 'task_alt' : 'receipt'}</span>
                                                                             </button>
-                                                                            <button onClick={() => setTaxInvoiceModal({ type: 'cash_receipt', user: { displayName: order.customer, email: order.vendorEmail } })} className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-violet-500/20 transition-all" title="현금영수증">
-                                                                                <span className="material-symbols-outlined text-slate-400 text-[16px]">request_quote</span>
+                                                                            <button onClick={() => setTaxInvoiceModal({ type: 'cash_receipt', orderId: order.id, issued: !!order.cashReceiptIssued, user: { displayName: order.customer, email: order.vendorEmail } })} className={`p-2 rounded-lg border transition-all ${order.cashReceiptIssued ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-white/5 border-white/10 hover:bg-violet-500/20'}`} title={order.cashReceiptIssued ? '현금영수증 발급완료' : '현금영수증'}>
+                                                                                <span className={`material-symbols-outlined text-[16px] ${order.cashReceiptIssued ? 'text-emerald-400' : 'text-slate-400'}`}>{order.cashReceiptIssued ? 'task_alt' : 'request_quote'}</span>
                                                                             </button>
                                                                             <button onClick={() => setPurchaseOrderModal(order)} className="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-amber-500/20 transition-all" title="발주서 양식">
                                                                                 <span className="material-symbols-outlined text-slate-400 text-[16px]">description</span>
@@ -3398,18 +3398,32 @@ const AdminDashboard = () => {
                                 <p className="text-xs text-slate-500 font-bold mb-1">이메일</p>
                                 <p className="text-white text-sm">{taxInvoiceModal.user?.email || '-'}</p>
                             </div>
+                            <p className="text-xs text-amber-400/80 leading-relaxed">
+                                ⚠️ 실제 발급(국세청/홈택스 신고)은 여기서 처리되지 않습니다. 홈택스에서 직접 발급하신 뒤, 아래 버튼은 "발급 완료" 표시용으로만 눌러주세요.
+                            </p>
                         </div>
                         <div className="flex gap-3">
                             <button onClick={() => setTaxInvoiceModal(null)} className="flex-1 py-3 rounded-xl bg-white/5 border border-white/10 text-slate-400 font-semibold hover:bg-white/10 transition-all">취소</button>
                             <button
-                                onClick={() => {
-                                    addToast(`${taxInvoiceModal.type === 'tax_invoice' ? '세금계산서' : '현금영수증'}가 발급되었습니다.`, 'success');
+                                onClick={async () => {
+                                    const label = taxInvoiceModal.type === 'tax_invoice' ? '세금계산서' : '현금영수증';
+                                    const field = taxInvoiceModal.type === 'tax_invoice' ? 'taxInvoiceIssued' : 'cashReceiptIssued';
+                                    if (taxInvoiceModal.orderId) {
+                                        try {
+                                            await updateDoc(doc(db, 'orders', taxInvoiceModal.orderId), { [field]: true, [`${field}At`]: new Date().toISOString() });
+                                            setProcessedOrders(prev => prev.map(o => o.id === taxInvoiceModal.orderId ? { ...o, [field]: true } : o));
+                                        } catch (error) {
+                                            console.error('발급완료 표시 저장 실패:', error);
+                                            addToast('발급완료 표시 저장 중 오류가 발생했습니다.', 'error');
+                                        }
+                                    }
+                                    addToast(`${label} 발급완료로 표시했습니다.`, 'success');
                                     setTaxInvoiceModal(null);
                                 }}
                                 className="flex-1 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all flex items-center justify-center gap-2"
                             >
-                                <span className="material-symbols-outlined text-[18px]">print</span>
-                                발급하기
+                                <span className="material-symbols-outlined text-[18px]">task_alt</span>
+                                {taxInvoiceModal.issued ? '발급완료 표시됨' : '발급완료 표시'}
                             </button>
                         </div>
                     </div>
