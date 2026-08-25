@@ -2,6 +2,14 @@ import { create } from 'zustand';
 import { db } from '../lib/firebase';
 import { collection, addDoc, getDocs, orderBy, query } from 'firebase/firestore';
 
+const escapeHtml = (str) => {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+};
+
 export const useConsultationStore = create((set) => ({
     consultations: [],
 
@@ -24,6 +32,34 @@ export const useConsultationStore = create((set) => ({
         set((state) => ({
             consultations: [newItem, ...state.consultations]
         }));
+
+        // 텔레그램 알림 발송 (상담 신청 / 수량 문의 공통)
+        try {
+            const isQuantityInquiry = newItem.type === 'quantity_inquiry';
+            const safeName = escapeHtml(newItem.name || '미기재');
+            const safePhone = escapeHtml(newItem.phone || '미기재');
+            const safeDetails = escapeHtml(newItem.details || '미기재');
+
+            const message = isQuantityInquiry
+                ? `📐 [수량 문의 접수]\n\n` +
+                  `👤 성함: ${safeName}\n` +
+                  `📱 연락처: ${safePhone}\n` +
+                  `🧱 제품정보: ${escapeHtml(newItem.productInfo || '미기재')}\n` +
+                  `📝 상세내용: ${safeDetails}`
+                : `💬 [상담 신청 접수]\n\n` +
+                  `👤 성함: ${safeName}\n` +
+                  `📱 연락처: ${safePhone}\n` +
+                  `🏗️ 시공품목: ${escapeHtml(newItem.productType || '미기재')}\n` +
+                  `📝 상세내용: ${safeDetails}`;
+
+            fetch('https://us-central1-project-dog-1-51759630-ea08b.cloudfunctions.net/sendTelegramAlert', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message })
+            }).catch(err => console.error('텔레그램 알림 발송 실패:', err));
+        } catch (error) {
+            console.warn('⚠️ 텔레그램 알림 로직 에러:', error);
+        }
     },
 
     fetchConsultations: async () => {

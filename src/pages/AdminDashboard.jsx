@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { handleMiraeHousingOrder, getAdminStats, saveOrder, getHomepageContent, updateSiteContent } from '../services/adminService';
 import { downloadPurchaseOrder } from '../services/excelService';
 import { resetPassword } from '../services/authService';
@@ -1139,6 +1140,10 @@ const AdminDashboard = () => {
             {/* Header */}
             <header className="mb-8 md:mb-12 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
+                    <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors mb-2">
+                        <span className="material-symbols-outlined text-base">home</span>
+                        홈으로
+                    </Link>
                     <h1 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-indigo-400">
                         Admin Dashboard
                     </h1>
