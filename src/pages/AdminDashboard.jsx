@@ -9,6 +9,7 @@ import { useProductStore } from '../store/useProductStore';
 import { useConsultationStore } from '../store/useConsultationStore';
 import { useOrderStore } from '../store/useOrderStore';
 import { usePurchaseOrderStore } from '../store/usePurchaseOrderStore';
+import { useExternalOrderStore } from '../store/useExternalOrderStore';
 import { db } from '../lib/firebase';
 import { collection, getDocs, doc, setDoc, query, orderBy, deleteDoc, updateDoc, where, writeBatch, limit } from 'firebase/firestore';
 import { updateApprovalToSheets } from '../services/googleSheetsService';
@@ -351,6 +352,9 @@ const AdminDashboard = () => {
     // 발주서 저장 상태
     const { purchaseOrders, fetchPurchaseOrders, savePurchaseOrder, deletePurchaseOrder } = usePurchaseOrderStore();
 
+    // 일정 관리(전화·카카오·현장 주문) - 매출 통계에 합산하기 위해 조회
+    const { orders: externalOrders, fetchAll: fetchExternalOrders } = useExternalOrderStore();
+
     const [processedOrders, setProcessedOrders] = useState([]);
 
     // 기간별 필터 적용 + 상태 필터 적용
@@ -363,7 +367,17 @@ const AdminDashboard = () => {
     });
 
     // 매출 통계 계산
-    const revenueStats = useMemo(() => calcRevenueStats(processedOrders, products), [processedOrders, products]);
+    // 일정 관리(전화·카카오·현장)에 기록된 주문을 매출 통계용 형식으로 변환
+    const normalizedExternalOrders = useMemo(() => externalOrders.map(eo => ({
+        date: eo.createdAt,
+        totalPrice: eo.totalPrice,
+        items: [{ productId: eo.selectedProductId, qty: Number(eo.quantity) || 0 }],
+    })), [externalOrders]);
+
+    const revenueStats = useMemo(
+        () => calcRevenueStats([...processedOrders, ...normalizedExternalOrders], products),
+        [processedOrders, normalizedExternalOrders, products]
+    );
 
     // 회원 상세 조회
     const handleUserDetail = async (u) => {
@@ -785,7 +799,8 @@ const AdminDashboard = () => {
                 const [s, cms, rawOrders] = await Promise.all([
                     getAdminStats(),
                     getHomepageContent(),
-                    fetchAllOrders()
+                    fetchAllOrders(),
+                    fetchExternalOrders()
                 ]);
                 setStats(s);
                 setCmsContent(cms);
@@ -819,7 +834,7 @@ const AdminDashboard = () => {
         };
         fetchData();
         initProducts();
-    }, [addToast, initProducts, fetchAllOrders]);
+    }, [addToast, initProducts, fetchAllOrders, fetchExternalOrders]);
 
     useEffect(() => {
         if (activeTab === 'users') fetchUsers();

@@ -11,7 +11,8 @@ const defaultSupplier = {
     address: ''
 };
 
-const emptyItem = { name: '', model: '', qty: '', unit: 'M', memo: '', detail: '' };
+const emptyItem = { name: '', model: '', qty: '', unit: 'M', unitPrice: '', memo: '', detail: '' };
+const itemTotal = (it) => (Number(it.qty) || 0) * (Number(it.unitPrice) || 0);
 
 const emptyReceiver = {
     company: '', manager: '', contact: '',
@@ -129,6 +130,7 @@ const PurchaseOrderForm = ({ order, onClose, onComplete, savedData, onSave }) =>
                     model: it.model_id || '',
                     qty,
                     unit,
+                    unitPrice: it.unitPrice || it.price || '',
                     memo: '',
                     detail: detailStr || ''
                 };
@@ -163,8 +165,6 @@ const PurchaseOrderForm = ({ order, onClose, onComplete, savedData, onSave }) =>
         }
     };
 
-    /* ── (단가/합계 제거됨) ── */
-
     /* ── 일정에서 불러오기 ── */
     const handleOpenSchedulePicker = async () => {
         if (!scheduleFetched) {
@@ -192,6 +192,7 @@ const PurchaseOrderForm = ({ order, onClose, onComplete, savedData, onSave }) =>
             model: '',
             qty: extOrder.quantity || '',
             unit: 'Box',
+            unitPrice: extOrder.unitPrice || '',
             memo: extOrder.memo || '',
             detail: `${CHANNEL_LABEL[extOrder.channel] || ''} / ${extOrder.customerName || ''}`.trim(),
         };
@@ -304,7 +305,7 @@ ${printContents}
         ws.addRow([]);
 
         /* 품목 테이블 헤더 */
-        const itemHeaderRow = ws.addRow(['번호', '품명', '코드번호', '수량', '단위', '비고']);
+        const itemHeaderRow = ws.addRow(['번호', '품명', '코드번호', '수량', '단위', '단가', '총액', '비고']);
         itemHeaderRow.eachCell(cell => {
             cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 10 };
             cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1A1A2E' } };
@@ -316,7 +317,7 @@ ${printContents}
         /* 품목 데이터 */
         items.forEach((it, i) => {
             const detailText = it.detail ? `\n[ ${it.detail} ]` : '';
-            const row = ws.addRow([i + 1, `${it.name}${detailText}`, it.model, Number(it.qty) || 0, it.unit, it.memo]);
+            const row = ws.addRow([i + 1, `${it.name}${detailText}`, it.model, Number(it.qty) || 0, it.unit, Number(it.unitPrice) || 0, itemTotal(it), it.memo]);
             row.height = 36;
             row.eachCell(cell => {
                 cell.border = { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } };
@@ -331,6 +332,15 @@ ${printContents}
                     cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFAFBFC' } };
                 });
             }
+        });
+
+        /* 합계 총액 */
+        const grandTotal = items.reduce((s, it) => s + itemTotal(it), 0);
+        const totalRow = ws.addRow(['', '', '', '', '', '합계', grandTotal, '']);
+        totalRow.eachCell(cell => {
+            cell.font = { bold: true, size: 10 };
+            cell.border = { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } };
+            cell.alignment = { horizontal: 'center', vertical: 'middle' };
         });
 
         /* 배송 정보 */
@@ -468,7 +478,7 @@ ${printContents}
                         <table style={{ width: '100%', borderCollapse: 'collapse', marginBottom: '24px' }}>
                             <thead>
                                 <tr>
-                                    {['번호', '품명', '코드번호', '수량', '단위', '비고'].map(h => (
+                                    {['번호', '품명', '코드번호', '수량', '단위', '단가', '총액', '비고'].map(h => (
                                         <th key={h} style={itemThStyle}>{h}</th>
                                     ))}
                                 </tr>
@@ -482,13 +492,20 @@ ${printContents}
                                                 <div style={{ fontWeight: '600' }}>{it.name || '-'}</div>
                                                 {it.detail && <div style={{ fontSize: '11px', color: '#666', marginTop: '2px' }}>{it.detail}</div>}
                                             </td>
-                                            <td style={{ ...itemTdStyle, textAlign: 'center', width: '20%' }}>{it.model || '-'}</td>
-                                            <td style={{ ...itemTdStyle, textAlign: 'center', width: '10%' }}>{fmt(it.qty)}</td>
-                                            <td style={{ ...itemTdStyle, textAlign: 'center', width: '10%' }}>{it.unit}</td>
-                                            <td style={{ ...itemTdStyle, textAlign: 'left', width: '15%' }}>{it.memo || ''}</td>
+                                            <td style={{ ...itemTdStyle, textAlign: 'center', width: '16%' }}>{it.model || '-'}</td>
+                                            <td style={{ ...itemTdStyle, textAlign: 'center', width: '8%' }}>{fmt(it.qty)}</td>
+                                            <td style={{ ...itemTdStyle, textAlign: 'center', width: '8%' }}>{it.unit}</td>
+                                            <td style={{ ...itemTdStyle, textAlign: 'right', width: '11%' }}>{fmt(it.unitPrice)}</td>
+                                            <td style={{ ...itemTdStyle, textAlign: 'right', width: '12%' }}>{fmt(itemTotal(it))}</td>
+                                            <td style={{ ...itemTdStyle, textAlign: 'left', width: '12%' }}>{it.memo || ''}</td>
                                         </tr>
                                     );
                                 })}
+                                <tr>
+                                    <td colSpan="6" style={{ ...itemTdStyle, textAlign: 'right', fontWeight: '700', background: '#f4f6f8' }}>합계</td>
+                                    <td style={{ ...itemTdStyle, textAlign: 'right', fontWeight: '700', background: '#f4f6f8' }}>{fmt(items.reduce((s, it) => s + itemTotal(it), 0))}</td>
+                                    <td style={{ ...itemTdStyle, background: '#f4f6f8' }}></td>
+                                </tr>
                             </tbody>
                         </table>
 
@@ -655,54 +672,73 @@ ${printContents}
                                 품목 추가
                             </button>
                         </div>
-                        <div className="space-y-3">
+                        <div className="space-y-4">
                             {items.map((it, i) => (
-                                <div key={i} className="grid grid-cols-12 gap-2 items-end">
-                                    <div className="col-span-4">
-                                        <label className="text-[10px] text-slate-500 block mb-1">품명</label>
-                                        <input value={it.name} onChange={e => updateItem(i, 'name', e.target.value)}
-                                            className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500/50" />
+                                <div key={i} className="rounded-xl border border-white/5 bg-black/10 p-3 space-y-2">
+                                    <div className="grid grid-cols-12 gap-2 items-end">
+                                        <div className="col-span-5">
+                                            <label className="text-[10px] text-slate-500 block mb-1">품명</label>
+                                            <input value={it.name} onChange={e => updateItem(i, 'name', e.target.value)}
+                                                className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500/50" />
+                                        </div>
+                                        <div className="col-span-4">
+                                            <label className="text-[10px] text-slate-500 block mb-1">상세 (규격/색상 등)</label>
+                                            <input value={it.detail} onChange={e => updateItem(i, 'detail', e.target.value)}
+                                                className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500/50" />
+                                        </div>
+                                        <div className="col-span-3">
+                                            <label className="text-[10px] text-slate-500 block mb-1">코드번호</label>
+                                            <input value={it.model} onChange={e => updateItem(i, 'model', e.target.value)}
+                                                className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500/50" />
+                                        </div>
                                     </div>
-                                    <div className="col-span-2">
-                                        <label className="text-[10px] text-slate-500 block mb-1">상세 (규격/색상 등)</label>
-                                        <input value={it.detail} onChange={e => updateItem(i, 'detail', e.target.value)}
-                                            className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500/50" />
-                                    </div>
-                                    <div className="col-span-2">
-                                        <label className="text-[10px] text-slate-500 block mb-1">코드번호</label>
-                                        <input value={it.model} onChange={e => updateItem(i, 'model', e.target.value)}
-                                            className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500/50" />
-                                    </div>
-                                    <div className="col-span-1">
-                                        <label className="text-[10px] text-slate-500 block mb-1">수량</label>
-                                        <input type="number" value={it.qty} onChange={e => updateItem(i, 'qty', e.target.value)}
-                                            className="w-full px-2 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs text-center focus:outline-none focus:ring-1 focus:ring-indigo-500/50" />
-                                    </div>
-                                    <div className="col-span-1">
-                                        <label className="text-[10px] text-slate-500 block mb-1">단위</label>
-                                        <select value={it.unit} onChange={e => updateItem(i, 'unit', e.target.value)}
-                                            className="w-full px-1 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500/50">
-                                            <option value="M">M</option>
-                                            <option value="Box">Box</option>
-                                            <option value="R">R(롤)</option>
-                                            <option value="개">개</option>
-                                            <option value="EA">EA</option>
-                                        </select>
-                                    </div>
-                                    <div className="col-span-1">
-                                        <label className="text-[10px] text-slate-500 block mb-1">비고</label>
-                                        <input value={it.memo} onChange={e => updateItem(i, 'memo', e.target.value)}
-                                            className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500/50" />
-                                    </div>
-                                    <div className="col-span-1 flex justify-center">
-                                        <button onClick={() => removeItem(i)}
-                                            className="p-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500/20 transition-all"
-                                            title="삭제">
-                                            <span className="material-symbols-outlined text-[14px]">delete</span>
-                                        </button>
+                                    <div className="grid grid-cols-12 gap-2 items-end">
+                                        <div className="col-span-2">
+                                            <label className="text-[10px] text-slate-500 block mb-1">수량</label>
+                                            <input type="number" value={it.qty} onChange={e => updateItem(i, 'qty', e.target.value)}
+                                                className="w-full px-2 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs text-center focus:outline-none focus:ring-1 focus:ring-indigo-500/50" />
+                                        </div>
+                                        <div className="col-span-2">
+                                            <label className="text-[10px] text-slate-500 block mb-1">단위</label>
+                                            <select value={it.unit} onChange={e => updateItem(i, 'unit', e.target.value)}
+                                                className="w-full px-1 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500/50">
+                                                <option value="M">M</option>
+                                                <option value="Box">Box</option>
+                                                <option value="R">R(롤)</option>
+                                                <option value="개">개</option>
+                                                <option value="EA">EA</option>
+                                            </select>
+                                        </div>
+                                        <div className="col-span-2">
+                                            <label className="text-[10px] text-slate-500 block mb-1">단가</label>
+                                            <input type="number" value={it.unitPrice} onChange={e => updateItem(i, 'unitPrice', e.target.value)}
+                                                className="w-full px-2 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs text-right focus:outline-none focus:ring-1 focus:ring-indigo-500/50" />
+                                        </div>
+                                        <div className="col-span-2">
+                                            <label className="text-[10px] text-slate-500 block mb-1">총액</label>
+                                            <div className="w-full px-2 py-2 bg-white/[0.02] border border-white/5 rounded-lg text-emerald-400 text-xs text-right font-semibold">
+                                                {fmt(itemTotal(it))}
+                                            </div>
+                                        </div>
+                                        <div className="col-span-3">
+                                            <label className="text-[10px] text-slate-500 block mb-1">비고</label>
+                                            <input value={it.memo} onChange={e => updateItem(i, 'memo', e.target.value)}
+                                                className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500/50" />
+                                        </div>
+                                        <div className="col-span-1 flex justify-center">
+                                            <button onClick={() => removeItem(i)}
+                                                className="p-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500/20 transition-all"
+                                                title="삭제">
+                                                <span className="material-symbols-outlined text-[14px]">delete</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
+                            <div className="flex justify-end pt-1">
+                                <span className="text-xs text-slate-400 mr-2">합계 총액</span>
+                                <span className="text-sm text-emerald-400 font-bold">₩{fmt(items.reduce((s, it) => s + itemTotal(it), 0))}</span>
+                            </div>
                         </div>
                     </div>
 

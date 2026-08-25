@@ -46,6 +46,7 @@ export const useExternalOrderStore = create((set, get) => ({
             customerName: data.customerName || '',
             phone: data.phone || '',
             productName: data.productName || '',
+            selectedProductId: data.selectedProductId || null,
             quantity: data.quantity || '',
             unitPrice: Number(data.unitPrice) || 0,
             totalPrice: Number(data.totalPrice) || 0,
