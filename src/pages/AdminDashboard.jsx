@@ -41,14 +41,16 @@ const calcRevenueStats = (orders, products) => {
     const week = filterByDateRange(orders, 'week');
     const month = filterByDateRange(orders, 'month');
     const year = filterByDateRange(orders, 'year');
-    const sum = (arr) => arr.reduce((s, o) => s + (o.totalPrice || 0), 0);
+    // 결제금액(totalPrice)은 부가세 10%가 포함된 금액이므로, 매출/수익 집계에서는 부가세를 뺀 순매출 기준으로 계산
+    const excludeVat = (amount) => (amount || 0) / 1.1;
+    const sum = (arr) => arr.reduce((s, o) => s + excludeVat(o.totalPrice), 0);
 
-    // 수익 계산: 판매액 - (매입가 × 수량)
+    // 수익 계산: 순매출(부가세 제외) - (매입가 × 수량)
     const productMap = {};
     (products || []).forEach(p => { if (p.id) productMap[p.id] = p; });
     const calcProfit = (arr) => arr.reduce((s, o) => {
         const items = o.items || o.originalItems || [];
-        const orderRevenue = o.totalPrice || 0;
+        const orderRevenue = excludeVat(o.totalPrice);
         let orderCost = 0;
         items.forEach(item => {
             const pId = item.productId || item.id;
@@ -1185,7 +1187,7 @@ const AdminDashboard = () => {
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                         <div>
                             <h2 className="text-2xl font-bold text-white">📊 매출 통계</h2>
-                            <p className="text-slate-400 text-sm mt-1">기간별 매출 분석 및 평균 매출</p>
+                            <p className="text-slate-400 text-sm mt-1">기간별 매출 분석 및 평균 매출 <span className="text-slate-500">(부가세 10% 제외)</span></p>
                         </div>
                         <div className="flex gap-2 bg-white/5 p-1 rounded-xl border border-white/10">
                             {[{id:'daily',label:'일별'},{id:'weekly',label:'주별'},{id:'monthly',label:'월별'},{id:'yearly',label:'연별'}].map(v => (
@@ -1216,7 +1218,7 @@ const AdminDashboard = () => {
 
                     {/* 💰 수익 카드 4개 (매출 - 매입가) */}
                     <div className="mt-2">
-                        <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-2">💰 실제 수익 <span className="text-xs text-slate-500 font-normal">(판매액 - 매입가)</span></h3>
+                        <h3 className="text-lg font-bold text-white mb-3 flex items-center gap-2">💰 실제 수익 <span className="text-xs text-slate-500 font-normal">(판매액 - 매입가, 부가세 제외)</span></h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                             {[
                                 { label: '오늘 수익', value: revenueStats.profitDaily, revenue: revenueStats.daily, color: 'from-emerald-400 to-teal-600', icon: '💵' },
