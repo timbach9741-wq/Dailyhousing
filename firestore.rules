@@ -90,6 +90,12 @@ service cloud.firestore {
       allow read, write: if isAdmin();
     }
 
+    // ── 발주서 (관리자가 직접 작성/저장) ────────────────────
+    // 어드민만 읽기/쓰기 가능
+    match /purchaseOrders/{poId} {
+      allow read, write: if isAdmin();
+    }
+
 
     // ── 사이트 설정 (CMS) ─────────────────────────────────
     // 누구나 읽기 가능 (홈페이지 콘텐츠 공개)

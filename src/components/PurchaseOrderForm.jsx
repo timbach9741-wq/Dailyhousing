@@ -38,9 +38,14 @@ const todayShort = () => {
 /* ══════════════════════════════════════════════════════════ */
 /*                    PurchaseOrderForm                      */
 /* ══════════════════════════════════════════════════════════ */
-const PurchaseOrderForm = ({ order, onClose, onComplete }) => {
+const PurchaseOrderForm = ({ order, onClose, onComplete, savedData, onSave }) => {
     const printRef = useRef(null);
     const allProducts = useProductStore((state) => state.products);
+
+    /* ── 저장된 발주서 불러오기 상태 ── */
+    const [savedId, setSavedId] = useState(savedData?.firestoreId || null);
+    const [saving, setSaving] = useState(false);
+    const [savedAt, setSavedAt] = useState(savedData?.updatedAt || null);
 
     // 외부 주문 일정 데이터
     const { orders: externalOrders, fetchAll: fetchExternalOrders, loading: extLoading } = useExternalOrderStore();
@@ -49,18 +54,20 @@ const PurchaseOrderForm = ({ order, onClose, onComplete }) => {
 
     /* ── 발주번호 자동 생성 ── */
     const [poNumber] = useState(() => {
+        if (savedData?.poNumber) return savedData.poNumber;
         if (order?.id) return `DH-${todayShort()}-${order.id.substring(0, 4).toUpperCase()}`;
         return `DH-${todayShort()}-${String(Math.floor(Math.random() * 900) + 100)}`;
     });
 
     /* ── 공급자 (데일리하우징) ── */
-    const [supplier, setSupplier] = useState(() => ({
-        ...defaultSupplier,
-        bizNo: order?.orderId || '-'
-    }));
+    const [supplier, setSupplier] = useState(() => {
+        if (savedData?.supplier) return savedData.supplier;
+        return { ...defaultSupplier, bizNo: order?.orderId || '-' };
+    });
 
     /* ── 수신처 (외주처/공급사) ── */
     const [receiver, setReceiver] = useState(() => {
+        if (savedData?.receiver) return savedData.receiver;
         if (order) {
             // 기존 주문 데이터 호환: 이전 버전에서는 shippingAddress/receiverPhone/receiverName이 없을 수 있음
             const phone = order.receiverPhone || order.customerPhone || order.phone || '';
@@ -81,6 +88,7 @@ const PurchaseOrderForm = ({ order, onClose, onComplete }) => {
 
     /* ── 품목 목록 ── */
     const [items, setItems] = useState(() => {
+        if (savedData?.items?.length) return savedData.items;
         if (order?.items?.length) {
             return order.items.map(it => {
                 const sub = (it.subCategory || '').toLowerCase();
@@ -131,8 +139,29 @@ const PurchaseOrderForm = ({ order, onClose, onComplete }) => {
 
     /* ── 특이사항 메모 ── */
     const [memo, setMemo] = useState(
-        '- 본 문서는 시스템에서 자동 발행되었습니다.\n- 자재 파손 시 하차 즉시 사진 촬영 후 본사로 연락 바랍니다.'
+        savedData?.memo || '- 본 문서는 시스템에서 자동 발행되었습니다.\n- 자재 파손 시 하차 즉시 사진 촬영 후 본사로 연락 바랍니다.'
     );
+
+    /* ── 저장 ── */
+    const handleSave = async () => {
+        if (!onSave) return;
+        setSaving(true);
+        try {
+            const newId = await onSave({
+                firestoreId: savedId,
+                poNumber,
+                supplier,
+                receiver,
+                items,
+                memo,
+                sourceOrderId: order?.id || null,
+            });
+            if (newId) setSavedId(newId);
+            setSavedAt(new Date().toISOString());
+        } finally {
+            setSaving(false);
+        }
+    };
 
     /* ── (단가/합계 제거됨) ── */
 
@@ -355,10 +384,18 @@ ${printContents}
                     <span className="text-xl">📝</span>
                     <div>
                         <h3 className="text-white font-bold text-sm">발주서 작성</h3>
-                        <p className="text-slate-500 text-[11px]">{poNumber}</p>
+                        <p className="text-slate-500 text-[11px]">
+                            {poNumber}
+                            {savedAt && <span className="text-emerald-400 ml-2">✓ 저장됨</span>}
+                        </p>
                     </div>
                 </div>
                 <div className="flex items-center gap-2">
+                    <button onClick={handleSave} disabled={saving}
+                        className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-xs font-semibold transition-all shadow-lg shadow-indigo-600/20">
+                        <span className="material-symbols-outlined text-[16px]">save</span>
+                        {saving ? '저장 중...' : savedId ? '수정 저장' : '저장'}
+                    </button>
                     <button onClick={handlePrint}
                         className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-all shadow-lg shadow-blue-600/20">
                         <span className="material-symbols-outlined text-[16px]">print</span>

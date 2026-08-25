@@ -8,6 +8,7 @@ import { useToastStore } from '../store/useToastStore';
 import { useProductStore } from '../store/useProductStore';
 import { useConsultationStore } from '../store/useConsultationStore';
 import { useOrderStore } from '../store/useOrderStore';
+import { usePurchaseOrderStore } from '../store/usePurchaseOrderStore';
 import { db } from '../lib/firebase';
 import { collection, getDocs, doc, setDoc, query, orderBy, deleteDoc, updateDoc, where, writeBatch, limit } from 'firebase/firestore';
 import { updateApprovalToSheets } from '../services/googleSheetsService';
@@ -346,6 +347,9 @@ const AdminDashboard = () => {
     const { consultations, fetchConsultations } = useConsultationStore();
     const [consultFilter, setConsultFilter] = useState('all');
     const [consultSearch, setConsultSearch] = useState('');
+
+    // 발주서 저장 상태
+    const { purchaseOrders, fetchPurchaseOrders, savePurchaseOrder, deletePurchaseOrder } = usePurchaseOrderStore();
 
     const [processedOrders, setProcessedOrders] = useState([]);
 
@@ -820,7 +824,8 @@ const AdminDashboard = () => {
     useEffect(() => {
         if (activeTab === 'users') fetchUsers();
         if (activeTab === 'consultations') fetchConsultations();
-    }, [activeTab, fetchUsers, fetchConsultations]);
+        if (activeTab === 'purchaseOrder') fetchPurchaseOrders();
+    }, [activeTab, fetchUsers, fetchConsultations, fetchPurchaseOrders]);
 
     const roleLabel = (u) => {
         if (u.approved === false) return { text: '승인대기', cls: 'bg-amber-500/20 text-amber-400 border-amber-500/30' };
@@ -1510,6 +1515,74 @@ const AdminDashboard = () => {
                                     ))}
                                     {processedOrders.length === 0 && (
                                         <tr><td colSpan="5" className="px-8 py-16 text-center text-slate-500">주문 내역이 없습니다.</td></tr>
+                                    )}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    {/* 저장된 발주서 목록 */}
+                    <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden">
+                        <div className="px-6 md:px-8 py-5 border-b border-white/10">
+                            <h3 className="text-lg font-semibold text-white">💾 저장된 발주서</h3>
+                            <p className="text-xs text-slate-500 mt-1">직접 작성하고 저장한 발주서 목록입니다. 열어서 이어서 수정하거나 다시 인쇄할 수 있습니다.</p>
+                        </div>
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left">
+                                <thead className="bg-white/5 text-slate-400 text-xs uppercase tracking-wider">
+                                    <tr>
+                                        <th className="px-6 md:px-8 py-4">발주번호</th>
+                                        <th className="px-6 md:px-8 py-4">수신 업체</th>
+                                        <th className="px-6 md:px-8 py-4">품목 수</th>
+                                        <th className="px-6 md:px-8 py-4">저장일시</th>
+                                        <th className="px-6 md:px-8 py-4 text-center">관리</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-white/10">
+                                    {purchaseOrders.map((po) => (
+                                        <tr key={po.firestoreId} className="hover:bg-white/5 transition-colors">
+                                            <td className="px-6 md:px-8 py-4">
+                                                <span className="text-sm text-white font-semibold">{po.poNumber}</span>
+                                            </td>
+                                            <td className="px-6 md:px-8 py-4">
+                                                <span className="text-sm text-slate-300">{po.receiver?.company || '-'}</span>
+                                            </td>
+                                            <td className="px-6 md:px-8 py-4">
+                                                <span className="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-400 text-xs font-bold border border-indigo-500/30">
+                                                    {po.items?.length || 0}건
+                                                </span>
+                                            </td>
+                                            <td className="px-6 md:px-8 py-4">
+                                                <span className="text-xs text-slate-500">{po.updatedAt ? new Date(po.updatedAt).toLocaleString('ko-KR') : '-'}</span>
+                                            </td>
+                                            <td className="px-6 md:px-8 py-4 text-center">
+                                                <div className="flex items-center justify-center gap-2">
+                                                    <button
+                                                        onClick={() => setPurchaseOrderModal({ __savedPO: true, ...po })}
+                                                        className="px-3 py-1.5 rounded-lg bg-indigo-500/20 border border-indigo-500/30 text-indigo-400 text-xs font-semibold hover:bg-indigo-500/30 transition-all"
+                                                    >
+                                                        열기
+                                                    </button>
+                                                    <button
+                                                        onClick={async () => {
+                                                            if (!window.confirm(`발주서 ${po.poNumber}를 삭제하시겠습니까?`)) return;
+                                                            try {
+                                                                await deletePurchaseOrder(po.firestoreId);
+                                                                addToast('발주서를 삭제했습니다.', 'success');
+                                                            } catch {
+                                                                addToast('삭제 중 오류가 발생했습니다.', 'error');
+                                                            }
+                                                        }}
+                                                        className="px-3 py-1.5 rounded-lg bg-red-500/20 border border-red-500/30 text-red-400 text-xs font-semibold hover:bg-red-500/30 transition-all"
+                                                    >
+                                                        삭제
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                    {purchaseOrders.length === 0 && (
+                                        <tr><td colSpan="5" className="px-8 py-16 text-center text-slate-500">저장된 발주서가 없습니다.</td></tr>
                                     )}
                                 </tbody>
                             </table>
@@ -3498,7 +3571,18 @@ const AdminDashboard = () => {
             {/* ===================== 발주서 양식 모달 ===================== */}
             {purchaseOrderModal && (
                 <PurchaseOrderForm
-                    order={purchaseOrderModal === 'new' ? null : purchaseOrderModal}
+                    order={(purchaseOrderModal === 'new' || purchaseOrderModal.__savedPO) ? null : purchaseOrderModal}
+                    savedData={purchaseOrderModal.__savedPO ? purchaseOrderModal : null}
+                    onSave={async (data) => {
+                        try {
+                            const newId = await savePurchaseOrder(data);
+                            addToast('발주서를 저장했습니다.', 'success');
+                            return newId;
+                        } catch (error) {
+                            console.error('발주서 저장 실패:', error);
+                            addToast('발주서 저장 중 오류가 발생했습니다.', 'error');
+                        }
+                    }}
                     onClose={() => setPurchaseOrderModal(null)}
                     products={products}
                     onComplete={async (orderId, deliveryInfo) => {
