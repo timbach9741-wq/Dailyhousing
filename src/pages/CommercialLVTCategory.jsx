@@ -78,10 +78,10 @@ export default function CommercialLVTCategory() {
             }
         }
 
-        // 제고 없는 상품(일시 품절, 단종) 맨 뒤로 정렬 (안정 정렬)
+        // 재고 없는 상품(일시 품절, 단종)과 가격 미정(Coming Soon, LX 제외) 상품 맨 뒤로 정렬 (안정 정렬)
         result = [...result].sort((a, b) => {
-            const isAOut = a.salesStatus === '일시 품절' || a.salesStatus === '단종';
-            const isBOut = b.salesStatus === '일시 품절' || b.salesStatus === '단종';
+            const isAOut = a.salesStatus === '일시 품절' || a.salesStatus === '단종' || (a.price === 0 && a.brand !== 'LX Z:IN');
+            const isBOut = b.salesStatus === '일시 품절' || b.salesStatus === '단종' || (b.price === 0 && b.brand !== 'LX Z:IN');
             if (isAOut && !isBOut) return 1;
             if (!isAOut && isBOut) return -1;
             return 0;
@@ -187,13 +187,18 @@ export default function CommercialLVTCategory() {
                                 <img
                                     src={product.imageUrl}
                                     alt={product.title}
-                                    className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${product.salesStatus === '일시 품절' || product.salesStatus === '단종' ? 'grayscale opacity-60' : ''}`}
+                                    className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${product.salesStatus === '일시 품절' || product.salesStatus === '단종' || (product.price === 0 && product.brand !== 'LX Z:IN') ? 'grayscale opacity-60' : ''}`}
                                     loading="lazy"
                                 />
 
                                 {/* 재고 상태 뱃지 */}
                                 <div className="absolute top-3 left-3 z-20 flex flex-col gap-1">
-                                    {product.salesStatus === '일시 품절' ? (
+                                    {(product.price === 0 && product.brand !== 'LX Z:IN') ? (
+                                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500 text-white text-[11px] sm:text-[12px] font-black shadow-lg shadow-amber-500/30">
+                                            <span className="material-symbols-outlined text-[14px]">hourglass_top</span>
+                                            Coming Soon
+                                        </span>
+                                    ) : product.salesStatus === '일시 품절' ? (
                                         <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 text-white text-[11px] sm:text-[12px] font-black shadow-lg shadow-red-600/30">
                                             <span className="material-symbols-outlined text-[14px]">schedule</span>
                                             일시품절 {product.expectedDate ? `(입고예정: ${product.expectedDate})` : ''}
@@ -246,8 +251,10 @@ export default function CommercialLVTCategory() {
                                                 <span className="text-[11px] md:text-[12px] text-slate-500 font-medium">가격</span>
                                                 <div className="flex items-baseline gap-0.5">
                                                     {isAuthenticated ? (
-                                                        <span className="text-[12px] md:text-[13px] font-bold text-slate-900">
-                                                            {product.price != null && product.price !== 0 && product.price !== '0' ? `${product.price.toLocaleString()}원` : '별도 문의'}
+                                                        <span className={`text-[12px] md:text-[13px] font-bold ${(product.price === 0 && product.brand !== 'LX Z:IN') ? 'text-amber-600' : 'text-slate-900'}`}>
+                                                            {product.price != null && product.price !== 0 && product.price !== '0'
+                                                                ? `${product.price.toLocaleString()}원`
+                                                                : (product.brand !== 'LX Z:IN' ? 'Coming Soon' : '별도 문의')}
                                                         </span>
                                                     ) : (
                                                         <Link to="/login" className="text-[11px] md:text-[12px] font-bold text-[#d4a853] hover:underline">로그인 후 가격 확인</Link>

@@ -381,8 +381,10 @@ export default function FlooringProductDetailView() {
                                 {isAuthenticated ? (
                                     <div className="flex items-baseline gap-2">
                                         <span className="text-[14px] text-[#888888] font-semibold mr-2">{product.priceLabel || '가격:'}</span>
-                                        <span className="text-[26px] md:text-[30px] font-black text-[#222222]">
-                                            {(product.price === 0) ? "별도 문의" : `${(product.price || 0).toLocaleString()}원`}
+                                        <span className={`text-[26px] md:text-[30px] font-black ${(product.price === 0 && product.brand !== 'LX Z:IN') ? 'text-slate-400' : 'text-[#222222]'}`}>
+                                            {product.price !== 0
+                                                ? `${(product.price || 0).toLocaleString()}원`
+                                                : (product.brand !== 'LX Z:IN' ? "Coming Soon" : "별도 문의")}
                                         </span>
                                         {product.price !== 0 && product.priceUnit && (
                                             <span className="text-[14px] text-[#888888] font-semibold ml-1">/{product.priceUnit}</span>
@@ -399,7 +401,11 @@ export default function FlooringProductDetailView() {
                                 )}
                             </div>
                             <p className="text-[13px] text-rose-600 font-bold bg-rose-50 w-fit px-3 py-1 rounded-md border border-rose-100 mt-1">
-                                {product.price === 0 ? "※ 시공 면적 및 조건에 따라 가격이 상이하오니 별도 문의 바랍니다." : "※ 부가세(VAT) 10% 별도 금액입니다."}
+                                {product.price !== 0
+                                    ? "※ 부가세(VAT) 10% 별도 금액입니다."
+                                    : (product.brand !== 'LX Z:IN'
+                                        ? "※ 가격 확정 전 상품으로, 준비되는 대로 공개됩니다. 급하신 경우 전화로 문의 바랍니다."
+                                        : "※ 시공 면적 및 조건에 따라 가격이 상이하오니 별도 문의 바랍니다.")}
                             </p>
                         </div>
 
@@ -659,37 +665,44 @@ export default function FlooringProductDetailView() {
                         })()}
 
                         {/* 구매/장바구니 버튼 */}
-                        <div className="flex gap-2">
-                            <button
-                                onClick={() => {
-                                    const unitInfo = getProductUnit(product);
-                                    const isRollUnit = unitInfo.unit === 'R' && unitInfo.rollLength;
-                                    const cartQty = isRollUnit ? qty * unitInfo.rollLength : qty;
-                                    setCartItem(product, cartQty);
-                                    addToast(`장바구니에 ${isRollUnit ? `${qty}롤(${cartQty}M)` : `${qty}${unitInfo.unit}`} 담겼습니다.`);
-                                }}
-                                className="flex-1 py-3 bg-[#c8221f] text-white font-bold text-[13px] hover:bg-[#a51b18] transition-colors rounded-lg active:scale-[0.98]"
-                            >
-                                장바구니
-                            </button>
-                            <button
-                                onClick={() => {
-                                    const unitInfo = getProductUnit(product);
-                                    const isRollUnit = unitInfo.unit === 'R' && unitInfo.rollLength;
-                                    const cartQty = isRollUnit ? qty * unitInfo.rollLength : qty;
-                                    setCartItem(product, cartQty);
-                                    setQty(1);
-                                    if (!isAuthenticated) {
-                                        navigate('/login', { state: { from: { pathname: '/cart' } } });
-                                    } else {
-                                        navigate('/cart');
-                                    }
-                                }}
-                                className="flex-1 py-3 bg-white border border-[#c8221f] text-[#c8221f] font-bold text-[13px] hover:bg-red-50 transition-colors rounded-lg active:scale-[0.98]"
-                            >
-                                바로구매
-                            </button>
-                        </div>
+                        {(product.price === 0 && product.brand !== 'LX Z:IN') ? (
+                            <div className="flex items-center gap-2 py-3.5 px-4 bg-slate-50 border border-slate-200 rounded-lg">
+                                <span className="material-symbols-outlined text-[18px] text-slate-400">hourglass_top</span>
+                                <span className="text-[13px] font-bold text-slate-600">Coming Soon — 가격 준비 중인 상품입니다. 구매 문의는 전화로 부탁드립니다.</span>
+                            </div>
+                        ) : (
+                            <div className="flex gap-2">
+                                <button
+                                    onClick={() => {
+                                        const unitInfo = getProductUnit(product);
+                                        const isRollUnit = unitInfo.unit === 'R' && unitInfo.rollLength;
+                                        const cartQty = isRollUnit ? qty * unitInfo.rollLength : qty;
+                                        setCartItem(product, cartQty);
+                                        addToast(`장바구니에 ${isRollUnit ? `${qty}롤(${cartQty}M)` : `${qty}${unitInfo.unit}`} 담겼습니다.`);
+                                    }}
+                                    className="flex-1 py-3 bg-[#c8221f] text-white font-bold text-[13px] hover:bg-[#a51b18] transition-colors rounded-lg active:scale-[0.98]"
+                                >
+                                    장바구니
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        const unitInfo = getProductUnit(product);
+                                        const isRollUnit = unitInfo.unit === 'R' && unitInfo.rollLength;
+                                        const cartQty = isRollUnit ? qty * unitInfo.rollLength : qty;
+                                        setCartItem(product, cartQty);
+                                        setQty(1);
+                                        if (!isAuthenticated) {
+                                            navigate('/login', { state: { from: { pathname: '/cart' } } });
+                                        } else {
+                                            navigate('/cart');
+                                        }
+                                    }}
+                                    className="flex-1 py-3 bg-white border border-[#c8221f] text-[#c8221f] font-bold text-[13px] hover:bg-red-50 transition-colors rounded-lg active:scale-[0.98]"
+                                >
+                                    바로구매
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>
