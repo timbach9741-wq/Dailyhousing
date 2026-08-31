@@ -24,7 +24,7 @@ const PUBLIC_DIR = join(__dirname, '..', 'public');
 const PSEO_SLUGS = [
   "gyeonggi-yongin", "gyeonggi-namyangju", "gyeonggi-hwaseong", "gyeonggi-anyang",
   "gyeonggi-suwon", "gyeonggi-ilsan", "seoul-yangcheon", "gyeonggi-siheung",
-  "gyeonggi-gwangju", "chungnam-asan"
+  "gyeonggi-gwangju", "chungnam-asan", "incheon-junggu"
 ];
 
 // static pages (trailing slashes matched)

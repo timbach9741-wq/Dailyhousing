@@ -64,6 +64,13 @@ export const regionCaseStudies = {
         note: '경기 광주 지역 실제 시공 완료 현장입니다.',
         image: '/assets/images/case-studies/gyeonggi-gwangju.jpg'
     },
+    'incheon-junggu': {
+        complex: '인천 중구 운남동 단독주택',
+        unit: '',
+        material: 'LX 지아프리미엄 2.2T(자연애) (모델명 ZJ44093)',
+        note: '30평형 단독주택 시공 현장입니다.',
+        image: '/assets/images/hero_banner_2.png'
+    },
     'chungnam-asan': {
         complex: '아산 배방자이',
         unit: '111동',

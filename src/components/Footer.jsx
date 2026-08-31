@@ -108,6 +108,34 @@ export default function Footer() {
                 </div>
             </div>
 
+            {/* Regional Landing Pages (internal linking for SEO) */}
+            <div className="px-4 sm:px-6 lg:px-16 xl:px-24 pb-8 sm:pb-10 border-t border-slate-100 pt-6 sm:pt-8">
+                <h4 className="text-[13px] font-bold text-slate-400 mb-3">시공 지역</h4>
+                <div className="flex flex-wrap gap-x-4 gap-y-2">
+                    {[
+                        { slug: 'gyeonggi-anyang', label: '안양 바닥재 시공' },
+                        { slug: 'gyeonggi-suwon', label: '수원 바닥재 시공' },
+                        { slug: 'gyeonggi-yongin', label: '용인 바닥재 시공' },
+                        { slug: 'gyeonggi-hwaseong', label: '화성 바닥재 시공' },
+                        { slug: 'gyeonggi-namyangju', label: '남양주 바닥재 시공' },
+                        { slug: 'gyeonggi-ilsan', label: '일산 바닥재 시공' },
+                        { slug: 'gyeonggi-siheung', label: '시흥 바닥재 시공' },
+                        { slug: 'gyeonggi-gwangju', label: '경기광주 바닥재 시공' },
+                        { slug: 'seoul-yangcheon', label: '양천 바닥재 시공' },
+                        { slug: 'chungnam-asan', label: '아산 바닥재 시공' },
+                        { slug: 'incheon-junggu', label: '인천 바닥재 시공' },
+                    ].map((region) => (
+                        <Link
+                            key={region.slug}
+                            to={`/${region.slug}-flooring`}
+                            className="text-[13px] font-normal text-slate-400 hover:text-[#d4a853] transition-colors"
+                        >
+                            {region.label}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+
             {/* Bottom Bar */}
             <div className="bg-slate-50 border-t border-slate-200 px-4 sm:px-6 lg:px-16 xl:px-24 py-5 sm:py-6 mt-4">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">

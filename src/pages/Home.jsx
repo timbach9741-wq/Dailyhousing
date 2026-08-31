@@ -244,6 +244,49 @@ export default function Home() {
             </section>
 
             {/* =============================================
+                SECTION 2.5: Regional Case Studies (internal linking)
+            ============================================= */}
+            <section className="bg-slate-50 py-12 sm:py-16 lg:py-24 border-y border-slate-100">
+                <div className="px-4 sm:px-6 lg:px-16 xl:px-24">
+                    <div className="text-center mb-8 sm:mb-10">
+                        <div className="section-divider mx-auto mb-4 sm:mb-5"></div>
+                        <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 lg:text-[36px] mb-3 break-keep" style={{ lineHeight: 1.5 }}>
+                            지역별 실제 시공 사례
+                        </h2>
+                        <p className="text-[15px] sm:text-[17px] text-slate-500 font-normal max-w-2xl mx-auto leading-relaxed break-keep">
+                            데일리하우징이 직접 완료한 지역별 시공 현장을 확인해보세요.
+                        </p>
+                    </div>
+
+                    <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
+                        {[
+                            { slug: 'gyeonggi-anyang', label: '경기 안양시' },
+                            { slug: 'gyeonggi-suwon', label: '경기 수원시' },
+                            { slug: 'gyeonggi-yongin', label: '경기 용인시' },
+                            { slug: 'gyeonggi-hwaseong', label: '경기 화성시' },
+                            { slug: 'gyeonggi-namyangju', label: '경기 남양주시' },
+                            { slug: 'gyeonggi-ilsan', label: '경기 일산동구' },
+                            { slug: 'gyeonggi-siheung', label: '경기 시흥시' },
+                            { slug: 'gyeonggi-gwangju', label: '경기 광주시' },
+                            { slug: 'seoul-yangcheon', label: '서울 양천구' },
+                            { slug: 'chungnam-asan', label: '충남 아산시' },
+                            { slug: 'incheon-junggu', label: '인천 중구' },
+                        ].map((region) => (
+                            <Link
+                                key={region.slug}
+                                to={`/${region.slug}-flooring`}
+                                className="group inline-flex items-center gap-1.5 rounded-full bg-white px-4 sm:px-5 py-2 sm:py-2.5 text-[13px] sm:text-[14px] font-semibold text-slate-700 border border-slate-200 shadow-sm hover:border-[#d4a853] hover:text-[#d4a853] hover:shadow-md transition-all"
+                            >
+                                <span className="material-symbols-outlined text-[15px] sm:text-[16px] text-[#d4a853]">location_on</span>
+                                {region.label}
+                                <span className="material-symbols-outlined text-[14px] sm:text-[15px] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all">arrow_forward</span>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* =============================================
                 SECTION 3: Why Us — Core Strengths
             ============================================= */}
             <section className="bg-slate-50 py-12 sm:py-16 lg:py-32">

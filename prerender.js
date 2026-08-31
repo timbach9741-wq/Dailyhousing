@@ -53,7 +53,9 @@ const PSEO_SLUGS = [
   "busan-haeundae", "busan-suyeong", "busan-dongnae",
   "daegu-suseong", "daejeon-yuseong",
   // 8/10 신규 추가 (실제 시공 사례 확보된 지역)
-  "seoul-yangcheon", "gyeonggi-siheung", "gyeonggi-gwangju", "chungnam-asan"
+  "seoul-yangcheon", "gyeonggi-siheung", "gyeonggi-gwangju", "chungnam-asan",
+  // 8/31 신규 추가 (실제 시공 사례 확보된 지역)
+  "incheon-junggu"
 ];
 
 // static pages to prerender

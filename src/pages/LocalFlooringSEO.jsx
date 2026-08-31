@@ -19,7 +19,7 @@ const GU_MAP = {
     bundang: "분당구", suwon: "수원시", ilsan: "일산동구", gimpo: "김포시",
     hwaseong: "화성시", yongin: "용인시", hanami: "하남시", namyangju: "남양주시",
     anyang: "안양시", bucheon: "부천시", gwangmyeong: "광명시",
-    yeonsu: "연수구", bupyeong: "부평구", haeundae: "해운대구",
+    yeonsu: "연수구", bupyeong: "부평구", junggu: "중구", haeundae: "해운대구",
     suyeong: "수영구", dongnae: "동래구", suseong: "수성구", yuseong: "유성구",
     yangcheon: "양천구", siheung: "시흥시", gwangju: "광주시", asan: "아산시"
 };
