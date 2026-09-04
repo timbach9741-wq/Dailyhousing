@@ -50,6 +50,7 @@ const CleaningSickBuilding = lazy(() => import('./pages/CleaningSickBuilding'))
 const CleaningAppliance = lazy(() => import('./pages/CleaningAppliance'))
 const CleaningRegular = lazy(() => import('./pages/CleaningRegular'))
 const LocalFlooringSEO = lazy(() => import('./pages/LocalFlooringSEO'))
+const CommercialLVTGuide = lazy(() => import('./pages/CommercialLVTGuide'))
 
 // Loading component
 const PageLoader = () => (
@@ -129,6 +130,7 @@ function App() {
             <Route path="/category/residential" element={<ResidentialSheetCategory />} />
             <Route path="/product/:id" element={<FlooringProductDetailView />} />
             <Route path="/category/commercial" element={<CommercialLVTCategory />} />
+            <Route path="/commercial-lvt-guide" element={<CommercialLVTGuide />} />
             <Route path="/consultations/new" element={<InteriorConsultationRequest />} />
             <Route path="/inquiry" element={<QuantityInquiry />} />
             <Route path="/case-studies" element={<CaseStudies />} />

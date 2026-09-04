@@ -21,7 +21,8 @@ const GU_MAP = {
     anyang: "안양시", bucheon: "부천시", gwangmyeong: "광명시",
     yeonsu: "연수구", bupyeong: "부평구", junggu: "중구", haeundae: "해운대구",
     suyeong: "수영구", dongnae: "동래구", suseong: "수성구", yuseong: "유성구",
-    yangcheon: "양천구", siheung: "시흥시", gwangju: "광주시", asan: "아산시"
+    yangcheon: "양천구", siheung: "시흥시", gwangju: "광주시", asan: "아산시",
+    dongtan: "동탄"
 };
 
 export default function LocalFlooringSEO() {

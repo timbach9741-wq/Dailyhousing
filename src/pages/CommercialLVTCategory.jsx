@@ -127,6 +127,12 @@ export default function CommercialLVTCategory() {
                         최고급 사양의 프레스티지부터 실용적인 에코노까지,<br />
                         공간의 성격에 최적화된 라인업을 제공합니다.
                     </p>
+                    <Link
+                        to="/commercial-lvt-guide"
+                        className="inline-block mt-4 sm:mt-6 text-[12px] sm:text-sm font-bold text-[#d4a853] hover:text-[#b8923e] underline underline-offset-4"
+                    >
+                        지식산업센터·사무실 바닥재 등급 고르는 법 보기 →
+                    </Link>
                 </div>
             </section>
 

@@ -55,7 +55,10 @@ const PSEO_SLUGS = [
   // 8/10 신규 추가 (실제 시공 사례 확보된 지역)
   "seoul-yangcheon", "gyeonggi-siheung", "gyeonggi-gwangju", "chungnam-asan",
   // 8/31 신규 추가 (실제 시공 사례 확보된 지역)
-  "incheon-junggu"
+  "incheon-junggu",
+  // 9/4 신규 추가 — 동탄 slug 신설. 실사례 미확보 상태라 LocalFlooringSEO.jsx가
+  // 자동으로 noindex 처리함(실사례 확보 시 regionCaseStudies.js에 추가하면 자동 해제).
+  "gyeonggi-dongtan"
 ];
 
 // static pages to prerender
@@ -63,6 +66,7 @@ const staticPages = [
   '/',
   '/category/residential',
   '/category/commercial',
+  '/commercial-lvt-guide',
   '/consultations/new',
   '/inquiry',
   '/case-studies',
