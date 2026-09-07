@@ -27,6 +27,7 @@ import NovamaruFeature from '../components/product/NovamaruFeature';
 import KujungmaruWoodFeature from '../components/product/KujungmaruWoodFeature';
 import KujungmaruWoodStructure from '../components/product/KujungmaruWoodStructure';
 import SEO from '../components/SEO';
+import { buildCanonicalIdMap } from '../utils/productLineGrouping';
 
 // 에디톤 마루 상세 이미지 목록 (문서참조 - 실제 다운로드 제공 파일)
 const MARU_LAYERS = [
@@ -233,6 +234,10 @@ export default function FlooringProductDetailView() {
         , [recentProductIds, products]);
 
     const { similarProducts, isOutOfStock: _isOutOfStock, isLowStock } = useSimilarProducts(id);
+    // 색상/패턴만 다른 같은 라인 상품들은 대표 1개만 색인시키고 나머지는
+    // noindex + canonical로 대표 페이지를 가리키게 함(2026-09-07, GSC "발견됨 -
+    // 현재 색인 생성되지 않음" 674건 대응 — src/utils/productLineGrouping.js 참고).
+    const canonicalIdMap = useMemo(() => buildCanonicalIdMap(products), [products]);
     const [isImageModalOpen, setIsImageModalOpen] = useState(false);
     const [qty, setQty] = useState(1);
     const [prevId, setPrevId] = useState(id);
@@ -283,13 +288,18 @@ export default function FlooringProductDetailView() {
     const isNovamaru = product.subtitle?.includes('노바마루');
     const isKujungmaruWood = product.subtitle?.includes('구정마루') && product.subtitle?.includes('원목마루');
 
+    const canonicalProductId = canonicalIdMap.get(String(product.id)) || String(product.id);
+    const isColorVariant = canonicalProductId !== String(product.id);
+
     return (
         <main className="flex-1 w-full pb-40 lg:pb-32">
             <SEO
                 title={product.title}
                 description={`${product.title} - ${product.subtitle || '프리미엄 바닥재'}`}
                 url={`https://데일리하우징.kr/product/${product.id}`}
+                canonicalUrl={isColorVariant ? `https://데일리하우징.kr/product/${canonicalProductId}` : undefined}
                 imageUrl={product.imageUrl ? `https://데일리하우징.kr${product.imageUrl}` : 'https://데일리하우징.kr/og-image.jpg'}
+                noindex={isColorVariant}
             />
             {/* 뒤로가기 및 브레드크럼 */}
             <div className="max-w-7xl mx-auto px-4 md:px-10 pt-6 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">

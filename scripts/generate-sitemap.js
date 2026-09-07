@@ -6,6 +6,7 @@ import { KUJUNGMARU_PRODUCTS } from '../src/data/kujungmaru-products.js';
 import { DONGHWAMARU_PRODUCTS } from '../src/data/donghwamaru-products.js';
 import { HANSOLMARU_PRODUCTS } from '../src/data/hansolmaru-products.js';
 import { NOVAMARU_PRODUCTS } from '../src/data/novamaru-products.js';
+import { buildCanonicalIdMap } from '../src/utils/productLineGrouping.js';
 
 const ALL_PRODUCTS = [
   ...LXZIN_PRODUCTS,
@@ -76,8 +77,16 @@ async function generateSitemap() {
     });
   });
 
-  // 3. 상품 상세 페이지 추가 (전체 자재)
-  ALL_PRODUCTS.forEach(product => {
+  // 3. 상품 상세 페이지 추가 (라인별 대표 상품만 — 색상/패턴만 다른 변형은
+  // noindex + canonical로 대표 페이지를 가리키므로 사이트맵에 넣지 않음.
+  // 859개 중 대부분이 사실상 동일 페이지라 전부 제출하면 Google이 "발견됨 -
+  // 현재 색인 생성되지 않음"으로 대량 방치하는 문제를 2026-09-07에 확인함.
+  // src/utils/productLineGrouping.js 참고.)
+  const canonicalIdMap = buildCanonicalIdMap(ALL_PRODUCTS);
+  const canonicalProducts = ALL_PRODUCTS.filter(
+    product => canonicalIdMap.get(String(product.id)) === String(product.id)
+  );
+  canonicalProducts.forEach(product => {
     urls.push({
       loc: `${baseDomain}/product/${product.id}/`,
       lastmod: new Date().toISOString().split('T')[0],
@@ -108,7 +117,7 @@ async function generateSitemap() {
 
   const outputPath = join(PUBLIC_DIR, 'sitemap.xml');
   writeFileSync(outputPath, xml, 'utf-8');
-  console.log(`✅ 사이트맵 생성 완료: ${outputPath} (${urls.length}개 URL)`);
+  console.log(`✅ 사이트맵 생성 완료: ${outputPath} (${urls.length}개 URL, 상품은 ${ALL_PRODUCTS.length}개 중 대표 ${canonicalProducts.length}개만 포함)`);
 }
 
 generateSitemap();

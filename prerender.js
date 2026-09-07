@@ -8,6 +8,7 @@ import { KUJUNGMARU_PRODUCTS } from './src/data/kujungmaru-products.js';
 import { DONGHWAMARU_PRODUCTS } from './src/data/donghwamaru-products.js';
 import { HANSOLMARU_PRODUCTS } from './src/data/hansolmaru-products.js';
 import { NOVAMARU_PRODUCTS } from './src/data/novamaru-products.js';
+import { buildCanonicalIdMap } from './src/utils/productLineGrouping.js';
 
 const ALL_PRODUCTS = [
   ...LXZIN_PRODUCTS,
@@ -16,6 +17,12 @@ const ALL_PRODUCTS = [
   ...HANSOLMARU_PRODUCTS,
   ...NOVAMARU_PRODUCTS,
 ];
+
+// 색상/패턴만 다른 같은 라인 상품은 대표 1개만 self-canonical로 남기고, 나머지는
+// 이 맵을 통해 대표 상품 URL로 canonical을 강제한다(noindex는 React가 SEO.jsx로
+// 이미 주입함 — 여기서는 puppeteer의 canonical 정규화 로직이 그 값을 self URL로
+// 덮어쓰지 않도록 예외 처리만 함). src/utils/productLineGrouping.js 참고.
+const PRODUCT_CANONICAL_ID_MAP = buildCanonicalIdMap(ALL_PRODUCTS);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = join(__dirname, 'dist');
@@ -205,15 +212,28 @@ async function prerender() {
         // 데이터 로드 안정화를 위한 대기
         await new Promise(r => setTimeout(r, 200));
 
+        // 상품 색상 변형 페이지는 canonical이 대표 상품 URL을 가리켜야 하므로,
+        // 이 라우트가 그런 변형인지와 그 대표 URL을 미리 계산해 브라우저 컨텍스트로 전달
+        const productIdMatch = route.match(/^\/product\/(.+)$/);
+        const canonicalOverrideId = productIdMatch ? PRODUCT_CANONICAL_ID_MAP.get(productIdMatch[1]) : null;
+        const canonicalOverrideHref = (canonicalOverrideId && canonicalOverrideId !== productIdMatch[1])
+          ? `https://데일리하우징.kr/product/${canonicalOverrideId}/`
+          : null;
+
         // 대표 canonical URL 보정/트레일링 슬래시 주입 + 혹시 남아있는 중복 title/canonical 정리
-        await page.evaluate((currentRoute) => {
+        await page.evaluate((currentRoute, canonicalOverrideHref) => {
           const canonicals = document.querySelectorAll('link[rel="canonical"]');
           canonicals.forEach((el, idx) => { if (idx > 0) el.remove(); });
           const canonical = canonicals[0];
           if (canonical) {
-            // 루트면 슬래시 포함, 그 외엔 끝에 슬래시 강제 추가
-            const formattedRoute = currentRoute === '/' ? '/' : currentRoute + '/';
-            canonical.setAttribute('href', `https://데일리하우징.kr${formattedRoute}`);
+            if (canonicalOverrideHref) {
+              // 색상 변형 페이지: 대표 상품 URL을 그대로 canonical로 사용
+              canonical.setAttribute('href', canonicalOverrideHref);
+            } else {
+              // 일반 페이지: 루트면 슬래시 포함, 그 외엔 끝에 슬래시 강제 추가한 자기 자신
+              const formattedRoute = currentRoute === '/' ? '/' : currentRoute + '/';
+              canonical.setAttribute('href', `https://데일리하우징.kr${formattedRoute}`);
+            }
           }
 
           // <title>은 실제 document.title과 일치하는 태그 하나만 남기고 나머지(정적 기본값 등) 제거
@@ -226,7 +246,23 @@ async function prerender() {
               el.remove();
             }
           });
-        }, route);
+
+          // index.html 기본 셸의 description/OG 태그와 Helmet이 페이지별로 주입한
+          // 태그가 같은 name/property로 중복 존재하는 문제(2026-09-07 발견, 전체
+          // 페이지 공통 — Google이 모든 페이지를 동일한 description으로 인식할 수
+          // 있는 원인) — 나중에 렌더링된(Helmet) 버전만 남기고 정적 기본값은 제거.
+          const dupeSelectors = [
+            'meta[name="description"]',
+            'meta[property="og:title"]',
+            'meta[property="og:description"]',
+            'meta[property="og:type"]',
+            'meta[property="og:image"]',
+          ];
+          dupeSelectors.forEach((sel) => {
+            const els = document.querySelectorAll(sel);
+            els.forEach((el, idx) => { if (idx < els.length - 1) el.remove(); });
+          });
+        }, route, canonicalOverrideHref);
 
         const html = await page.content();
 
