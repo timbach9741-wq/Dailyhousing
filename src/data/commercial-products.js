@@ -24,7 +24,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTT6950",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 43000,
         "sellingPrice": 38000
     },
     {
@@ -52,7 +51,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTT6951",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 43000,
         "sellingPrice": 38000
     },
     {
@@ -80,7 +78,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTT6952",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 43000,
         "sellingPrice": 38000
     },
     {
@@ -108,7 +105,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTT6953",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 43000,
         "sellingPrice": 38000
     },
     {
@@ -136,7 +132,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTT6913",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 43000,
         "sellingPrice": 38000
     },
     {
@@ -164,7 +159,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTT6912",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 43000,
         "sellingPrice": 38000
     },
     {
@@ -192,7 +186,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTT6910",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 43000,
         "sellingPrice": 38000
     },
     {
@@ -220,7 +213,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTT6917",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 43000,
         "sellingPrice": 38000
     },
     {
@@ -248,7 +240,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTT8696",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 53000,
         "sellingPrice": 48500
     },
     {
@@ -276,7 +267,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTT8698",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 53000,
         "sellingPrice": 48500
     },
     {
@@ -304,7 +294,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTW7902",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 53000,
         "sellingPrice": 48500
     },
     {
@@ -332,7 +321,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTW7904",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 53000,
         "sellingPrice": 48500
     },
     {
@@ -360,7 +348,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTW7961",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 53000,
         "sellingPrice": 48500
     },
     {
@@ -388,7 +375,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "PTW7964",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 53000,
         "sellingPrice": 48500
     },
     {
@@ -417,7 +403,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3051",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -446,7 +431,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3062",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -475,7 +459,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3061",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -504,7 +487,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3088",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -533,7 +515,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3065",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -562,7 +543,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3059",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -591,7 +571,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3060",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -620,7 +599,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBW3019",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -649,7 +627,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3069",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -678,7 +655,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBW3037",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -707,7 +683,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3066",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -736,7 +711,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3067",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -765,7 +739,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBW3042",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -794,7 +767,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3074",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -823,7 +795,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBW3038",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -852,7 +823,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBW3020",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -881,7 +851,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBW3029",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -910,7 +879,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBW3022",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -939,7 +907,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3090",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -968,7 +935,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3075",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -997,7 +963,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3082",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1026,7 +991,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3068",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1055,7 +1019,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3081",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1084,7 +1047,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3089",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1113,7 +1075,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3080",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1142,7 +1103,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3091",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1171,7 +1131,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBW3040",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1200,7 +1159,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3086",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1229,7 +1187,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3083",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1258,7 +1215,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3078",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1287,7 +1243,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3085",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1316,7 +1271,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBW3046",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1345,7 +1299,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3084",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1374,7 +1327,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3079",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1403,7 +1355,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3076",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1432,7 +1383,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBW3045",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1461,7 +1411,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3077",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1490,7 +1439,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DBT3087",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 27000,
         "sellingPrice": 23000
     },
     {
@@ -1519,7 +1467,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6550",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1548,7 +1495,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6551",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1577,7 +1523,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6552",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1606,7 +1551,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6553",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1635,7 +1579,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6554",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1664,7 +1607,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6555",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1693,7 +1635,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6556",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1722,7 +1663,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6557",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1751,7 +1691,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6558",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1780,7 +1719,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6559",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1809,7 +1747,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6560",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1838,7 +1775,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6561",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1867,7 +1803,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6562",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1896,7 +1831,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6563",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1925,7 +1859,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6564",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1954,7 +1887,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6565",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -1983,7 +1915,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6566",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2012,7 +1943,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6567",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2041,7 +1971,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6568",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2070,7 +1999,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6569",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2099,7 +2027,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6570",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2128,7 +2055,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6571",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2157,7 +2083,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6572",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2186,7 +2111,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6573",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2215,7 +2139,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6574",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2244,7 +2167,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6575",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2273,7 +2195,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6576",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2302,7 +2223,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6577",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2331,7 +2251,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6578",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2360,7 +2279,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6579",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2389,7 +2307,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6580",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2418,7 +2335,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6235",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2447,7 +2363,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6236",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2476,7 +2391,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6242",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2505,7 +2419,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6243",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2534,7 +2447,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6244",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2563,7 +2475,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6251",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2592,7 +2503,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6252",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2621,7 +2531,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6237",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2650,7 +2559,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6238",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2679,7 +2587,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6229",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2708,7 +2615,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6271",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2737,7 +2643,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6272",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2766,7 +2671,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6273",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2795,7 +2699,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6207",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2824,7 +2727,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6208",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2853,7 +2755,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6203",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2882,7 +2783,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6204",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2911,7 +2811,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6256",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2940,7 +2839,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6257",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2969,7 +2867,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6258",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -2998,7 +2895,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6291",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3027,7 +2923,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6292",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3056,7 +2951,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6312",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3085,7 +2979,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6281",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3114,7 +3007,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6282",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3143,7 +3035,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6008",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3172,7 +3063,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6014",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3201,7 +3091,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6064",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3230,7 +3119,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6075",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3259,7 +3147,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6076",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3288,7 +3175,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6245",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3317,7 +3203,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6246",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3346,7 +3231,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6247",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3375,7 +3259,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6248",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3404,7 +3287,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6330",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3433,7 +3315,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6325",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3462,7 +3343,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6326",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3491,7 +3371,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6340",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3520,7 +3399,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6341",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3549,7 +3427,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2991",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3578,7 +3455,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2992",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3607,7 +3483,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2981",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3636,7 +3511,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2983",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3665,7 +3539,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6523",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3694,7 +3567,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6262",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3723,7 +3595,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6263",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -3752,7 +3623,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2904",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -3781,7 +3651,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2905",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -3810,7 +3679,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2493",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -3839,7 +3707,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2494",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -3868,7 +3735,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6239",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -3897,7 +3763,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET6240",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -3926,7 +3791,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2251",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -3955,7 +3819,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2125",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -3984,7 +3847,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2116",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -4013,7 +3875,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2407",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -4042,7 +3903,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2870",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -4071,7 +3931,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2871",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -4100,7 +3959,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2872",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -4129,7 +3987,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2862",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -4158,7 +4015,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2821",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -4187,7 +4043,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DET2823",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34600
     },
     {
@@ -4216,7 +4071,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DEW2620",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -4245,7 +4099,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DEW4206",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -4274,7 +4127,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DEW4608",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -4303,7 +4155,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DEW4709",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -4332,7 +4183,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DEW4707",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -4361,7 +4211,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DEW4752",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -4390,7 +4239,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DEW4792",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -4419,7 +4267,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DEW2631",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -4448,7 +4295,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DEW2632",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -4477,7 +4323,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DEW2671",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     },
     {
@@ -4506,7 +4351,6 @@ export const COMMERCIAL_PRODUCTS = [
         "model_id": "DEW2672",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 37000,
         "sellingPrice": 34500
     }
 ];

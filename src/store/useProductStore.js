@@ -134,7 +134,7 @@ export const useProductStore = create(
                 }
 
                 // 실시간 Firestore 상품 수정(가격 등) 동기화
-                // 관리자 페이지에서 '수정' 저장 시 products/{id} 문서에 기록되는 값(price, businessPrice,
+                // 관리자 페이지에서 '수정' 저장 시 products/{id} 문서에 기록되는 값(price,
                 // sellingPrice, title, model_id, imageUrl, subCategory, tags)을 덮어써서
                 // 새로고침/재방문 후에도 가격 수정이 유지되도록 함 (재고는 위 inventory 컬렉션이 별도 처리)
                 if (!get().unsubscribeProductEdits) {
@@ -151,7 +151,6 @@ export const useProductStore = create(
                                 return {
                                     ...p,
                                     price: fbData.price !== undefined ? fbData.price : p.price,
-                                    businessPrice: fbData.businessPrice !== undefined ? fbData.businessPrice : p.businessPrice,
                                     sellingPrice: fbData.sellingPrice !== undefined ? fbData.sellingPrice : p.sellingPrice,
                                     title: fbData.title || p.title,
                                     model_id: fbData.model_id || p.model_id,

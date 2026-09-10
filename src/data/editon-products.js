@@ -24,7 +24,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/101685",
         "model_id": "EDW7776",
-        "businessPrice": 45000
     },
     {
         "id": "101680",
@@ -51,7 +50,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/101680",
         "model_id": "EDW7771",
-        "businessPrice": 45000
     },
     {
         "id": "101684",
@@ -78,7 +76,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/101684",
         "model_id": "EDW7775",
-        "businessPrice": 45000
     },
     {
         "id": "101683",
@@ -105,7 +102,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/101683",
         "model_id": "EDW7774",
-        "businessPrice": 45000
     },
     {
         "id": "101681",
@@ -132,7 +128,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/101681",
         "model_id": "EDW7772",
-        "businessPrice": 45000
     },
     {
         "id": "101691",
@@ -159,7 +154,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/101691",
         "model_id": "EDW7782",
-        "businessPrice": 45000
     },
     {
         "id": "101689",
@@ -186,7 +180,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/101689",
         "model_id": "EDW7780",
-        "businessPrice": 45000
     },
     {
         "id": "101686",
@@ -213,7 +206,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/101686",
         "model_id": "EDW7777",
-        "businessPrice": 45000
     },
     {
         "id": "101682",
@@ -240,7 +232,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/101682",
         "model_id": "EDW7773",
-        "businessPrice": 45000
     },
     {
         "id": "100764",
@@ -267,7 +258,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100764",
         "model_id": "EDT7724",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -295,7 +285,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100763",
         "model_id": "EDT7725",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -323,7 +312,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100766",
         "model_id": "EDT7730",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -351,7 +339,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100774",
         "model_id": "EDT7733",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -379,7 +366,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100761",
         "model_id": "EDT7734",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -407,7 +393,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100770",
         "model_id": "EDT7736",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -435,7 +420,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100767",
         "model_id": "EDT7732",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -463,7 +447,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100765",
         "model_id": "EDT7731",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -491,7 +474,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100772",
         "model_id": "EDT7729",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -519,7 +501,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100760",
         "model_id": "EDT7735",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -547,7 +528,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100769",
         "model_id": "EDT7737",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -575,7 +555,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100762",
         "model_id": "EDT7726",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -603,7 +582,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100773",
         "model_id": "EDT7727",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -631,7 +609,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100768",
         "model_id": "EDT7738",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -659,7 +636,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100771",
         "model_id": "EDT7721",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -687,7 +663,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/102904",
         "model_id": "EDT7724",
-        "businessPrice": 42000,
         "sellingPrice": 34500
     },
     {
@@ -715,7 +690,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/102905",
         "model_id": "EDT7725",
-        "businessPrice": 42000,
         "sellingPrice": 34500
     },
     {
@@ -743,7 +717,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/102920",
         "model_id": "EDT7732",
-        "businessPrice": 42000,
         "sellingPrice": 34500
     },
     {
@@ -771,7 +744,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/102921",
         "model_id": "EDT7734",
-        "businessPrice": 42000,
         "sellingPrice": 34500
     },
     {
@@ -799,7 +771,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103206",
         "model_id": "EDT7742",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -827,7 +798,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103204",
         "model_id": "EDT7741",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -855,7 +825,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103205",
         "model_id": "EDT7741",
-        "businessPrice": 42000,
         "sellingPrice": 34500
     },
     {
@@ -883,7 +852,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103225",
         "model_id": "EDT7740",
-        "businessPrice": 45000,
         "sellingPrice": 38000
     },
     {
@@ -911,7 +879,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103207",
         "model_id": "EDT7742",
-        "businessPrice": 42000,
         "sellingPrice": 34500
     },
     {
@@ -939,7 +906,6 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103227",
         "model_id": "EDT7740",
-        "businessPrice": 42000,
         "sellingPrice": 34500
     }
 ];

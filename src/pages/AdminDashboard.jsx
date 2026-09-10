@@ -123,7 +123,7 @@ const AdminDashboard = () => {
     const [adjustStockModal, setAdjustStockModal] = useState(null); // { product, type: 'in' | 'out', amount: '' }
     const [newProduct, setNewProduct] = useState({
         title: '', model_id: '', categoryId: 'residential', subCategory: '',
-        price: 0, businessPrice: 0, sellingPrice: 0, inventory: 0, imageUrl: '', thickness: 5,
+        price: 0, sellingPrice: 0, inventory: 0, imageUrl: '', thickness: 5,
         patterns: [], tags: [], priceUnit: 'm²',
         specifications: { size: '', material: '' }
     });
@@ -651,7 +651,6 @@ const AdminDashboard = () => {
                 imageUrl: editingProduct.imageUrl || '',
                 subCategory: editingProduct.subCategory || '',
                 price: Number(editingProduct.price) || 0,
-                businessPrice: Number(editingProduct.businessPrice) || 0,
                 sellingPrice: Number(editingProduct.sellingPrice) || 0,
                 inventory: inventoryNum,
                 status: inventoryNum <= 0 ? '일시품절' : '판매중',
@@ -691,7 +690,6 @@ const AdminDashboard = () => {
                 ...newProduct,
                 id: productId,
                 price: Number(newProduct.price),
-                businessPrice: Number(newProduct.businessPrice),
                 sellingPrice: Number(newProduct.sellingPrice || 0),
                 inventory: inventoryNum,
                 status: inventoryNum <= 0 ? '일시품절' : '판매중',
@@ -707,7 +705,7 @@ const AdminDashboard = () => {
             setNewProductModal(false);
             setNewProduct({
                 title: '', model_id: '', categoryId: 'residential', subCategory: '',
-                price: 0, businessPrice: 0, sellingPrice: 0, inventory: 0, imageUrl: '', thickness: 5,
+                price: 0, sellingPrice: 0, inventory: 0, imageUrl: '', thickness: 5,
                 patterns: [], tags: [], priceUnit: 'm²',
                 specifications: { size: '', material: '' }
             });
@@ -1895,15 +1893,6 @@ const AdminDashboard = () => {
                                             />
                                         </div>
                                         <div>
-                                            <label className="block text-sm font-medium text-slate-400 mb-2">사업자 가격 (원)</label>
-                                            <input
-                                                type="number"
-                                                value={newProduct.businessPrice}
-                                                onChange={e => setNewProduct(prev => ({ ...prev, businessPrice: e.target.value }))}
-                                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-[#d4a853] focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
-                                            />
-                                        </div>
-                                        <div>
                                             <label className="block text-sm font-medium text-rose-400 mb-2">💰 매입가 (원)</label>
                                             <input
                                                 type="number"
@@ -2064,15 +2053,6 @@ const AdminDashboard = () => {
                                             />
                                         </div>
                                         <div>
-                                            <label className="block text-sm font-medium text-slate-400 mb-2">사업자 가격 (원)</label>
-                                            <input
-                                                type="number"
-                                                value={editingProduct.businessPrice}
-                                                onChange={e => setEditingProduct(prev => ({ ...prev, businessPrice: e.target.value }))}
-                                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-[#d4a853] focus:outline-none focus:ring-2 focus:ring-indigo-500/50"
-                                            />
-                                        </div>
-                                        <div>
                                             <label className="block text-sm font-medium text-rose-400 mb-2">💰 매입가 (원)</label>
                                             <input
                                                 type="number"
@@ -2187,7 +2167,6 @@ const AdminDashboard = () => {
                                             </div>
                                         </th>
                                         <th className="px-6 py-4">일반가</th>
-                                        <th className="px-6 py-4">사업자가</th>
                                         <th className="px-6 py-4">💰 매입가</th>
                                         <th className="px-6 py-4 hidden lg:table-cell">수익</th>
                                         <th className="px-6 py-4">태그</th>
@@ -2263,9 +2242,6 @@ const AdminDashboard = () => {
                                             </td>
                                             <td className="px-6 py-4">
                                                 <span className="text-white text-sm font-mono">{product.price?.toLocaleString()}원</span>
-                                            </td>
-                                            <td className="px-6 py-4">
-                                                <span className="text-[#d4a853] text-sm font-mono">{product.businessPrice?.toLocaleString()}원</span>
                                             </td>
                                             <td className="px-6 py-4">
                                                 <span className="text-rose-400 text-sm font-mono">{product.sellingPrice ? `${product.sellingPrice.toLocaleString()}원` : <span className="text-slate-600">미설정</span>}</span>
@@ -3196,13 +3172,13 @@ const AdminDashboard = () => {
                             { title: 'LX Z:IN 공식 유통', desc: '검증된 공식 유통 채널을 통해 정품만을 취급합니다. 품질 보증과 A/S까지 책임집니다.' },
                             { title: '전문 시공 지원', desc: '15년 이상 경력의 시공 전문가가 현장 방문 측정부터 시공 완료까지 동행합니다.' },
                             { title: '당일 견적 · 빠른 배송', desc: '문의 당일 맞춤 견적을 제공하며, 수도권 기준 3일 이내 배송을 보장합니다.' },
-                            { title: '사업자 전용 특가', desc: '사업자 인증 시 일반가 대비 최대 40% 할인된 B2B 전용 단가를 적용받으실 수 있습니다.' },
+                            { title: '사업자 전용 혜택', desc: '사업자등록증 인증 시 전담 매니저 배정, 세금계산서 발행 등 B2B 전용 혜택을 받으실 수 있습니다.' },
                         ];
                         const defaultB2b = {
                             title1: '사업자라면,', title2: '지금 바로 파트너가 되세요',
-                            desc: '사업자등록증 인증 한 번으로 B2B 전용 특가를 만나보세요. 전담 매니저가 프로젝트별 맞춤 견적과 시공 지원을 제공합니다.',
+                            desc: '사업자등록증 인증 한 번으로 B2B 전용 혜택을 만나보세요. 전담 매니저가 프로젝트별 맞춤 견적과 시공 지원을 제공합니다.',
                             features: [
-                                { text: 'B2B 전용 단가 최대 40% 할인', sub: '사업자 인증 즉시 적용' },
+                                { text: '세금계산서 즉시 발행', sub: '사업자 인증 즉시 적용' },
                                 { text: '전담 매니저 1:1 배정', sub: '견적부터 시공까지 원스톱' },
                                 { text: '대량 주문 무료 배송', sub: '수도권 3일 이내 도착' },
                                 { text: '정품 보증 & A/S 지원', sub: 'LX Z:IN 공식 품질 보증' },

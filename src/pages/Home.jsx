@@ -75,16 +75,16 @@ export default function Home() {
         { icon: 'verified', title: 'LX Z:IN 공식 유통', desc: '검증된 공식 유통 채널을 통해 정품만을 취급합니다. 품질 보증과 A/S까지 책임집니다.', accent: 'from-[#d4a853] to-[#b8923e]' },
         { icon: 'engineering', title: '전문 시공 지원', desc: '15년 이상 경력의 시공 전문가가 현장 방문 측정부터 시공 완료까지 동행합니다.', accent: 'from-[#6366f1] to-[#4f46e5]' },
         { icon: 'local_shipping', title: '당일 견적 · 빠른 배송', desc: '문의 당일 맞춤 견적을 제공하며, 수도권 기준 3일 이내 배송을 보장합니다.', accent: 'from-[#10b981] to-[#059669]' },
-        { icon: 'payments', title: '사업자 전용 특가', desc: '사업자 인증 시 일반가 대비 최대 40% 할인된 B2B 전용 단가를 적용받으실 수 있습니다.', accent: 'from-[#f59e0b] to-[#d97706]' },
+        { icon: 'payments', title: '사업자 전용 혜택', desc: '사업자등록증 인증 시 전담 매니저 배정, 세금계산서 발행 등 B2B 전용 혜택을 받으실 수 있습니다.', accent: 'from-[#f59e0b] to-[#d97706]' },
     ];
     const strengths = (cmsData?.strengths?.length > 0 ? cmsData.strengths : defaultStrengths).map((s, i) => ({ ...defaultStrengths[i], ...s }));
 
     const defaultB2b = {
         title1: '사업자라면,',
         title2: '지금 바로 파트너가 되세요',
-        desc: '사업자등록증 인증 한 번으로 B2B 전용 특가를 만나보세요. 전담 매니저가 프로젝트별 맞춤 견적과 시공 지원을 제공합니다.',
+        desc: '사업자등록증 인증 한 번으로 B2B 전용 혜택을 만나보세요. 전담 매니저가 프로젝트별 맞춤 견적과 시공 지원을 제공합니다.',
         features: [
-            { icon: 'sell', text: 'B2B 전용 단가 최대 40% 할인', sub: '사업자 인증 즉시 적용' },
+            { icon: 'receipt_long', text: '세금계산서 즉시 발행', sub: '사업자 인증 즉시 적용' },
             { icon: 'person_pin', text: '전담 매니저 1:1 배정', sub: '견적부터 시공까지 원스톱' },
             { icon: 'local_shipping', text: '대량 주문 무료 배송', sub: '수도권 3일 이내 도착' },
             { icon: 'security', text: '정품 보증 & A/S 지원', sub: 'LX Z:IN 공식 품질 보증' },

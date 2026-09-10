@@ -29,7 +29,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#c8bfae",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700,
         "inventory": 0,
         "restockDate": "2026-04-20"
@@ -64,7 +63,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#9e9690",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700,
         "inventory": 3
     },
@@ -98,7 +96,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#f0ece4",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700,
         "inventory": 50
     },
@@ -132,7 +129,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#d4c5a9",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700,
         "inventory": 30
     },
@@ -166,7 +162,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#c4a482",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700,
         "inventory": 100
     },
@@ -200,7 +195,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#f0ece4",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -233,7 +227,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#d4c5a9",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -266,7 +259,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#d4c5a9",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -299,7 +291,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#d4c5a9",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -332,7 +323,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#c4a482",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -365,7 +355,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#8b6f4e",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -398,7 +387,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#e0d5c3",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -431,7 +419,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#c0b8ae",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -464,7 +451,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#e0d5c3",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -497,7 +483,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#e0d5c3",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -530,7 +515,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#9e9690",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -563,7 +547,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#c4a482",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -596,7 +579,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#8b6f4e",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -629,7 +611,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#c0b8ae",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -662,7 +643,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#e8e0d0",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -695,7 +675,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#d4c5a9",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -728,7 +707,6 @@ export const SHEET_PRODUCTS = [
         "colorHex": "#d4c5a9",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 18000,
         "sellingPrice": 15700
     },
     {
@@ -758,7 +736,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "ZS84031-11",
         "colorText": "화이트",
         "colorHex": "#f0ece4",
-        "businessPrice": 36500,
         "sellingPrice": 32600
     },
     {
@@ -788,7 +765,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "ZS83051-11",
         "colorText": "베이지, 화이트",
         "colorHex": "#d4c5a9, #ffffff",
-        "businessPrice": 36500,
         "sellingPrice": 32600
     },
     {
@@ -818,7 +794,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "ZS84032-11",
         "colorText": "그레이",
         "colorHex": "#9e9690",
-        "businessPrice": 36500,
         "sellingPrice": 32600
     },
     {
@@ -848,7 +823,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "ZS84041-11",
         "colorText": "브라운",
         "colorHex": "#8b6f4e",
-        "businessPrice": 36500,
         "sellingPrice": 32600
     },
     {
@@ -878,7 +852,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "ZS83081-11",
         "colorText": "화이트",
         "colorHex": "#f0ece4",
-        "businessPrice": 36500,
         "sellingPrice": 32600
     },
     {
@@ -908,7 +881,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "ZS84021-11",
         "colorText": "라이트브라운",
         "colorHex": "#c4a482",
-        "businessPrice": 36500,
         "sellingPrice": 32600
     },
     {
@@ -938,7 +910,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "ZS84022-11",
         "colorText": "브라운",
         "colorHex": "#8b6f4e",
-        "businessPrice": 36500,
         "sellingPrice": 32600
     },
     {
@@ -968,7 +939,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "ZS82991-11",
         "colorText": "베이지, 화이트",
         "colorHex": "#d4c5a9, #ffffff",
-        "businessPrice": 36500,
         "sellingPrice": 32600
     },
     {
@@ -998,7 +968,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "ZS84011-11",
         "colorText": "라이트브라운",
         "colorHex": "#c4a482",
-        "businessPrice": 36500,
         "sellingPrice": 32600
     },
     {
@@ -1028,7 +997,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "ZS83011-11",
         "colorText": "화이트",
         "colorHex": "#f0ece4",
-        "businessPrice": 36500,
         "sellingPrice": 32600
     },
     {
@@ -1058,7 +1026,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "ZS84012-11",
         "colorText": "브라운",
         "colorHex": "#8b6f4e",
-        "businessPrice": 36500,
         "sellingPrice": 32600
     },
     {
@@ -1088,7 +1055,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "ZS80021-11",
         "colorText": "라이트브라운",
         "colorHex": "#c4a482",
-        "businessPrice": 36500,
         "sellingPrice": 32600
     },
     {
@@ -1118,7 +1084,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "ZS80071-11",
         "colorText": "화이트",
         "colorHex": "#f0ece4",
-        "businessPrice": 36500,
         "sellingPrice": 32600
     },
     {
@@ -1148,7 +1113,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCFW011",
         "colorText": "화이트",
         "colorHex": "#F5EDE3",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1178,7 +1142,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCF3621",
         "colorText": "그레이",
         "colorHex": "#C8C5C0",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1208,7 +1171,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCF4541",
         "colorText": "베이지",
         "colorHex": "#D4CDBF",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1238,7 +1200,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCFS011",
         "colorText": "화이트",
         "colorHex": "#E8E5E0",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1268,7 +1229,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCF3612",
         "colorText": "라이트 그레이",
         "colorHex": "#DDD9D3",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1298,7 +1258,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCF3622",
         "colorText": "다크그레이",
         "colorHex": "#8E8C89",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1328,7 +1287,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCFS012",
         "colorText": "그레이지",
         "colorHex": "#C9C3BA",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1358,7 +1316,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCF3441",
         "colorText": "베이지",
         "colorHex": "#D5C9B8",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1388,7 +1345,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCF4043",
         "colorText": "내추럴",
         "colorHex": "#C7B9A2",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1418,7 +1374,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCF4531",
         "colorText": "라이트 그레이",
         "colorHex": "#D5CEC6",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1448,7 +1403,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCF4481",
         "colorText": "화이트마블",
         "colorHex": "#EAE6E0",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1478,7 +1432,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCF3451",
         "colorText": "화이트",
         "colorHex": "#ECE7DF",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1508,7 +1461,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCF3442",
         "colorText": "라이트 베이지",
         "colorHex": "#DDD5C7",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1538,7 +1490,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCF4023",
         "colorText": "내추럴 브라운",
         "colorHex": "#C9B8A0",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1568,7 +1519,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "XCF4482",
         "colorText": "그레이마블",
         "colorHex": "#ABA8A3",
-        "businessPrice": 42000,
         "sellingPrice": 37600
     },
     {
@@ -1599,7 +1549,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM23691",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 8500,
         "sellingPrice": 7400
     },
     {
@@ -1630,7 +1579,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM22771",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 8500,
         "sellingPrice": 7400
     },
     {
@@ -1661,7 +1609,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24741",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 8500,
         "sellingPrice": 7400
     },
     {
@@ -1692,7 +1639,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24731",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 8500,
         "sellingPrice": 7400
     },
     {
@@ -1723,7 +1669,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24722",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 8500,
         "sellingPrice": 7400
     },
     {
@@ -1754,7 +1699,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24083",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 8500,
         "sellingPrice": 7400
     },
     {
@@ -1785,7 +1729,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM23692",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 8500,
         "sellingPrice": 7400
     },
     {
@@ -1816,7 +1759,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM21882",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 8500,
         "sellingPrice": 7400
     },
     {
@@ -1847,7 +1789,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24081",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 8500,
         "sellingPrice": 7400
     },
     {
@@ -1878,7 +1819,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24133",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 8500,
         "sellingPrice": 7400
     },
     {
@@ -1909,7 +1849,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24131",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 8500,
         "sellingPrice": 7400
     },
     {
@@ -1940,7 +1879,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24711",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 8500,
         "sellingPrice": 7400
     },
     {
@@ -1971,7 +1909,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24713",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 8500,
         "sellingPrice": 7400
     },
     {
@@ -2002,7 +1939,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "EH14101",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 14000,
         "sellingPrice": 12300
     },
     {
@@ -2033,7 +1969,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "EH14721",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 14000,
         "sellingPrice": 12300
     },
     {
@@ -2064,7 +1999,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "EH14121",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 14000,
         "sellingPrice": 12300
     },
     {
@@ -2095,7 +2029,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "EH12121",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 14000,
         "sellingPrice": 12300
     },
     {
@@ -2126,7 +2059,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "EH14092",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 14000,
         "sellingPrice": 12300
     },
     {
@@ -2157,7 +2089,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "EH12071",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 14000,
         "sellingPrice": 12300
     },
     {
@@ -2188,7 +2119,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "EH13712",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 14000,
         "sellingPrice": 12300
     },
     {
@@ -2219,7 +2149,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "EH13713",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 14000,
         "sellingPrice": 12300
     },
     {
@@ -2250,7 +2179,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "EH14732",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 14000,
         "sellingPrice": 12300
     },
     {
@@ -2281,7 +2209,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "EH14712",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 14000,
         "sellingPrice": 12300
     },
     {
@@ -2312,7 +2239,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "64281",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 29000,
         "sellingPrice": 26100
     },
     {
@@ -2343,7 +2269,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "64221",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 29000,
         "sellingPrice": 26100
     },
     {
@@ -2376,7 +2301,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "54483",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 26000,
         "sellingPrice": 22600
     },
     {
@@ -2407,7 +2331,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "63391",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 29000,
         "sellingPrice": 26100
     },
     {
@@ -2440,7 +2363,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "53603",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 26000,
         "sellingPrice": 22600
     },
     {
@@ -2473,7 +2395,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "54231",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 26000,
         "sellingPrice": 22600
     },
     {
@@ -2504,7 +2425,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "63693",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 29000,
         "sellingPrice": 26100
     },
     {
@@ -2535,7 +2455,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "63312",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 29000,
         "sellingPrice": 26100
     },
     {
@@ -2567,7 +2486,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "54211",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 26000,
         "sellingPrice": 22600
     },
     {
@@ -2600,7 +2518,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "54542",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 26000,
         "sellingPrice": 22600
     },
     {
@@ -2633,7 +2550,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "50011",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 26000,
         "sellingPrice": 22600
     },
     {
@@ -2664,7 +2580,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "64223",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 29000,
         "sellingPrice": 26100
     },
     {
@@ -2695,7 +2610,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "60161",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 29000,
         "sellingPrice": 26100
     },
     {
@@ -2728,7 +2642,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "50061",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 26000,
         "sellingPrice": 22600
     },
     {
@@ -2759,7 +2672,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "60071",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 29000,
         "sellingPrice": 26100
     },
     {
@@ -2790,7 +2702,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "60151",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 29000,
         "sellingPrice": 26100
     },
     {
@@ -2822,7 +2733,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "53351",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 26000,
         "sellingPrice": 22600
     },
     {
@@ -2853,7 +2763,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "60081",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 29000,
         "sellingPrice": 26100
     },
     {
@@ -2886,7 +2795,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "54032",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 26000,
         "sellingPrice": 22600
     },
     {
@@ -2919,7 +2827,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "54044",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 26000,
         "sellingPrice": 22600
     },
     {
@@ -2951,7 +2858,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "50061",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 26000,
         "sellingPrice": 22600
     },
     {
@@ -2983,7 +2889,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "50011",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 26000,
         "sellingPrice": 22600
     },
     {
@@ -3015,7 +2920,6 @@ export const SHEET_PRODUCTS = [
         "model_id": "54231",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 26000,
         "sellingPrice": 22600
     }
 ];

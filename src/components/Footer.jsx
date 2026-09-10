@@ -48,7 +48,7 @@ export default function Footer() {
                             </div>
                         </div>
                         <p className="text-[15px] leading-[1.8] text-slate-500 font-normal max-w-xs">
-                            LX Z:IN 공식 유통 파트너로서 주거·상업용 프리미엄 바닥재를 사업자 전용 특가로 제공합니다.
+                            LX Z:IN 공식 유통 파트너로서 주거·상업용 프리미엄 바닥재를 합리적인 가격으로 제공합니다.
                         </p>
                         <div className="flex gap-3">
                             <button className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-[#d4a853] hover:text-[#d4a853] transition-all text-slate-400">

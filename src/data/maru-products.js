@@ -24,7 +24,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13304",
         "model_id": "FMKGA077-W01250000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -51,7 +50,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13302",
         "model_id": "FMKGA075-W01250000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -78,7 +76,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/101561",
         "model_id": "FMKGA084-W01250000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -105,7 +102,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/101560",
         "model_id": "FMKGA083-W01250000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -132,7 +128,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13303",
         "model_id": "FMKGA076-W01250000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -159,7 +154,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103203",
         "model_id": "FMKGA201-S06000000",
-        "businessPrice": 100000,
         "sellingPrice": 94500
     },
     {
@@ -186,7 +180,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103209",
         "model_id": "FMKGA203-S06000000",
-        "businessPrice": 100000,
         "sellingPrice": 94500
     },
     {
@@ -213,7 +206,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103210",
         "model_id": "FMKGA306-W01650000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -240,7 +232,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103212",
         "model_id": "FMKGA304-W01650000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -267,7 +258,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103201",
         "model_id": "FMKGA204-S06000000",
-        "businessPrice": 100000,
         "sellingPrice": 94500
     },
     {
@@ -294,7 +284,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103200",
         "model_id": "FMKGA204-S04000000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -321,7 +310,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103208",
         "model_id": "FMKGA203-S04000000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -348,7 +336,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103230",
         "model_id": "FMKGA071-W01250000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -375,7 +362,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103202",
         "model_id": "FMKGA201-S04000000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -402,7 +388,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103231",
         "model_id": "FMKGA072-W01250000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -429,7 +414,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103232",
         "model_id": "FMKGA074-W01250000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -456,7 +440,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103211",
         "model_id": "FMKGA305-W01650000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -483,7 +466,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103296",
         "model_id": "FMKGA202-S06000000",
-        "businessPrice": 100000,
         "sellingPrice": 94500
     },
     {
@@ -510,7 +492,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103297",
         "model_id": "FMKGA205-S06000000",
-        "businessPrice": 100000,
         "sellingPrice": 94500
     },
     {
@@ -537,7 +518,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103292",
         "model_id": "FMKGA307-W01650000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -564,7 +544,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103291",
         "model_id": "FMKGA303-W01650000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -591,7 +570,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103289",
         "model_id": "FMKGA301-W01650000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -618,7 +596,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103290",
         "model_id": "FMKGA302-W01650000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -645,7 +622,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103294",
         "model_id": "FMKGA202-S04000000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -672,7 +648,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103293",
         "model_id": "FMKGA308-W01650000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -699,7 +674,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103295",
         "model_id": "FMKGA205-S04000000",
-        "businessPrice": 82000,
         "sellingPrice": 77000
     },
     {
@@ -726,7 +700,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13927",
         "model_id": "FMKGP014-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -753,7 +726,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13933",
         "model_id": "FMKGP020-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -780,7 +752,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13916",
         "model_id": "FMKGP003-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -807,7 +778,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13925",
         "model_id": "FMKGP012-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -834,7 +804,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13918",
         "model_id": "FMKGP005-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -861,7 +830,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13932",
         "model_id": "FMKGP019-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -888,7 +856,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13917",
         "model_id": "FMKGP004-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -915,7 +882,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13915",
         "model_id": "FMKGP002-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -942,7 +908,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13930",
         "model_id": "FMKGP017-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -969,7 +934,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13931",
         "model_id": "FMKGP018-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -996,7 +960,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13919",
         "model_id": "FMKGP006-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1023,7 +986,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13928",
         "model_id": "FMKGP015-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1050,7 +1012,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13924",
         "model_id": "FMKGP011-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1077,7 +1038,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13923",
         "model_id": "FMKGP010-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1104,7 +1064,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/12720",
         "model_id": "FMKGS051-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1131,7 +1090,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/12716",
         "model_id": "FMKGS012-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1158,7 +1116,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/12711",
         "model_id": "FMKGS005-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1185,7 +1142,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/12718",
         "model_id": "FMKGS018-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1212,7 +1168,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/12721",
         "model_id": "FMKGS052-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1239,7 +1194,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/12713",
         "model_id": "FMKGS008-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1266,7 +1220,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/12717",
         "model_id": "FMKGS017-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1293,7 +1246,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/12712",
         "model_id": "FMKGS007-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1320,7 +1272,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/12710",
         "model_id": "FMKGS002-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1347,7 +1298,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/12714",
         "model_id": "FMKGS009-B009500SW",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1374,7 +1324,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100137",
         "model_id": "FMKPM005-W01650000",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1401,7 +1350,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100142",
         "model_id": "FMKPM010-W01650000",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1428,7 +1376,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100141",
         "model_id": "FMKPM009-W01650000",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1455,7 +1402,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100133",
         "model_id": "FMKPM001-W01650000",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1482,7 +1428,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100134",
         "model_id": "FMKPM002-W01650000",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1509,7 +1454,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/100136",
         "model_id": "FMKPM004-W01650000",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1536,7 +1480,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/102900",
         "model_id": "FMKPM011-W01650000",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1563,7 +1506,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/102901",
         "model_id": "FMKPM012-W01650000",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1590,7 +1532,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/102902",
         "model_id": "FMKPM013-W01650000",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1617,7 +1558,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/102903",
         "model_id": "FMKPM014-W01650000",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1644,7 +1584,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13311",
         "model_id": "FMKGA102-S329500CM",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1671,7 +1610,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/101562",
         "model_id": "FMKGA105-S329500CM",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1698,7 +1636,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/101563",
         "model_id": "FMKGA106-S329500CM",
-        "businessPrice": 0,
         "sellingPrice": 0
     },
     {
@@ -1725,7 +1662,6 @@ export const MARU_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/13310",
         "model_id": "FMKGA101-S329500CM",
-        "businessPrice": 0,
         "sellingPrice": 0
     }
 ];

@@ -27,7 +27,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOT 0065",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36500
     },
     {
@@ -58,7 +57,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOT 0066",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36500
     },
     {
@@ -89,7 +87,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOT 0067",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36500
     },
     {
@@ -120,7 +117,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOT 0068",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36500
     },
     {
@@ -151,7 +147,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOT 0069",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36500
     },
     {
@@ -182,7 +177,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOT 0070",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36500
     },
     {
@@ -213,7 +207,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOT 0071",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36500
     },
     {
@@ -244,7 +237,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOT 0072",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36500
     },
     {
@@ -275,7 +267,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOT 0073",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36500
     },
     {
@@ -306,7 +297,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOW 0032",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36000
     },
     {
@@ -337,7 +327,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOW 0033",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36000
     },
     {
@@ -368,7 +357,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOW 0034",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36000
     },
     {
@@ -399,7 +387,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOW 0035",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36000
     },
     {
@@ -430,7 +417,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOW 0036",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36000
     },
     {
@@ -461,7 +447,6 @@ export const TILE_PRODUCTS = [
         "model_id": "HOW 0037",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 40000,
         "sellingPrice": 36000
     },
     {
@@ -492,7 +477,6 @@ export const TILE_PRODUCTS = [
         "model_id": "ZOT 0768",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 44000,
         "sellingPrice": 40000
     },
     {
@@ -523,7 +507,6 @@ export const TILE_PRODUCTS = [
         "model_id": "ZOT 0769",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 44000,
         "sellingPrice": 40000
     },
     {
@@ -554,7 +537,6 @@ export const TILE_PRODUCTS = [
         "model_id": "ZOT 0770",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 44000,
         "sellingPrice": 40000
     },
     {
@@ -585,7 +567,6 @@ export const TILE_PRODUCTS = [
         "model_id": "ZOT 0771",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 44000,
         "sellingPrice": 40000
     },
     {
@@ -616,7 +597,6 @@ export const TILE_PRODUCTS = [
         "model_id": "ZOT 0761",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 44000,
         "sellingPrice": 40000
     },
     {
@@ -647,7 +627,6 @@ export const TILE_PRODUCTS = [
         "model_id": "ZOT 0762",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 44000,
         "sellingPrice": 40000
     },
     {
@@ -678,7 +657,6 @@ export const TILE_PRODUCTS = [
         "model_id": "ZOT 0767",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 44000,
         "sellingPrice": 40000
     },
     {
@@ -709,7 +687,6 @@ export const TILE_PRODUCTS = [
         "model_id": "ZOW 0712",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 44000,
         "sellingPrice": 40000
     },
     {
@@ -740,7 +717,6 @@ export const TILE_PRODUCTS = [
         "model_id": "ZOW 0714",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 44000,
         "sellingPrice": 40000
     },
     {
@@ -771,7 +747,6 @@ export const TILE_PRODUCTS = [
         "model_id": "ZOW 0717",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 44000,
         "sellingPrice": 40000
     },
     {
@@ -802,7 +777,6 @@ export const TILE_PRODUCTS = [
         "model_id": "ZOW 0718",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 44000,
         "sellingPrice": 40000
     },
     {
@@ -833,7 +807,6 @@ export const TILE_PRODUCTS = [
         "model_id": "ZOW 0719",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 44000,
         "sellingPrice": 40000
     },
     {
@@ -864,7 +837,6 @@ export const TILE_PRODUCTS = [
         "model_id": "ZOW 0720",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "businessPrice": 44000,
         "sellingPrice": 40000
     }
 ];
