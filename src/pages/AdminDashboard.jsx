@@ -116,6 +116,7 @@ const AdminDashboard = () => {
     // 제품 관리 상태
     const [productSearch, setProductSearch] = useState('');
     const [editingProduct, setEditingProduct] = useState(null);
+    const [applyPriceToLine, setApplyPriceToLine] = useState(true);
     const [productSaving, setProductSaving] = useState(false);
     const [productCategory, setProductCategory] = useState('all');
     const [productBrand, setProductBrand] = useState('all');
@@ -659,8 +660,6 @@ const AdminDashboard = () => {
             };
             // 1) Store에 먼저 즉시 반영 → UI 바로 업데이트
             updateProduct(editingProduct.id, updateData);
-            addToast(`${editingProduct.title} 저장 완료! 홈페이지에 즉시 반영됩니다.`, 'success');
-            setEditingProduct(null);
             // 2) Firestore 백업 (실패해도 로컬은 이미 반영됨)
             try {
                 await setDoc(doc(db, 'products', productId), updateData, { merge: true });
@@ -668,6 +667,36 @@ const AdminDashboard = () => {
             } catch (fbErr) {
                 console.warn('[Admin] Firestore 저장 실패 (로컬은 반영됨):', fbErr?.message || fbErr);
             }
+
+            // 3) 체크했으면 같은 서브카테고리(라인)의 다른 상품들에도 가격만 동일하게 적용
+            let lineUpdatedCount = 0;
+            if (applyPriceToLine && editingProduct.subCategory) {
+                const lineMates = products.filter(
+                    p => p.subCategory === editingProduct.subCategory && p.brand === editingProduct.brand && String(p.id) !== String(editingProduct.id)
+                );
+                const linePriceData = { price: updateData.price, sellingPrice: updateData.sellingPrice, updatedAt: updateData.updatedAt };
+                for (const mate of lineMates) {
+                    // updateProduct는 재고 컬렉션에도 항상 같이 쓰는데, inventory/status를 안 넘기면
+                    // 0/판매중으로 덮어써버려서 각 상품 고유의 재고·판매상태가 깨진다 — 반드시 유지해서 넘겨야 함.
+                    updateProduct(mate.id, { ...linePriceData, inventory: mate.inventory, status: mate.status });
+                }
+                await Promise.all(
+                    lineMates.map(mate =>
+                        setDoc(doc(db, 'products', String(mate.id)), linePriceData, { merge: true }).catch(fbErr =>
+                            console.warn('[Admin] 라인 일괄 적용 Firestore 저장 실패:', mate.id, fbErr?.message || fbErr)
+                        )
+                    )
+                );
+                lineUpdatedCount = lineMates.length;
+            }
+
+            addToast(
+                lineUpdatedCount > 0
+                    ? `${editingProduct.title} 저장 완료! 같은 라인 ${lineUpdatedCount}개 상품에도 가격 반영했습니다.`
+                    : `${editingProduct.title} 저장 완료! 홈페이지에 즉시 반영됩니다.`,
+                'success'
+            );
+            setEditingProduct(null);
         } catch (err) {
             console.error('[Admin] 제품 저장 에러:', err);
             addToast(`저장 실패: ${err?.message || '알 수 없는 오류'}`, 'error');
@@ -2073,6 +2102,22 @@ const AdminDashboard = () => {
                                             />
                                         </div>
                                     </div>
+                                    {editingProduct.subCategory && (() => {
+                                        const lineCount = products.filter(p => p.subCategory === editingProduct.subCategory && p.brand === editingProduct.brand && String(p.id) !== String(editingProduct.id)).length;
+                                        return lineCount > 0 ? (
+                                            <label className="flex items-center gap-2 px-4 py-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20 cursor-pointer">
+                                                <input
+                                                    type="checkbox"
+                                                    checked={applyPriceToLine}
+                                                    onChange={e => setApplyPriceToLine(e.target.checked)}
+                                                    className="accent-indigo-500"
+                                                />
+                                                <span className="text-sm text-indigo-300">
+                                                    같은 라인 <strong>"{editingProduct.subCategory}"</strong>의 다른 상품 {lineCount}개에도 일반가·매입가를 동일하게 적용
+                                                </span>
+                                            </label>
+                                        ) : null;
+                                    })()}
                                     {Number(editingProduct.price) > 0 && Number(editingProduct.sellingPrice) > 0 && (() => {
                                         const price = Number(editingProduct.price);
                                         const purchasePrice = Number(editingProduct.sellingPrice);
@@ -2264,7 +2309,7 @@ const AdminDashboard = () => {
                                             <td className="px-6 py-4 text-center">
                                                 <div className="flex items-center justify-center gap-2">
                                                     <button
-                                                        onClick={() => setEditingProduct({ ...product })}
+                                                        onClick={() => { setEditingProduct({ ...product }); setApplyPriceToLine(true); }}
                                                         className="px-3 py-1.5 rounded-lg bg-indigo-500/20 border border-indigo-500/30 text-indigo-400 text-xs font-semibold hover:bg-indigo-500/30 transition-all"
                                                     >
                                                         수정
