@@ -712,9 +712,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "90013533",
         "categoryId": "residential",
-        "subCategory": "엑스컴포트 4.5(지아 소리잠)",
+        "subCategory": "지아 소리잠 4.5",
         "title": "소프트 포세린",
-        "subtitle": "시트 | 엑스컴포트 4.5(지아 소리잠)",
+        "subtitle": "시트 | 지아 소리잠 4.5",
         "price": 39500,
         "thickness": 4.5,
         "patterns": [
@@ -741,9 +741,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "90010552",
         "categoryId": "residential",
-        "subCategory": "엑스컴포트 4.5(지아 소리잠)",
+        "subCategory": "지아 소리잠 4.5",
         "title": "멀티 헤링본",
-        "subtitle": "시트 | 엑스컴포트 4.5(지아 소리잠)",
+        "subtitle": "시트 | 지아 소리잠 4.5",
         "price": 39500,
         "thickness": 4.5,
         "patterns": [
@@ -770,9 +770,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "90013536",
         "categoryId": "residential",
-        "subCategory": "엑스컴포트 4.5(지아 소리잠)",
+        "subCategory": "지아 소리잠 4.5",
         "title": "그레이 포세린",
-        "subtitle": "시트 | 엑스컴포트 4.5(지아 소리잠)",
+        "subtitle": "시트 | 지아 소리잠 4.5",
         "price": 39500,
         "thickness": 4.5,
         "patterns": [
@@ -799,9 +799,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "90013529",
         "categoryId": "residential",
-        "subCategory": "엑스컴포트 4.5(지아 소리잠)",
+        "subCategory": "지아 소리잠 4.5",
         "title": "클래식 오크",
-        "subtitle": "시트 | 엑스컴포트 4.5(지아 소리잠)",
+        "subtitle": "시트 | 지아 소리잠 4.5",
         "price": 39500,
         "thickness": 4.5,
         "patterns": [
@@ -828,9 +828,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "90010555",
         "categoryId": "residential",
-        "subCategory": "엑스컴포트 4.5(지아 소리잠)",
+        "subCategory": "지아 소리잠 4.5",
         "title": "비얀코 마블",
-        "subtitle": "시트 | 엑스컴포트 4.5(지아 소리잠)",
+        "subtitle": "시트 | 지아 소리잠 4.5",
         "price": 39500,
         "thickness": 4.5,
         "patterns": [
@@ -857,9 +857,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "90013524",
         "categoryId": "residential",
-        "subCategory": "엑스컴포트 4.5(지아 소리잠)",
+        "subCategory": "지아 소리잠 4.5",
         "title": "미스티 오크",
-        "subtitle": "시트 | 엑스컴포트 4.5(지아 소리잠)",
+        "subtitle": "시트 | 지아 소리잠 4.5",
         "price": 39500,
         "thickness": 4.5,
         "patterns": [
@@ -886,9 +886,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "90013527",
         "categoryId": "residential",
-        "subCategory": "엑스컴포트 4.5(지아 소리잠)",
+        "subCategory": "지아 소리잠 4.5",
         "title": "드로잉 오크",
-        "subtitle": "시트 | 엑스컴포트 4.5(지아 소리잠)",
+        "subtitle": "시트 | 지아 소리잠 4.5",
         "price": 39500,
         "thickness": 4.5,
         "patterns": [
@@ -915,9 +915,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "90010557",
         "categoryId": "residential",
-        "subCategory": "엑스컴포트 4.5(지아 소리잠)",
+        "subCategory": "지아 소리잠 4.5",
         "title": "라임 오크",
-        "subtitle": "시트 | 엑스컴포트 4.5(지아 소리잠)",
+        "subtitle": "시트 | 지아 소리잠 4.5",
         "price": 39500,
         "thickness": 4.5,
         "patterns": [
@@ -944,9 +944,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "90013517",
         "categoryId": "residential",
-        "subCategory": "엑스컴포트 4.5(지아 소리잠)",
+        "subCategory": "지아 소리잠 4.5",
         "title": "내츄럴 오크",
-        "subtitle": "시트 | 엑스컴포트 4.5(지아 소리잠)",
+        "subtitle": "시트 | 지아 소리잠 4.5",
         "price": 39500,
         "thickness": 4.5,
         "patterns": [
@@ -973,9 +973,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "90010556",
         "categoryId": "residential",
-        "subCategory": "엑스컴포트 4.5(지아 소리잠)",
+        "subCategory": "지아 소리잠 4.5",
         "title": "크레마 화이트",
-        "subtitle": "시트 | 엑스컴포트 4.5(지아 소리잠)",
+        "subtitle": "시트 | 지아 소리잠 4.5",
         "price": 39500,
         "thickness": 4.5,
         "patterns": [
@@ -1002,9 +1002,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "90013520",
         "categoryId": "residential",
-        "subCategory": "엑스컴포트 4.5(지아 소리잠)",
+        "subCategory": "지아 소리잠 4.5",
         "title": "밸리 오크",
-        "subtitle": "시트 | 엑스컴포트 4.5(지아 소리잠)",
+        "subtitle": "시트 | 지아 소리잠 4.5",
         "price": 39500,
         "thickness": 4.5,
         "patterns": [
@@ -1031,9 +1031,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "9008698",
         "categoryId": "residential",
-        "subCategory": "엑스컴포트 4.5(지아 소리잠)",
+        "subCategory": "지아 소리잠 4.5",
         "title": "모던오크",
-        "subtitle": "시트 | 엑스컴포트 4.5(지아 소리잠)",
+        "subtitle": "시트 | 지아 소리잠 4.5",
         "price": 39500,
         "thickness": 4.5,
         "patterns": [
@@ -1060,9 +1060,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "9008703",
         "categoryId": "residential",
-        "subCategory": "엑스컴포트 4.5(지아 소리잠)",
+        "subCategory": "지아 소리잠 4.5",
         "title": "화이트오크",
-        "subtitle": "시트 | 엑스컴포트 4.5(지아 소리잠)",
+        "subtitle": "시트 | 지아 소리잠 4.5",
         "price": 39500,
         "thickness": 4.5,
         "patterns": [
@@ -1527,7 +1527,7 @@ export const SHEET_PRODUCTS = [
         "subCategory": "스탠다드 1.8(뉴청맥)",
         "title": "엘름",
         "subtitle": "시트 | 시트 스탠다드 1.8(뉴청맥)",
-        "price": 9500,
+        "price": 10000,
         "thickness": 1.8,
         "patterns": [
             "Wood"
@@ -1549,7 +1549,7 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM23691",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "sellingPrice": 7400
+        "sellingPrice": 8000
     },
     {
         "id": "9648",
@@ -1557,7 +1557,7 @@ export const SHEET_PRODUCTS = [
         "subCategory": "스탠다드 1.8(뉴청맥)",
         "title": "오크",
         "subtitle": "시트 | 시트 스탠다드 1.8(뉴청맥)",
-        "price": 9500,
+        "price": 10000,
         "thickness": 1.8,
         "patterns": [
             "Stone"
@@ -1579,7 +1579,7 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM22771",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "sellingPrice": 7400
+        "sellingPrice": 8000
     },
     {
         "id": "102242",
@@ -1587,7 +1587,7 @@ export const SHEET_PRODUCTS = [
         "subCategory": "스탠다드 1.8(뉴청맥)",
         "title": "세라믹 스톤",
         "subtitle": "시트 | 시트 스탠다드 1.8(뉴청맥)",
-        "price": 9500,
+        "price": 10000,
         "thickness": 1.8,
         "patterns": [
             "Wood"
@@ -1609,7 +1609,7 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24741",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "sellingPrice": 7400
+        "sellingPrice": 8000
     },
     {
         "id": "102240",
@@ -1617,7 +1617,7 @@ export const SHEET_PRODUCTS = [
         "subCategory": "스탠다드 1.8(뉴청맥)",
         "title": "네추럴 화이트",
         "subtitle": "시트 | 시트 스탠다드 1.8(뉴청맥)",
-        "price": 9500,
+        "price": 10000,
         "thickness": 1.8,
         "patterns": [
             "Stone"
@@ -1639,7 +1639,7 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24731",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "sellingPrice": 7400
+        "sellingPrice": 8000
     },
     {
         "id": "102241",
@@ -1647,7 +1647,7 @@ export const SHEET_PRODUCTS = [
         "subCategory": "스탠다드 1.8(뉴청맥)",
         "title": "마일드 스톤",
         "subtitle": "시트 | 시트 스탠다드 1.8(뉴청맥)",
-        "price": 9500,
+        "price": 10000,
         "thickness": 1.8,
         "patterns": [
             "Wood"
@@ -1669,7 +1669,7 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24722",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "sellingPrice": 7400
+        "sellingPrice": 8000
     },
     {
         "id": "13910",
@@ -1677,7 +1677,7 @@ export const SHEET_PRODUCTS = [
         "subCategory": "스탠다드 1.8(뉴청맥)",
         "title": "애쉬",
         "subtitle": "시트 | 시트 스탠다드 1.8(뉴청맥)",
-        "price": 9500,
+        "price": 10000,
         "thickness": 1.8,
         "patterns": [
             "Wood"
@@ -1699,7 +1699,7 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24083",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "sellingPrice": 7400
+        "sellingPrice": 8000
     },
     {
         "id": "12328",
@@ -1707,7 +1707,7 @@ export const SHEET_PRODUCTS = [
         "subCategory": "스탠다드 1.8(뉴청맥)",
         "title": "엘름",
         "subtitle": "시트 | 시트 스탠다드 1.8(뉴청맥)",
-        "price": 9500,
+        "price": 10000,
         "thickness": 1.8,
         "patterns": [
             "Wood"
@@ -1729,7 +1729,7 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM23692",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "sellingPrice": 7400
+        "sellingPrice": 8000
     },
     {
         "id": "8295",
@@ -1737,7 +1737,7 @@ export const SHEET_PRODUCTS = [
         "subCategory": "스탠다드 1.8(뉴청맥)",
         "title": "오크",
         "subtitle": "시트 | 시트 스탠다드 1.8(뉴청맥)",
-        "price": 9500,
+        "price": 10000,
         "thickness": 1.8,
         "patterns": [
             "Wood"
@@ -1759,7 +1759,7 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM21882",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "sellingPrice": 7400
+        "sellingPrice": 8000
     },
     {
         "id": "13909",
@@ -1767,7 +1767,7 @@ export const SHEET_PRODUCTS = [
         "subCategory": "스탠다드 1.8(뉴청맥)",
         "title": "애쉬",
         "subtitle": "시트 | 시트 스탠다드 1.8(뉴청맥)",
-        "price": 9500,
+        "price": 10000,
         "thickness": 1.8,
         "patterns": [
             "Wood"
@@ -1789,7 +1789,7 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24081",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "sellingPrice": 7400
+        "sellingPrice": 8000
     },
     {
         "id": "13913",
@@ -1797,7 +1797,7 @@ export const SHEET_PRODUCTS = [
         "subCategory": "스탠다드 1.8(뉴청맥)",
         "title": "오크",
         "subtitle": "시트 | 시트 스탠다드 1.8(뉴청맥)",
-        "price": 9500,
+        "price": 10000,
         "thickness": 1.8,
         "patterns": [
             "Wood"
@@ -1819,7 +1819,7 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24133",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "sellingPrice": 7400
+        "sellingPrice": 8000
     },
     {
         "id": "13912",
@@ -1827,7 +1827,7 @@ export const SHEET_PRODUCTS = [
         "subCategory": "스탠다드 1.8(뉴청맥)",
         "title": "오크",
         "subtitle": "시트 | 시트 스탠다드 1.8(뉴청맥)",
-        "price": 9500,
+        "price": 10000,
         "thickness": 1.8,
         "patterns": [
             "Wood"
@@ -1849,7 +1849,7 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24131",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "sellingPrice": 7400
+        "sellingPrice": 8000
     },
     {
         "id": "102243",
@@ -1857,7 +1857,7 @@ export const SHEET_PRODUCTS = [
         "subCategory": "스탠다드 1.8(뉴청맥)",
         "title": "블랑 오크",
         "subtitle": "시트 | 시트 스탠다드 1.8(뉴청맥)",
-        "price": 9500,
+        "price": 10000,
         "thickness": 1.8,
         "patterns": [
             "Wood"
@@ -1879,7 +1879,7 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24711",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "sellingPrice": 7400
+        "sellingPrice": 8000
     },
     {
         "id": "102245",
@@ -1887,7 +1887,7 @@ export const SHEET_PRODUCTS = [
         "subCategory": "스탠다드 1.8(뉴청맥)",
         "title": "크래프트 오크",
         "subtitle": "시트 | 시트 스탠다드 1.8(뉴청맥)",
-        "price": 9500,
+        "price": 10000,
         "thickness": 1.8,
         "patterns": [
             "Wood"
@@ -1909,7 +1909,7 @@ export const SHEET_PRODUCTS = [
         "model_id": "CM24713",
         "priceLabel": "판매금액:",
         "priceUnit": "",
-        "sellingPrice": 7400
+        "sellingPrice": 8000
     },
     {
         "id": "13906",
@@ -2214,9 +2214,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "100429",
         "categoryId": "residential",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 3.2(지아 사랑애)",
         "title": "[3.2]내추럴 테라조 / 그레이",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 3.2(지아사랑애)",
         "price": 31500,
         "thickness": 3.2,
         "patterns": [
@@ -2244,9 +2244,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "100427",
         "categoryId": "residential",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 3.2(지아 사랑애)",
         "title": "[3.2]에버닌 오크 / 라이트 브라운",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 3.2(지아사랑애)",
         "price": 31500,
         "thickness": 3.2,
         "patterns": [
@@ -2275,9 +2275,9 @@ export const SHEET_PRODUCTS = [
         "id": "102660",
         "categoryId": "residential",
         "category": "시트",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 2.7(지아 사랑애)",
         "title": "[2.7]Special 소프트 스톤",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 2.7(지아사랑애)",
         "price": 27500,
         "thickness": 2.7,
         "patterns": [
@@ -2306,9 +2306,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "100430",
         "categoryId": "residential",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 3.2(지아 사랑애)",
         "title": "[3.2]오닉스 / 화이트",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 3.2(지아사랑애)",
         "price": 31500,
         "thickness": 3.2,
         "patterns": [
@@ -2337,9 +2337,9 @@ export const SHEET_PRODUCTS = [
         "id": "102662",
         "categoryId": "residential",
         "category": "시트",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 2.7(지아 사랑애)",
         "title": "[2.7]Special 어반 포세린",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 2.7(지아사랑애)",
         "price": 27500,
         "thickness": 2.7,
         "patterns": [
@@ -2369,9 +2369,9 @@ export const SHEET_PRODUCTS = [
         "id": "102666",
         "categoryId": "residential",
         "category": "시트",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 2.7(지아 사랑애)",
         "title": "[2.7]Special 페일 오크 / 라이트 브라운",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 2.7(지아사랑애)",
         "price": 27500,
         "thickness": 2.7,
         "patterns": [
@@ -2400,9 +2400,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "100426",
         "categoryId": "residential",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 3.2(지아 사랑애)",
         "title": "[3.2]비스크 엘름 / 라이트브라운",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 3.2(지아사랑애)",
         "price": 31500,
         "thickness": 3.2,
         "patterns": [
@@ -2430,9 +2430,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "100424",
         "categoryId": "residential",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 3.2(지아 사랑애)",
         "title": "[3.2]소프트오크 / 화이트",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 3.2(지아사랑애)",
         "price": 31500,
         "thickness": 3.2,
         "patterns": [
@@ -2461,9 +2461,9 @@ export const SHEET_PRODUCTS = [
         "id": "100434",
         "categoryId": "residential",
         "category": "시트",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 2.7(지아 사랑애)",
         "title": "[2.7]모카 오크 / 브라운",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 2.7(지아사랑애)",
         "price": 27500,
         "thickness": 2.7,
         "patterns": [
@@ -2492,9 +2492,9 @@ export const SHEET_PRODUCTS = [
         "id": "102661",
         "categoryId": "residential",
         "category": "시트",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 2.7(지아 사랑애)",
         "title": "[2.7]Special 멜로우 스톤",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 2.7(지아사랑애)",
         "price": 27500,
         "thickness": 2.7,
         "patterns": [
@@ -2524,9 +2524,9 @@ export const SHEET_PRODUCTS = [
         "id": "102667",
         "categoryId": "residential",
         "category": "시트",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 2.7(지아 사랑애)",
         "title": "[2.7]Special Oak(오크) / 브라운",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 2.7(지아사랑애)",
         "price": 27500,
         "thickness": 2.7,
         "patterns": [
@@ -2555,9 +2555,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "100425",
         "categoryId": "residential",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 3.2(지아 사랑애)",
         "title": "[3.2]위트 오크 / 브라운",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 3.2(지아사랑애)",
         "price": 31500,
         "thickness": 3.2,
         "patterns": [
@@ -2585,9 +2585,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "100423",
         "categoryId": "residential",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 3.2(지아 사랑애)",
         "title": "[3.2]바닐라 / 브라운",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 3.2(지아사랑애)",
         "price": 31500,
         "thickness": 3.2,
         "patterns": [
@@ -2616,9 +2616,9 @@ export const SHEET_PRODUCTS = [
         "id": "102668",
         "categoryId": "residential",
         "category": "시트",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 2.7(지아 사랑애)",
         "title": "[2.7]Special Oak(오크) / 브라운",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 2.7(지아사랑애)",
         "price": 27500,
         "thickness": 2.7,
         "patterns": [
@@ -2647,9 +2647,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "100422",
         "categoryId": "residential",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 3.2(지아 사랑애)",
         "title": "[3.2]아리아 / 다크 브라운",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 3.2(지아사랑애)",
         "price": 31500,
         "thickness": 3.2,
         "patterns": [
@@ -2677,9 +2677,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "100428",
         "categoryId": "residential",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 3.2(지아 사랑애)",
         "title": "[3.2]그레이 타일 / 그레이",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 3.2(지아사랑애)",
         "price": 31500,
         "thickness": 3.2,
         "patterns": [
@@ -2708,9 +2708,9 @@ export const SHEET_PRODUCTS = [
         "id": "100433",
         "categoryId": "residential",
         "category": "시트",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 2.7(지아 사랑애)",
         "title": "[2.7]보스톤 오크 / 그레이",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 2.7(지아사랑애)",
         "price": 27500,
         "thickness": 2.7,
         "patterns": [
@@ -2738,9 +2738,9 @@ export const SHEET_PRODUCTS = [
     {
         "id": "100421",
         "categoryId": "residential",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 3.2(지아 사랑애)",
         "title": "[3.2]노벰버 레인 / 브라운",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 3.2(지아사랑애)",
         "price": 31500,
         "thickness": 3.2,
         "patterns": [
@@ -2769,9 +2769,9 @@ export const SHEET_PRODUCTS = [
         "id": "102663",
         "categoryId": "residential",
         "category": "시트",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 2.7(지아 사랑애)",
         "title": "[2.7]Special 새틴 그레이",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 2.7(지아사랑애)",
         "price": 27500,
         "thickness": 2.7,
         "patterns": [
@@ -2801,9 +2801,9 @@ export const SHEET_PRODUCTS = [
         "id": "102665",
         "categoryId": "residential",
         "category": "시트",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 2.7(지아 사랑애)",
         "title": "[2.7]Special 이스턴 오크",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 2.7(지아사랑애)",
         "price": 27500,
         "thickness": 2.7,
         "patterns": [
@@ -2833,9 +2833,9 @@ export const SHEET_PRODUCTS = [
         "id": "100431",
         "categoryId": "residential",
         "category": "시트",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 2.7(지아 사랑애)",
         "title": "[2.7]Oak(오크) / 브라운",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 2.7(지아사랑애)",
         "price": 27500,
         "thickness": 2.7,
         "patterns": [
@@ -2864,9 +2864,9 @@ export const SHEET_PRODUCTS = [
         "id": "100432",
         "categoryId": "residential",
         "category": "시트",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 2.7(지아 사랑애)",
         "title": "[2.7]Oak(오크) / 브라운",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 2.7(지아사랑애)",
         "price": 27500,
         "thickness": 2.7,
         "patterns": [
@@ -2895,9 +2895,9 @@ export const SHEET_PRODUCTS = [
         "id": "100435",
         "categoryId": "residential",
         "category": "시트",
-        "subCategory": "프리미엄 3.2/2.7(지아 사랑애)",
+        "subCategory": "프리미엄 2.7(지아 사랑애)",
         "title": "[2.7]페일 오크 / 라이트브라운",
-        "subtitle": "시트 | 시트 프리미엄 3.2/2.7(지아사랑애)",
+        "subtitle": "시트 | 시트 프리미엄 2.7(지아사랑애)",
         "price": 27500,
         "thickness": 2.7,
         "patterns": [

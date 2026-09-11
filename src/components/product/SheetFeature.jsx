@@ -79,18 +79,17 @@ const SHEET_LINE_DATA = {
     },
 
 
-    // ── 엑스컴포트 4.5 (지아 소리잠) ──
-    "엑스컴포트 4.5(지아 소리잠)": {
-        introTitle: "LX Z:IN 바닥재 엑스컴포트 4.5",
-        introDesc: "천연소재의 깊이감을 담은 쿠션 시트바닥재, LX Z:IN 바닥재 엑스컴포트 4.5입니다.",
-        nameChangeNotice: "※ 기존의 '지아 소리잠' 제품명이 '엑스컴포트 4.5'으로 변경되었습니다.",
+    // ── 지아 소리잠 4.5 ──
+    "지아 소리잠 4.5": {
+        introTitle: "LX Z:IN 바닥재 지아 소리잠 4.5",
+        introDesc: "천연소재의 깊이감을 담은 쿠션 시트바닥재, LX Z:IN 바닥재 지아 소리잠 4.5입니다.",
         mainImage: "/assets/xcomfort/main-banner-real.png",
         features: [
             { icon: "leaf", iconImage: "/assets/xcomfort/icon-leaf.png", sub: "안심하고 사용할 수 있는", title: "친환경 바닥재" },
             { icon: "award", iconImage: "/assets/xcomfort/icon-layers.png", sub: "고탄성 쿠션층 적용", title: "우수한 보행성능" },
             { icon: "wand", iconImage: "/assets/xcomfort/icon-design.png", sub: "소재 본연의 디자인을 표현한", title: "내추럴 디자인" },
         ],
-        structureDesc: "LX Z:IN 바닥재 엑스컴포트 4.5는 UV 코팅층, 고강도 투명 필름층, 디자인층, 치수안정층, 고탄성 쿠션층\n총 5단계로 구성되어 있습니다.",
+        structureDesc: "LX Z:IN 바닥재 지아 소리잠 4.5는 UV 코팅층, 고강도 투명 필름층, 디자인층, 치수안정층, 고탄성 쿠션층\n총 5단계로 구성되어 있습니다.",
         structureImage: "/assets/xcomfort/embo-tech.png",
         detailFeatures: [
             {
@@ -310,18 +309,17 @@ const SHEET_LINE_DATA = {
         ],
     },
 
-    // ── 시트 프리미엄 3.2/2.7 (지아 사랑애) ── 통합
-    "시트 프리미엄 3.2/2.7(지아사랑애)": {
-        introTitle: "LX Z:IN 바닥재 시트 프리미엄 3.2/2.7",
-        introDesc: "가족과 함께하는 우리 집 생활 공간을 위한 바닥재, LX Z:IN 바닥재 시트 프리미엄 3.2/2.7입니다.",
-        nameChangeNotice: "※ 기존의 '지아사랑애' 제품명이 '시트 프리미엄 3.2/2.7'으로 변경되었습니다.",
+    // ── 시트 프리미엄 3.2(지아 사랑애) ──
+    "시트 프리미엄 3.2(지아사랑애)": {
+        introTitle: "LX Z:IN 바닥재 시트 프리미엄 3.2",
+        introDesc: "가족과 함께하는 우리 집 생활 공간을 위한 바닥재, LX Z:IN 바닥재 시트 프리미엄 3.2입니다.",
         mainImage: "https://octapi.lxzin.com/imageResource/file/202403/19/3b5ef140-7d67-4b5c-8d65-0ba3f9332828.png",
         features: [
             { icon: "leaf", sub: "안심하고 사용할 수 있는", title: "친환경 바닥재", iconImage: "https://octapi.lxzin.com/imageResource/file/202403/18/1db54701-3e24-4375-8ba5-cb679efa5250.png" },
             { icon: "award", sub: "도톰한 쿠션층", title: "우수한 보행감", iconImage: "https://octapi.lxzin.com/imageResource/file/202403/18/fec52231-f827-4349-8de9-5b27ab4d2b2a.png" },
             { icon: "wand", sub: "소재 본연의 디자인을 표현한", title: "내추럴 디자인", iconImage: "https://octapi.lxzin.com/imageResource/file/202403/18/d4fb4596-d1e5-4155-a850-f744302d85ee.png" },
         ],
-        structureDesc: "LX Z:IN 바닥재 시트 프리미엄 3.2/2.7은 UV 코팅층, 투명 필름층, 디자인 인쇄층, 치수 안정층, 쿠션층\n총 5단계로 구성되어 있습니다.",
+        structureDesc: "LX Z:IN 바닥재 시트 프리미엄 3.2는 UV 코팅층, 투명 필름층, 디자인 인쇄층, 치수 안정층, 쿠션층\n총 5단계로 구성되어 있습니다.",
         structureImage: "https://octapi.lxzin.com/imageResource/file/202403/19/915b7c06-627d-4e70-aaad-43fc9cb642c3.png",
         detailFeatures: [
             {
@@ -348,8 +346,52 @@ const SHEET_LINE_DATA = {
         ],
         specs: [
             { label: "LX Z:IN 바닥재\n시트 프리미엄 3.2 사이즈", value: "3.2mm(T) X 1,830mm(W)" },
-            { label: "LX Z:IN 바닥재\n시트 프리미엄 2.7 사이즈", value: "2.7mm(T) X 1,830mm(W)" },
             { label: "LX Z:IN 바닥재\n시트 프리미엄 3.2 포장 단위", value: "23m/Roll" },
+        ],
+        certs: [
+            { src: "https://octapi.lxzin.com/imageResource/file/202504/18/6872a3fe-7c28-463d-803e-30eabdf37305.jpg", alt: "2025 한국산업의 브랜드파워(K-BPI) 조사 가정용 바닥재 부문 1위", width: "152px", label: "2025 한국산업의 브랜드파워(K-BPI) 조사\n가정용 바닥재 부문 1위" },
+            { src: "https://octapi.lxzin.com/imageResource/file/202511/21/e8f7f262-222b-42fa-84ed-533e946597b8.png", alt: "환경표지인증 한국환경산업기술원", width: "224px", label: "환경표지인증 한국환경산업기술원" },
+            { src: "https://octapi.lxzin.com/imageResource/file/202512/03/d4381890-ab9e-473d-9510-c043af5049c8.png", alt: "실내표지", width: "92px", label: "실내표지" },
+        ],
+    },
+
+    // ── 시트 프리미엄 2.7(지아 사랑애) ──
+    "시트 프리미엄 2.7(지아사랑애)": {
+        introTitle: "LX Z:IN 바닥재 시트 프리미엄 2.7",
+        introDesc: "가족과 함께하는 우리 집 생활 공간을 위한 바닥재, LX Z:IN 바닥재 시트 프리미엄 2.7입니다.",
+        mainImage: "https://octapi.lxzin.com/imageResource/file/202403/19/3b5ef140-7d67-4b5c-8d65-0ba3f9332828.png",
+        features: [
+            { icon: "leaf", sub: "안심하고 사용할 수 있는", title: "친환경 바닥재", iconImage: "https://octapi.lxzin.com/imageResource/file/202403/18/1db54701-3e24-4375-8ba5-cb679efa5250.png" },
+            { icon: "award", sub: "도톰한 쿠션층", title: "우수한 보행감", iconImage: "https://octapi.lxzin.com/imageResource/file/202403/18/fec52231-f827-4349-8de9-5b27ab4d2b2a.png" },
+            { icon: "wand", sub: "소재 본연의 디자인을 표현한", title: "내추럴 디자인", iconImage: "https://octapi.lxzin.com/imageResource/file/202403/18/d4fb4596-d1e5-4155-a850-f744302d85ee.png" },
+        ],
+        structureDesc: "LX Z:IN 바닥재 시트 프리미엄 2.7은 UV 코팅층, 투명 필름층, 디자인 인쇄층, 치수 안정층, 쿠션층\n총 5단계로 구성되어 있습니다.",
+        structureImage: "https://octapi.lxzin.com/imageResource/file/202403/19/915b7c06-627d-4e70-aaad-43fc9cb642c3.png",
+        detailFeatures: [
+            {
+                title: "더 커진 디자인",
+                desc: "기존 대비 1.5배 커진 우드 디자인은 고급 원목과 스톤의 크고 수려한 무늬를 그대로 표현합니다.",
+                note: "※ Big Size(Wide) 디자인은 일부 패턴에만 적용되어 있음",
+                images: [
+                    { src: "https://octapi.lxzin.com/imageResource/file/202403/19/455da22e-77f2-49e0-b7ca-b1a81d726b05.png", label: "[우드]" },
+                    { src: "https://octapi.lxzin.com/imageResource/file/202403/19/027aeb94-67b2-4fc6-8bb2-b1ff202270e1.png", label: "[스톤]" },
+                ],
+            },
+            {
+                image: "https://octapi.lxzin.com/imageResource/file/202403/18/fac911e5-71d6-45f7-be46-fbfa55409a53.png",
+                title: "Deep and Wide 동조엠보 기술",
+                desc: "우드, 스톤의 표면 특성을 입체감 있게 사실적으로 구현하여\n소재 본연의 디자인을 표현합니다.",
+                note: "※ 동조 엠보(EIR*) 기술이란 디자인 무늬와 표면엠보가 일치하여 천연소재의 질감을 사실적으로 구현하는 기술\n(*EIR : Embossed in Register)",
+            },
+            {
+                image: "https://octapi.lxzin.com/imageResource/file/202403/19/37684a8b-e714-4dbf-b709-37e8657d6b76.png",
+                title: "우리 집 반려동물도 편안한 바닥재",
+                desc: "덜 미끄러운 바닥재로 편안하고 안전한 보행이 가능하며,\n도톰한 쿠션 층이 점프 및 착지 시 관절에 전해지는 충격을 흡수해줍니다.\n이음매 틈새가 거의 없어 작은 실수(오염)에도 청소가 용이하고\n수분이 바닥 틈으로 거의 침투하지 않아 위생적이며, 청소기 소음, 의자 끄는 소리와 같은 생활 소음을 저감시켜줍니다.",
+                note: "※ 미끄럼 저항성 테스트(KS M 3802 : 2022) Slider 55 기준 : 건식(Dry) DP5, 습식(Wet) WP2\n※ 실험실 측정 결과로, 실 생활 환경에 따라 달라질 수 있음",
+            },
+        ],
+        specs: [
+            { label: "LX Z:IN 바닥재\n시트 프리미엄 2.7 사이즈", value: "2.7mm(T) X 1,830mm(W)" },
             { label: "LX Z:IN 바닥재\n시트 프리미엄 2.7 포장 단위", value: "25m/Roll" },
         ],
         certs: [
