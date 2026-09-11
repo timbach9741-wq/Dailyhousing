@@ -2,7 +2,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-001",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "글렌오크",
         "subtitle": "한솔마루 강화마루 (우드100)",
         "price": 0,
@@ -23,7 +23,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-002",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "파우더화이트",
         "subtitle": "한솔마루 강화마루 (우드100)",
         "price": 0,
@@ -44,7 +44,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-003",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "브릭오크",
         "subtitle": "한솔마루 강화마루 (우드100)",
         "price": 0,
@@ -65,7 +65,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-004",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "오트밀오크",
         "subtitle": "한솔마루 강화마루 (우드100)",
         "price": 0,
@@ -86,7 +86,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-005",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "겐트멀바우",
         "subtitle": "한솔마루 강화마루 (우드190)",
         "price": 0,
@@ -107,7 +107,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-006",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "하버그레이",
         "subtitle": "한솔마루 강화마루 (우드190)",
         "price": 0,
@@ -128,7 +128,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-007",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "모튼엘름",
         "subtitle": "한솔마루 강화마루 (우드190)",
         "price": 0,
@@ -149,7 +149,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-008",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "스프링오크2",
         "subtitle": "한솔마루 강화마루 (우드190)",
         "price": 0,
@@ -170,7 +170,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-009",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "스탠다드오크2",
         "subtitle": "한솔마루 강화마루 (우드190)",
         "price": 0,
@@ -191,7 +191,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-010",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "프로방스오크",
         "subtitle": "한솔마루 강화마루 (우드190)",
         "price": 0,
@@ -212,7 +212,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-011",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "멜로우오크",
         "subtitle": "한솔마루 강화마루 (우드190)",
         "price": 0,
@@ -233,7 +233,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-012",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "에스프레소월넛",
         "subtitle": "한솔마루 강화마루 (우드190)",
         "price": 0,
@@ -254,7 +254,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-013",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "윈터그레이오크",
         "subtitle": "한솔마루 강화마루 (우드190)",
         "price": 0,
@@ -275,7 +275,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-014",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "화이트파인3",
         "subtitle": "한솔마루 강화마루 (우드190)",
         "price": 0,
@@ -296,7 +296,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-015",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "스프렌더오크",
         "subtitle": "한솔마루 강화마루 (우드190)",
         "price": 0,
@@ -317,7 +317,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-016",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "코지화이트",
         "subtitle": "한솔마루 강화마루 (우드190)",
         "price": 0,
@@ -338,7 +338,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-017",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "몬테카라라",
         "subtitle": "한솔마루 강화마루 (스톤390)",
         "price": 0,
@@ -359,7 +359,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-018",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "밀스톤",
         "subtitle": "한솔마루 강화마루 (스톤390)",
         "price": 0,
@@ -380,7 +380,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-019",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "피츠화이트 (95)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -401,7 +401,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-020",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "포니화이트 (95)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -422,7 +422,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-021",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "밀러오크 (95)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -443,7 +443,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-022",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "로셀그레이 (95)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -464,7 +464,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-023",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "브라이튼엘름 (95)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -485,7 +485,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-024",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "버트내추럴 (95)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -506,7 +506,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-025",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "카니티크 (95)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -527,7 +527,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-026",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "칼로브라운 (95)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -548,7 +548,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-027",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "데이화이트 (165)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -569,7 +569,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-028",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "로이드그레이 (165)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -590,7 +590,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-029",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "로우그레이 (165)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -611,7 +611,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-030",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "데이라이트 (165)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -632,7 +632,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-031",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "데이오크 (165)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -653,7 +653,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-032",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "폴리아라이트 (165)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -674,7 +674,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-033",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "폴리아오크 (165)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -695,7 +695,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-034",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "밸리내추럴 (165)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -716,7 +716,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-035",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "바크브라운 (165)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -737,7 +737,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-036",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "바크딥브라운 (165)",
         "subtitle": "한솔마루 SB마루 (강)",
         "price": 0,
@@ -758,7 +758,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-037",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "베일라이트",
         "subtitle": "한솔마루 SB마루 (스톤395)",
         "price": 0,
@@ -779,7 +779,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-038",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "베일그레이",
         "subtitle": "한솔마루 SB마루 (스톤395)",
         "price": 0,
@@ -800,7 +800,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-039",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "팬텀클레이",
         "subtitle": "한솔마루 SB마루 (스톤395)",
         "price": 0,
@@ -821,7 +821,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-040",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "셀바스톤차콜",
         "subtitle": "한솔마루 SB마루 (스톤395)",
         "price": 0,
@@ -842,7 +842,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-041",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "트라버틴밀크",
         "subtitle": "한솔마루 SB마루 (스톤395)",
         "price": 0,
@@ -863,7 +863,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-042",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "무이네화이트",
         "subtitle": "한솔마루 SB마루 (스톤395)",
         "price": 0,
@@ -884,7 +884,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-043",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "마테라베이지",
         "subtitle": "한솔마루 SB마루 (스톤395)",
         "price": 0,
@@ -905,7 +905,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-044",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "루트샌드라이트",
         "subtitle": "한솔마루 SB마루 (스톤395)",
         "price": 0,
@@ -926,7 +926,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-045",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "루나크림",
         "subtitle": "한솔마루 SB마루 (스톤395)",
         "price": 0,
@@ -947,7 +947,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-046",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "사멧그레이",
         "subtitle": "한솔마루 SB마루 (스톤395)",
         "price": 0,
@@ -968,7 +968,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-047",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "화이트에보라",
         "subtitle": "한솔마루 SB마루 (스톤395)",
         "price": 0,
@@ -989,7 +989,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-048",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "무이네그레이",
         "subtitle": "한솔마루 SB마루 (스톤395)",
         "price": 0,
@@ -1010,7 +1010,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-049",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "무이네라이트",
         "subtitle": "한솔마루 SB마루 (스톤395)",
         "price": 0,
@@ -1031,7 +1031,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-050",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "무이네화이트",
         "subtitle": "한솔마루 SB마루 (스퀘어600)",
         "price": 0,
@@ -1052,7 +1052,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-051",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "마테라베이지",
         "subtitle": "한솔마루 SB마루 (스퀘어600)",
         "price": 0,
@@ -1073,7 +1073,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-052",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "무이네라이트",
         "subtitle": "한솔마루 SB마루 (스퀘어600)",
         "price": 0,
@@ -1094,7 +1094,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-053",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "무이네그레이",
         "subtitle": "한솔마루 SB마루 (스퀘어600)",
         "price": 0,
@@ -1115,7 +1115,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-054",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "무이네라이트",
         "subtitle": "한솔마루 SB마루 (스퀘어800)",
         "price": 0,
@@ -1136,7 +1136,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-055",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "베일라이트",
         "subtitle": "한솔마루 SB마루 (스퀘어800)",
         "price": 0,
@@ -1157,7 +1157,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-056",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "베일그레이",
         "subtitle": "한솔마루 SB마루 (스퀘어800)",
         "price": 0,
@@ -1178,7 +1178,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-057",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "팬텀클레이",
         "subtitle": "한솔마루 SB마루 (스퀘어800)",
         "price": 0,
@@ -1199,7 +1199,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-058",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "셀바스톤차콜",
         "subtitle": "한솔마루 SB마루 (스퀘어800)",
         "price": 0,
@@ -1220,7 +1220,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-059",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "트라버틴밀크",
         "subtitle": "한솔마루 SB마루 (스퀘어800)",
         "price": 0,
@@ -1241,7 +1241,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-060",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "무이네화이트",
         "subtitle": "한솔마루 SB마루 (스퀘어800)",
         "price": 0,
@@ -1262,7 +1262,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-061",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "마테라베이지",
         "subtitle": "한솔마루 SB마루 (스퀘어800)",
         "price": 0,
@@ -1283,7 +1283,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-062",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "무이네그레이",
         "subtitle": "한솔마루 SB마루 (스퀘어800)",
         "price": 0,
@@ -1304,7 +1304,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-063",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "조슈아라이트 (165)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1325,7 +1325,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-064",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "조슈아베이지 (165)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1346,7 +1346,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-065",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "조슈아내추럴 (165)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1367,7 +1367,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-066",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "앤그레이 (165)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1388,7 +1388,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-067",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "베르겐오크 (165)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1409,7 +1409,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-068",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "몬세라트월넛 (165)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1430,7 +1430,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-069",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "온타리오화이트 (190)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1451,7 +1451,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-070",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "허스트메이플 (190)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1472,7 +1472,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-071",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "조슈아베이지 (190)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1493,7 +1493,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-072",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "조슈아라이트 (190)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1514,7 +1514,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-073",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "앤그레이 (190)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1535,7 +1535,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-074",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "조슈아내추럴 (190)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1556,7 +1556,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-075",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "앤내추럴 (190)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1577,7 +1577,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-076",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "포파티크 (190)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1598,7 +1598,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-077",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "베르겐오크 (190)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,
@@ -1619,7 +1619,7 @@ export const HANSOLMARU_PRODUCTS = [
     {
         "id": "hs-078",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "SB마루",
         "title": "몬세라트월넛 (190)",
         "subtitle": "한솔마루 SB마루 (콜렉트스킨플로어)",
         "price": 0,

@@ -2,7 +2,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-001",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "본 오크",
         "subtitle": "구정마루 강마루 (블론테)",
         "price": 0,
@@ -22,7 +22,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-002",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "엘리엇 오크",
         "subtitle": "구정마루 강마루 (블론테)",
         "price": 0,
@@ -42,7 +42,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-003",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "무어 그레이",
         "subtitle": "구정마루 강마루 (블론테)",
         "price": 0,
@@ -62,7 +62,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-004",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "헤이즈 오크",
         "subtitle": "구정마루 강마루 (블론테)",
         "price": 0,
@@ -82,7 +82,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-005",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "브라이트 오크",
         "subtitle": "구정마루 강마루 (블론테)",
         "price": 0,
@@ -102,7 +102,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-006",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "어스티 브라운",
         "subtitle": "구정마루 강마루 (블론테)",
         "price": 0,
@@ -122,7 +122,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-007",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 스테디 165",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 165)",
         "price": 0,
@@ -142,7 +142,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-008",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 본 오크 165",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 165)",
         "price": 0,
@@ -162,7 +162,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-009",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 비비드 165",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 165)",
         "price": 0,
@@ -182,7 +182,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-010",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 브라이트 오크 165",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 165)",
         "price": 0,
@@ -202,7 +202,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-011",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 헤론 오크 165",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 165)",
         "price": 0,
@@ -222,7 +222,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-012",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 로그 브라운 165",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 165)",
         "price": 0,
@@ -242,7 +242,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-013",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 얼바인 165",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 165)",
         "price": 0,
@@ -262,7 +262,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-014",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 러스틱 165",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 165)",
         "price": 0,
@@ -282,7 +282,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-015",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 오크 뉴 165",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 165)",
         "price": 0,
@@ -302,7 +302,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-016",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 애비뉴 165",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 165)",
         "price": 0,
@@ -322,7 +322,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-017",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 스웨디쉬 165",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 165)",
         "price": 0,
@@ -342,7 +342,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-018",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 바이즈 티크 165",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 165)",
         "price": 0,
@@ -362,7 +362,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-019",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 비비드 142",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 142)",
         "price": 0,
@@ -382,7 +382,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-020",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 오크 뉴 142",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 142)",
         "price": 0,
@@ -402,7 +402,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-021",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 스테디 142",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 142)",
         "price": 0,
@@ -422,7 +422,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-022",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 허니 티크 142",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 142)",
         "price": 0,
@@ -442,7 +442,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-023",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 스웨디쉬 142",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 142)",
         "price": 0,
@@ -462,7 +462,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-024",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 브리튼 142",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 142)",
         "price": 0,
@@ -482,7 +482,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-025",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그랜드 그레인 142",
         "subtitle": "구정마루 강마루 (그랜드 텍스쳐 142)",
         "price": 0,
@@ -502,7 +502,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-026",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "카본 블랙 (Royal)",
         "subtitle": "구정마루 강마루 (프리미엄 텍스쳐)",
         "price": 0,
@@ -522,7 +522,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-027",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "블론드 오크 (Royal)",
         "subtitle": "구정마루 강마루 (프리미엄 텍스쳐)",
         "price": 0,
@@ -542,7 +542,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-028",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "카카오 브라운 (Royal)",
         "subtitle": "구정마루 강마루 (프리미엄 텍스쳐)",
         "price": 0,
@@ -562,7 +562,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-029",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "샌드 오크 (Royal)",
         "subtitle": "구정마루 강마루 (프리미엄 텍스쳐)",
         "price": 0,
@@ -582,7 +582,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-030",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "미스티 로즈 (Royal)",
         "subtitle": "구정마루 강마루 (프리미엄 텍스쳐)",
         "price": 0,
@@ -602,7 +602,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-031",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "모던 본 내추럴",
         "subtitle": "구정마루 강마루 (모던강 115)",
         "price": 0,
@@ -622,7 +622,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-032",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "모던 노던 화이트",
         "subtitle": "구정마루 강마루 (모던강 115)",
         "price": 0,
@@ -642,7 +642,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-033",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "모던 오크",
         "subtitle": "구정마루 강마루 (모던강 115)",
         "price": 0,
@@ -662,7 +662,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-034",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "모던 블랙",
         "subtitle": "구정마루 강마루 (모던강 115)",
         "price": 0,
@@ -682,7 +682,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-035",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "모던 라이트 오크",
         "subtitle": "구정마루 강마루 (모던강 115)",
         "price": 0,
@@ -702,7 +702,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-036",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "모던 티크",
         "subtitle": "구정마루 강마루 (모던강 115)",
         "price": 0,
@@ -722,7 +722,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-037",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "모던 바닐라 크림",
         "subtitle": "구정마루 강마루 (모던강 115)",
         "price": 0,
@@ -742,7 +742,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-038",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "오크",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -762,7 +762,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-039",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "아이리쉬 화이트",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -782,7 +782,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-040",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "오크 뉴 클래식",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -802,7 +802,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-041",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "허니 티크",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -822,7 +822,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-042",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "아이보리 화이트",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -842,7 +842,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-043",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "스웨디쉬 화이트",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -862,7 +862,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-044",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "마일드 그레이 오크",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -882,7 +882,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-045",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "아이보리 워시",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -902,7 +902,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-046",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "올란도 화이트",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -922,7 +922,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-047",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "누크 화이트",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -942,7 +942,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-048",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "코티지 워시",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -962,7 +962,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-049",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "문라이트 워시",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -982,7 +982,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-050",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "스카치 오크",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -1002,7 +1002,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-051",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "실크 스모키 워시",
         "subtitle": "구정마루 강마루 (구정강)",
         "price": 0,
@@ -1022,7 +1022,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-052",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "웜 브리즈",
         "subtitle": "구정마루 타일마루 (마뷸러스 엘)",
         "price": 0,
@@ -1042,7 +1042,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-053",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "모로칸 크림",
         "subtitle": "구정마루 타일마루 (마뷸러스 엘)",
         "price": 0,
@@ -1062,7 +1062,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-054",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "젠틀 판타지",
         "subtitle": "구정마루 타일마루 (마뷸러스 엘)",
         "price": 0,
@@ -1082,7 +1082,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-055",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "라이트 듄",
         "subtitle": "구정마루 타일마루 (마뷸러스 엘)",
         "price": 0,
@@ -1102,7 +1102,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-056",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "문 더스트",
         "subtitle": "구정마루 타일마루 (마뷸러스 엘)",
         "price": 0,
@@ -1122,7 +1122,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-057",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "모로칸 크림",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1142,7 +1142,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-058",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "젠틀 판타지",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1162,7 +1162,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-059",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "웜 브리즈",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1182,7 +1182,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-060",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "새틴 화이트",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1202,7 +1202,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-061",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "무디 블랙",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1222,7 +1222,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-062",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "화이트 쇼어",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1242,7 +1242,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-063",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "그레이지",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1262,7 +1262,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-064",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "크림 브륄레",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1282,7 +1282,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-065",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "실버 문",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1302,7 +1302,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-066",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "뉴트럴 그레이",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1322,7 +1322,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-067",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "리저브 스톤",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1342,7 +1342,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-068",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "쉐도우 그레이",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1362,7 +1362,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-069",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "스페이스 그레이",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1382,7 +1382,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-070",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "샌드 테라조",
         "subtitle": "구정마루 타일마루 (마뷸러스 젠)",
         "price": 0,
@@ -1402,7 +1402,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-071",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "멜로우 베이지",
         "subtitle": "구정마루 타일마루 (마뷸러스 듀스)",
         "price": 0,
@@ -1422,7 +1422,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-072",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "모슬린 화이트",
         "subtitle": "구정마루 타일마루 (마뷸러스 듀스)",
         "price": 0,
@@ -1442,7 +1442,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-073",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "모로칸 블러쉬",
         "subtitle": "구정마루 타일마루 (마뷸러스 듀스)",
         "price": 0,
@@ -1462,7 +1462,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-074",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "젠틀 라이트",
         "subtitle": "구정마루 타일마루 (마뷸러스 듀스)",
         "price": 0,
@@ -1482,7 +1482,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-075",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "웜 브라이트",
         "subtitle": "구정마루 타일마루 (마뷸러스 듀스)",
         "price": 0,
@@ -1502,7 +1502,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-076",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "솔티 스노우",
         "subtitle": "구정마루 타일마루 (마뷸러스 듀스)",
         "price": 0,
@@ -1522,7 +1522,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-077",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "시멘틱 그레이",
         "subtitle": "구정마루 타일마루 (마뷸러스 듀스)",
         "price": 0,
@@ -1542,7 +1542,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-078",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "클라우디 크림",
         "subtitle": "구정마루 타일마루 (마뷸러스 듀스)",
         "price": 0,
@@ -1562,7 +1562,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-079",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "모로칸 크림",
         "subtitle": "구정마루 타일마루 (마뷸러스 리브)",
         "price": 0,
@@ -1582,7 +1582,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-080",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "웜 브리즈",
         "subtitle": "구정마루 타일마루 (마뷸러스 리브)",
         "price": 0,
@@ -1602,7 +1602,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-081",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "젠틀 판타지",
         "subtitle": "구정마루 타일마루 (마뷸러스 리브)",
         "price": 0,
@@ -1622,7 +1622,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-082",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "셀럽 베이지",
         "subtitle": "구정마루 타일마루 (마뷸러스 리브)",
         "price": 0,
@@ -1642,7 +1642,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-083",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "실버 문",
         "subtitle": "구정마루 타일마루 (마뷸러스 리브)",
         "price": 0,
@@ -1662,7 +1662,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-084",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "젠틀 판타지",
         "subtitle": "구정마루 타일마루 (마뷸러스 뮤즈)",
         "price": 0,
@@ -1682,7 +1682,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-085",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "모로칸 크림",
         "subtitle": "구정마루 타일마루 (마뷸러스 뮤즈)",
         "price": 0,
@@ -1702,7 +1702,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-086",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "셀럽 베이지",
         "subtitle": "구정마루 타일마루 (마뷸러스 뮤즈)",
         "price": 0,
@@ -1722,7 +1722,7 @@ export const KUJUNGMARU_PRODUCTS = [
     {
         "id": "kj-087",
         "categoryId": "residential",
-        "subCategory": "타일",
+        "subCategory": "타일마루",
         "title": "뮤지엄 그레이",
         "subtitle": "구정마루 타일마루 (마뷸러스 뮤즈)",
         "price": 0,

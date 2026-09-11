@@ -11,6 +11,20 @@ const BRAND_LOGOS = {
     '노바마루': '/assets/brand-logos/novamaru-logo.png',
 };
 
+// "마루" 대분류로 묶이는 subCategory 전체 목록. LX 자체 마루는 'marru' 그대로,
+// 구정/동화/한솔/노바마루는 subtitle("{브랜드} {대분류} (컬렉션)")에서 파싱한 대분류명을 사용.
+const MARU_SUBCATEGORIES = ['마루', 'SB마루', '강화마루', '원목마루', '강마루', '진마루'];
+
+// 브랜드별 "마루" 2단계 상세 탭. LX는 title 접두어(사각 400/사각 600/우드) 기반이라 별도 유지,
+// 나머지 브랜드는 subCategory(대분류) 기준으로 탭을 노출한다.
+const maruDetailCategoriesByBrand = {
+    'LX Z:IN': ['전체', '사각 400', '사각 600', '우드'],
+    '한솔마루': ['전체', 'SB마루', '강화마루', '원목마루'],
+    '구정마루': ['전체', '강마루', '원목마루'],
+    '동화마루': ['전체', '강마루', '강화마루', '진마루', '원목마루'],
+    '노바마루': ['전체', '강마루', '원목마루'],
+};
+
 export default function ResidentialSheetCategory() {
     const products = useProductStore((state) => state.products).filter(p => p.categoryId === 'residential');
     const initProducts = useProductStore((state) => state.initProducts);
@@ -32,7 +46,7 @@ export default function ResidentialSheetCategory() {
 
     // 대분류 판별 로직 (filteredProducts와 동일 기준) — 선택된 브랜드에 실제로 있는 대분류만 탭에 노출
     const matchesEditon = (p) => (p.subtitle && p.subtitle.includes('에디톤')) || (p.subCategory && p.subCategory.includes('에디톤'));
-    const matchesMaru = (p) => p.subCategory === '마루' || (p.subtitle && p.subtitle === '마루');
+    const matchesMaru = (p) => MARU_SUBCATEGORIES.includes(p.subCategory) || (p.subtitle && p.subtitle === '마루');
     const matchesSheet = (p) => (p.subtitle && p.subtitle.includes('시트')) || (p.subCategory && (p.subCategory.includes('프리미엄') || p.subCategory.includes('스탠다드') || p.subCategory.includes('엑스컴포트')));
     const matchesTile = (p) => p.subtitle && p.subtitle.includes('타일');
 
@@ -50,19 +64,19 @@ export default function ResidentialSheetCategory() {
     }, [brandScopedProducts]);
 
     const editonDetailCategories = ['전체', '에디톤 스톤', '에디톤 스퀘어', '에디톤 우드'];
-    const maruDetailCategories = ['전체', '사각 400', '사각 600', '우드'];
-    const sheetDetailCategories = ['전체', '엑스컴포트 5.0', '엑스컴포트 4.5(지아 소리잠)', '프리미엄 3.2/2.7(지아 사랑애)', '프리미엄 2.2(지아 자연애)', '스탠다드 2.0(은행목)', '스탠다드 1.8(뉴청맥)'];
+    // 마루는 브랜드마다 대분류 체계가 달라 브랜드별로 다른 탭을 사용 (선택된 브랜드가 없으면 LX 기준)
+    const maruDetailCategories = maruDetailCategoriesByBrand[selectedBrand] || maruDetailCategoriesByBrand['LX Z:IN'];
+    const sheetDetailCategories = ['전체', '엑스컴포트 5.0', '지아 소리잠 4.5', '프리미엄 3.2(지아 사랑애)', '프리미엄 2.7(지아 사랑애)', '프리미엄 2.2(지아 자연애)', '스탠다드 2.0(은행목)', '스탠다드 1.8(뉴청맥)'];
     const tileDetailCategories = ['전체', '하우스 타일 베이직(하우스)', '하우스 타일 스탠다드(하우스 Style)'];
 
-    // 2단계 상세 탭도 실제로 매칭되는 제품이 있는 항목만 노출 (구정마루/동화마루처럼
-    // LX 전용 상세분류(사각 400/사각 600 등)에 해당 제품이 없는 브랜드는 "전체"만 남고 탭 자체가 숨겨짐)
+    // 2단계 상세 탭도 실제로 매칭되는 제품이 있는 항목만 노출
     const detailMatchers = {
         '에디톤': (p, label) => p.subCategory === label,
         '마루': (p, label) => {
             if (label === '사각 400') return p.title.startsWith('사각 400');
             if (label === '사각 600') return p.title.startsWith('사각 600');
             if (label === '우드') return p.title.startsWith('우드');
-            return true;
+            return p.subCategory === label;
         },
         '시트': (p, label) => p.subCategory === label,
         '타일': (p, label) => p.subCategory === label,
@@ -93,8 +107,8 @@ export default function ResidentialSheetCategory() {
                 result = result.filter(p => p.subCategory === selectedDetailCategory);
             }
         } else if (selectedSubCategory === '마루') {
-            result = result.filter(p => 
-                p.subCategory === '마루' || 
+            result = result.filter(p =>
+                MARU_SUBCATEGORIES.includes(p.subCategory) ||
                 (p.subtitle && p.subtitle === '마루')
             );
             if (selectedDetailCategory === '사각 400') {
@@ -103,6 +117,8 @@ export default function ResidentialSheetCategory() {
                 result = result.filter(p => p.title.startsWith('사각 600'));
             } else if (selectedDetailCategory === '우드') {
                 result = result.filter(p => p.title.startsWith('우드'));
+            } else if (selectedDetailCategory !== '전체') {
+                result = result.filter(p => p.subCategory === selectedDetailCategory);
             }
         } else if (selectedSubCategory === '시트') {
             result = result.filter(p => 

@@ -2,7 +2,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-001",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "오크5",
         "subtitle": "동화마루 강화마루 (클릭S)",
         "price": 0,
@@ -22,7 +22,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-002",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "파인2",
         "subtitle": "동화마루 강화마루 (클릭S)",
         "price": 0,
@@ -42,7 +42,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-003",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "월넛",
         "subtitle": "동화마루 강화마루 (클릭S)",
         "price": 0,
@@ -62,7 +62,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-004",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "메이플",
         "subtitle": "동화마루 강화마루 (클릭S)",
         "price": 0,
@@ -82,7 +82,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-005",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "아카시아1",
         "subtitle": "동화마루 강화마루 (클릭S)",
         "price": 0,
@@ -102,7 +102,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-006",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "오크1",
         "subtitle": "동화마루 강화마루 (클릭S)",
         "price": 0,
@@ -122,7 +122,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-007",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "오크3",
         "subtitle": "동화마루 강화마루 (클릭S)",
         "price": 0,
@@ -142,7 +142,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-008",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "체스트넛",
         "subtitle": "동화마루 강화마루 (클릭)",
         "price": 0,
@@ -162,7 +162,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-009",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "히코리",
         "subtitle": "동화마루 강화마루 (클릭)",
         "price": 0,
@@ -182,7 +182,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-010",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "스위트 오크",
         "subtitle": "동화마루 강화마루 (클릭)",
         "price": 0,
@@ -202,7 +202,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-011",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "내추럴 오크",
         "subtitle": "동화마루 강화마루 (클릭)",
         "price": 0,
@@ -222,7 +222,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-012",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "마호가니",
         "subtitle": "동화마루 강화마루 (클릭)",
         "price": 0,
@@ -242,7 +242,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-013",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "그레이 쏘컷",
         "subtitle": "동화마루 강화마루 (클릭)",
         "price": 0,
@@ -262,7 +262,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-014",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "워시오크 스트립",
         "subtitle": "동화마루 강화마루 (클릭)",
         "price": 0,
@@ -282,7 +282,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-015",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "웨이브",
         "subtitle": "동화마루 강화마루 (스톤)",
         "price": 0,
@@ -302,7 +302,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-016",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "사하라",
         "subtitle": "동화마루 강화마루 (스톤)",
         "price": 0,
@@ -322,7 +322,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-017",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "오크6",
         "subtitle": "동화마루 강화마루 (크로젠)",
         "price": 0,
@@ -342,7 +342,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-018",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "오크7",
         "subtitle": "동화마루 강화마루 (크로젠)",
         "price": 0,
@@ -362,7 +362,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-019",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "월넛",
         "subtitle": "동화마루 강화마루 (크로젠)",
         "price": 0,
@@ -382,7 +382,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-020",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "오크1",
         "subtitle": "동화마루 강화마루 (크로젠)",
         "price": 0,
@@ -402,7 +402,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-021",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "오크2",
         "subtitle": "동화마루 강화마루 (크로젠)",
         "price": 0,
@@ -422,7 +422,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-022",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강화마루",
         "title": "오크3",
         "subtitle": "동화마루 강화마루 (크로젠)",
         "price": 0,
@@ -442,7 +442,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-023",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "소프트 그레이",
         "subtitle": "동화마루 강마루 (강 오리진)",
         "price": 0,
@@ -463,7 +463,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-024",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "리얼 티크",
         "subtitle": "동화마루 강마루 (강 오리진)",
         "price": 0,
@@ -484,7 +484,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-025",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "윈디 오크",
         "subtitle": "동화마루 강마루 (강 오리진)",
         "price": 0,
@@ -505,7 +505,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-026",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "모던 그레이",
         "subtitle": "동화마루 강마루 (강 오리진)",
         "price": 0,
@@ -526,7 +526,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-027",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "오리진 오크",
         "subtitle": "동화마루 강마루 (강 오리진)",
         "price": 0,
@@ -547,7 +547,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-028",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "오리진 크림",
         "subtitle": "동화마루 강마루 (강 오리진)",
         "price": 0,
@@ -568,7 +568,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-029",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "브라운 오크",
         "subtitle": "동화마루 강마루 (강 오리진)",
         "price": 0,
@@ -589,7 +589,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-030",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "빈티지 카키",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 0,
@@ -610,7 +610,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-031",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그레이",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 0,
@@ -631,7 +631,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-032",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "라이트 그레이",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 0,
@@ -652,7 +652,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-033",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "네이쳐 그레이",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 0,
@@ -673,7 +673,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-034",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "네이쳐 오크",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 0,
@@ -694,7 +694,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-035",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "코코아",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 0,
@@ -715,7 +715,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-036",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "네이쳐 애쉬",
         "subtitle": "동화마루 강마루 (강 포레)",
         "price": 0,
@@ -736,7 +736,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-037",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "블론디 오크",
         "subtitle": "동화마루 강마루 (강 텍스쳐)",
         "price": 0,
@@ -757,7 +757,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-038",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "리네아 라이트",
         "subtitle": "동화마루 강마루 (강 텍스쳐)",
         "price": 0,
@@ -778,7 +778,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-039",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "리네아 내추럴",
         "subtitle": "동화마루 강마루 (강 텍스쳐)",
         "price": 0,
@@ -799,7 +799,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-040",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "돌체 브라운",
         "subtitle": "동화마루 강마루 (강 텍스쳐)",
         "price": 0,
@@ -820,7 +820,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-041",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "멜란지 화이트",
         "subtitle": "동화마루 강마루 (강 텍스쳐)",
         "price": 0,
@@ -841,7 +841,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-042",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "브리즈 펄 (정각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
         "price": 0,
@@ -862,7 +862,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-043",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "몬테클라우드 (정각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
         "price": 0,
@@ -883,7 +883,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-044",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "몬테 크레마 (정각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
         "price": 0,
@@ -904,7 +904,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-045",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "사하라퓨어 (정각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
         "price": 0,
@@ -925,7 +925,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-046",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "플로쏘 화이트 (정각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
         "price": 0,
@@ -946,7 +946,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-047",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "맨하탄 클레이 (정각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
         "price": 0,
@@ -967,7 +967,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-048",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "브리즈 펄 (직각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
         "price": 0,
@@ -988,7 +988,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-049",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "몬테클라우드 (직각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
         "price": 0,
@@ -1009,7 +1009,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-050",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "몬테 크레마 (직각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
         "price": 0,
@@ -1030,7 +1030,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-051",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "사하라퓨어 (직각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
         "price": 0,
@@ -1051,7 +1051,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-052",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "플로쏘 화이트 (직각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
         "price": 0,
@@ -1072,7 +1072,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-053",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "맨하탄 클레이 (직각)",
         "subtitle": "동화마루 강마루 (강 스퀘어)",
         "price": 0,
@@ -1093,7 +1093,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-054",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "퓨어 실버",
         "subtitle": "동화마루 진마루 (진 오리진)",
         "price": 0,
@@ -1114,7 +1114,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-055",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "퓨어 크림",
         "subtitle": "동화마루 진마루 (진 오리진)",
         "price": 0,
@@ -1135,7 +1135,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-056",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "어반 내추럴",
         "subtitle": "동화마루 진마루 (진 오리진)",
         "price": 0,
@@ -1156,7 +1156,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-057",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "어반 샌디에고",
         "subtitle": "동화마루 진마루 (진 오리진)",
         "price": 0,
@@ -1177,7 +1177,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-058",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "어반 밀크티",
         "subtitle": "동화마루 진마루 (진 오리진)",
         "price": 0,
@@ -1198,7 +1198,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-059",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "어반 화이트",
         "subtitle": "동화마루 진마루 (진 오리진)",
         "price": 0,
@@ -1219,7 +1219,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-060",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "몬테 그레이",
         "subtitle": "동화마루 진마루 (진 그란데)",
         "price": 0,
@@ -1240,7 +1240,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-061",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "포틀랜드 모티프",
         "subtitle": "동화마루 진마루 (진 그란데)",
         "price": 0,
@@ -1261,7 +1261,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-062",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "포틀랜드 스틸",
         "subtitle": "동화마루 진마루 (진 그란데)",
         "price": 0,
@@ -1282,7 +1282,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-063",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "몬테 화이트",
         "subtitle": "동화마루 진마루 (진 그란데)",
         "price": 0,
@@ -1303,7 +1303,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-064",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "슬레이트 모티프",
         "subtitle": "동화마루 진마루 (진 그란데)",
         "price": 0,
@@ -1324,7 +1324,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-065",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "슬레이트 스틸",
         "subtitle": "동화마루 진마루 (진 그란데)",
         "price": 0,
@@ -1345,7 +1345,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-066",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "콰이엇 웨이브 (800각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
         "price": 0,
@@ -1366,7 +1366,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-067",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "코지 그레이 (800각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
         "price": 0,
@@ -1387,7 +1387,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-068",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "포틀랜드 모티프 (800각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
         "price": 0,
@@ -1408,7 +1408,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-069",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "슬레이트 스틸 (800각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
         "price": 0,
@@ -1429,7 +1429,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-070",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "보타니 엠버",
         "subtitle": "동화마루 진마루 (진 테라)",
         "price": 0,
@@ -1450,7 +1450,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-071",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "보타니 라이트",
         "subtitle": "동화마루 진마루 (진 테라)",
         "price": 0,
@@ -1471,7 +1471,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-072",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "모나 엠버",
         "subtitle": "동화마루 진마루 (진 테라)",
         "price": 0,
@@ -1492,7 +1492,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-073",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "노르딕 화이트",
         "subtitle": "동화마루 진마루 (진 테라)",
         "price": 0,
@@ -1513,7 +1513,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-074",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "모나 내추럴",
         "subtitle": "동화마루 진마루 (진 테라)",
         "price": 0,
@@ -1534,7 +1534,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-075",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "루미나 내추럴",
         "subtitle": "동화마루 진마루 (진 테라)",
         "price": 0,
@@ -1555,7 +1555,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-076",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "루미나 브라운",
         "subtitle": "동화마루 진마루 (진 테라)",
         "price": 0,
@@ -1576,7 +1576,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-077",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "클레이",
         "subtitle": "동화마루 진마루 (진 테라 맥스)",
         "price": 0,
@@ -1597,7 +1597,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-078",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "오리진",
         "subtitle": "동화마루 진마루 (진 테라 맥스)",
         "price": 0,
@@ -1618,7 +1618,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-079",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "브라운",
         "subtitle": "동화마루 진마루 (진 테라 맥스)",
         "price": 0,
@@ -1639,7 +1639,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-080",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "내추럴",
         "subtitle": "동화마루 진마루 (진 테라 맥스)",
         "price": 0,
@@ -1660,7 +1660,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-081",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "화이트",
         "subtitle": "동화마루 진마루 (진 테라 맥스)",
         "price": 0,
@@ -1681,7 +1681,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-082",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "베이지",
         "subtitle": "동화마루 진마루 (진 테라 맥스)",
         "price": 0,
@@ -1702,7 +1702,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-083",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "레노 피치 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1723,7 +1723,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-084",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "아르보 라이트 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1744,7 +1744,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-085",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "아르보 내추럴 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1765,7 +1765,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-086",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "리베로 그레이 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1786,7 +1786,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-087",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "레노 내추럴 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1807,7 +1807,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-088",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "레노 브라운 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1828,7 +1828,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-089",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "리베로 스모키 (폭143)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1849,7 +1849,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-090",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "레노 피치 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1870,7 +1870,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-091",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "아르보 라이트 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1891,7 +1891,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-092",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "아르보 내추럴 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1912,7 +1912,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-093",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "리베로 그레이 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1933,7 +1933,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-094",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "레노 내추럴 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1954,7 +1954,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-095",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "레노 브라운 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1975,7 +1975,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-096",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "리베로 스모키 (폭161)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -1996,7 +1996,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-097",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "레노 피치 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -2017,7 +2017,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-098",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "아르보 라이트 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -2038,7 +2038,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-099",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "아르보 내추럴 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -2059,7 +2059,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-100",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "리베로 그레이 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -2080,7 +2080,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-101",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "레노 내추럴 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -2101,7 +2101,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-102",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "레노 브라운 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -2122,7 +2122,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-103",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "리베로 스모키 (폭190)",
         "subtitle": "동화마루 진마루 (진 텍스쳐)",
         "price": 0,
@@ -2143,7 +2143,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-104",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "콰이엇 웨이브 (정각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
         "price": 0,
@@ -2164,7 +2164,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-105",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "코지 그레이 (정각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
         "price": 0,
@@ -2185,7 +2185,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-106",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "포틀랜드 모티프 (정각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
         "price": 0,
@@ -2206,7 +2206,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-107",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "슬레이트 스틸 (정각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
         "price": 0,
@@ -2227,7 +2227,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-108",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "콰이엇 웨이브 (직각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
         "price": 0,
@@ -2248,7 +2248,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-109",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "코지 그레이 (직각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
         "price": 0,
@@ -2269,7 +2269,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-110",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "포틀랜드 모티프 (직각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
         "price": 0,
@@ -2290,7 +2290,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-111",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "슬레이트 스틸 (직각)",
         "subtitle": "동화마루 진마루 (진 그란데 스퀘어)",
         "price": 0,
@@ -2311,7 +2311,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-112",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "윈디 오크",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
         "price": 0,
@@ -2332,7 +2332,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-113",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "리얼 티크",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
         "price": 0,
@@ -2353,7 +2353,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-114",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "플랫 화이트",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
         "price": 0,
@@ -2374,7 +2374,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-115",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "모던 그레이",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
         "price": 0,
@@ -2395,7 +2395,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-116",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "오리진 오크",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
         "price": 0,
@@ -2416,7 +2416,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-117",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "오리진 크림",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
         "price": 0,
@@ -2437,7 +2437,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-118",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "브라운 오크",
         "subtitle": "동화마루 진마루 (듀오 오리진)",
         "price": 0,
@@ -2458,7 +2458,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-119",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "에센스 뮤트",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐)",
         "price": 0,
@@ -2479,7 +2479,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-120",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "화이트 가드니아",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐)",
         "price": 0,
@@ -2500,7 +2500,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-121",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "에센스 오크",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐)",
         "price": 0,
@@ -2521,7 +2521,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-122",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "소프트 카모마일",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐)",
         "price": 0,
@@ -2542,7 +2542,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-123",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "브램튼 새들",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐 맥스)",
         "price": 0,
@@ -2563,7 +2563,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-124",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "브램튼 내추럴",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐 맥스)",
         "price": 0,
@@ -2584,7 +2584,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-125",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "사비아 라이트",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐 맥스)",
         "price": 0,
@@ -2605,7 +2605,7 @@ export const DONGHWAMARU_PRODUCTS = [
     {
         "id": "dh-126",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "진마루",
         "title": "돌체 내추럴",
         "subtitle": "동화마루 진마루 (듀오 텍스쳐 맥스)",
         "price": 0,

@@ -2,7 +2,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-001",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "로엔오크",
         "subtitle": "노바마루 강마루 (트라베)",
         "price": 0,
@@ -23,7 +23,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-002",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "헤리티지오크",
         "subtitle": "노바마루 강마루 (트라베)",
         "price": 0,
@@ -44,7 +44,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-003",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "돌체샌드",
         "subtitle": "노바마루 강마루 (트라베)",
         "price": 0,
@@ -65,7 +65,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-004",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "노체월넛",
         "subtitle": "노바마루 강마루 (트라베)",
         "price": 0,
@@ -86,7 +86,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-005",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "로엔오크1900",
         "subtitle": "노바마루 강마루 (플로)",
         "price": 0,
@@ -107,7 +107,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-006",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "헤리티지오크1900",
         "subtitle": "노바마루 강마루 (플로)",
         "price": 0,
@@ -128,7 +128,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-007",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "돌체샌드1900",
         "subtitle": "노바마루 강마루 (플로)",
         "price": 0,
@@ -149,7 +149,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-008",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "노체월넛1900",
         "subtitle": "노바마루 강마루 (플로)",
         "price": 0,
@@ -170,7 +170,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-009",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "시그니처오크1600",
         "subtitle": "노바마루 강마루 (플로)",
         "price": 0,
@@ -191,7 +191,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-010",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "애프터눈오크1600",
         "subtitle": "노바마루 강마루 (플로)",
         "price": 0,
@@ -212,7 +212,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-011",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "멜로우오크",
         "subtitle": "노바마루 강마루 (플로)",
         "price": 0,
@@ -234,7 +234,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-012",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "코코월넛",
         "subtitle": "노바마루 강마루 (플로)",
         "price": 0,
@@ -256,7 +256,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-013",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "테디브라운오크",
         "subtitle": "노바마루 강마루 (플로)",
         "price": 0,
@@ -278,7 +278,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-014",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "플럼브라운",
         "subtitle": "노바마루 강마루 (플로)",
         "price": 0,
@@ -300,7 +300,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-015",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "샬롯그레이",
         "subtitle": "노바마루 강마루 (플로)",
         "price": 0,
@@ -322,7 +322,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-016",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "듀이브라운",
         "subtitle": "노바마루 강마루 (플로)",
         "price": 0,
@@ -344,7 +344,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-017",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "쉐이드",
         "subtitle": "노바마루 강마루 (플로)",
         "price": 0,
@@ -366,7 +366,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-018",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "오드페일",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -387,7 +387,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-019",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "프릴리아",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -408,7 +408,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-020",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "글라이드",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -429,7 +429,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-021",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "유세이지",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -450,7 +450,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-022",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "나잇포그",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -471,7 +471,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-023",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "벨라오크",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -492,7 +492,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-024",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "블랑오크",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -513,7 +513,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-025",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "남산오크",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -534,7 +534,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-026",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "블루밍오크",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -555,7 +555,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-027",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "스완",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -576,7 +576,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-028",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "솔티",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -597,7 +597,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-029",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "스노우필드",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -618,7 +618,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-030",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "미스틱그레이",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -639,7 +639,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-031",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "뮤트브라운",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -660,7 +660,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-032",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "헬렌티크",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -681,7 +681,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-033",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "클래시월넛",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -702,7 +702,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-034",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "누아르블랙",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -723,7 +723,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-035",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "포니애쉬",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -745,7 +745,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-036",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "그레이스",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -767,7 +767,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-037",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "네바다",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -789,7 +789,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-038",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "헤이즐티크",
         "subtitle": "노바마루 강마루 (블랙라벨)",
         "price": 0,
@@ -811,7 +811,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-039",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "세레나데오크",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -832,7 +832,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-040",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "홀리데이오크",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -853,7 +853,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-041",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "크림",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -874,7 +874,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-042",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "화이트그레이",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -895,7 +895,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-043",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "모스카토그레이",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -916,7 +916,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-044",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "오트브라운",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -937,7 +937,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-045",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "루시월넛",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -958,7 +958,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-046",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "루지아오크",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -980,7 +980,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-047",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "리즈브라운",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -1002,7 +1002,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-048",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "피오브라운",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -1024,7 +1024,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-049",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "리버그레이",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -1046,7 +1046,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-050",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "스카치",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -1068,7 +1068,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-051",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "아테네오크",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -1090,7 +1090,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-052",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "덴버오크",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -1112,7 +1112,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-053",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "비비안애쉬",
         "subtitle": "노바마루 강마루 (뉴트로)",
         "price": 0,
@@ -1134,7 +1134,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-054",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "아보리샌즈",
         "subtitle": "노바마루 강마루 (테라스)",
         "price": 0,
@@ -1155,7 +1155,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-055",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "아로하베이지",
         "subtitle": "노바마루 강마루 (테라스)",
         "price": 0,
@@ -1176,7 +1176,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-056",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "베이비블룸",
         "subtitle": "노바마루 강마루 (테라스)",
         "price": 0,
@@ -1197,7 +1197,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-057",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "마블로단테",
         "subtitle": "노바마루 강마루 (테라스)",
         "price": 0,
@@ -1218,7 +1218,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-058",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "데이지모션",
         "subtitle": "노바마루 강마루 (테라스)",
         "price": 0,
@@ -1239,7 +1239,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-059",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "델피늄그레이",
         "subtitle": "노바마루 강마루 (테라스)",
         "price": 0,
@@ -1260,7 +1260,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-060",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "릴리안포츠",
         "subtitle": "노바마루 강마루 (테라스)",
         "price": 0,
@@ -1281,7 +1281,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-061",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "해글리토스",
         "subtitle": "노바마루 강마루 (테라스)",
         "price": 0,
@@ -1302,7 +1302,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-062",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "플라야스폿",
         "subtitle": "노바마루 강마루 (테라스)",
         "price": 0,
@@ -1323,7 +1323,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-063",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "아보리샌즈",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
         "price": 0,
@@ -1344,7 +1344,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-064",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "아로하베이지",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
         "price": 0,
@@ -1365,7 +1365,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-065",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "베이비블룸",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
         "price": 0,
@@ -1386,7 +1386,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-066",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "릴리안포츠",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
         "price": 0,
@@ -1407,7 +1407,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-067",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "데이지모션",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
         "price": 0,
@@ -1428,7 +1428,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-068",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "마티에르",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
         "price": 0,
@@ -1449,7 +1449,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-069",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "베나토",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
         "price": 0,
@@ -1470,7 +1470,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-070",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "토스카나",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
         "price": 0,
@@ -1491,7 +1491,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-071",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "아라베스크",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
         "price": 0,
@@ -1512,7 +1512,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-072",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "이스타리아",
         "subtitle": "노바마루 강마루 (테라스스퀘어)",
         "price": 0,
@@ -1533,7 +1533,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-073",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "리얼오크",
         "subtitle": "노바마루 강마루 (노블강)",
         "price": 0,
@@ -1554,7 +1554,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-074",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "리얼애쉬",
         "subtitle": "노바마루 강마루 (노블강)",
         "price": 0,
@@ -1575,7 +1575,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-075",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "리얼티크",
         "subtitle": "노바마루 강마루 (노블강)",
         "price": 0,
@@ -1596,7 +1596,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-076",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "마인워시",
         "subtitle": "노바마루 강마루 (노블강)",
         "price": 0,
@@ -1617,7 +1617,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-077",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "마인미스트",
         "subtitle": "노바마루 강마루 (노블강)",
         "price": 0,
@@ -1638,7 +1638,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-078",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "마인스웨이드",
         "subtitle": "노바마루 강마루 (노블강)",
         "price": 0,
@@ -1659,7 +1659,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-079",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "리얼시티",
         "subtitle": "노바마루 강마루 (노블강)",
         "price": 0,
@@ -1680,7 +1680,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-080",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "리얼카카오",
         "subtitle": "노바마루 강마루 (노블강)",
         "price": 0,
@@ -1701,7 +1701,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-081",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "강마루",
         "title": "리얼블랙",
         "subtitle": "노바마루 강마루 (노블강)",
         "price": 0,
@@ -1722,7 +1722,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-082",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "라델리온",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
         "price": 0,
@@ -1743,7 +1743,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-083",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "오벨리아",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
         "price": 0,
@@ -1764,7 +1764,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-084",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "세렌티아",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
         "price": 0,
@@ -1785,7 +1785,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-085",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "피오르드",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
         "price": 0,
@@ -1806,7 +1806,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-086",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "돌체비타",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
         "price": 0,
@@ -1827,7 +1827,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-087",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "데일트리",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
         "price": 0,
@@ -1848,7 +1848,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-088",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "비스코티",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
         "price": 0,
@@ -1869,7 +1869,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-089",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "에르디아",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
         "price": 0,
@@ -1890,7 +1890,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-090",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "레오그로",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
         "price": 0,
@@ -1911,7 +1911,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-091",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "반타블랙",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
         "price": 0,
@@ -1933,7 +1933,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-092",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "헤이즐넛",
         "subtitle": "노바마루 원목마루 (ACRO-K)",
         "price": 0,
@@ -1955,7 +1955,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-093",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "다즐링",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
         "price": 0,
@@ -1976,7 +1976,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-094",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "타히티",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
         "price": 0,
@@ -1997,7 +1997,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-095",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "에그쉘",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
         "price": 0,
@@ -2018,7 +2018,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-096",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "가이아",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
         "price": 0,
@@ -2039,7 +2039,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-097",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "제스티",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
         "price": 0,
@@ -2060,7 +2060,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-098",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "나르시",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
         "price": 0,
@@ -2081,7 +2081,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-099",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "테라피",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
         "price": 0,
@@ -2102,7 +2102,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-100",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "시에나",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
         "price": 0,
@@ -2124,7 +2124,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-101",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "리버티",
         "subtitle": "노바마루 원목마루 (STK시리즈)",
         "price": 0,
@@ -2145,7 +2145,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-102",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "내추럴오크",
         "subtitle": "노바마루 원목마루 (B시리즈)",
         "price": 0,
@@ -2166,7 +2166,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-103",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "코튼오크",
         "subtitle": "노바마루 원목마루 (B시리즈)",
         "price": 0,
@@ -2187,7 +2187,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-104",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "르메르브라운",
         "subtitle": "노바마루 원목마루 (B시리즈)",
         "price": 0,
@@ -2209,7 +2209,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-105",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "앤티크브론즈",
         "subtitle": "노바마루 원목마루 (B시리즈)",
         "price": 0,
@@ -2231,7 +2231,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-106",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "내추럴오크",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 0,
@@ -2252,7 +2252,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-107",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "카키브라운",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 0,
@@ -2273,7 +2273,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-108",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "젠틀브라운",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 0,
@@ -2294,7 +2294,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-109",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "코지다크",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 0,
@@ -2315,7 +2315,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-110",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "화이트워시오크-N",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 0,
@@ -2336,7 +2336,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-111",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "버건디로즈",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 0,
@@ -2357,7 +2357,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-112",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "언더포레스트",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 0,
@@ -2378,7 +2378,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-113",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "애쉬내추럴",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 0,
@@ -2399,7 +2399,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-114",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "애쉬L.브라운",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 0,
@@ -2420,7 +2420,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-115",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "애쉬그레이",
         "subtitle": "노바마루 원목마루 (ST시리즈)",
         "price": 0,
@@ -2441,7 +2441,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-116",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "카밀로",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
         "price": 0,
@@ -2462,7 +2462,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-117",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "피오타",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
         "price": 0,
@@ -2483,7 +2483,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-118",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "플루나",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
         "price": 0,
@@ -2504,7 +2504,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-119",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "엘리아",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
         "price": 0,
@@ -2525,7 +2525,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-120",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "클레오",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
         "price": 0,
@@ -2546,7 +2546,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-121",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "제라닉",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
         "price": 0,
@@ -2567,7 +2567,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-122",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "캄피오",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
         "price": 0,
@@ -2588,7 +2588,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-123",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "Vintage 첼시오크",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
         "price": 0,
@@ -2610,7 +2610,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-124",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "Vintage 뮬란베이지",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
         "price": 0,
@@ -2632,7 +2632,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-125",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "Vintage 모니카브라운",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
         "price": 0,
@@ -2654,7 +2654,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-126",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "Vintage 켄달카키",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
         "price": 0,
@@ -2676,7 +2676,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-127",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "Vintage 퍼지다크",
         "subtitle": "노바마루 원목마루 (STB시리즈)",
         "price": 0,
@@ -2698,7 +2698,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-128",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "내추럴오크",
         "subtitle": "노바마루 원목마루 (W시리즈)",
         "price": 0,
@@ -2719,7 +2719,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-129",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "멀바우",
         "subtitle": "노바마루 원목마루 (W시리즈)",
         "price": 0,
@@ -2740,7 +2740,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-130",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "브라운오크",
         "subtitle": "노바마루 원목마루 (W시리즈)",
         "price": 0,
@@ -2761,7 +2761,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-131",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "빈티지오크",
         "subtitle": "노바마루 원목마루 (W시리즈)",
         "price": 0,
@@ -2782,7 +2782,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-132",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "샌드브라운",
         "subtitle": "노바마루 원목마루 (W시리즈)",
         "price": 0,
@@ -2803,7 +2803,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-133",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "소프트그레이",
         "subtitle": "노바마루 원목마루 (W시리즈)",
         "price": 0,
@@ -2824,7 +2824,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-134",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "스노우베이지",
         "subtitle": "노바마루 원목마루 (W시리즈)",
         "price": 0,
@@ -2845,7 +2845,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-135",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "워시오크",
         "subtitle": "노바마루 원목마루 (W시리즈)",
         "price": 0,
@@ -2866,7 +2866,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-136",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "월넛",
         "subtitle": "노바마루 원목마루 (W시리즈)",
         "price": 0,
@@ -2887,7 +2887,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-137",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "티크",
         "subtitle": "노바마루 원목마루 (W시리즈)",
         "price": 0,
@@ -2908,7 +2908,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-138",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "프렌치블랙",
         "subtitle": "노바마루 원목마루 (W시리즈)",
         "price": 0,
@@ -2929,7 +2929,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-139",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "물랑루즈",
         "subtitle": "노바마루 원목마루 (W시리즈)",
         "price": 0,
@@ -2950,7 +2950,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-140",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "차콜그레이",
         "subtitle": "노바마루 원목마루 (W시리즈)",
         "price": 0,
@@ -2971,7 +2971,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-141",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "내추럴오크",
         "subtitle": "노바마루 원목마루 (S시리즈)",
         "price": 0,
@@ -2992,7 +2992,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-142",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "두시에",
         "subtitle": "노바마루 원목마루 (S시리즈)",
         "price": 0,
@@ -3013,7 +3013,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-143",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "멀바우",
         "subtitle": "노바마루 원목마루 (S시리즈)",
         "price": 0,
@@ -3034,7 +3034,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-144",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "버찌",
         "subtitle": "노바마루 원목마루 (S시리즈)",
         "price": 0,
@@ -3055,7 +3055,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-145",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "월넛",
         "subtitle": "노바마루 원목마루 (S시리즈)",
         "price": 0,
@@ -3076,7 +3076,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-146",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "이로코",
         "subtitle": "노바마루 원목마루 (S시리즈)",
         "price": 0,
@@ -3097,7 +3097,7 @@ export const NOVAMARU_PRODUCTS = [
     {
         "id": "nv-147",
         "categoryId": "residential",
-        "subCategory": "마루",
+        "subCategory": "원목마루",
         "title": "티크",
         "subtitle": "노바마루 원목마루 (S시리즈)",
         "price": 0,
