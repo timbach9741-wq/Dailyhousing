@@ -639,6 +639,33 @@ export const EDITON_PRODUCTS = [
         "sellingPrice": 38000
     },
     {
+        "id": "103298",
+        "categoryId": "residential",
+        "subCategory": "에디톤 스톤",
+        "title": "문 스톤",
+        "subtitle": "에디톤 스톤",
+        "price": 48000,
+        "thickness": 5,
+        "patterns": [
+            "Stone"
+        ],
+        "tags": [
+            "프리미엄"
+        ],
+        "imageUrl": "/assets/lxzin/EDT7739_문스톤.jpg",
+        "rating": 4.8,
+        "reviews": 10,
+        "description": "LX Z:IN 에디톤 문 스톤 (EDT7739) 입니다.",
+        "specifications": {
+            "size": "450mm x 900mm",
+            "material": "에디톤",
+            "packaging": "1박스 4매"
+        },
+        "link": "https://www.lxzin.com/zin/product/103298",
+        "model_id": "EDT7739",
+        "sellingPrice": 38000
+    },
+    {
         "id": "102904",
         "categoryId": "residential",
         "subCategory": "에디톤 스퀘어",
@@ -906,6 +933,60 @@ export const EDITON_PRODUCTS = [
         },
         "link": "https://www.lxzin.com/zin/product/103227",
         "model_id": "EDT7740",
+        "sellingPrice": 34500
+    },
+    {
+        "id": "103395",
+        "categoryId": "residential",
+        "subCategory": "에디톤 스퀘어",
+        "title": "샌드 아이보리 스퀘어",
+        "subtitle": "에디톤 스퀘어",
+        "price": 45000,
+        "thickness": 5,
+        "patterns": [
+            "Stone"
+        ],
+        "tags": [
+            "프리미엄"
+        ],
+        "imageUrl": "/assets/lxzin/EDT7730_샌드아이보리_스퀘어.jpg",
+        "rating": 4.8,
+        "reviews": 10,
+        "description": "LX Z:IN 에디톤 샌드 아이보리 스퀘어 (EDT7730) 입니다.",
+        "specifications": {
+            "size": "600mm x 600mm",
+            "material": "에디톤",
+            "packaging": "1박스 4매"
+        },
+        "link": "https://www.lxzin.com/zin/product/103395",
+        "model_id": "EDT7730",
+        "sellingPrice": 34500
+    },
+    {
+        "id": "103299",
+        "categoryId": "residential",
+        "subCategory": "에디톤 스퀘어",
+        "title": "문 스톤 스퀘어",
+        "subtitle": "에디톤 스퀘어",
+        "price": 45000,
+        "thickness": 5,
+        "patterns": [
+            "Stone"
+        ],
+        "tags": [
+            "프리미엄"
+        ],
+        "imageUrl": "/assets/lxzin/EDT7739_문스톤_스퀘어.jpg",
+        "rating": 4.8,
+        "reviews": 10,
+        "description": "LX Z:IN 에디톤 문 스톤 스퀘어 (EDT7739) 입니다.",
+        "specifications": {
+            "size": "600mm x 600mm",
+            "material": "에디톤",
+            "packaging": "1박스 4매"
+        },
+        "link": "https://www.lxzin.com/zin/product/103299",
+        "model_id": "EDT7739",
         "sellingPrice": 34500
     }
 ];
