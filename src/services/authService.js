@@ -11,6 +11,7 @@ import { doc, getDoc, setDoc, collection, query, where, getDocs } from "firebase
 import { useAuthStore } from "../store/useAuthStore";
 import { useCartStore } from "../store/useCartStore";
 import { recordSignupToSheets } from './googleSheetsService';
+import { notifyAdminLogin } from './adminActivityService';
 
 // 로컬 스토리지 키
 const LOCAL_USERS_KEY = 'floorcraft_mock_users';
@@ -114,6 +115,11 @@ export const login = async (email, password) => {
             }
         } catch (error) {
             console.warn('⚠️ login - Custom Claims 확인 실패 (Firestore role 유지):', error);
+        }
+
+        // 관리자 로그인 감지 알림 (사장님 본인 계정 제외)
+        if (userData.role === 'admin') {
+            notifyAdminLogin(userData);
         }
 
         // 승인 대기 회원 차단 (관리자는 스킵, 기존 회원은 approved 필드 없으면 승인된 것으로 간주)

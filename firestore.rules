@@ -96,6 +96,14 @@ service cloud.firestore {
       allow read, write: if isAdmin();
     }
 
+    // ── 관리자 작업 로그 (누가 무엇을 했는지 기록) ────────────
+    // 어드민만 읽기 가능, 생성만 허용(수정/삭제 불가 — 기록 위변조 방지)
+    match /admin_action_logs/{logId} {
+      allow read: if isAdmin();
+      allow create: if isAdmin();
+      allow update, delete: if false;
+    }
+
 
     // ── 사이트 설정 (CMS) ─────────────────────────────────
     // 누구나 읽기 가능 (홈페이지 콘텐츠 공개)

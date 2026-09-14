@@ -13,6 +13,7 @@ import { useExternalOrderStore } from '../store/useExternalOrderStore';
 import { db } from '../lib/firebase';
 import { collection, getDocs, doc, setDoc, query, orderBy, deleteDoc, updateDoc, where, writeBatch, limit } from 'firebase/firestore';
 import { updateApprovalToSheets } from '../services/googleSheetsService';
+import { logAdminAction, notifyAdminAction } from '../services/adminActivityService';
 import DaumPostcode from 'react-daum-postcode';
 import PurchaseOrderForm from '../components/PurchaseOrderForm';
 import ExternalOrderSchedule from '../components/admin/ExternalOrderSchedule';
@@ -238,11 +239,13 @@ const AdminDashboard = () => {
                 inbound: inAmt,
                 outbound: outAmt,
                 finalStock,
+                actorEmail: user?.email || '알 수 없음',
                 createdAt: new Date().toISOString()
             };
             batch.set(logRef, newLog);
 
             await batch.commit();
+            notifyAdminAction(user, '재고 변경', `${product.title} (${type === 'in' ? '입고' : '출고'} ${amt}개, 잔여 ${finalStock})`);
 
             addToast(`재고가 성공적으로 반영되었습니다. (${type === 'in' ? '+' : '-'}${amt})`, 'success');
             setAdjustStockModal(null);
@@ -318,13 +321,15 @@ const AdminDashboard = () => {
                 inbound: finalIn,
                 outbound: finalOut,
                 finalStock,
+                actorEmail: user?.email || '알 수 없음',
                 createdAt: new Date().toISOString()
             };
             batch.set(logRef, newLog);
 
             await batch.commit();
+            notifyAdminAction(user, '재고 변경', `${product.title} (입고 ${finalIn} / 출고 ${finalOut}, 잔여 ${finalStock})`);
 
-            updateProduct(productId, { inventory: finalStock, status: newStatus }); 
+            updateProduct(productId, { inventory: finalStock, status: newStatus });
             setInlineStock(prev => { const n = {...prev}; delete n[productId]; return n; });
             addToast(`재고 반영 완료! (입출고 ${finalIn - finalOut})`, 'success');
             
@@ -504,6 +509,21 @@ const AdminDashboard = () => {
         }
     }, [addToast]);
 
+    // 관리자 활동 로그
+    const [activityLogs, setActivityLogs] = useState([]);
+    const [activityLogsLoading, setActivityLogsLoading] = useState(false);
+    const fetchActivityLogs = useCallback(async () => {
+        setActivityLogsLoading(true);
+        try {
+            const snap = await getDocs(query(collection(db, 'admin_action_logs'), orderBy('createdAt', 'desc'), limit(300)));
+            setActivityLogs(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+        } catch {
+            addToast('활동 로그를 불러오지 못했습니다.', 'error');
+        } finally {
+            setActivityLogsLoading(false);
+        }
+    }, [addToast]);
+
     // 회원 퇴출 - 모달 열기
     const handleBan = (uid, displayName) => {
         setBanConfirm({ uid, displayName: displayName || '이 회원', action: 'ban' });
@@ -524,6 +544,7 @@ const AdminDashboard = () => {
         addToast(isBan ? `${displayName}이(가) 퇴출되었습니다.` : `${displayName} 퇴출이 해제되었습니다.`, 'success');
         try {
             await updateDoc(doc(db, 'users', uid), { banned: isBan });
+            logAdminAction(user, isBan ? '회원 퇴출' : '회원 퇴출 해제', displayName || uid);
         } catch (err) {
             console.log('Firestore 퇴출 처리 참고:', err);
         }
@@ -564,6 +585,7 @@ const AdminDashboard = () => {
         try {
             if (isApprove) {
                 await updateDoc(doc(db, 'users', uid), { approved: true });
+                logAdminAction(user, '회원 가입 승인', displayName || uid);
                 // 구글시트에 승인 상태 업데이트
                 const approvedUser = users.find(u => u.id === uid);
                 if (approvedUser?.email) {
@@ -696,6 +718,7 @@ const AdminDashboard = () => {
                     : `${editingProduct.title} 저장 완료! 홈페이지에 즉시 반영됩니다.`,
                 'success'
             );
+            logAdminAction(user, '상품 수정', `${editingProduct.title} (일반가 ${updateData.price.toLocaleString()}원 / 매입가 ${updateData.sellingPrice.toLocaleString()}원)${lineUpdatedCount > 0 ? ` — 같은 라인 ${lineUpdatedCount}개 포함` : ''}`);
             setEditingProduct(null);
         } catch (err) {
             console.error('[Admin] 제품 저장 에러:', err);
@@ -731,6 +754,7 @@ const AdminDashboard = () => {
             // Store에 즉시 추가 → 홈페이지 바로 노출
             addProduct(productData);
             addToast(`"${newProduct.title}" 제품이 등록되었습니다! 홈페이지에 즉시 반영됩니다.`, 'success');
+            logAdminAction(user, '신규 상품 등록', `${newProduct.title} (${newProduct.model_id})`);
             setNewProductModal(false);
             setNewProduct({
                 title: '', model_id: '', categoryId: 'residential', subCategory: '',
@@ -754,6 +778,7 @@ const AdminDashboard = () => {
         window.alert(`✅ "${product.title}" 제품이 삭제 완료되었습니다.`);
         try {
             await deleteDoc(doc(db, 'products', product.id));
+            logAdminAction(user, '상품 삭제', `${product.title} (${product.model_id || product.id})`);
         } catch (err) {
             console.log('Firestore 삭제 참고:', err);
         }
@@ -867,7 +892,8 @@ const AdminDashboard = () => {
         if (activeTab === 'users') fetchUsers();
         if (activeTab === 'consultations') fetchConsultations();
         if (activeTab === 'purchaseOrder') fetchPurchaseOrders();
-    }, [activeTab, fetchUsers, fetchConsultations, fetchPurchaseOrders]);
+        if (activeTab === 'activityLog') fetchActivityLogs();
+    }, [activeTab, fetchUsers, fetchConsultations, fetchPurchaseOrders, fetchActivityLogs]);
 
     const roleLabel = (u) => {
         if (u.approved === false) return { text: '승인대기', cls: 'bg-amber-500/20 text-amber-400 border-amber-500/30' };
@@ -1103,6 +1129,7 @@ const AdminDashboard = () => {
         { id: 'consultations', label: '💬 상담·문의' },
         { id: 'cms', label: '🌐 홈페이지 관리' },
         { id: 'siteSettings', label: '⚙️ 사이트 설정' },
+        { id: 'activityLog', label: '🕵️ 활동 로그' },
     ];
 
     return (
@@ -1789,6 +1816,7 @@ const AdminDashboard = () => {
                                             <thead className="bg-white/5 text-slate-400 text-xs uppercase sticky top-0">
                                                 <tr>
                                                     <th className="px-4 py-3">일시</th>
+                                                    <th className="px-4 py-3">작업자</th>
                                                     <th className="px-4 py-3">제품/모델명</th>
                                                     <th className="px-4 py-3">입고량</th>
                                                     <th className="px-4 py-3">출고량</th>
@@ -1818,6 +1846,7 @@ const AdminDashboard = () => {
                                                     return (
                                                         <tr key={i} className="hover:bg-white/5 transition-colors text-sm">
                                                             <td className="px-4 py-3 text-slate-400 font-mono text-xs">{dtStr}</td>
+                                                            <td className={`px-4 py-3 text-xs font-medium ${log.actorEmail && log.actorEmail !== 'timbach@naver.com' ? 'text-amber-400' : 'text-slate-400'}`}>{log.actorEmail || '-'}</td>
                                                             <td className="px-4 py-3">
                                                                 <span className="font-semibold block">{log.title || '이름 없음'}</span>
                                                                 <span className="text-xs text-slate-500">{log.model_id}</span>
@@ -3600,6 +3629,49 @@ const AdminDashboard = () => {
                             <span className="material-symbols-outlined text-[18px] mt-0.5">info</span>
                             <span><strong>6월 사업자 전환 안내:</strong> 위 정보를 변경하면 홈페이지 하단(Footer), 주문서, 무통장입금 안내 등에 즉시 반영됩니다. 코드 수정이나 개발자 도움 없이 1분 만에 전환이 가능합니다.</span>
                         </p>
+                    </div>
+                </div>
+            )}
+
+            {/* ===================== 활동 로그 탭 ===================== */}
+            {activeTab === 'activityLog' && (
+                <div className="space-y-6">
+                    <div className="flex items-center justify-between">
+                        <div>
+                            <h2 className="text-2xl font-bold text-white">🕵️ 활동 로그</h2>
+                            <p className="text-slate-400 text-sm mt-1">어느 계정이 언제 무슨 작업을 했는지 기록됩니다. 나(사장님) 외의 계정이 로그인하거나 작업하면 텔레그램으로도 알림이 갑니다.</p>
+                        </div>
+                        <button onClick={fetchActivityLogs} className="p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all" title="새로고침">
+                            <span className="material-symbols-outlined text-[18px]">refresh</span>
+                        </button>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden">
+                        {activityLogsLoading ? (
+                            <div className="p-10 text-center text-slate-400">불러오는 중...</div>
+                        ) : activityLogs.length === 0 ? (
+                            <div className="p-10 text-center text-slate-400">기록된 활동이 없습니다.</div>
+                        ) : (
+                            <table className="w-full text-sm">
+                                <thead>
+                                    <tr className="border-b border-white/10 text-left text-slate-400">
+                                        <th className="px-5 py-3 font-medium">시간</th>
+                                        <th className="px-5 py-3 font-medium">계정</th>
+                                        <th className="px-5 py-3 font-medium">작업</th>
+                                        <th className="px-5 py-3 font-medium">내용</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {activityLogs.map(log => (
+                                        <tr key={log.id} className="border-b border-white/5 last:border-0">
+                                            <td className="px-5 py-3 text-slate-400 whitespace-nowrap">{log.createdAt ? new Date(log.createdAt).toLocaleString('ko-KR') : '-'}</td>
+                                            <td className={`px-5 py-3 whitespace-nowrap font-medium ${log.actorEmail && log.actorEmail !== 'timbach@naver.com' ? 'text-amber-400' : 'text-slate-200'}`}>{log.actorEmail || '알 수 없음'}</td>
+                                            <td className="px-5 py-3 text-slate-200 whitespace-nowrap">{log.action}</td>
+                                            <td className="px-5 py-3 text-slate-400">{log.details || '-'}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        )}
                     </div>
                 </div>
             )}
