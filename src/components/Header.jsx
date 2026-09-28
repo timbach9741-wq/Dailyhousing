@@ -3,6 +3,7 @@ import { useCartStore } from '../store/useCartStore';
 import { logout } from '../services/authService';
 import { useAuthStore } from '../store/useAuthStore';
 import { useProductStore } from '../store/useProductStore';
+import { HIDDEN_BRANDS, isVisibleProduct } from '../config/hiddenBrands';
 import { useState, useRef, useEffect, useMemo } from 'react';
 
 // 브랜드별 공식 로고 (신규 브랜드 추가 시 여기만 채우면 드롭다운에 자동 노출)
@@ -24,7 +25,8 @@ function Header() {
 
     const { isAuthenticated, user } = useAuthStore();
     const navigate = useNavigate();
-    const products = useProductStore((state) => state.products);
+    const allProducts = useProductStore((state) => state.products);
+    const products = useMemo(() => allProducts.filter(isVisibleProduct), [allProducts]);
     const initProducts = useProductStore((state) => state.initProducts);
     const [dropdownSearch, setDropdownSearch] = useState('');
     const cartCount = useCartStore((state) => state.items.length);
@@ -68,7 +70,7 @@ function Header() {
     // 상품 데이터는 아직 없지만 이름만 미리 노출해두는 브랜드 (실제 상품 등록 후 자동으로 사라짐)
     const UPCOMING_BRANDS = ['동화마루', '한솔마루', '노바마루'];
     const upcomingBrands = useMemo(() => (
-        UPCOMING_BRANDS.filter(b => !brandGroups.some(g => g.brand === b))
+        UPCOMING_BRANDS.filter(b => !HIDDEN_BRANDS.includes(b) && !brandGroups.some(g => g.brand === b))
     ), [brandGroups]);
 
     // 검색 상태 및 Refs

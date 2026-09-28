@@ -12,10 +12,12 @@ import { buildCanonicalIdMap } from './src/utils/productLineGrouping.js';
 
 const ALL_PRODUCTS = [
   ...LXZIN_PRODUCTS,
-  ...KUJUNGMARU_PRODUCTS,
-  ...DONGHWAMARU_PRODUCTS,
-  ...HANSOLMARU_PRODUCTS,
-  ...NOVAMARU_PRODUCTS,
+  // 2026-09-28: 구정/동화/한솔/노바마루는 손님 화면에서 잠시 숨김(src/config/hiddenBrands.js) —
+  // 정적 페이지/사이트맵에서도 뺀다. 다시 노출할 때 아래 주석을 풀 것.
+  // ...KUJUNGMARU_PRODUCTS,
+  // ...DONGHWAMARU_PRODUCTS,
+  // ...HANSOLMARU_PRODUCTS,
+  // ...NOVAMARU_PRODUCTS,
 ];
 
 // 색상/패턴만 다른 같은 라인 상품은 대표 1개만 self-canonical로 남기고, 나머지는

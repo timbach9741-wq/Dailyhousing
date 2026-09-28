@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useProductStore } from '../store/useProductStore';
+import { isVisibleProduct } from '../config/hiddenBrands';
 import { useAuthStore } from '../store/useAuthStore';
 import { useState, useEffect } from 'react';
 import { getHomepageContent } from '../services/adminService';
 import SEO from '../components/SEO';
 
 export default function Home() {
-    const { products, initProducts } = useProductStore();
+    const { products: allProducts, initProducts } = useProductStore();
+    const products = allProducts.filter(isVisibleProduct);
     const { isAuthenticated } = useAuthStore();
     const featuredProducts = (() => {
         let baseProducts = products.filter(p => p.tags?.includes('인기')).length > 0 

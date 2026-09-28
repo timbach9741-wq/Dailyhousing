@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useProductStore } from '../store/useProductStore';
+import { isVisibleProduct } from '../config/hiddenBrands';
 
 export function useSimilarProducts(productId, maxResults = 4) {
     const products = useProductStore(state => state.products);
@@ -36,6 +37,7 @@ export function useSimilarProducts(productId, maxResults = 4) {
         const currentPrice = currentProduct.price || 0;
 
         const scored = products
+            .filter(isVisibleProduct)
             .filter(p => {
                 if (p.id === currentProduct.id) return false;
                 if (p.categoryId !== currentProduct.categoryId) return false;

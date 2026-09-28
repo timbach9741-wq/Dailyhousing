@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useProductStore } from '../store/useProductStore';
+import { isVisibleProduct } from '../config/hiddenBrands';
 import { useCartStore } from '../store/useCartStore';
 import { useToastStore } from '../store/useToastStore';
 import { useAuthStore } from '../store/useAuthStore';
@@ -222,12 +223,15 @@ const getProductUnit = (product) => {
 export default function FlooringProductDetailView() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const product = useProductStore((state) => state.getProductById(id || 'res-001'));
+    const storeProduct = useProductStore((state) => state.getProductById(id || 'res-001'));
+    // 숨김 브랜드 상품은 주소로 직접 들어와도 "상품을 찾을 수 없습니다"로 처리
+    const product = isVisibleProduct(storeProduct) ? storeProduct : undefined;
     const initProducts = useProductStore((state) => state.initProducts);
     const { isAuthenticated } = useAuthStore();
     const setCartItem = useCartStore((state) => state.setCartItem);
     const { addToast } = useToastStore();
-    const products = useProductStore(state => state.products);
+    const allProducts = useProductStore(state => state.products);
+    const products = useMemo(() => allProducts.filter(isVisibleProduct), [allProducts]);
     const recentProductIds = useProductStore(state => state.recentProducts);
     const recentProducts = useMemo(() =>
         recentProductIds.map(id => products.find(p => p.id === id)).filter(Boolean)

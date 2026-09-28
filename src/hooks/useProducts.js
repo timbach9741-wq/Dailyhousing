@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useProductStore } from '../store/useProductStore';
+import { isVisibleProduct } from '../config/hiddenBrands';
 
 /**
  * Custom hook to fetch products
@@ -35,7 +36,7 @@ export function useFetchProducts(categoryId) {
     }, [categoryId]);
 
     // Return the actual mock data alongside loading states
-    const data = getProductsByCategory(categoryId);
+    const data = getProductsByCategory(categoryId).filter(isVisibleProduct);
 
     return { data, isLoading, error };
 }

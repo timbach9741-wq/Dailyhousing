@@ -1,5 +1,6 @@
 import { useMemo, useEffect } from 'react';
 import { useProductStore } from '../store/useProductStore';
+import { HIDDEN_BRANDS, isVisibleProduct } from '../config/hiddenBrands';
 import { useAuthStore } from '../store/useAuthStore';
 import { Link, useSearchParams } from 'react-router-dom';
 
@@ -26,14 +27,16 @@ const maruDetailCategoriesByBrand = {
 };
 
 export default function ResidentialSheetCategory() {
-    const products = useProductStore((state) => state.products).filter(p => p.categoryId === 'residential');
+    const products = useProductStore((state) => state.products).filter(p => p.categoryId === 'residential' && isVisibleProduct(p));
     const initProducts = useProductStore((state) => state.initProducts);
     const { isAuthenticated } = useAuthStore();
 
     const [searchParams, setSearchParams] = useSearchParams();
     const selectedSubCategory = searchParams.get('category') || '전체';
     const selectedDetailCategory = searchParams.get('sub') || '전체';
-    const selectedBrand = searchParams.get('brand') || '전체';
+    // 숨김 브랜드(src/config/hiddenBrands.js)로 들어온 주소는 전체 목록으로 보여준다
+    const requestedBrand = searchParams.get('brand') || '전체';
+    const selectedBrand = HIDDEN_BRANDS.includes(requestedBrand) ? '전체' : requestedBrand;
 
     const brandOptions = useMemo(() => {
         const brands = Array.from(new Set(products.map(p => p.brand).filter(Boolean)));

@@ -1,5 +1,6 @@
 import { useMemo, useEffect, useState } from 'react';
 import { useProductStore } from '../store/useProductStore';
+import { isVisibleProduct } from '../config/hiddenBrands';
 import { useAuthStore } from '../store/useAuthStore';
 import { Link, useSearchParams } from 'react-router-dom';
 
@@ -24,7 +25,7 @@ const is450Size = (p) => {
 };
 
 export default function CommercialLVTCategory() {
-    const products = useProductStore((state) => state.products).filter(p => p.categoryId === 'commercial');
+    const products = useProductStore((state) => state.products).filter(p => p.categoryId === 'commercial' && isVisibleProduct(p));
     const initProducts = useProductStore((state) => state.initProducts);
     const { isAuthenticated } = useAuthStore();
 
