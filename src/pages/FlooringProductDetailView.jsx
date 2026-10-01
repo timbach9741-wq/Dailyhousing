@@ -237,7 +237,7 @@ export default function FlooringProductDetailView() {
         recentProductIds.map(id => products.find(p => p.id === id)).filter(Boolean)
         , [recentProductIds, products]);
 
-    const { similarProducts, isOutOfStock: _isOutOfStock, isLowStock } = useSimilarProducts(id);
+    const { similarProducts } = useSimilarProducts(id);
     // 색상/패턴만 다른 같은 라인 상품들은 대표 1개만 색인시키고 나머지는
     // noindex + canonical로 대표 페이지를 가리키게 함(2026-09-07, GSC "발견됨 -
     // 현재 색인 생성되지 않음" 674건 대응 — src/utils/productLineGrouping.js 참고).
@@ -382,11 +382,6 @@ export default function FlooringProductDetailView() {
                                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 border border-gray-200 text-gray-500 text-sm font-bold">
                                     단종된 상품입니다
                                 </span>
-                            ) : product.stock !== undefined ? (
-                                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-50 border border-green-200 text-green-700 text-sm font-bold">
-                                    <span className="material-symbols-outlined text-[16px]">inventory_2</span>
-                                    현재고: {product.stock.toLocaleString()}개
-                                </span>
                             ) : null}
                         </div>
                         {/* 가격 정보 */}
@@ -425,42 +420,6 @@ export default function FlooringProductDetailView() {
 
                         {/* 간략 스펙 */}
                         <div className="mb-6 bg-[#fafafa] rounded-lg border border-[#e8e8e8] overflow-hidden">
-                            {/* 재고 정보 영역 */}
-                            <div className="flex items-center px-4 py-3 border-b border-[#eeeeee] bg-slate-50/50">
-                                <span className="w-20 text-[#222222] font-black text-[13px] shrink-0 flex items-center gap-1">
-                                    <span className="material-symbols-outlined text-[15px] text-slate-400">inventory_2</span>
-                                    재고현황
-                                </span>
-                                <div className="text-[13px] tracking-tight">
-                                    {product.inventory != null ? (
-                                        product.inventory > 0 ? (
-                                            <span className="font-bold text-slate-800 flex items-center gap-1.5">
-                                                <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_4px_rgba(16,185,129,0.5)]"></span>
-                                                현재 {product.inventory} (구매 가능)
-                                            </span>
-                                        ) : (
-                                            <span className="font-bold text-rose-600 flex items-center gap-1.5">
-                                                <span className="w-2 h-2 rounded-full bg-rose-500 shadow-[0_0_4px_rgba(244,63,94,0.5)]"></span>
-                                                일시 품절 (재고 0)
-                                                {product.restockDate ? (
-                                                    <span className="text-slate-600 font-medium ml-1.5 bg-white px-2 py-0.5 rounded border border-rose-100 shadow-sm text-[12px]">
-                                                        입고 예정일: <span className="text-rose-600 font-black">{product.restockDate}</span>
-                                                    </span>
-                                                ) : (
-                                                    <span className="text-slate-400 font-medium ml-1.5 text-[12px]">
-                                                        입고 일정 미정 (문의 바람)
-                                                    </span>
-                                                )}
-                                            </span>
-                                        )
-                                    ) : (
-                                        <span className="font-medium text-slate-500 flex items-center gap-1.5">
-                                            <span className="w-2 h-2 rounded-full bg-slate-300"></span>
-                                            재고 현황 확인 중
-                                        </span>
-                                    )}
-                                </div>
-                            </div>
                             <div className="flex items-center px-4 py-3 border-b border-[#eeeeee]">
                                 <span className="w-20 text-[#888888] font-semibold text-[13px] shrink-0">사이즈</span>
                                 <span className="text-[#222222] font-bold text-[13px] tracking-tight">{formatSpecSize(product.specifications?.size, product.thickness) || '-'}</span>
@@ -506,23 +465,6 @@ export default function FlooringProductDetailView() {
                             </div>
                         )}
 
-                        {/* 재고 부족 경고 */}
-                        {isLowStock && (
-                            <div className="mb-4 p-4 bg-amber-50 border border-amber-200 rounded-lg flex items-start gap-3 shadow-sm">
-                                <span className="material-symbols-outlined text-amber-600 text-xl font-bold mt-0.5">warning</span>
-                                <div>
-                                    <p className="text-amber-800 font-black text-[14px] mb-1">⚠️ 재고가 부족합니다 (현재 {product.inventory}개 남음)</p>
-                                    <p className="text-amber-700 text-[12px] leading-relaxed">
-                                        필요한 수량이 부족할 수 있습니다. 아래 유사 상품도 함께 확인해보세요.
-                                    </p>
-                                    <p className="text-slate-600 text-[12px] mt-1 flex items-center gap-1">
-                                        <span className="material-symbols-outlined text-[14px]">call</span>
-                                        재고 문의: 070-4193-1234
-                                    </p>
-                                </div>
-                            </div>
-                        )}
-
                         {/* 유사 상품 추천 섹션 */}
                         {similarProducts.length > 0 && (
                             <div className="mb-6">
@@ -553,10 +495,6 @@ export default function FlooringProductDetailView() {
                                                 />
                                                 <div className="absolute top-1.5 right-1.5 bg-blue-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md shadow-sm">
                                                     유사도 {item.similarityPercent}%
-                                                </div>
-                                                <div className="absolute bottom-1.5 left-1.5 bg-emerald-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md shadow-sm flex items-center gap-0.5">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
-                                                    재고 {item.inventory}개
                                                 </div>
                                             </div>
                                             {/* 상품 정보 */}

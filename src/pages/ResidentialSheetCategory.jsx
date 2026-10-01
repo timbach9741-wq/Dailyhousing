@@ -333,11 +333,6 @@ export default function ResidentialSheetCategory() {
                                         <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-600 text-white text-[11px] sm:text-[12px] font-black shadow-lg shadow-gray-600/30">
                                             단종
                                         </span>
-                                    ) : product.stock !== undefined ? (
-                                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-600/90 text-white text-[10px] sm:text-[11px] font-bold shadow-md">
-                                            <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse"></span>
-                                            재고 {product.stock.toLocaleString()}개
-                                        </span>
                                     ) : null}
                                 </div>
 

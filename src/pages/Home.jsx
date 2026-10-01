@@ -391,11 +391,6 @@ export default function Home() {
                                             <span className="px-2 py-0.5 bg-gray-100 text-gray-500 rounded text-[11px] font-bold border border-gray-200">
                                                 단종
                                             </span>
-                                        ) : product.stock !== undefined ? (
-                                            <span className="px-2 py-0.5 bg-green-50 text-green-600 rounded text-[11px] font-bold border border-green-100 flex items-center gap-1">
-                                                <span className="material-symbols-outlined text-[12px]">inventory_2</span>
-                                                재고: {product.stock.toLocaleString()}개
-                                            </span>
                                         ) : null}
                                     </div>
 
